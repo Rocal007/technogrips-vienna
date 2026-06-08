@@ -1,0 +1,8 @@
+.env
+node_modules/
+*.log
+server/db.sqlite
+server/db.sqlite-journal
+server/db.sqlite-wal
+server/db.sqlite-shm
+public/assets/images/uploads/
