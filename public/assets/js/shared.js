@@ -281,4 +281,20 @@
     TG.loadCms().then(() => TG.applyLang(TG.lang));
   };
 
+  // ── Broken Image Handler ──────────────────────
+  window.addEventListener('error', function(e) {
+    const target = e.target;
+    if (target && target.tagName && target.tagName.toLowerCase() === 'img') {
+      if (target.dataset.fallbackApplied) return;
+      target.dataset.fallbackApplied = 'true';
+
+      const galleryParent = target.closest('.gallery-item');
+      if (galleryParent) {
+        galleryParent.style.display = 'none';
+        return;
+      }
+      target.src = '/assets/images/crane_50.png'; 
+    }
+  }, true);
+
 })();
