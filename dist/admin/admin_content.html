@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Technogrips Vienna – Admin Panel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          navy: { 950: '#020817', 900: '#0a0f1e', 800: '#0f1729', 700: '#162035', 600: '#1e2d47' },
+          gold: { 300: '#f2e44d', 400: '#ebd600', 500: '#e5c500', 600: '#ccb000' }
+        }
+      }}
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .glass { background: rgba(15,23,41,0.7); backdrop-filter: blur(20px); border: 1px solid rgba(229,197,0,0.15); }
+    .glass-light { background: rgba(30,45,71,0.5); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); }
+    .gold-gradient { background: linear-gradient(135deg, #e5c500, #ccb000); }
+    .form-input { background: rgba(10,15,30,0.8); border: 1px solid rgba(229,197,0,0.2); color: #fff; transition: border-color 0.2s; }
+    .form-input:focus { outline: none; border-color: #e5c500; }
+    .form-input::placeholder { color: rgba(156,163,175,0.5); }
+    .btn-gold { background: linear-gradient(135deg, #e5c500, #ccb000); color: #000; font-weight: 700; transition: all 0.2s; }
+    .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(229,197,0,0.4); }
+    ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: #0a0f1e; } ::-webkit-scrollbar-thumb { background: #e5c500; border-radius: 2px; }
+    .status-new { background: rgba(59,130,246,0.2); color: #93c5fd; border: 1px solid rgba(59,130,246,0.3); }
+    .status-contacted { background: rgba(229,197,0,0.2); color: #ebd600; border: 1px solid rgba(229,197,0,0.3); }
+    .status-qualified { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .status-closed { background: rgba(107,114,128,0.2); color: #9ca3af; border: 1px solid rgba(107,114,128,0.3); }
+    .status-spam { background: rgba(239,68,68,0.2); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3); }
+    .type-contact { color: #60a5fa; }
+    .type-product { color: #e5c500; }
+    .type-catalog { color: #a78bfa; }
+    .type-booking { color: #34d399; }
+    .type-newsletter { color: #f472b6; }
+    .sidebar-item { transition: all 0.2s; }
+    .sidebar-item:hover, .sidebar-item.active { background: rgba(229,197,0,0.1); border-color: rgba(229,197,0,0.3); color: #e5c500; }
+    .modal-bg { background: rgba(2,8,23,0.92); backdrop-filter: blur(10px); }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .cms-tab { transition: all 0.2s; border-bottom: 2px solid transparent; }
+    .cms-tab:hover { color: #e5c500; }
+    .cms-tab.active { color: #e5c500; border-bottom-color: #e5c500; }
+    .field-changed { border-color: #e5c500 !important; box-shadow: 0 0 0 2px rgba(229,197,0,0.2); }
+    .save-indicator { transition: all 0.3s; }
+    /* Media grid */
+    .media-thumb { aspect-ratio:1; object-fit:cover; border-radius:8px; cursor:pointer; transition:all 0.2s; border:2px solid transparent; }
+    .media-thumb:hover { border-color:#e5c500; transform:scale(1.02); }
+    .media-thumb.selected { border-color:#e5c500; box-shadow:0 0 0 3px rgba(229,197,0,0.3); }
+    .media-card { position:relative; group; }
+    .media-card .del-btn { position:absolute; top:4px; right:4px; background:rgba(239,68,68,0.9); color:#fff; border:none; border-radius:6px; width:28px; height:28px; font-size:14px; cursor:pointer; display:none; align-items:center; justify-content:center; }
+    .media-card:hover .del-btn { display:flex; }
+    /* Toggle switch */
+    .toggle { position:relative; display:inline-block; width:44px; height:24px; }
+    .toggle input { opacity:0; width:0; height:0; }
+    .slider { position:absolute; cursor:pointer; inset:0; background:#374151; border-radius:24px; transition:0.3s; }
+    .slider:before { content:''; position:absolute; height:18px; width:18px; left:3px; bottom:3px; background:#fff; border-radius:50%; transition:0.3s; }
+    input:checked + .slider { background:#e5c500; }
+    input:checked + .slider:before { transform:translateX(20px); }
+    /* Drop zone */
+    .drop-zone { border:2px dashed rgba(229,197,0,0.3); border-radius:16px; transition:all 0.2s; }
+    .drop-zone.drag-over { border-color:#e5c500; background:rgba(229,197,0,0.05); }
+  </style>
+</head>
+<body class="bg-navy-950 text-white min-h-screen">
+
+  <!-- LOGIN SCREEN -->
+  <div id="loginScreen" class="fixed inset-0 z-50 flex items-center justify-center">
+    <div class="absolute inset-0 bg-navy-950">
+      <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
+    </div>
+    <div class="glass relative rounded-2xl p-10 max-w-sm w-full mx-4 z-10">
+      <div class="text-center mb-8">
+        <div class="w-14 h-14 gold-gradient rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        </div>
+        <h1 class="text-2xl font-800">Admin Panel</h1>
+        <p class="text-gray-500 text-sm mt-1">Technogrips Vienna</p>
+      </div>
+      <form id="loginForm" onsubmit="doLogin(event)">
+        <div class="mb-4">
+          <label class="block text-sm text-gray-400 mb-1.5">Benutzername</label>
+          <input type="text" id="loginUser" value="admin" class="form-input w-full px-4 py-3 rounded-xl" placeholder="admin">
+        </div>
+        <div class="mb-6">
+          <label class="block text-sm text-gray-400 mb-1.5">Passwort</label>
+          <input type="password" id="loginPass" class="form-input w-full px-4 py-3 rounded-xl" placeholder="••••••••">
+        </div>
+        <div id="loginError" class="hidden mb-4 text-red-400 text-sm text-center bg-red-500/10 rounded-xl py-2"></div>
+        <button type="submit" class="btn-gold w-full py-3.5 rounded-xl font-700 flex items-center justify-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/></svg>
+          Anmelden
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MAIN APP -->
+  <div id="mainApp" class="hidden flex min-h-screen">
+
+    <!-- Sidebar -->
+    <aside class="w-64 shrink-0 glass border-r border-gold-500/10 flex flex-col">
+      <!-- Logo -->
+      <div class="p-6 border-b border-white/5">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 gold-gradient rounded-xl flex items-center justify-center">
+            <svg viewBox="0 0 24 24" class="w-5 h-5 text-black fill-current"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div>
+            <div class="text-sm font-800">Technogrips</div>
+            <div class="text-gold-500 text-xs tracking-widest uppercase">Admin</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="flex-1 p-4 space-y-1">
+        <button onclick="showPage('dashboard')" id="nav-dashboard" class="sidebar-item active w-full text-left flex items-center gap-3 px-4 py-3 rounded-xl text-sm border border-transparent">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+          Dashboard
+        </button>
+        <button onclick="showPage('leads')" id="nav-leads" class="sidebar-item w-full text-left flex items-center gap-3 px-4 py-3 rounded-xl text-sm border border-transparent text-gray-400">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Alle Leads
+          <span id="leadCountBadge" class="ml-auto bg-gold-500/20 text-gold-400 text-xs px-2 py-0.5 rounded-full">0</span>
+        </button>
+        <button onclick="showPage('newsletter')" id="nav-newsletter" class="sidebar-item w-full text-left flex items-center gap-3 px-4 py-3 rounded-xl text-sm border border-transparent text-gray-400">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Newsletter
+        </button>
+        <button onclick="showPage('pages')" id="nav-pages" class="sidebar-item w-full text-left flex items-center gap-3 px-4 py-3 rounded-xl text-sm border border-transparent text-gray-400">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+          Seiten bearbeiten
+        </button>
+        <button onclick="showPage('media')" id="nav-media" class="sidebar-item w-full text-left flex items-center gap-3 px-4 py-3 rounded-xl text-sm border border-transparent text-gray-400">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          Medienverwaltung
+        </button>
+        <button onclick="showPage('sections')" id="nav-sections" class="sidebar-item w-full text-left flex items-center gap-3 px-4 py-3 rounded-xl text-sm border border-transparent text-gray-400">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+          Seiten-Sektionen
+        </button>
+      </nav>
+
+      <!-- Bottom -->
+      <div class="p-4 border-t border-white/5">
+        <div class="flex items-center gap-3 px-3 py-2 mb-3">
+          <div class="w-8 h-8 gold-gradient rounded-full flex items-center justify-center text-black text-sm font-800">A</div>
+          <div>
+            <div class="text-sm font-600" id="adminUsername">admin</div>
+            <div class="text-xs text-gray-500">Administrator</div>
+          </div>
+        </div>
+        <button onclick="doLogout()" class="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-500 hover:text-red-400 transition-colors rounded-xl hover:bg-red-500/10">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+          Abmelden
+        </button>
+        <a href="../index.html" class="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-500 hover:text-gold-400 transition-colors rounded-xl hover:bg-gold-500/10 mt-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Zur Website
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-auto">
+
+      <!-- ── DASHBOARD ── -->
+      <div id="page-dashboard" class="p-8">
+        <div class="mb-8">
+          <h1 class="text-2xl font-800 mb-1">Dashboard</h1>
+          <p class="text-gray-500 text-sm" id="dashboardDate"></p>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8" id="kpiCards">
+          <div class="glass rounded-2xl p-5">
+            <div class="text-gray-400 text-xs uppercase tracking-widest mb-2">Gesamt Leads</div>
+            <div class="text-3xl font-800 text-gold-400" id="kpi-total">–</div>
+          </div>
+          <div class="glass rounded-2xl p-5">
+            <div class="text-gray-400 text-xs uppercase tracking-widest mb-2">Heute</div>
+            <div class="text-3xl font-800 text-blue-400" id="kpi-today">–</div>
+          </div>
+          <div class="glass rounded-2xl p-5">
+            <div class="text-gray-400 text-xs uppercase tracking-widest mb-2">Diese Woche</div>
+            <div class="text-3xl font-800 text-purple-400" id="kpi-week">–</div>
+          </div>
+          <div class="glass rounded-2xl p-5">
+            <div class="text-gray-400 text-xs uppercase tracking-widest mb-2">Conversion</div>
+            <div class="text-3xl font-800 text-green-400" id="kpi-conversion">–%</div>
+          </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="grid lg:grid-cols-3 gap-6 mb-8">
+          <!-- Timeline Chart -->
+          <div class="lg:col-span-2 glass rounded-2xl p-6">
+            <h3 class="font-700 mb-4 text-sm text-gray-400 uppercase tracking-widest">Leads (30 Tage)</h3>
+            <canvas id="timelineChart" height="120"></canvas>
+          </div>
+          <!-- Type Chart -->
+          <div class="glass rounded-2xl p-6">
+            <h3 class="font-700 mb-4 text-sm text-gray-400 uppercase tracking-widest">Nach Typ</h3>
+            <canvas id="typeChart" height="180"></canvas>
+          </div>
+        </div>
+
+        <!-- Recent Leads -->
+        <div class="glass rounded-2xl p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-700 text-sm text-gray-400 uppercase tracking-widest">Neueste Leads</h3>
+            <button onclick="showPage('leads')" class="text-gold-400 text-xs hover:text-gold-300">Alle anzeigen →</button>
+          </div>
+          <div id="recentLeads" class="space-y-2"></div>
+        </div>
+      </div>
+
+      <!-- ── LEADS TABLE ── -->
+      <div id="page-leads" class="p-8 hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <div>
+            <h1 class="text-2xl font-800 mb-1">Alle Leads</h1>
+            <p class="text-gray-500 text-sm" id="leadsSubtitle">Lade...</p>
+          </div>
+          <button onclick="exportCSV()" class="btn-gold px-5 py-2.5 rounded-xl text-sm flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            CSV Export
+          </button>
+        </div>
+
+        <!-- Filters -->
+        <div class="glass rounded-2xl p-4 mb-5 flex flex-wrap gap-3">
+          <input type="text" id="searchInput" class="form-input px-4 py-2 rounded-xl text-sm flex-1 min-w-48" placeholder="🔍 Name oder E-Mail suchen..." oninput="filterLeads()">
+          <select id="typeFilter" class="form-input px-4 py-2 rounded-xl text-sm" onchange="filterLeads()">
+            <option value="all">Alle Typen</option>
+            <option value="contact">Kontakt</option>
+            <option value="product">Produktanfrage</option>
+            <option value="catalog">Katalog</option>
+            <option value="booking">Buchung</option>
+            <option value="newsletter">Newsletter</option>
+          </select>
+          <select id="statusFilter" class="form-input px-4 py-2 rounded-xl text-sm" onchange="filterLeads()">
+            <option value="all">Alle Status</option>
+            <option value="new">Neu</option>
+            <option value="contacted">Kontaktiert</option>
+            <option value="qualified">Qualifiziert</option>
+            <option value="closed">Abgeschlossen</option>
+            <option value="spam">Spam</option>
+          </select>
+          <input type="date" id="dateFrom" class="form-input px-4 py-2 rounded-xl text-sm" onchange="filterLeads()">
+          <input type="date" id="dateTo" class="form-input px-4 py-2 rounded-xl text-sm" onchange="filterLeads()">
+          <button onclick="clearFilters()" class="px-4 py-2 rounded-xl text-sm text-gray-400 hover:text-white border border-white/10 hover:border-white/20 transition-colors">Reset</button>
+        </div>
+
+        <!-- Table -->
+        <div class="glass rounded-2xl overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-white/5 text-gray-500 text-xs uppercase tracking-widest">
+                  <th class="text-left px-4 py-3">ID</th>
+                  <th class="text-left px-4 py-3">Typ</th>
+                  <th class="text-left px-4 py-3">Name</th>
+                  <th class="text-left px-4 py-3">E-Mail</th>
+                  <th class="text-left px-4 py-3 hidden md:table-cell">Produkt</th>
+                  <th class="text-left px-4 py-3">Datum</th>
+                  <th class="text-left px-4 py-3">Status</th>
+                  <th class="text-left px-4 py-3">Aktionen</th>
+                </tr>
+              </thead>
+              <tbody id="leadsTableBody">
+                <tr><td colspan="8" class="text-center py-12 text-gray-500">Lade Leads...</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Pagination -->
+          <div class="flex items-center justify-between px-4 py-3 border-t border-white/5">
+            <div class="text-sm text-gray-500" id="paginationInfo">–</div>
+            <div class="flex gap-2" id="paginationButtons"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── NEWSLETTER ── -->
+      <div id="page-newsletter" class="p-8 hidden">
+        <div class="mb-6">
+          <h1 class="text-2xl font-800 mb-1">Newsletter-Abonnenten</h1>
+          <p class="text-gray-500 text-sm">Alle angemeldeten E-Mail-Adressen</p>
+        </div>
+        <div class="glass rounded-2xl overflow-hidden">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-white/5 text-gray-500 text-xs uppercase tracking-widest">
+                <th class="text-left px-4 py-3">ID</th>
+                <th class="text-left px-4 py-3">E-Mail</th>
+                <th class="text-left px-4 py-3">Name</th>
+                <th class="text-left px-4 py-3">Sprache</th>
+                <th class="text-left px-4 py-3">Datum</th>
+              </tr>
+            </thead>
+            <tbody id="newsletterBody">
+              <tr><td colspan="5" class="text-center py-12 text-gray-500">Lade Abonnenten...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── SEITEN BEARBEITEN ── -->
+      <div id="page-pages" class="p-8 hidden">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h1 class="text-2xl font-800 mb-1">Seiten bearbeiten</h1>
+            <p class="text-gray-500 text-sm">Texte der Website direkt bearbeiten – DE & EN</p>
+          </div>
+          <div class="flex gap-3 items-center">
+            <span id="cms-save-status" class="save-indicator text-xs text-gray-500"></span>
+            <a href="../index.html" target="_blank" class="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm border border-white/10 text-gray-400 hover:text-gold-400 hover:border-gold-500/30 transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              Vorschau
+            </a>
+          </div>
+        </div>
+
+        <!-- Section Tabs -->
+        <div class="flex gap-1 mb-6 border-b border-white/10 overflow-x-auto">
+          <button onclick="showCmsSection('home')" id="cms-tab-home" class="cms-tab active px-4 py-2.5 text-sm font-600 whitespace-nowrap">🏠 Startseite</button>
+          <button onclick="showCmsSection('services')"  id="cms-tab-services"    class="cms-tab px-4 py-2.5 text-sm font-600 text-gray-400 whitespace-nowrap">⚙️ Services</button>
+          <button onclick="showCmsSection('product')"   id="cms-tab-product"     class="cms-tab px-4 py-2.5 text-sm font-600 text-gray-400 whitespace-nowrap">🏗️ Produkt</button>
+          <button onclick="showCmsSection('tracking')"  id="cms-tab-tracking"    class="cms-tab px-4 py-2.5 text-sm font-600 text-gray-400 whitespace-nowrap">🕹️ Simulator</button>
+          <button onclick="showCmsSection('about')"     id="cms-tab-about"       class="cms-tab px-4 py-2.5 text-sm font-600 text-gray-400 whitespace-nowrap">👥 Über uns</button>
+          <button onclick="showCmsSection('contact')"   id="cms-tab-contact"     class="cms-tab px-4 py-2.5 text-sm font-600 text-gray-400 whitespace-nowrap">📞 Kontakt</button>
+          <button onclick="showCmsSection('newsletter')" id="cms-tab-newsletter" class="cms-tab px-4 py-2.5 text-sm font-600 text-gray-400 whitespace-nowrap">✉️ Newsletter</button>
+          <button onclick="showCmsSection('seo')"       id="cms-tab-seo"         class="cms-tab px-4 py-2.5 text-sm font-600 text-gray-400 whitespace-nowrap">🔍 SEO</button>
+        </div>
+
+        <!-- Column Headers -->
+        <div class="grid grid-cols-[1fr_1.5fr_1.5fr_auto] gap-3 px-4 py-2 text-xs text-gray-500 uppercase tracking-widest mb-2">
+          <div>Feld</div>
+          <div>🇩🇪 Deutsch</div>
+          <div>🇬🇧 Englisch</div>
+          <div></div>
+        </div>
+
+        <!-- Fields Container -->
+        <div id="cms-fields" class="space-y-2">
+          <div class="text-center py-12 text-gray-500">Lade Inhalte...</div>
+        </div>
+
+        <!-- Save All Button -->
+        <div class="mt-6 flex justify-end">
+          <button onclick="saveAllChanges()" id="saveAllBtn" class="btn-gold px-8 py-3 rounded-xl font-700 flex items-center gap-2 opacity-50 cursor-not-allowed" disabled>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Alle Änderungen speichern
+          </button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Lead Detail Modal -->
+  <div id="leadModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div class="modal-bg absolute inset-0" onclick="closeLeadModal()"></div>
+    <div class="glass relative rounded-2xl p-8 max-w-2xl w-full z-10 max-h-[90vh] overflow-y-auto">
+      <button onclick="closeLeadModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Media Selection Modal -->
+  <div id="mediaSelectModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div class="modal-bg absolute inset-0" onclick="closeMediaSelectModal()"></div>
+    <div class="glass relative rounded-2xl p-6 max-w-4xl w-full z-10 max-h-[85vh] flex flex-col border border-white/10">
+      <button onclick="closeMediaSelectModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <h3 class="text-xl font-bold mb-4 text-gold-400">Bild aus Mediathek wählen</h3>
+      
+      <!-- Filter/Search inside Modal -->
+      <div class="flex flex-col sm:flex-row gap-3 mb-4">
+        <input type="text" id="modalMediaSearch" placeholder="Suchen..." class="form-input flex-1 px-3 py-2 rounded-xl text-sm" oninput="filterModalMedia()">
+        <select id="modalMediaFilter" class="form-input px-3 py-2 rounded-xl text-sm" onchange="filterModalMedia()">
+          <option value="all">Alle Kategorien</option>
+          <option value="general">Allgemein</option>
+          <option value="uploads">Uploads</option>
+          <option value="BESToff">BESToff</option>
+          <option value="st50">st50</option>
+        </select>
+      </div>
+
+      <!-- Media Grid -->
+      <div id="modalMediaGrid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-3 overflow-y-auto flex-1 pr-1">
+        <!-- populated dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    let token = localStorage.getItem('admin_token');
+    let currentPage = 1;
+    let allLeads = [];
+    let timelineChart, typeChart;
+
+    // ── Auth ────────────────────────────────────────
+    async function doLogin(e) {
+      e.preventDefault();
+      const user = document.getElementById('loginUser').value;
+      const pass = document.getElementById('loginPass').value;
+      const err = document.getElementById('loginError');
+      err.classList.add('hidden');
+
+      try {
+        const res = await fetch('../api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: user, password: pass })
+        });
+        const data = await res.json();
+        if (data.token) {
+          token = data.token;
+          localStorage.setItem('admin_token', token);
+          localStorage.setItem('admin_user', data.user.username);
+          document.getElementById('adminUsername').textContent = data.user.username;
+          document.getElementById('loginScreen').classList.add('hidden');
+          document.getElementById('mainApp').classList.remove('hidden');
+          document.getElementById('mainApp').classList.add('flex');
+          initApp();
+        } else {
+          err.textContent = data.error || 'Ungültige Anmeldedaten';
+          err.classList.remove('hidden');
+        }
+      } catch(e) {
+        err.textContent = 'Verbindungsfehler';
+        err.classList.remove('hidden');
+      }
+    }
+
+    function doLogout() {
+      localStorage.removeItem('admin_token');
+      localStorage.removeItem('admin_user');
+      token = null;
+      if (window.isPhpSession) {
+        window.location.href = 'index.php?logout=1';
+      } else {
+        location.reload();
+      }
+    }
+
+    // ── API ─────────────────────────────────────────
+    async function api(path, options = {}) {
+      const res = await fetch(path, {
+        ...options,
+        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json', ...options.headers }
+      });
+      if (res.status === 401) { doLogout(); return null; }
+      return res.json();
+    }
+
+    // ── Init ────────────────────────────────────────
+    async function initApp() {
+      document.getElementById('dashboardDate').textContent = new Date().toLocaleDateString('de-AT', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      document.getElementById('adminUsername').textContent = localStorage.getItem('admin_user') || 'admin';
+      await loadDashboard();
+    }
+
+    // ── Check existing token ─────────────────────────
+    if (window.isPhpSession) {
+      document.getElementById('adminUsername').textContent = localStorage.getItem('admin_user') || 'admin';
+      document.getElementById('loginScreen').classList.add('hidden');
+      document.getElementById('mainApp').classList.remove('hidden');
+      document.getElementById('mainApp').classList.add('flex');
+      initApp();
+    } else if (token) {
+      fetch('../api/auth/verify', { headers: { 'Authorization': `Bearer ${token}` } })
+        .then(r => r.json())
+        .then(data => {
+          if (data.valid) {
+            document.getElementById('adminUsername').textContent = localStorage.getItem('admin_user') || 'admin';
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('mainApp').classList.remove('hidden');
+            document.getElementById('mainApp').classList.add('flex');
+            initApp();
+          }
+        }).catch(() => {});
+    }
+
+    // ── Navigation ──────────────────────────────────
+    function showPage(page) {
+      ['dashboard', 'leads', 'newsletter', 'pages', 'media', 'sections'].forEach(p => {
+        document.getElementById(`page-${p}`)?.classList.add('hidden');
+        document.getElementById(`nav-${p}`)?.classList.remove('active');
+        document.getElementById(`nav-${p}`)?.classList.add('text-gray-400');
+      });
+      document.getElementById(`page-${page}`)?.classList.remove('hidden');
+      document.getElementById(`nav-${page}`)?.classList.add('active');
+      document.getElementById(`nav-${page}`)?.classList.remove('text-gray-400');
+
+      if (page === 'leads') loadLeads();
+      if (page === 'newsletter') loadNewsletter();
+      if (page === 'pages') loadCmsContent();
+    }
+
+    // ── Dashboard ───────────────────────────────────
+    async function loadDashboard() {
+      const stats = await api('../api/leads.php?action=stats');
+      if (!stats) return;
+
+      document.getElementById('kpi-total').textContent = stats.total;
+      document.getElementById('kpi-today').textContent = stats.todayCount;
+      document.getElementById('kpi-week').textContent = stats.weekCount;
+      document.getElementById('kpi-conversion').textContent = stats.conversionRate + '%';
+      document.getElementById('leadCountBadge').textContent = stats.total;
+
+      // Timeline Chart
+      const ctx1 = document.getElementById('timelineChart').getContext('2d');
+      if (timelineChart) timelineChart.destroy();
+      timelineChart = new Chart(ctx1, {
+        type: 'line',
+        data: {
+          labels: stats.timeline.map(t => t.date.slice(5)),
+          datasets: [{ label: 'Leads', data: stats.timeline.map(t => t.count), borderColor: '#e5c500', backgroundColor: 'rgba(229,197,0,0.08)', fill: true, tension: 0.4, pointBackgroundColor: '#e5c500', pointRadius: 4 }]
+        },
+        options: { plugins: { legend: { display: false } }, scales: { x: { ticks: { color: '#6b7280' }, grid: { color: 'rgba(255,255,255,0.05)' } }, y: { ticks: { color: '#6b7280', stepSize: 1 }, grid: { color: 'rgba(255,255,255,0.05)' } } } }
+      });
+
+      // Type Chart
+      const typeColors = { contact: '#60a5fa', product: '#e5c500', catalog: '#a78bfa', booking: '#34d399', newsletter: '#f472b6' };
+      const typeLabels = { contact: 'Kontakt', product: 'Produkt', catalog: 'Katalog', booking: 'Buchung', newsletter: 'Newsletter' };
+      const ctx2 = document.getElementById('typeChart').getContext('2d');
+      if (typeChart) typeChart.destroy();
+      typeChart = new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+          labels: stats.byType.map(t => typeLabels[t.type] || t.type),
+          datasets: [{ data: stats.byType.map(t => t.count), backgroundColor: stats.byType.map(t => typeColors[t.type] || '#9ca3af'), borderWidth: 0 }]
+        },
+        options: { plugins: { legend: { position: 'bottom', labels: { color: '#9ca3af', padding: 12, font: { size: 11 } } } }, cutout: '70%' }
+      });
+
+      // Recent Leads
+      const recentDiv = document.getElementById('recentLeads');
+      if (stats.recent.length === 0) { recentDiv.innerHTML = '<p class="text-gray-500 text-sm text-center py-4">Noch keine Leads</p>'; return; }
+      recentDiv.innerHTML = stats.recent.map(lead => `
+        <div onclick="openLead(${lead.id})" class="flex items-center justify-between py-3 px-2 hover:bg-white/3 rounded-xl cursor-pointer transition-colors border-b border-white/5 last:border-0">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl ${typeColors[lead.type]} bg-opacity-20 flex items-center justify-center text-xs font-700" style="background: ${typeColors[lead.type]}22; color: ${typeColors[lead.type]}">${(lead.name || lead.email || '?')[0].toUpperCase()}</div>
+            <div>
+              <div class="text-sm font-600">${lead.name || lead.email}</div>
+              <div class="text-xs text-gray-500">${lead.email}</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="status-${lead.status} text-xs px-2 py-0.5 rounded-full">${statusLabel(lead.status)}</span>
+            <span class="text-xs text-gray-600">${formatDate(lead.created_at)}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ── Leads ───────────────────────────────────────
+    const typeColors = { contact: '#60a5fa', product: '#e5c500', catalog: '#a78bfa', booking: '#34d399', newsletter: '#f472b6' };
+    const typeLabel = { contact: 'Kontakt', product: 'Produkt', catalog: 'Katalog', booking: 'Buchung', newsletter: 'Newsletter' };
+
+    function statusLabel(s) { return { new: 'Neu', contacted: 'Kontaktiert', qualified: 'Qualifiziert', closed: 'Abgeschlossen', spam: 'Spam' }[s] || s; }
+    function formatDate(d) { return new Date(d).toLocaleDateString('de-AT', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }); }
+
+    async function loadLeads() {
+      const search = document.getElementById('searchInput').value;
+      const type = document.getElementById('typeFilter').value;
+      const status = document.getElementById('statusFilter').value;
+      const from = document.getElementById('dateFrom').value;
+      const to = document.getElementById('dateTo').value;
+
+      const params = new URLSearchParams({ page: currentPage, limit: 25 });
+      if (search) params.append('search', search);
+      if (type !== 'all') params.append('type', type);
+      if (status !== 'all') params.append('status', status);
+      if (from) params.append('from', from);
+      if (to) params.append('to', to);
+
+      const data = await api(`/api/leads.php?action=list&${params}`);
+      if (!data) return;
+
+      document.getElementById('leadsSubtitle').textContent = `${data.total} Leads gesamt`;
+      document.getElementById('paginationInfo').textContent = `Seite ${data.page} von ${data.pages || 1} (${data.total} Einträge)`;
+
+      const tbody = document.getElementById('leadsTableBody');
+      if (data.leads.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="8" class="text-center py-12 text-gray-500">Keine Leads gefunden</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = data.leads.map(lead => `
+        <tr class="border-b border-white/3 cursor-pointer" onclick="openLead(${lead.id})">
+          <td class="px-4 py-3 text-gray-500 text-xs">#${lead.id}</td>
+          <td class="px-4 py-3"><span class="text-xs font-600" style="color: ${typeColors[lead.type]}">${typeLabel[lead.type] || lead.type}</span></td>
+          <td class="px-4 py-3 font-600">${lead.name || '<span class="text-gray-600">–</span>'}</td>
+          <td class="px-4 py-3 text-gray-400 text-xs">${lead.email}</td>
+          <td class="px-4 py-3 text-gray-500 text-xs hidden md:table-cell">${lead.product || '–'}</td>
+          <td class="px-4 py-3 text-gray-500 text-xs">${formatDate(lead.created_at)}</td>
+          <td class="px-4 py-3"><span class="status-${lead.status} text-xs px-2.5 py-1 rounded-full font-600">${statusLabel(lead.status)}</span></td>
+          <td class="px-4 py-3">
+            <div class="flex gap-1" onclick="event.stopPropagation()">
+              <select onchange="updateStatus(${lead.id}, this.value, this)" class="form-input text-xs px-2 py-1 rounded-lg">
+                ${['new','contacted','qualified','closed','spam'].map(s => `<option value="${s}" ${lead.status===s?'selected':''}>${statusLabel(s)}</option>`).join('')}
+              </select>
+              <button onclick="deleteLead(${lead.id})" class="px-2 py-1 rounded-lg text-red-400 hover:bg-red-500/20 text-xs transition-colors">✕</button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+
+      // Pagination buttons
+      const paginationDiv = document.getElementById('paginationButtons');
+      paginationDiv.innerHTML = '';
+      for (let i = 1; i <= (data.pages || 1); i++) {
+        const btn = document.createElement('button');
+        btn.textContent = i;
+        btn.className = `px-3 py-1 rounded-lg text-sm ${i === currentPage ? 'btn-gold' : 'border border-white/10 text-gray-400 hover:text-white'}`;
+        btn.onclick = () => { currentPage = i; loadLeads(); };
+        paginationDiv.appendChild(btn);
+      }
+    }
+
+    function filterLeads() { currentPage = 1; loadLeads(); }
+    function clearFilters() {
+      document.getElementById('searchInput').value = '';
+      document.getElementById('typeFilter').value = 'all';
+      document.getElementById('statusFilter').value = 'all';
+      document.getElementById('dateFrom').value = '';
+      document.getElementById('dateTo').value = '';
+      filterLeads();
+    }
+
+    async function updateStatus(id, status, select) {
+      const data = await api(`/api/leads.php?id=${id}`, { method: 'PATCH', body: JSON.stringify({ status }) });
+      if (data) {
+        // Update badge
+        const row = select.closest('tr');
+        const badge = row?.querySelector('.status-new, .status-contacted, .status-qualified, .status-closed, .status-spam');
+        if (badge) { badge.className = `status-${status} text-xs px-2.5 py-1 rounded-full font-600`; badge.textContent = statusLabel(status); }
+      }
+    }
+
+    async function deleteLead(id) {
+      if (!confirm('Lead wirklich löschen?')) return;
+      await api(`/api/leads.php?id=${id}`, { method: 'DELETE' });
+      loadLeads();
+    }
+
+    async function openLead(id) {
+      const lead = await api(`/api/leads.php?id=${id}`);
+      if (!lead) return;
+      const modal = document.getElementById('leadModal');
+      document.getElementById('modalContent').innerHTML = `
+        <div class="flex items-start justify-between mb-6">
+          <div>
+            <div class="text-xs text-gray-500 mb-1">#${lead.id} · <span style="color:${typeColors[lead.type]}">${typeLabel[lead.type] || lead.type}</span></div>
+            <h2 class="text-2xl font-800">${lead.name || lead.email}</h2>
+          </div>
+          <span class="status-${lead.status} text-sm px-3 py-1 rounded-full font-600 mt-1">${statusLabel(lead.status)}</span>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-3 mb-6">
+          ${[
+            ['E-Mail', lead.email ? `<a href="mailto:${lead.email}" class="text-gold-400 hover:text-gold-300">${lead.email}</a>` : '–'],
+            ['Telefon', lead.phone ? `<a href="tel:${lead.phone}" class="text-gold-400">${lead.phone}</a>` : '–'],
+            ['Unternehmen', lead.company || '–'],
+            ['Produkt', lead.product || '–'],
+            ['Drehtag', lead.event_date || '–'],
+            ['Dauer', lead.duration || '–'],
+            ['Buchungsdatum', lead.booking_date ? `${lead.booking_date} ${lead.booking_time || ''}` : '–'],
+            ['Sprache', lead.language?.toUpperCase() || '–'],
+            ['Quelle', lead.source || '–'],
+            ['Erstellt am', formatDate(lead.created_at)],
+          ].map(([k,v]) => `<div class="glass-light rounded-xl p-3"><div class="text-xs text-gray-500 mb-1">${k}</div><div class="text-sm font-600">${v}</div></div>`).join('')}
+        </div>
+        ${lead.message ? `<div class="glass-light rounded-xl p-4 mb-5"><div class="text-xs text-gray-500 mb-2">Nachricht</div><p class="text-sm text-gray-300 leading-relaxed">${lead.message}</p></div>` : ''}
+        <div class="grid sm:grid-cols-2 gap-3 mb-4">
+          <div>
+            <label class="block text-sm text-gray-400 mb-1.5">Status ändern</label>
+            <select id="modalStatus" class="form-input w-full px-3 py-2 rounded-xl text-sm">
+              ${['new','contacted','qualified','closed','spam'].map(s => `<option value="${s}" ${lead.status===s?'selected':''}>${statusLabel(s)}</option>`).join('')}
+            </select>
+          </div>
+        </div>
+        <div class="mb-5">
+          <label class="block text-sm text-gray-400 mb-1.5">Interne Notizen</label>
+          <textarea id="modalNotes" rows="3" class="form-input w-full px-3 py-2 rounded-xl text-sm resize-none">${lead.notes || ''}</textarea>
+        </div>
+        <div class="flex gap-3">
+          <button onclick="saveLeadModal(${lead.id})" class="btn-gold px-6 py-2.5 rounded-xl text-sm font-700">Speichern</button>
+          <button onclick="deleteLead(${lead.id}); closeLeadModal();" class="px-6 py-2.5 rounded-xl text-sm border border-red-500/30 text-red-400 hover:bg-red-500/10 transition-colors">Löschen</button>
+        </div>
+      `;
+      modal.classList.remove('hidden');
+    }
+
+    async function saveLeadModal(id) {
+      const status = document.getElementById('modalStatus').value;
+      const notes = document.getElementById('modalNotes').value;
+      await api(`/api/leads.php?id=${id}`, { method: 'PATCH', body: JSON.stringify({ status, notes }) });
+      closeLeadModal();
+      loadLeads();
+    }
+
+    function closeLeadModal() { document.getElementById('leadModal').classList.add('hidden'); }
+
+    // ── Media Selection Modal ────────────────────────
+    let activeImageFieldId = null;
+
+    function openMediaSelectModal(fieldId) {
+      activeImageFieldId = fieldId;
+      document.getElementById('modalMediaSearch').value = '';
+      document.getElementById('modalMediaFilter').value = 'all';
+      renderModalMediaGrid();
+      document.getElementById('mediaSelectModal').classList.remove('hidden');
+    }
+
+    function closeMediaSelectModal() {
+      document.getElementById('mediaSelectModal').classList.add('hidden');
+      activeImageFieldId = null;
+    }
+
+    async function renderModalMediaGrid() {
+      const grid = document.getElementById('modalMediaGrid');
+      if (!grid) return;
+      
+      const search = document.getElementById('modalMediaSearch').value.toLowerCase();
+      const filter = document.getElementById('modalMediaFilter').value;
+      
+      let list = mediaList;
+      if (!list || list.length === 0) {
+        const data = await api('../api/media.php');
+        if (data) {
+          mediaList = data;
+          list = data;
+        } else {
+          grid.innerHTML = '<div class="col-span-full text-center text-gray-500 py-12">Fehler beim Laden der Medien</div>';
+          return;
+        }
+      }
+      
+      if (filter !== 'all') {
+        list = list.filter(m => m.category === filter);
+      }
+      if (search) {
+        list = list.filter(m => (m.original_name && m.original_name.toLowerCase().includes(search)) || (m.alt_text && m.alt_text.toLowerCase().includes(search)));
+      }
+      
+      if (list.length === 0) {
+        grid.innerHTML = '<div class="col-span-full text-center text-gray-500 py-12">Keine Bilder gefunden</div>';
+        return;
+      }
+      
+      grid.innerHTML = list.map(m => `
+        <div onclick="selectImageForField('${m.url}')" class="cursor-pointer glass-light hover:border-gold-500/50 border border-transparent rounded-xl overflow-hidden p-1.5 transition-all flex flex-col justify-between">
+          <div class="w-full aspect-square rounded-lg overflow-hidden bg-navy-950/40">
+            <img src="${m.url}" class="w-full h-full object-cover" onerror="this.src="../assets/images/placeholder.svg"">
+          </div>
+          <div class="text-[10px] text-gray-400 truncate mt-1 text-center px-1" title="${m.original_name}">${m.original_name}</div>
+        </div>
+      `).join('');
+    }
+
+    function filterModalMedia() {
+      renderModalMediaGrid();
+    }
+
+    function selectImageForField(url) {
+      if (!activeImageFieldId) return;
+      
+      const deEl = document.getElementById(`field-de-${activeImageFieldId}`);
+      const enEl = document.getElementById(`field-en-${activeImageFieldId}`);
+      
+      if (deEl) deEl.value = url;
+      if (enEl) enEl.value = url;
+      
+      const [section, key] = activeImageFieldId.split('.');
+      markChanged(activeImageFieldId, section, key);
+      
+      const previewDe = document.getElementById(`preview-de-${activeImageFieldId}`);
+      const previewEn = document.getElementById(`preview-en-${activeImageFieldId}`);
+      if (previewDe) { previewDe.src = url; previewDe.classList.remove('hidden'); }
+      if (previewEn) { previewEn.src = url; previewEn.classList.remove('hidden'); }
+      
+      closeMediaSelectModal();
+    }
+
+    // ── Newsletter ──────────────────────────────────
+    async function loadNewsletter() {
+      const data = await api('../api/admin/newsletter');
+      if (!data) return;
+      const tbody = document.getElementById('newsletterBody');
+      if (data.length === 0) { tbody.innerHTML = '<tr><td colspan="5" class="text-center py-12 text-gray-500">Keine Abonnenten</td></tr>'; return; }
+      tbody.innerHTML = data.map(s => `
+        <tr class="border-b border-white/3">
+          <td class="px-4 py-3 text-gray-500 text-xs">#${s.id}</td>
+          <td class="px-4 py-3 text-gold-400">${s.email}</td>
+          <td class="px-4 py-3">${s.name || '–'}</td>
+          <td class="px-4 py-3 text-gray-400">${s.language?.toUpperCase() || 'DE'}</td>
+          <td class="px-4 py-3 text-gray-500 text-xs">${formatDate(s.created_at)}</td>
+        </tr>
+      `).join('');
+    }
+
+    // ── Export ──────────────────────────────────────
+    function exportCSV() {
+      window.open(`/api/leads.php?action=export`, '_blank');
+    }
+
+    // ── CMS / Seiten bearbeiten ─────────────────────
+    let cmsData = {};       // all content from API
+    let cmsChanges = {};    // pending changes { 'section.key': {section, key, value_de, value_en} }
+    let cmsCurrent = 'home';
+
+    async function loadCmsContent() {
+      const rows = await api('../api/content.php?format=array');
+      if (!rows) return;
+      // rows is array of { section, key, label, value_de, value_en, type }
+      cmsData = {};
+      for (const row of rows) {
+        if (!cmsData[row.section]) cmsData[row.section] = [];
+        cmsData[row.section].push(row);
+      }
+      cmsChanges = {};
+      showCmsSection(cmsCurrent);
+    }
+
+    function showCmsSection(section) {
+      cmsCurrent = section;
+      // Update tabs
+      document.querySelectorAll('.cms-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById(`cms-tab-${section}`)?.classList.add('active');
+
+      let fields = [];
+      if (section === 'home') {
+        fields = [...(cmsData['hero'] || []), ...(cmsData['home'] || [])];
+      } else {
+        fields = cmsData[section] || [];
+      }
+
+      const container = document.getElementById('cms-fields');
+
+      if (fields.length === 0) {
+        container.innerHTML = '<div class="text-center py-12 text-gray-500">Keine Felder in diesem Abschnitt</div>';
+        return;
+      }
+
+      container.innerHTML = fields.map(field => {
+        const fieldId = `${field.section}.${field.key}`;
+        const hasChange = !!cmsChanges[fieldId];
+        const de = hasChange ? cmsChanges[fieldId].value_de : (field.value_de || '');
+        const en = hasChange ? cmsChanges[fieldId].value_en : (field.value_en || '');
+        const isTextarea = field.type === 'textarea';
+        const isImage = field.type === 'image';
+        const inputClass = `form-input w-full px-3 py-2 rounded-lg text-sm resize-none ${hasChange ? 'field-changed' : ''}`;
+
+        let deHtml, enHtml;
+        if (isTextarea) {
+          deHtml = `<textarea id="field-de-${fieldId}" rows="3" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">${de}</textarea>`;
+          enHtml = `<textarea id="field-en-${fieldId}" rows="3" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">${en}</textarea>`;
+        } else if (isImage) {
+          deHtml = `
+            <div class="flex gap-2 items-center">
+              <input type="text" id="field-de-${fieldId}" value="${de.replace(/"/g, '&quot;')}" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">
+              <button onclick="openMediaSelectModal('${fieldId}')" class="btn-gold px-3 py-2 rounded-lg text-xs font-600 whitespace-nowrap">Wählen 🖼️</button>
+            </div>
+            <div class="mt-2 w-24 h-24 rounded-lg overflow-hidden border border-white/10 bg-navy-950/50 flex items-center justify-center">
+              <img id="preview-de-${fieldId}" src="${de}" class="w-full h-full object-cover ${de ? '' : 'hidden'}" onerror="this.classList.add('hidden')">
+            </div>
+          `;
+          enHtml = `
+            <div class="flex gap-2 items-center">
+              <input type="text" id="field-en-${fieldId}" value="${en.replace(/"/g, '&quot;')}" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">
+              <button onclick="openMediaSelectModal('${fieldId}')" class="btn-gold px-3 py-2 rounded-lg text-xs font-600 whitespace-nowrap">Wählen 🖼️</button>
+            </div>
+            <div class="mt-2 w-24 h-24 rounded-lg overflow-hidden border border-white/10 bg-navy-950/50 flex items-center justify-center">
+              <img id="preview-en-${fieldId}" src="${en}" class="w-full h-full object-cover ${en ? '' : 'hidden'}" onerror="this.classList.add('hidden')">
+            </div>
+          `;
+        } else {
+          deHtml = `<input type="text" id="field-de-${fieldId}" value="${de.replace(/"/g, '&quot;')}" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">`;
+          enHtml = `<input type="text" id="field-en-${fieldId}" value="${en.replace(/"/g, '&quot;')}" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">`;
+        }
+
+        return `
+          <div class="glass-light rounded-xl p-4">
+            <div class="text-xs text-gray-500 font-600 uppercase tracking-wider mb-3">${field.label || field.key}</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
+                <div class="text-xs text-gray-600 mb-1">🇩🇪 Deutsch</div>
+                ${deHtml}
+              </div>
+              <div>
+                <div class="text-xs text-gray-600 mb-1">🇬🇧 Englisch</div>
+                ${enHtml}
+              </div>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    function markChanged(fieldId, section, key) {
+      const deEl = document.getElementById(`field-de-${fieldId}`);
+      const enEl = document.getElementById(`field-en-${fieldId}`);
+      if (!deEl || !enEl) return;
+
+      deEl.classList.add('field-changed');
+      enEl.classList.add('field-changed');
+
+      cmsChanges[fieldId] = {
+        section, key,
+        value_de: deEl.value || deEl.textContent,
+        value_en: enEl.value || enEl.textContent
+      };
+
+      // Enable save button
+      const saveBtn = document.getElementById('saveAllBtn');
+      saveBtn.disabled = false;
+      saveBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+
+      const count = Object.keys(cmsChanges).length;
+      document.getElementById('cms-save-status').textContent = `${count} ungespeicherte Änderung${count !== 1 ? 'en' : ''}`;
+    }
+
+    async function saveAllChanges() {
+      const updates = Object.values(cmsChanges);
+      if (updates.length === 0) return;
+
+      const saveBtn = document.getElementById('saveAllBtn');
+      saveBtn.textContent = 'Speichern...';
+      saveBtn.disabled = true;
+
+      const res = await api('../api/content.php', {
+        method: 'PUT',
+        body: JSON.stringify({ updates })
+      });
+
+      if (res?.success) {
+        cmsChanges = {};
+        document.querySelectorAll('.field-changed').forEach(el => el.classList.remove('field-changed'));
+        document.getElementById('cms-save-status').textContent = '✅ Gespeichert!';
+        saveBtn.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Alle Änderungen speichern';
+        saveBtn.classList.add('opacity-50', 'cursor-not-allowed');
+        await loadCmsContent();
+        setTimeout(() => { document.getElementById('cms-save-status').textContent = ''; }, 3000);
+      } else {
+        document.getElementById('cms-save-status').textContent = '❌ Fehler beim Speichern';
+        saveBtn.disabled = false;
+      }
+    }
+
+    // ══════════════════════════════════════════
+    // MEDIENVERWALTUNG
+    // ══════════════════════════════════════════
+    let mediaList = [];
+    let mediaFilter = 'all';
+    let mediaSearch = '';
+
+    async function loadMedia() {
+      let url = '../api/media.php';
+      const params = [];
+      if (mediaFilter !== 'all') params.push(`category=${mediaFilter}`);
+      if (mediaSearch) params.push(`search=${encodeURIComponent(mediaSearch)}`);
+      if (params.length) url += '?' + params.join('&');
+      mediaList = await api(url) || [];
+      renderMediaGrid();
+    }
+
+    function renderMediaGrid() {
+      const grid = document.getElementById('mediaGrid');
+      const count = document.getElementById('mediaCount');
+      if (count) count.textContent = mediaList.length + ' Dateien';
+      if (!grid) return;
+      if (!mediaList.length) {
+        grid.innerHTML = '<div class="col-span-full text-center text-gray-500 py-16">Keine Bilder gefunden</div>';
+        return;
+      }
+      grid.innerHTML = mediaList.map(m => `
+        <div class="media-card glass-light rounded-xl overflow-hidden group hover:border-gold-500/30 transition-all">
+          <div class="relative" style="aspect-ratio:1">
+            <img src="${m.url}" alt="${m.alt_text||m.original_name}"
+                 class="w-full h-full object-cover"
+                 onerror="this.src="../assets/images/placeholder.svg"">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-2">
+              <div class="text-xs text-white font-500 truncate">${m.original_name}</div>
+              <div class="text-xs text-gray-400">${formatBytes(m.size_bytes)}</div>
+            </div>
+            <button onclick="deleteMedia(${m.id},'${m.url}')" class="del-btn" title="Löschen">✕</button>
+          </div>
+          <div class="p-2">
+            <input type="text" value="${m.alt_text||''}" placeholder="Alt-Text..."
+                   class="form-input w-full text-xs px-2 py-1 rounded-lg"
+                   onchange="updateAltText(${m.id}, this.value)">
+            <div class="flex items-center justify-between mt-1.5">
+              <span class="text-xs text-gray-600 bg-navy-900 px-2 py-0.5 rounded">${m.category}</span>
+              <button onclick="copyUrl('${m.url}')" class="text-xs text-gold-500 hover:text-gold-400 transition-colors" title="URL kopieren">📋</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function formatBytes(b) {
+      if (!b) return '?';
+      if (b < 1024) return b + ' B';
+      if (b < 1024*1024) return (b/1024).toFixed(1) + ' KB';
+      return (b/1024/1024).toFixed(1) + ' MB';
+    }
+
+    function copyUrl(url) {
+      navigator.clipboard.writeText(window.location.origin + url);
+      showToastMsg('URL kopiert!');
+    }
+
+    function showToastMsg(msg) {
+      const t = document.getElementById('adminToast');
+      if (t) { t.textContent = msg; t.classList.remove('opacity-0'); setTimeout(() => t.classList.add('opacity-0'), 2500); }
+    }
+
+    async function deleteMedia(id, url) {
+      if (!confirm('Bild wirklich löschen?')) return;
+      const res = await api(`/api/media.php?id=${id}`, { method: 'DELETE' });
+      if (res?.success) { showToastMsg('Bild gelöscht'); loadMedia(); }
+    }
+
+    async function updateAltText(id, value) {
+      // We don't support patching media alt_text in current PHP version, skip or implement later
+      // await api(`/api/media.php?id=${id}`, { method: 'PATCH', body: JSON.stringify({ alt_text: value }) });
+    }
+
+    // Drag & drop upload
+    function initDropZone() {
+      const zone = document.getElementById('dropZone');
+      const inp = document.getElementById('fileInput');
+      if (!zone || !inp) return;
+      zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+      zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+      zone.addEventListener('drop', e => { e.preventDefault(); zone.classList.remove('drag-over'); uploadFiles(e.dataTransfer.files); });
+      inp.addEventListener('change', () => uploadFiles(inp.files));
+      zone.addEventListener('click', () => inp.click());
+    }
+
+    async function uploadFiles(files) {
+      if (!files || !files.length) return;
+      const cat = document.getElementById('uploadCat')?.value || 'uploads';
+      const fd = new FormData();
+      for (const f of files) fd.append('files', f);
+      fd.append('category', cat);
+      const btn = document.getElementById('uploadStatus');
+      if (btn) btn.textContent = `⏳ Uploading ${files.length} Datei(en)...`;
+      const res = await fetch('../api/media.php', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${localStorage.getItem('tg_token')}` },
+        body: fd
+      }).then(r => r.json()).catch(() => null);
+      if (res?.success) {
+        showToastMsg(`${res.files.length} Bild(er) hochgeladen`);
+        if (btn) btn.textContent = `✅ ${res.files.length} hochgeladen`;
+        setTimeout(() => { if (btn) btn.textContent = ''; }, 3000);
+        loadMedia();
+      } else {
+        if (btn) btn.textContent = '❌ Upload fehlgeschlagen';
+      }
+    }
+
+    // ══════════════════════════════════════════
+    // SEITEN-SEKTIONEN
+    // ══════════════════════════════════════════
+    let sectionsData = {};
+    const pageLabels = {
+      'home': '🏠 Startseite',
+      'leistungen': '⚙️ Leistungen',
+      'supertechno-50': '🎬 Supertechno 50+',
+      'ueber-uns': '👥 Über uns',
+      'kontakt': '📧 Kontakt'
+    };
+
+    async function loadSections() {
+      const pages = Object.keys(pageLabels);
+      sectionsData = {};
+      for (const p of pages) {
+        const rows = await api(`/api/sections.php?format=array`);
+        if (rows) sectionsData[p] = rows;
+      }
+      renderSections();
+    }
+
+    function renderSections() {
+      const container = document.getElementById('sectionsContainer');
+      if (!container) return;
+      container.innerHTML = Object.entries(pageLabels).map(([page, label]) => {
+        const rows = sectionsData[page] || [];
+        return `
+          <div class="glass-light rounded-2xl p-6 mb-4">
+            <h3 class="font-700 text-lg mb-4 flex items-center gap-2">
+              ${label}
+              <a href="../${page === "home' ? '' : page}" target="_blank" class="text-xs text-gold-500 hover:text-gold-400 ml-2 font-400">↗ Seite ansehen</a>
+            </h3>
+            <div class="space-y-3">
+              ${rows.map(r => `
+                <div class="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
+                  <div>
+                    <div class="font-500 text-sm">${r.label}</div>
+                    <div class="text-xs text-gray-600 font-mono">${r.section_key}</div>
+                  </div>
+                  <label class="toggle" title="${r.visible ? 'Sichtbar – klicken zum Ausblenden' : 'Ausgeblendet – klicken zum Einblenden'}">
+                    <input type="checkbox" ${r.visible ? 'checked' : ''}
+                           onchange="toggleSection('${page}','${r.section_key}',this.checked)">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function toggleSection(page, section_key, visible) {
+      const res = await api(`/api/sections.php`, {
+        method: 'PATCH',
+        body: JSON.stringify({ page: page, section_key: section_key, visible: visible })
+      });
+      if (res?.success) showToastMsg(`Sektion "${section_key}" ${visible ? 'eingeblendet' : 'ausgeblendet'}`);
+      else { showToastMsg('Fehler beim Speichern'); loadSections(); }
+    }
+
+    async function moveSection(page, index, dir) {
+      const arr = sectionsData[page];
+      if (!arr || index < 0 || index >= arr.length) return;
+      const newIndex = index + dir;
+      if (newIndex < 0 || newIndex >= arr.length) return;
+
+      // Swap
+      const temp = arr[index];
+      arr[index] = arr[newIndex];
+      arr[newIndex] = temp;
+
+      // Update sort_orders locally
+      arr.forEach((item, i) => item.sort_order = i);
+
+      // Render locally immediately
+      renderSections();
+
+      // Save to backend
+      const orders = arr.map(item => ({
+        page: page,
+        section_key: item.section_key,
+        sort_order: item.sort_order
+      }));
+
+      const res = await api('../api/sections.php', {
+        method: 'PUT',
+        body: JSON.stringify({ orders })
+      });
+
+      if (!res?.success) {
+        showToastMsg('Fehler beim Sortieren');
+        loadSections();
+      }
+    }
+
+    // Extend showPage to load media/sections
+    const _origShowPage = showPage;
+    showPage = function(name) {
+      _origShowPage(name);
+      if (name === 'media') { loadMedia(); setTimeout(initDropZone, 100); }
+      if (name === 'sections') loadSections();
+    };
+  </script>
+
+  <!-- Media Panel HTML – injected into main by showPage -->
+  <script>
+    // Inject media and sections pages after DOM ready
+    document.addEventListener('DOMContentLoaded', () => {
+      const main = document.querySelector('main');
+
+      // ── MEDIA PAGE ──────────────────────────────
+      const mediaPage = document.createElement('div');
+      mediaPage.id = 'page-media';
+      mediaPage.className = 'p-8 hidden';
+      mediaPage.innerHTML = `
+        <div class="mb-6 flex items-center justify-between flex-wrap gap-4">
+          <div>
+            <h1 class="text-2xl font-800">Medienverwaltung</h1>
+            <p class="text-gray-500 text-sm mt-1">Bilder hochladen, bearbeiten und löschen</p>
+          </div>
+          <span id="adminToast" class="opacity-0 transition-opacity bg-green-500/20 text-green-400 border border-green-500/30 text-sm px-4 py-2 rounded-xl">✅</span>
+        </div>
+
+        <!-- Upload Zone -->
+        <div class="glass-light rounded-2xl p-6 mb-6">
+          <h3 class="font-700 mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+            Neue Bilder hochladen
+          </h3>
+          <div id="dropZone" class="drop-zone p-10 text-center cursor-pointer hover:bg-gold-500/5 transition-colors">
+            <div class="text-4xl mb-3">📁</div>
+            <p class="text-gray-400 mb-2">Bilder hierher ziehen oder <span class="text-gold-400 font-600">klicken zum Auswählen</span></p>
+            <p class="text-gray-600 text-sm">JPG, PNG, WebP, SVG – max. 20MB pro Datei</p>
+            <input type="file" id="fileInput" multiple accept="image/*" class="hidden">
+          </div>
+          <div class="flex items-center gap-4 mt-4">
+            <select id="uploadCat" class="form-input px-3 py-2 rounded-xl text-sm">
+              <option value="uploads">Uploads</option>
+              <option value="st50">Supertechno 50+</option>
+              <option value="general">Allgemein</option>
+              <option value="team">Team</option>
+            </select>
+            <span id="uploadStatus" class="text-sm text-gray-400"></span>
+          </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="flex flex-wrap gap-3 mb-6">
+          <input type="text" placeholder="Suchen..." id="mediaSearchInput"
+                 class="form-input px-4 py-2 rounded-xl text-sm flex-1 min-w-0"
+                 oninput="mediaSearch=this.value;loadMedia()">
+          <select id="mediaCatFilter" class="form-input px-3 py-2 rounded-xl text-sm"
+                  onchange="mediaFilter=this.value;loadMedia()">
+            <option value="all">Alle Kategorien</option>
+            <option value="st50">Supertechno 50+</option>
+            <option value="uploads">Uploads</option>
+            <option value="general">Allgemein</option>
+          </select>
+          <span id="mediaCount" class="text-sm text-gray-500 self-center">0 Dateien</span>
+        </div>
+
+        <!-- Media Grid -->
+        <div id="mediaGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+          <div class="col-span-full text-center text-gray-500 py-16">Lade Medien...</div>
+        </div>
+      `;
+      main.appendChild(mediaPage);
+
+      // ── SECTIONS PAGE ────────────────────────────
+      const sectionsPage = document.createElement('div');
+      sectionsPage.id = 'page-sections';
+      sectionsPage.className = 'p-8 hidden';
+      sectionsPage.innerHTML = `
+        <div class="mb-6">
+          <h1 class="text-2xl font-800">Seiten-Sektionen</h1>
+          <p class="text-gray-500 text-sm mt-1">Sektionen pro Seite ein- oder ausblenden. Änderungen wirken sofort auf der Live-Website.</p>
+        </div>
+        <div class="mb-4 p-4 glass rounded-xl flex items-start gap-3 text-sm text-amber-400" style="border-color:rgba(229,197,0,0.2)">
+          <span class="text-lg shrink-0">⚠️</span>
+          <span>Das Ein-/Ausblenden steuert die CSS-Sichtbarkeit via API. Für vollständige Entfernung aus dem DOM muss die jeweilige Seite den <code>/api/sections</code> Endpunkt abfragen (Funktion bereits integriert).</span>
+        </div>
+        <div id="sectionsContainer">
+          <div class="text-center text-gray-500 py-16">Lade Sektionen...</div>
+        </div>
+      `;
+      main.appendChild(sectionsPage);
+    });
+  </script>
+</body>
+</html>

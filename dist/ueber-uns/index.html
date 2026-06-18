@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Über Technogrips Vienna – wer wir sind, unsere Geschichte, Erfahrung und warum wir der richtige Partner für Ihre Filmproduktion sind.">
+  <title>Über uns – Technogrips Vienna</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{navy:{950:'#020817',900:'#0a0f1e',800:'#0f1729',700:'#162035',600:'#1e2d47'},gold:{300:'#f2e44d',400:'#ebd600',500:'#e5c500',600:'#ccb000',700:'#a69000'}},fontFamily:{sans:['Inter','system-ui','sans-serif']}}}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/shared.css">
+  <style>
+    .timeline-dot { width:12px; height:12px; border-radius:50%; background:#e5c500; flex-shrink:0; margin-top:6px; box-shadow:0 0 0 4px rgba(229,197,0,0.2); }
+    .counter { font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body class="bg-navy-950 text-white overflow-x-hidden">
+  <div id="nav-container"></div>
+
+  <!-- PAGE HERO – Fullscreen -->
+  <section id="hero" class="relative min-h-screen flex items-center overflow-hidden hero-bg grain">
+    <!-- Background image -->
+    <div class="absolute inset-0">
+      <img data-cms-img="about.hero_bg_image" src="../assets/images/st50/st50-10.jpg" alt="Technogrips Vienna - Operator Team" class="w-full h-full object-cover opacity-20">
+      <div class="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-900/85 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+    </div>
+    <!-- Gold particles -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-1/3 left-1/3 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style="animation-delay:2s"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-6 pt-32 pb-20">
+      <div class="max-w-3xl">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb mb-6 animate-fade-in"><a href="../index.html">Startseite</a><span class="sep">/</span><span class="current" data-de="Über uns" data-en="About">Über uns</span></nav>
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6 animate-fade-in">
+          <span class="w-2 h-2 bg-gold-500 rounded-full animate-pulse"></span>
+          <span class="text-gold-400 text-sm font-600 i18n" data-cms="about.hero_badge" data-de="Wien, Österreich – 20+ Jahre Operator-Erfahrung" data-en="Vienna, Austria – 20+ Years Operator Experience">Wien, Österreich – 20+ Jahre Operator-Erfahrung</span>
+        </div>
+        <!-- H1 -->
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-900 leading-tight mb-6 animate-fade-up">
+          <span class="text-gold-gradient i18n" data-cms="about.hero_title1" data-de="Wien-basiert." data-en="Vienna-based.">Wien-basiert.</span><br>
+          <span class="i18n" data-cms="about.hero_title2" data-de="Weltweit erprobt." data-en="Proven worldwide.">Weltweit erprobt.</span>
+        </h1>
+        <!-- Subline -->
+        <p class="text-gray-400 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl animate-fade-up" style="animation-delay:.2s"
+           data-cms="about.intro"
+           data-de="Technogrips Vienna ist kein reines Verleihhaus – wir sind Operators. Wir kennen den Kran, weil wir ihn selbst bedienen. Seit über 20 Jahren auf nationalen und internationalen Sets."
+           data-en="Technogrips Vienna is not just a rental house – we are operators. We know the crane because we operate it ourselves. For over 20 years on national and international sets.">
+          Technogrips Vienna ist kein reines Verleihhaus – wir sind Operators. Wir kennen den Kran, weil wir ihn selbst bedienen. Seit über 20 Jahren auf nationalen und internationalen Sets.
+        </p>
+        <!-- CTAs -->
+        <div class="flex flex-wrap gap-4 animate-fade-up" style="animation-delay:.4s">
+          <a href="../kontakt/index.html" class="btn-gold px-8 py-4 rounded-xl text-base font-700 gap-2 animate-pulse-gold">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            <span data-de="Kontakt aufnehmen" data-en="Get in touch">Kontakt aufnehmen</span>
+          </a>
+          <a href="../leistungen/index.html" class="btn-outline px-8 py-4 rounded-xl text-base font-600 gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <span data-de="Unsere Leistungen" data-en="Our Services">Unsere Leistungen</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+      <div class="text-xs text-gray-600 tracking-widest uppercase">Scroll</div>
+      <div class="w-px h-8 bg-gradient-to-b from-gold-500/50 to-transparent"></div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section id="stats" class="py-16 bg-navy-900">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 observe">
+        <div class="text-center">
+          <div class="text-5xl font-900 text-gold-gradient counter mb-1">20+</div>
+          <div class="text-gray-400 text-sm" data-de="Jahre Erfahrung" data-en="Years experience">Jahre Erfahrung</div>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-900 text-gold-gradient counter mb-1">500+</div>
+          <div class="text-gray-400 text-sm" data-de="Produktionen" data-en="Productions">Produktionen</div>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-900 text-gold-gradient counter mb-1">3</div>
+          <div class="text-gray-400 text-sm" data-de="Supertechno Krane" data-en="Supertechno cranes">Supertechno Krane</div>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-900 text-gold-gradient counter mb-1">24/7</div>
+          <div class="text-gray-400 text-sm" data-de="Erreichbar" data-en="Reachable">Erreichbar</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GESCHICHTE / TIMELINE -->
+  <section id="timeline" class="py-20 bg-navy-950">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-14 observe">
+        <div class="section-label justify-center"><span class="line"></span><span data-de="Unsere Geschichte" data-en="Our story">Unsere Geschichte</span><span class="line"></span></div>
+        <h2 class="text-4xl font-800" data-de="Von der Leidenschaft zur Expertise" data-en="From passion to expertise">Von der Leidenschaft zur Expertise</h2>
+      </div>
+      <div class="space-y-8 observe">
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center"><div class="timeline-dot"></div><div class="flex-1 w-px bg-gold-500/20 mt-2"></div></div>
+          <div class="pb-8">
+            <div class="text-gold-400 font-700 text-sm mb-1">2003</div>
+            <h4 class="font-700 mb-2" data-de="Der erste Kran" data-en="The first crane">Der erste Kran</h4>
+            <p class="text-gray-400 text-sm leading-relaxed" data-de="Gründung von Technogrips Vienna. Erster Supertechno Kamerakran in Wien – zu einer Zeit, als die Technik noch selten war." data-en="Founded Technogrips Vienna. First Supertechno camera crane in Vienna – at a time when the technology was still rare.">Gründung von Technogrips Vienna. Erster Supertechno Kamerakran in Wien – zu einer Zeit, als die Technik noch selten war.</p>
+          </div>
+        </div>
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center"><div class="timeline-dot"></div><div class="flex-1 w-px bg-gold-500/20 mt-2"></div></div>
+          <div class="pb-8">
+            <div class="text-gold-400 font-700 text-sm mb-1">2008–2012</div>
+            <h4 class="font-700 mb-2" data-de="Internationale Einsätze" data-en="International deployments">Internationale Einsätze</h4>
+            <p class="text-gray-400 text-sm leading-relaxed" data-de="Aufträge für internationale Koproduktionen, TV-Serien und Werbefilme führen uns nach Deutschland, die Schweiz und Osteuropa." data-en="Assignments for international co-productions, TV series and commercials take us to Germany, Switzerland and Eastern Europe.">Aufträge für internationale Koproduktionen, TV-Serien und Werbefilme führen uns nach Deutschland, die Schweiz und Osteuropa.</p>
+          </div>
+        </div>
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center"><div class="timeline-dot"></div><div class="flex-1 w-px bg-gold-500/20 mt-2"></div></div>
+          <div class="pb-8">
+            <div class="text-gold-400 font-700 text-sm mb-1">2015</div>
+            <h4 class="font-700 mb-2" data-de="Upgrade auf Supertechno 50+" data-en="Upgrade to Supertechno 50+">Upgrade auf Supertechno 50+</h4>
+            <p class="text-gray-400 text-sm leading-relaxed" data-de="Investition in das neueste Modell: Supertechno 50+ mit Techno S-Head. Mehr Reichweite, mehr Präzision, mehr Möglichkeiten." data-en="Investment in the latest model: Supertechno 50+ with Techno S-Head. More reach, more precision, more possibilities.">Investition in das neueste Modell: Supertechno 50+ mit Techno S-Head. Mehr Reichweite, mehr Präzision, mehr Möglichkeiten.</p>
+          </div>
+        </div>
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center"><div class="timeline-dot"></div></div>
+          <div>
+            <div class="text-gold-400 font-700 text-sm mb-1">Heute</div>
+            <h4 class="font-700 mb-2" data-de="Erste Adresse in Wien" data-en="First address in Vienna">Erste Adresse in Wien</h4>
+            <p class="text-gray-400 text-sm leading-relaxed" data-de="Über 500 Produktionen. Drei Supertechno Krane. Ein eingespieltes Team mit dem Anspruch, jeden Shot perfekt zu bringen." data-en="Over 500 productions. Three Supertechno cranes. A well-rehearsed team with the ambition to nail every shot.">Über 500 Produktionen. Drei Supertechno Krane. Ein eingespieltes Team mit dem Anspruch, jeden Shot perfekt zu bringen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENZ-BRANCHEN -->
+  <section id="branchen" class="py-20 bg-navy-900">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <div class="observe mb-12">
+        <div class="section-label justify-center"><span class="line"></span><span data-de="Einsatzbranchen" data-en="Industries">Einsatzbranchen</span><span class="line"></span></div>
+        <h2 class="text-4xl font-800" data-de="Mit wem wir arbeiten" data-en="Who we work with">Mit wem wir arbeiten</h2>
+        <p class="text-gray-500 mt-3" data-de="Wir haben für alle gearbeitet – vom Indie-Film bis zur internationalen Großproduktion." data-en="We've worked for everyone – from indie film to international blockbuster.">Wir haben für alle gearbeitet – vom Indie-Film bis zur internationalen Großproduktion.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 observe">
+        <div class="glass-light rounded-2xl p-6 text-center card-hover">
+          <div class="text-4xl mb-3">🎬</div>
+          <div class="font-700 mb-1" data-de="Film & Kino" data-en="Film & Cinema">Film &amp; Kino</div>
+          <div class="text-gray-500 text-sm" data-de="Langfilm, Kurzfilm, Dokumentation" data-en="Feature, short, documentary">Langfilm, Kurzfilm, Dokumentation</div>
+        </div>
+        <div class="glass-light rounded-2xl p-6 text-center card-hover">
+          <div class="text-4xl mb-3">📺</div>
+          <div class="font-700 mb-1" data-de="TV & Streaming" data-en="TV & Streaming">TV &amp; Streaming</div>
+          <div class="text-gray-500 text-sm" data-de="Serien, Shows, Live-Events" data-en="Series, shows, live events">Serien, Shows, Live-Events</div>
+        </div>
+        <div class="glass-light rounded-2xl p-6 text-center card-hover">
+          <div class="text-4xl mb-3">🎵</div>
+          <div class="font-700 mb-1" data-de="Musik & Konzerte" data-en="Music & Concerts">Musik &amp; Konzerte</div>
+          <div class="text-gray-500 text-sm" data-de="Musikvideos, Konzertaufnahmen" data-en="Music videos, concert recordings">Musikvideos, Konzertaufnahmen</div>
+        </div>
+        <div class="glass-light rounded-2xl p-6 text-center card-hover">
+          <div class="text-4xl mb-3">📣</div>
+          <div class="font-700 mb-1" data-de="Werbung & Corporate" data-en="Advertising & Corporate">Werbung &amp; Corporate</div>
+          <div class="text-gray-500 text-sm" data-de="TV-Spots, Imagefilme, Pitches" data-en="TV spots, image films, pitches">TV-Spots, Imagefilme, Pitches</div>
+        </div>
+        <div class="glass-light rounded-2xl p-6 text-center card-hover">
+          <div class="text-4xl mb-3">🏆</div>
+          <div class="font-700 mb-1" data-de="Sport & Events" data-en="Sport & Events">Sport &amp; Events</div>
+          <div class="text-gray-500 text-sm" data-de="Galas, Sportevents, Messen" data-en="Galas, sports events, fairs">Galas, Sportevents, Messen</div>
+        </div>
+        <div class="glass-light rounded-2xl p-6 text-center card-hover">
+          <div class="text-4xl mb-3">🏗️</div>
+          <div class="font-700 mb-1" data-de="Spezialaufnahmen" data-en="Special footage">Spezialaufnahmen</div>
+          <div class="text-gray-500 text-sm" data-de="Industrie, Architektur, Kunst" data-en="Industry, architecture, art">Industrie, Architektur, Kunst</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="py-20 bg-navy-950">
+    <div class="max-w-2xl mx-auto px-6 text-center observe">
+      <h2 class="text-3xl font-800 mb-4" data-de="Bereit, zusammenzuarbeiten?" data-en="Ready to work together?">Bereit, zusammenzuarbeiten?</h2>
+      <p class="text-gray-400 mb-8" data-de="Erzählen Sie uns von Ihrem Projekt. Wir sind für Sie da – persönlich, erfahren und zuverlässig." data-en="Tell us about your project. We're here for you – personal, experienced and reliable.">Erzählen Sie uns von Ihrem Projekt. Wir sind für Sie da – persönlich, erfahren und zuverlässig.</p>
+      <a href="../kontakt/index.html" class="btn-gold px-10 py-4 rounded-xl font-700 text-lg gap-2 animate-pulse-gold">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+        <span data-de="Kontakt aufnehmen" data-en="Get in touch">Kontakt aufnehmen</span>
+      </a>
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+  <script src="../assets/js/shared.js"></script>
+  <script>TG.init('ueber-uns');</script>
+</body>
+</html>

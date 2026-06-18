@@ -117,11 +117,23 @@ const initSchema = () => {
 // Seed admin user if not exists
 const seedAdmin = () => {
   const bcrypt = require('bcryptjs');
-  const existing = db.prepare('SELECT id FROM admin_users WHERE username = ?').get('admin');
+  const adminUsername = process.env.ADMIN_USERNAME || 'joachim.nauen@gmail.com';
+  const adminPassword = process.env.ADMIN_PASSWORD || 'technogrips-vienna';
+  
+  const existing = db.prepare('SELECT id FROM admin_users WHERE username = ?').get(adminUsername);
+  const hash = bcrypt.hashSync(adminPassword, 10);
+  
   if (!existing) {
-    const hash = bcrypt.hashSync(process.env.ADMIN_PASSWORD || 'admin', 10);
-    db.prepare('INSERT INTO admin_users (username, password_hash) VALUES (?, ?)').run('admin', hash);
-    console.log('✅ Admin user created (username: admin)');
+    db.prepare('INSERT INTO admin_users (username, password_hash) VALUES (?, ?)').run(adminUsername, hash);
+    console.log(`✅ Admin user created (username: ${adminUsername})`);
+  } else {
+    db.prepare('UPDATE admin_users SET password_hash = ? WHERE username = ?').run(hash, adminUsername);
+    console.log(`✅ Admin user password updated/verified (username: ${adminUsername})`);
+  }
+  
+  // Clean up legacy default admin if username has changed
+  if (adminUsername !== 'admin') {
+    db.prepare('DELETE FROM admin_users WHERE username = ?').run('admin');
   }
 };
 
@@ -150,6 +162,8 @@ const seedContent = () => {
       value_de:'Kostenlos anfragen', value_en:'Free Quote' },
     { section:'hero', key:'cta_secondary',  label:'Button 2 Text', type:'text',
       value_de:'Katalog herunterladen', value_en:'Download Catalog' },
+    { section:'hero', key:'bg_image', label:'Hintergrundbild', type:'image',
+      value_de:'/assets/images/crane_50.png', value_en:'/assets/images/crane_50.png' },
     { section:'hero', key:'stat1_num',  label:'Stat 1 Zahl', type:'text', value_de:'20+', value_en:'20+' },
     { section:'hero', key:'stat1_label',label:'Stat 1 Label', type:'text', value_de:'Jahre Erfahrung', value_en:'Years Experience' },
     { section:'hero', key:'stat2_num',  label:'Stat 2 Zahl', type:'text', value_de:'500+', value_en:'500+' },
@@ -180,8 +194,8 @@ const seedContent = () => {
     { section:'services', key:'s3_title', label:'Service 3 Titel', type:'text',
       value_de:'Technischer Support', value_en:'Technical Support' },
     { section:'services', key:'s3_desc',  label:'Service 3 Text', type:'textarea',
-      value_de:'Aufbau, Abbau und technische Beratung für Ihre Produktion. Wir arbeiten mit allen gängigen Remote-Head-Systemen.',
-      value_en:'Setup, teardown and technical consultation for your production. We work with all common remote head systems.' },
+      value_de:'Technische Beratung und Betreuung für Ihre Produktion. Wir arbeiten mit allen gängigen Remote-Head-Systemen.',
+      value_en:'Technical consultation and support for your production. We work with all common remote head systems.' },
 
     // ── PRODUKT ───────────────────────────────────────────────
     { section:'product', key:'section_label', label:'Abschnitts-Label', type:'text',
@@ -192,26 +206,29 @@ const seedContent = () => {
     { section:'product', key:'tagline', label:'Tagline (Gold)', type:'text',
       value_de:'Das vielseitigste Teleskop-Kamerakransystem.', value_en:'The most versatile telescopic camera crane system.' },
     { section:'product', key:'description', label:'Beschreibungstext', type:'textarea',
-      value_de:'Der Supertechno 50+ ist das meistverwendete Teleskop-Kamerakransystem weltweit. Er lässt sich schnell aufbauen, ist Indoor und Outdoor einsetzbar und bietet mit dem Techno Z-Head präzise Kamerasteuerung für jeden Shot – von der engen Studio-Aufnahme bis zum großen Outdoor-Event.',
-      value_en:"The Supertechno 50+ is the world's most widely used telescopic camera crane system. It sets up quickly, works indoors and outdoors, and with the Techno Z-Head provides precise camera control for every shot." },
-    { section:'product', key:'spec_reach',   label:'Spec: Reichweite', type:'text', value_de:'15m', value_en:'15m' },
+      value_de:'Der Supertechno 50+ ist das meistverwendete Teleskop-Kamerakransystem weltweit. Er ist Indoor und Outdoor einsetzbar und bietet mit dem Techno S-Head präzise Kamerasteuerung für jeden Shot – von der engen Studio-Aufnahme bis zum großen Outdoor-Event.',
+      value_en:"The Supertechno 50+ is the world's most widely used telescopic camera crane system. It works indoors and outdoors, and with the Techno S-Head provides precise camera control for every shot – from tight studio work to large outdoor events." },
+    { section:'product', key:'spec_reach',   label:'Spec: Reichweite', type:'text', value_de:'15,11m', value_en:'15.11m' },
     { section:'product', key:'spec_payload', label:'Spec: Nutzlast',   type:'text', value_de:'100kg', value_en:'100kg' },
-    { section:'product', key:'spec_setup',   label:'Spec: Aufbauzeit', type:'text', value_de:'45s', value_en:'45s' },
     { section:'product', key:'spec_pan',     label:'Spec: Schwenk',    type:'text', value_de:'360°', value_en:'360°' },
     { section:'product', key:'spec_use',     label:'Spec: Einsatz',    type:'text', value_de:'In/Out', value_en:'In/Out' },
-    { section:'product', key:'spec_head',    label:'Spec: Remote-Head',type:'text', value_de:'Z-Head', value_en:'Z-Head' },
+    { section:'product', key:'spec_head',    label:'Spec: Remote-Head',type:'text', value_de:'S-Head', value_en:'S-Head' },
     { section:'product', key:'use1_title',   label:'Einsatz 1 Titel',  type:'text', value_de:'Film & Kino', value_en:'Film & Cinema' },
     { section:'product', key:'use1_desc',    label:'Einsatz 1 Text',   type:'textarea',
       value_de:'Bewährt in nationalen und internationalen Kinoproduktionen. Ideale Reichweite für Establishing Shots und Crane-Moves.',
       value_en:'Proven in national and international cinema productions. Ideal reach for establishing shots and crane moves.' },
     { section:'product', key:'use2_title',   label:'Einsatz 2 Titel',  type:'text', value_de:'TV & Werbung', value_en:'TV & Commercials' },
     { section:'product', key:'use2_desc',    label:'Einsatz 2 Text',   type:'textarea',
-      value_de:'Ideal für zeitkritische TV-Produktionen und Werbeaufnahmen. Schneller Auf- und Abbau auf Set.',
-      value_en:'Ideal for time-critical TV productions and commercial shoots. Fast on-set setup and teardown.' },
+      value_de:'Ideal für zeitkritische TV-Produktionen und Werbeaufnahmen. Schnelle Einrichtung am Set.',
+      value_en:'Ideal for time-critical TV productions and commercial shoots. Fast setup on set.' },
     { section:'product', key:'use3_title',   label:'Einsatz 3 Titel',  type:'text', value_de:'Events & Konzerte', value_en:'Events & Concerts' },
     { section:'product', key:'use3_desc',    label:'Einsatz 3 Text',   type:'textarea',
       value_de:'Spektakuläre Shots bei Konzerten, Sportevents und Messen. Maximale Flexibilität dank Outdoor-Eignung.',
       value_en:'Spectacular shots at concerts, sports events and trade fairs. Maximum flexibility thanks to outdoor suitability.' },
+    { section:'product', key:'use4_title',   label:'Einsatz 4 Titel',  type:'text', value_de:'Sport', value_en:'Sports' },
+    { section:'product', key:'use4_desc',    label:'Einsatz 4 Text',   type:'textarea',
+      value_de:'Live-Übertragungen von Sport-Events, Motorsport und Action-Aufnahmen. Dynamische Fahrten und präzise Verfolgung in Höchstgeschwindigkeit.',
+      value_en:'Live sports broadcasting, motorsports and action shots. Dynamic moves and precise tracking at maximum speed.' },
 
     // ── ÜBER UNS ──────────────────────────────────────────────
     { section:'about', key:'section_label', label:'Abschnitts-Label', type:'text',
@@ -271,8 +288,8 @@ const seedContent = () => {
     { section:'home', key:'product_teaser_title', label:'Produkt Teaser Titel', type:'text',
       value_de:'Supertechno 50+', value_en:'Supertechno 50+' },
     { section:'home', key:'product_teaser_desc', label:'Produkt Teaser Text', type:'textarea',
-      value_de:'Das meistgefragte Teleskop-Kamerakransystem der Welt – mit 15m Reichweite, 100kg Nutzlast und dem präzisen Techno Z-Head.',
-      value_en:'The world\'s most requested telescopic camera crane system – with 15m reach, 100kg payload and the precise Techno Z-Head.' },
+      value_de:'Das meistgefragte Teleskop-Kamerakransystem der Welt – mit 15,11m Reichweite, 100kg Nutzlast und dem präzisen Techno S-Head.',
+      value_en:'The world\'s most requested telescopic camera crane system – with 15.11m reach, 100kg payload and the precise Techno S-Head.' },
     { section:'home', key:'about_teaser_title', label:'Über uns Teaser Titel', type:'text',
       value_de:'Wien-basiert. Weltweit erfahren.', value_en:'Vienna-based. World-class experience.' },
     { section:'home', key:'about_teaser_desc', label:'Über uns Teaser Text', type:'textarea',

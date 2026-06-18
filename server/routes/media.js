@@ -148,14 +148,29 @@ router.put('/sections', (req, res) => {
   res.json({ success: true, updated: updates.length });
 });
 
+// PUT /api/media/sections/order – Update section sort_order
+router.put('/sections/order', (req, res) => {
+  const { orders } = req.body;
+  if (!Array.isArray(orders)) return res.status(400).json({ error: 'orders array required' });
+  const stmt = db.prepare(`
+    UPDATE page_sections SET sort_order = ?, updated_at = CURRENT_TIMESTAMP
+    WHERE page = ? AND section_key = ?
+  `);
+  const batch = db.transaction((rows) => { 
+    for (const r of rows) stmt.run(r.sort_order, r.page, r.section_key); 
+  });
+  batch(orders);
+  res.json({ success: true, updated: orders.length });
+});
+
 // GET /api/media/sections-public – Public endpoint for frontend to check visibility
 router.get('/sections-public', (req, res) => {
   // This endpoint is accessible without auth for frontend use
-  const rows = db.prepare('SELECT page, section_key, visible FROM page_sections').all();
+  const rows = db.prepare('SELECT page, section_key, visible, sort_order FROM page_sections').all();
   const result = {};
   for (const r of rows) {
     if (!result[r.page]) result[r.page] = {};
-    result[r.page][r.section_key] = r.visible === 1;
+    result[r.page][r.section_key] = { visible: r.visible === 1, sort_order: r.sort_order };
   }
   res.json(result);
 });

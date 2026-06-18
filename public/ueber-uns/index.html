@@ -6,12 +6,12 @@
   <meta name="description" content="Über Technogrips Vienna – wer wir sind, unsere Geschichte, Erfahrung und warum wir der richtige Partner für Ihre Filmproduktion sind.">
   <title>Über uns – Technogrips Vienna</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{navy:{950:'#020817',900:'#0a0f1e',800:'#0f1729',700:'#162035',600:'#1e2d47'},gold:{300:'#fcd34d',400:'#fbbf24',500:'#f59e0b',600:'#d97706',700:'#b45309'}},fontFamily:{sans:['Inter','system-ui','sans-serif']}}}}</script>
+  <script>tailwind.config={theme:{extend:{colors:{navy:{950:'#020817',900:'#0a0f1e',800:'#0f1729',700:'#162035',600:'#1e2d47'},gold:{300:'#f2e44d',400:'#ebd600',500:'#e5c500',600:'#ccb000',700:'#a69000'}},fontFamily:{sans:['Inter','system-ui','sans-serif']}}}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/shared.css">
   <style>
-    .timeline-dot { width:12px; height:12px; border-radius:50%; background:#f59e0b; flex-shrink:0; margin-top:6px; box-shadow:0 0 0 4px rgba(245,158,11,0.2); }
+    .timeline-dot { width:12px; height:12px; border-radius:50%; background:#e5c500; flex-shrink:0; margin-top:6px; box-shadow:0 0 0 4px rgba(229,197,0,0.2); }
     .counter { font-variant-numeric: tabular-nums; }
   </style>
 </head>
@@ -22,7 +22,7 @@
   <section id="hero" class="relative min-h-screen flex items-center overflow-hidden hero-bg grain">
     <!-- Background image -->
     <div class="absolute inset-0">
-      <img src="/assets/images/st50/st50-10.jpg" alt="Technogrips Vienna - Operator Team" class="w-full h-full object-cover opacity-20">
+      <img data-cms-img="about.hero_bg_image" src="/assets/images/st50/st50-10.jpg" alt="Technogrips Vienna - Operator Team" class="w-full h-full object-cover opacity-20">
       <div class="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-900/85 to-transparent"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
     </div>
@@ -38,12 +38,12 @@
         <!-- Badge -->
         <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6 animate-fade-in">
           <span class="w-2 h-2 bg-gold-500 rounded-full animate-pulse"></span>
-          <span class="text-gold-400 text-sm font-600" data-de="Wien, Österreich – 20+ Jahre Operator-Erfahrung" data-en="Vienna, Austria – 20+ Years Operator Experience">Wien, Österreich – 20+ Jahre Operator-Erfahrung</span>
+          <span class="text-gold-400 text-sm font-600 i18n" data-cms="about.hero_badge" data-de="Wien, Österreich – 20+ Jahre Operator-Erfahrung" data-en="Vienna, Austria – 20+ Years Operator Experience">Wien, Österreich – 20+ Jahre Operator-Erfahrung</span>
         </div>
         <!-- H1 -->
         <h1 class="text-5xl sm:text-6xl lg:text-7xl font-900 leading-tight mb-6 animate-fade-up">
-          <span class="text-gold-gradient" data-de="Wien-basiert." data-en="Vienna-based.">Wien-basiert.</span><br>
-          <span data-de="Weltweit erprobt." data-en="Proven worldwide.">Weltweit erprobt.</span>
+          <span class="text-gold-gradient i18n" data-cms="about.hero_title1" data-de="Wien-basiert." data-en="Vienna-based.">Wien-basiert.</span><br>
+          <span class="i18n" data-cms="about.hero_title2" data-de="Weltweit erprobt." data-en="Proven worldwide.">Weltweit erprobt.</span>
         </h1>
         <!-- Subline -->
         <p class="text-gray-400 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl animate-fade-up" style="animation-delay:.2s"
@@ -107,33 +107,67 @@
         <div class="flex gap-6">
           <div class="flex flex-col items-center"><div class="timeline-dot"></div><div class="flex-1 w-px bg-gold-500/20 mt-2"></div></div>
           <div class="pb-8">
-            <div class="text-gold-400 font-700 text-sm mb-1">2003</div>
-            <h4 class="font-700 mb-2" data-de="Der erste Kran" data-en="The first crane">Der erste Kran</h4>
-            <p class="text-gray-400 text-sm leading-relaxed" data-de="Gründung von Technogrips Vienna. Erster Supertechno Kamerakran in Wien – zu einer Zeit, als die Technik noch selten war." data-en="Founded Technogrips Vienna. First Supertechno camera crane in Vienna – at a time when the technology was still rare.">Gründung von Technogrips Vienna. Erster Supertechno Kamerakran in Wien – zu einer Zeit, als die Technik noch selten war.</p>
+            <div class="text-gold-400 font-700 text-sm mb-1">1990–1995</div>
+            <h4 class="font-700 mb-2" data-de="Die Anfänge am Set" data-en="The Beginnings">Die Anfänge am Set</h4>
+            <p class="text-gray-400 text-sm leading-relaxed" data-de="Einstieg in die Filmbranche als Boom Operator, Requisiteur, Garderoben- und Produktionsfahrer. Fundamentale Erfahrungen am Set." data-en="Entry into the film industry as a boom operator, prop master, wardrobe, and production driver. Acquiring fundamental on-set experience.">Einstieg in die Filmbranche als Boom Operator, Requisiteur, Garderoben- und Produktionsfahrer. Fundamentale Erfahrungen am Set.</p>
           </div>
         </div>
         <div class="flex gap-6">
           <div class="flex flex-col items-center"><div class="timeline-dot"></div><div class="flex-1 w-px bg-gold-500/20 mt-2"></div></div>
           <div class="pb-8">
-            <div class="text-gold-400 font-700 text-sm mb-1">2008–2012</div>
-            <h4 class="font-700 mb-2" data-de="Internationale Einsätze" data-en="International deployments">Internationale Einsätze</h4>
-            <p class="text-gray-400 text-sm leading-relaxed" data-de="Aufträge für internationale Koproduktionen, TV-Serien und Werbefilme führen uns nach Deutschland, die Schweiz und Osteuropa." data-en="Assignments for international co-productions, TV series and commercials take us to Germany, Switzerland and Eastern Europe.">Aufträge für internationale Koproduktionen, TV-Serien und Werbefilme führen uns nach Deutschland, die Schweiz und Osteuropa.</p>
+            <div class="text-gold-400 font-700 text-sm mb-1">1995–2015</div>
+            <h4 class="font-700 mb-2" data-de="Spezialisierung & Remote Heads" data-en="Specialization & Remote Heads">Spezialisierung &amp; Remote Heads</h4>
+            <p class="text-gray-400 text-sm leading-relaxed" data-de="Entwicklung zum Key Grip, Dolly Grip und Operator für Motion Control sowie stabilisierte Remote Heads. Erste Einsätze an High-End-Systemen." data-en="Transitioning into Key Grip, Dolly Grip, and operator for motion control and stabilized remote heads. First deployments on high-end systems.">Entwicklung zum Key Grip, Dolly Grip und Operator für Motion Control sowie stabilisierte Remote Heads. Erste Einsätze an High-End-Systemen.</p>
           </div>
         </div>
         <div class="flex gap-6">
           <div class="flex flex-col items-center"><div class="timeline-dot"></div><div class="flex-1 w-px bg-gold-500/20 mt-2"></div></div>
           <div class="pb-8">
             <div class="text-gold-400 font-700 text-sm mb-1">2015</div>
-            <h4 class="font-700 mb-2" data-de="Upgrade auf Supertechno 50+" data-en="Upgrade to Supertechno 50+">Upgrade auf Supertechno 50+</h4>
-            <p class="text-gray-400 text-sm leading-relaxed" data-de="Investition in das neueste Modell: Supertechno 50+ mit Techno Z-Head. Mehr Reichweite, mehr Präzision, mehr Möglichkeiten." data-en="Investment in the latest model: Supertechno 50+ with Techno Z-Head. More reach, more precision, more possibilities.">Investition in das neueste Modell: Supertechno 50+ mit Techno Z-Head. Mehr Reichweite, mehr Präzision, mehr Möglichkeiten.</p>
+            <h4 class="font-700 mb-2" data-de="Upgrade & Blockbuster" data-en="Upgrade & Blockbusters">Upgrade &amp; Blockbuster</h4>
+            <p class="text-gray-400 text-sm leading-relaxed" data-de="Upgrade auf den Supertechno 50+ mit S-Head. Mitwirkung an internationalen Großproduktionen wie Mission: Impossible (Austrian Key Grip), Agent 47, Woman in Gold und 300." data-en="Upgraded to Supertechno 50+ with S-Head. Collaborating on major international productions like Mission: Impossible (Austrian Key Grip), Agent 47, Woman in Gold, and 300.">Upgrade auf den Supertechno 50+ mit S-Head. Mitwirkung an internationalen Großproduktionen wie Mission: Impossible (Austrian Key Grip), Agent 47, Woman in Gold und 300.</p>
           </div>
         </div>
         <div class="flex gap-6">
           <div class="flex flex-col items-center"><div class="timeline-dot"></div></div>
           <div>
             <div class="text-gold-400 font-700 text-sm mb-1">Heute</div>
-            <h4 class="font-700 mb-2" data-de="Erste Adresse in Wien" data-en="First address in Vienna">Erste Adresse in Wien</h4>
-            <p class="text-gray-400 text-sm leading-relaxed" data-de="Über 500 Produktionen. Drei Supertechno Krane. Ein eingespieltes Team mit dem Anspruch, jeden Shot perfekt zu bringen." data-en="Over 500 productions. Three Supertechno cranes. A well-rehearsed team with the ambition to nail every shot.">Über 500 Produktionen. Drei Supertechno Krane. Ein eingespieltes Team mit dem Anspruch, jeden Shot perfekt zu bringen.</p>
+            <h4 class="font-700 mb-2" data-de="U-Crane, Marvel & Globale Projekte" data-en="U-Crane, Marvel & Global Projects">U-Crane, Marvel &amp; Globale Projekte</h4>
+            <p class="text-gray-400 text-sm leading-relaxed" data-de="Weltweite U-Crane (MotoCrane) & Scorpio Einsätze für Produktionen wie Marvel, Jack Ryan und Luc Bessons 'Projet D'. Über 30 Jahre Expertise an vorderster Front." data-en="Worldwide U-Crane (MotoCrane) & Scorpio operations for productions like Marvel, Jack Ryan, and Luc Besson's 'Projet D'. Over 30 years of front-line expertise.">Weltweite U-Crane (MotoCrane) & Scorpio Einsätze für Produktionen wie Marvel, Jack Ryan und Luc Bessons "Projet D". Über 30 Jahre Expertise an vorderster Front.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVOLUTION SECTION -->
+  <section id="evolution" class="py-20 bg-navy-950 border-t border-navy-900/50">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <div class="observe mb-12">
+        <div class="section-label justify-center"><span class="line"></span><span data-de="Die Evolution" data-en="The Evolution">Die Evolution</span><span class="line"></span></div>
+        <h2 class="text-4xl font-800 text-gold-gradient mb-4" data-de="Die Evolution zum Kranoperator" data-en="The Evolution to the Crane Operator">Die Evolution zum Kranoperator</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto" data-de="Vom ersten aufrechten Gang bis zur perfekten Kamerabewegung. Unsere Arbeit erfordert höchste Präzision, Koordination und das richtige Fingerspitzengefühl am Steuer." data-en="From the first upright steps to the perfect camera movement. Our work requires ultimate precision, coordination, and the right touch at the controls.">
+          Vom ersten aufrechten Gang bis zur perfekten Kamerabewegung. Unsere Arbeit erfordert höchste Präzision, Koordination und das richtige Fingerspitzengefühl am Steuer.
+        </p>
+      </div>
+      
+      <!-- Evolution Graphic Container -->
+      <div class="relative glass rounded-3xl p-8 md:p-12 overflow-hidden observe">
+        <!-- Decorative background glow -->
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+        
+        <div class="relative z-10 flex flex-col items-center">
+          <img src="/assets/images/evolution_operator.png" alt="Evolution to Crane Operator" class="max-w-full h-auto max-h-[300px] object-contain filter drop-shadow-[0_0_15px_rgba(229,197,0,0.3)] transition-all duration-500 hover:scale-[1.02] hover:drop-shadow-[0_0_25px_rgba(229,197,0,0.5)]">
+          
+          <!-- Silhouette label overlay -->
+          <div class="grid grid-cols-6 gap-2 w-full mt-8 text-[10px] md:text-xs font-600 uppercase tracking-wider text-gray-500">
+            <div data-de="Urzeit" data-en="Prehistory">Urzeit</div>
+            <div data-de="Aufrecht" data-en="Upright Walking">Aufrecht</div>
+            <div data-de="Entwicklung" data-en="Development">Entwicklung</div>
+            <div data-de="Werkzeug" data-en="Tool">Werkzeug</div>
+            <div data-de="Moderne" data-en="Modernity">Moderne</div>
+            <div class="text-gold-400 font-700" data-de="Kranoperator" data-en="Crane Operator">Kranoperator</div>
           </div>
         </div>
       </div>

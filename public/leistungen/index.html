@@ -6,7 +6,7 @@
   <meta name="description" content="Technogrips Vienna – Leistungen: Supertechno Kamerakran-Vermietung, professioneller Operator-Service und technischer Support für Film, TV und Events in Wien.">
   <title>Leistungen – Technogrips Vienna</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{navy:{950:'#020817',900:'#0a0f1e',800:'#0f1729',700:'#162035',600:'#1e2d47'},gold:{300:'#fcd34d',400:'#fbbf24',500:'#f59e0b',600:'#d97706',700:'#b45309'}},fontFamily:{sans:['Inter','system-ui','sans-serif']}}}}</script>
+  <script>tailwind.config={theme:{extend:{colors:{navy:{950:'#020817',900:'#0a0f1e',800:'#0f1729',700:'#162035',600:'#1e2d47'},gold:{300:'#f2e44d',400:'#ebd600',500:'#e5c500',600:'#ccb000',700:'#a69000'}},fontFamily:{sans:['Inter','system-ui','sans-serif']}}}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/shared.css">
@@ -16,7 +16,7 @@
     .faq-answer.open { max-height: 400px; }
     .faq-icon { transition: transform 0.3s ease; }
     .faq-item.active .faq-icon { transform: rotate(45deg); }
-    .process-line { position:absolute; top:24px; left:50%; width:100%; height:2px; background:linear-gradient(to right,#f59e0b,rgba(245,158,11,0.2)); transform:translateX(-50%); z-index:0; }
+    .process-line { position:absolute; top:24px; left:50%; width:100%; height:2px; background:linear-gradient(to right,#e5c500,rgba(229,197,0,0.2)); transform:translateX(-50%); z-index:0; }
   </style>
 </head>
 <body class="bg-navy-950 text-white overflow-x-hidden">
@@ -26,7 +26,7 @@
   <section id="hero" class="relative min-h-screen flex items-center overflow-hidden hero-bg grain">
     <!-- Background image -->
     <div class="absolute inset-0">
-      <img src="/assets/images/st50/st50-6.jpg" alt="Kamerakran im Einsatz" class="w-full h-full object-cover opacity-25">
+      <img data-cms-img="services.hero_bg_image" src="/assets/images/st50/st50-6.jpg" alt="Kamerakran im Einsatz" class="w-full h-full object-cover opacity-25">
       <div class="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-900/80 to-transparent"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
     </div>
@@ -42,18 +42,18 @@
         <!-- Badge -->
         <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6 animate-fade-in">
           <span class="w-2 h-2 bg-gold-500 rounded-full animate-pulse"></span>
-          <span class="text-gold-400 text-sm font-600" data-de="Wien, Österreich – Professioneller Operator-Service" data-en="Vienna, Austria – Professional Operator Service">Wien, Österreich – Professioneller Operator-Service</span>
+          <span class="text-gold-400 text-sm font-600 i18n" data-cms="services.hero_badge" data-de="Wien, Österreich – Professioneller Operator-Service" data-en="Vienna, Austria – Professional Operator Service">Wien, Österreich – Professioneller Operator-Service</span>
         </div>
         <!-- H1 -->
         <h1 class="text-5xl sm:text-6xl lg:text-7xl font-900 leading-tight mb-6 animate-fade-up">
-          <span data-de="Volle" data-en="Full">Volle</span><br>
-          <span class="text-gold-gradient" data-de="Produktions-" data-en="Production">Produktions-</span><br>
-          <span class="text-gold-gradient" data-de="unterstützung." data-en="Support.">unterstützung.</span>
+          <span class="i18n" data-cms="services.hero_title1" data-de="Volle" data-en="Full">Volle</span><br>
+          <span class="text-gold-gradient i18n" data-cms="services.hero_title2" data-de="Produktions-" data-en="Production">Produktions-</span><br>
+          <span class="text-gold-gradient i18n" data-cms="services.hero_title3" data-de="unterstützung." data-en="Support.">unterstützung.</span>
         </h1>
         <!-- Subline -->
-        <p class="text-gray-400 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl animate-fade-up" style="animation-delay:.2s"
-           data-de="Kran, Operator und Technik – alles aus einer Hand. Wir decken jeden Aspekt Ihres Kamerakran-Einsatzes ab, von der ersten Anfrage bis zum letzten Shot."
-           data-en="Crane, operator and technology – all from one source. We cover every aspect of your camera crane deployment, from the first inquiry to the last shot.">
+        <p class="text-gray-400 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl animate-fade-up i18n" style="animation-delay:.2s"
+           data-cms="services.hero_subline"
+           data-de="Kran, Operator und Technik – alles aus einer Hand. Wir decken jeden Aspekt Ihres Kamerakran-Einsatzes ab, von der ersten Anfrage bis zum letzten Shot.">
           Kran, Operator und Technik – alles aus einer Hand. Wir decken jeden Aspekt Ihres Kamerakran-Einsatzes ab, von der ersten Anfrage bis zum letzten Shot.
         </p>
         <!-- CTAs -->
@@ -93,8 +93,8 @@
           <h3 class="text-xl font-700 mb-3" data-cms="services.s1_title" data-de="Kran-Vermietung" data-en="Crane Rental">Kran-Vermietung</h3>
           <p class="text-gray-400 text-sm leading-relaxed mb-6" data-cms="services.s1_desc" data-de="Supertechno 50+ Teleskop-Kamerakran für jeden Produktionsumfang. Tages- und Wochenmiete möglich." data-en="Supertechno 50+ telescopic camera crane for every production scale. Daily and weekly rental available.">Supertechno 50+ Teleskop-Kamerakran für jeden Produktionsumfang. Tages- und Wochenmiete möglich.</p>
           <ul class="space-y-2.5 mt-auto">
-            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Supertechno 50+ mit 15m Reichweite" data-en="Supertechno 50+ with 15m reach">Supertechno 50+ mit 15m Reichweite</span></li>
-            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Techno Z-Head Remote Control" data-en="Techno Z-Head Remote Control">Techno Z-Head Remote Control</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Supertechno 50+ mit 15,11m Reichweite" data-en="Supertechno 50+ with 15.11m reach">Supertechno 50+ mit 15,11m Reichweite</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Techno S-Head Remote Control" data-en="Techno S-Head Remote Control">Techno S-Head Remote Control</span></li>
             <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Indoor & Outdoor einsetzbar" data-en="Indoor & Outdoor use">Indoor &amp; Outdoor einsetzbar</span></li>
             <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Transport & Lieferung nach Wien & AT" data-en="Transport & delivery Vienna & AT">Transport &amp; Lieferung nach Wien &amp; AT</span></li>
             <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Tages- und Wochenmiete" data-en="Daily and weekly rates">Tages- und Wochenmiete</span></li>
@@ -102,7 +102,7 @@
         </div>
 
         <!-- S2: Operator – USP -->
-        <div class="rounded-2xl p-8 card-hover observe flex flex-col relative" style="background:linear-gradient(135deg,rgba(245,158,11,0.12),rgba(217,119,6,0.08));border:1px solid rgba(245,158,11,0.35)">
+        <div class="rounded-2xl p-8 card-hover observe flex flex-col relative" style="background:linear-gradient(135deg,rgba(229,197,0,0.12),rgba(204,176,0,0.08));border:1px solid rgba(229,197,0,0.35)">
           <div class="absolute top-4 right-4 bg-gold-500 text-black text-xs font-700 px-3 py-1 rounded-full">⭐ USP</div>
           <div class="w-14 h-14 gold-gradient rounded-2xl flex items-center justify-center mb-6 shrink-0">
             <svg class="w-7 h-7 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
@@ -124,11 +124,11 @@
             <svg class="w-7 h-7 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
           </div>
           <h3 class="text-xl font-700 mb-3" data-cms="services.s3_title" data-de="Technischer Support" data-en="Technical Support">Technischer Support</h3>
-          <p class="text-gray-400 text-sm leading-relaxed mb-6" data-cms="services.s3_desc" data-de="Aufbau, Abbau und technische Beratung für Ihre Produktion. Wir arbeiten mit allen gängigen Remote-Head-Systemen." data-en="Setup, teardown and technical consultation for your production. We work with all common remote head systems.">Aufbau, Abbau und technische Beratung für Ihre Produktion. Wir arbeiten mit allen gängigen Remote-Head-Systemen.</p>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6" data-cms="services.s3_desc" data-de="Technische Beratung und Betreuung für Ihre Produktion. Wir arbeiten mit allen gängigen Remote-Head-Systemen." data-en="Technical consultation and support for your production. We work with all common remote head systems.">Technische Beratung und Betreuung für Ihre Produktion. Wir arbeiten mit allen gängigen Remote-Head-Systemen.</p>
           <ul class="space-y-2.5 mt-auto">
-            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Aufbau & Abbau inklusive" data-en="Setup & teardown included">Aufbau &amp; Abbau inklusive</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Technische Betreuung inklusive" data-en="Technical support included">Technische Betreuung inklusive</span></li>
             <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Kompatibel mit allen Kamerasystemen" data-en="Compatible with all camera systems">Kompatibel mit allen Kamerasystemen</span></li>
-            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Techno Z-Head, Preston FI+Z" data-en="Techno Z-Head, Preston FI+Z">Techno Z-Head, Preston FI+Z</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Techno S-Head, Preston FI+Z" data-en="Techno S-Head, Preston FI+Z">Techno S-Head, Preston FI+Z</span></li>
             <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Location Scouting auf Anfrage" data-en="Location scouting on request">Location Scouting auf Anfrage</span></li>
             <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Technische Beratung vorab (kostenlos)" data-en="Technical consultation (free)">Technische Beratung vorab (kostenlos)</span></li>
           </ul>
@@ -157,8 +157,8 @@
         </div>
         <div class="text-center relative z-10">
           <div class="w-12 h-12 gold-gradient rounded-full flex items-center justify-center mx-auto mb-4 font-800 text-black text-lg">3</div>
-          <h4 class="font-700 mb-2" data-de="Set-Up" data-en="Set-Up">Set-Up</h4>
-          <p class="text-gray-500 text-sm" data-de="Anlieferung & Aufbau – in ~45 Sekunden einsatzbereit." data-en="Delivery & assembly – ready in ~45 seconds.">Anlieferung &amp; Aufbau – in ~45 Sekunden einsatzbereit.</p>
+          <h4 class="font-700 mb-2" data-de="Bereitstellung" data-en="Preparation">Bereitstellung</h4>
+          <p class="text-gray-500 text-sm" data-de="Anlieferung & Einrichtung – in kürzester Zeit einsatzbereit." data-en="Delivery & configuration – ready in no time.">Anlieferung &amp; Einrichtung – in kürzester Zeit einsatzbereit.</p>
         </div>
         <div class="text-center relative z-10">
           <div class="w-12 h-12 gold-gradient rounded-full flex items-center justify-center mx-auto mb-4 font-800 text-black text-lg">4</div>
@@ -186,7 +186,7 @@
           </div>
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 gold-gradient rounded-xl flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
-            <div><h4 class="font-700 mb-1" data-de="Alle Kosten inklusive" data-en="All costs included">Alle Kosten inklusive</h4><p class="text-gray-500 text-sm" data-de="Transport, Aufbau, Operator und Techno Z-Head – keine versteckten Kosten." data-en="Transport, assembly, operator and Techno Z-Head – no hidden costs.">Transport, Aufbau, Operator und Techno Z-Head – keine versteckten Kosten.</p></div>
+            <div><h4 class="font-700 mb-1" data-de="Alle Kosten inklusive" data-en="All costs included">Alle Kosten inklusive</h4><p class="text-gray-500 text-sm" data-de="Transport, Operator, Techno S-Head und Betreuung – keine versteckten Kosten." data-en="Transport, operator, Techno S-Head and support – no hidden costs.">Transport, Operator, Techno S-Head und Betreuung – keine versteckten Kosten.</p></div>
           </div>
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 gold-gradient rounded-xl flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg></div>
@@ -218,15 +218,7 @@
             <p class="text-gray-400 text-sm leading-relaxed pb-5" data-de="Unser Operator-Service ist das Herzstück unseres Angebots – wir vermieten den Kran immer mit eigenem Operator. Das garantiert Ihnen professionelle Bedienung, kürzere Rüstzeiten und perfekte Shots." data-en="Our operator service is the heart of our offering – we always rent the crane with our own operator. This guarantees professional operation, shorter set-up times and perfect shots.">Unser Operator-Service ist das Herzstück unseres Angebots – wir vermieten den Kran immer mit eigenem Operator. Das garantiert Ihnen professionelle Bedienung, kürzere Rüstzeiten und perfekte Shots.</p>
           </div>
         </div>
-        <div class="faq-item">
-          <button class="w-full text-left px-6 py-5 flex items-center justify-between gap-4 faq-trigger" onclick="toggleFaq(this)">
-            <span class="font-600" data-de="Wie lange dauert der Aufbau?" data-en="How long does setup take?">Wie lange dauert der Aufbau?</span>
-            <span class="faq-icon text-gold-400 text-2xl font-300 shrink-0">+</span>
-          </button>
-          <div class="faq-answer px-6 pb-0">
-            <p class="text-gray-400 text-sm leading-relaxed pb-5" data-de="Der Supertechno 50+ ist in ca. 45 Sekunden betriebsbereit – einer der schnellsten Aufbauten in der Branche. Inklusive Anfahrt und Einrichtung rechnen wir ca. 30–60 Minuten für den gesamten Aufbau." data-en="The Supertechno 50+ is operational in about 45 seconds – one of the fastest setups in the industry. Including arrival and setup we estimate about 30–60 minutes for the full installation.">Der Supertechno 50+ ist in ca. 45 Sekunden betriebsbereit – einer der schnellsten Aufbauten in der Branche. Inklusive Anfahrt und Einrichtung rechnen wir ca. 30–60 Minuten für den gesamten Aufbau.</p>
-          </div>
-        </div>
+
         <div class="faq-item">
           <button class="w-full text-left px-6 py-5 flex items-center justify-between gap-4 faq-trigger" onclick="toggleFaq(this)">
             <span class="font-600" data-de="Können Sie auch außerhalb von Wien arbeiten?" data-en="Can you work outside Vienna?">Können Sie auch außerhalb von Wien arbeiten?</span>

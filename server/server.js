@@ -62,11 +62,11 @@ app.get('/api/content', (req, res) => {
 
 // ── Public Sections Visibility (no auth needed) ───────
 app.get('/api/sections', (req, res) => {
-  const rows = db.prepare('SELECT page, section_key, visible FROM page_sections').all();
+  const rows = db.prepare('SELECT page, section_key, visible, sort_order FROM page_sections').all();
   const result = {};
   for (const r of rows) {
     if (!result[r.page]) result[r.page] = {};
-    result[r.page][r.section_key] = r.visible === 1;
+    result[r.page][r.section_key] = { visible: r.visible === 1, sort_order: r.sort_order };
   }
   res.json(result);
 });
@@ -85,6 +85,9 @@ app.get('/leistungen', (req, res) => {
 });
 app.get('/supertechno-50', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/supertechno-50/index.html'));
+});
+app.get('/kran-test', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/kran-test/index.html'));
 });
 app.get('/ueber-uns', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/ueber-uns/index.html'));

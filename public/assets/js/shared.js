@@ -39,6 +39,12 @@
       const v = TG.cms[sec]?.[key]?.de;
       if (v) el.textContent = v;
     });
+    // Image sources from CMS
+    document.querySelectorAll('[data-cms-img]').forEach(el => {
+      const [sec, key] = el.getAttribute('data-cms-img').split('.');
+      const v = TG.cms[sec]?.[key]?.de;
+      if (v) el.setAttribute('src', v);
+    });
     // Contact placeholders
     const phone    = TG.cms.contact?.phone?.de;
     const email    = TG.cms.contact?.email?.de;
@@ -90,6 +96,7 @@
     const links = [
       { href: '/leistungen', de: 'Leistungen', en: 'Services', page: 'leistungen' },
       { href: '/supertechno-50', de: 'Supertechno 50+', en: 'Supertechno 50+', page: 'produkt' },
+      { href: '/tracking', de: 'Tracking & Telemetrie', en: 'Tracking & Telemetry', page: 'tracking' },
       { href: '/ueber-uns', de: 'Über uns', en: 'About', page: 'ueber-uns' },
       { href: '/kontakt', de: 'Kontakt', en: 'Contact', page: 'kontakt' },
     ];
@@ -109,14 +116,14 @@
       </div>
       <div>
         <div class="text-lg font-800 tracking-tight leading-none text-white">Technogrips</div>
-        <div class="text-xs font-600 tracking-[0.2em] uppercase" style="color:#f59e0b">Vienna</div>
+        <div class="text-xs font-600 tracking-[0.2em] uppercase" style="color:#e5c500">Vienna</div>
       </div>
     </a>
     <div class="hidden lg:flex items-center gap-8">${desktopLinks}</div>
     <div class="flex items-center gap-3">
       <button id="langToggle" class="flex items-center gap-1 text-sm glass px-3 py-1.5 rounded-full hover:border-gold-500/40 transition-all cursor-pointer">
         <span id="langIcon">🇩🇪</span>
-        <span id="langText" class="font-600" style="color:#f59e0b">DE</span>
+        <span id="langText" class="font-600" style="color:#e5c500">DE</span>
         <svg class="w-3 h-3 text-gray-400 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
       </button>
       <a href="/kontakt" class="btn-gold px-5 py-2 rounded-xl text-sm font-700 hidden sm:block" data-de="Jetzt anfragen" data-en="Get a Quote">Jetzt anfragen</a>
@@ -147,7 +154,7 @@
           </div>
           <div>
             <div class="text-lg font-800">Technogrips Vienna</div>
-            <div class="text-xs font-600 tracking-widest uppercase" style="color:#f59e0b">Kamerakran &amp; Operator</div>
+            <div class="text-xs font-600 tracking-widest uppercase" style="color:#e5c500">Kamerakran &amp; Operator</div>
           </div>
         </div>
         <p class="text-sm leading-relaxed max-w-xs" style="color:#6b7280" data-de="Professionelle Supertechno Kamerakrane mit erfahrenem Operator-Service. Wien, Österreich." data-en="Professional Supertechno camera cranes with experienced operator service. Vienna, Austria.">Professionelle Supertechno Kamerakrane mit erfahrenem Operator-Service. Wien, Österreich.</p>
@@ -155,10 +162,11 @@
       <div>
         <h4 class="font-700 text-sm mb-4" data-de="Seiten" data-en="Pages">Seiten</h4>
         <ul class="space-y-2">
-          <li><a href="/leistungen" class="text-sm transition-colors" style="color:#6b7280" onmouseover="this.style.color='#f59e0b'" onmouseout="this.style.color='#6b7280'" data-de="Leistungen" data-en="Services">Leistungen</a></li>
-          <li><a href="/supertechno-50" class="text-sm transition-colors" style="color:#6b7280" onmouseover="this.style.color='#f59e0b'" onmouseout="this.style.color='#6b7280'">Supertechno 50+</a></li>
-          <li><a href="/ueber-uns" class="text-sm transition-colors" style="color:#6b7280" onmouseover="this.style.color='#f59e0b'" onmouseout="this.style.color='#6b7280'" data-de="Über uns" data-en="About">Über uns</a></li>
-          <li><a href="/kontakt" class="text-sm transition-colors" style="color:#6b7280" onmouseover="this.style.color='#f59e0b'" onmouseout="this.style.color='#6b7280'" data-de="Kontakt" data-en="Contact">Kontakt</a></li>
+          <li><a href="/leistungen" class="text-sm transition-colors" style="color:#6b7280" onmouseover="this.style.color='#e5c500'" onmouseout="this.style.color='#6b7280'" data-de="Leistungen" data-en="Services">Leistungen</a></li>
+          <li><a href="/supertechno-50" class="text-sm transition-colors" style="color:#6b7280" onmouseover="this.style.color='#e5c500'" onmouseout="this.style.color='#6b7280'">Supertechno 50+</a></li>
+          <li><a href="/tracking" class="text-sm transition-colors" style="color:#6b7280" onmouseover="this.style.color='#e5c500'" onmouseout="this.style.color='#6b7280'" data-de="Tracking & Telemetrie" data-en="Tracking & Telemetry">Tracking & Telemetrie</a></li>
+          <li><a href="/ueber-uns" class="text-sm transition-colors" style="color:#6b7280" onmouseover="this.style.color='#e5c500'" onmouseout="this.style.color='#6b7280'" data-de="Über uns" data-en="About">Über uns</a></li>
+          <li><a href="/kontakt" class="text-sm transition-colors" style="color:#6b7280" onmouseover="this.style.color='#e5c500'" onmouseout="this.style.color='#6b7280'" data-de="Kontakt" data-en="Contact">Kontakt</a></li>
           <li><a href="/admin" class="text-xs transition-colors" style="color:#374151" onmouseover="this.style.color='#6b7280'" onmouseout="this.style.color='#374151'">Admin</a></li>
         </ul>
       </div>
@@ -175,7 +183,7 @@
       <div class="text-sm" style="color:#374151">© <span id="currentYear"></span> Technogrips Vienna. <span data-de="Alle Rechte vorbehalten." data-en="All rights reserved.">Alle Rechte vorbehalten.</span></div>
       <div class="flex items-center gap-2">
         <span class="text-xs" style="color:#374151" data-de="Powered by" data-en="Powered by">Powered by</span>
-        <a href="https://www.supertechno.com" target="_blank" class="text-xs transition-colors" style="color:#b45309" onmouseover="this.style.color='#f59e0b'" onmouseout="this.style.color='#b45309'">Supertechno®</a>
+        <a href="https://www.supertechno.com" target="_blank" class="text-xs transition-colors" style="color:#a69000" onmouseover="this.style.color='#e5c500'" onmouseout="this.style.color='#a69000'">Supertechno®</a>
       </div>
     </div>
   </div>

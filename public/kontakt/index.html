@@ -6,14 +6,14 @@
   <meta name="description" content="Kontakt – Technogrips Vienna. Kran anfragen, Angebot einholen oder Beratungstermin buchen. Allgemeine Anfrage, Produktanfrage oder Terminbuchung.">
   <title>Kontakt – Technogrips Vienna</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{navy:{950:'#020817',900:'#0a0f1e',800:'#0f1729',700:'#162035',600:'#1e2d47'},gold:{300:'#fcd34d',400:'#fbbf24',500:'#f59e0b',600:'#d97706',700:'#b45309'}},fontFamily:{sans:['Inter','system-ui','sans-serif']}}}}</script>
+  <script>tailwind.config={theme:{extend:{colors:{navy:{950:'#020817',900:'#0a0f1e',800:'#0f1729',700:'#162035',600:'#1e2d47'},gold:{300:'#f2e44d',400:'#ebd600',500:'#e5c500',600:'#ccb000',700:'#a69000'}},fontFamily:{sans:['Inter','system-ui','sans-serif']}}}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/shared.css">
   <style>
     .tab-btn { border: 1px solid rgba(255,255,255,0.08); background: transparent; color: #9ca3af; transition: all 0.25s; cursor:pointer; }
-    .tab-btn.active { background: linear-gradient(135deg,#f59e0b,#d97706); color: #000; border-color: transparent; }
-    .tab-btn:not(.active):hover { border-color: rgba(245,158,11,0.3); color: #fff; }
+    .tab-btn.active { background: linear-gradient(135deg,#e5c500,#ccb000); color: #000; border-color: transparent; }
+    .tab-btn:not(.active):hover { border-color: rgba(229,197,0,0.3); color: #fff; }
     .tab-pane { display: none; }
     .tab-pane.active { display: block; }
     select option { background: #0a0f1e; }
@@ -26,7 +26,7 @@
   <section id="hero" class="relative min-h-screen flex items-center overflow-hidden hero-bg grain">
     <!-- Background image -->
     <div class="absolute inset-0">
-      <img src="/assets/images/st50/st50-5.jpg" alt="Supertechno 50+ Studio" class="w-full h-full object-cover opacity-25">
+      <img data-cms-img="contact.hero_bg_image" src="/assets/images/cafebar.png" alt="Cafebar mit Stehsessel und Storyboard" class="w-full h-full object-cover opacity-25">
       <div class="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-900/85 to-transparent"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
     </div>
@@ -42,17 +42,17 @@
         <!-- Badge -->
         <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6 animate-fade-in">
           <span class="w-2 h-2 bg-gold-500 rounded-full animate-pulse"></span>
-          <span class="text-gold-400 text-sm font-600" data-de="Antwort innerhalb von 24 Stunden" data-en="Response within 24 hours">Antwort innerhalb von 24 Stunden</span>
+          <span class="text-gold-400 text-sm font-600 i18n" data-cms="contact.hero_badge" data-de="Antwort innerhalb von 24 Stunden" data-en="Response within 24 hours">Antwort innerhalb von 24 Stunden</span>
         </div>
         <!-- H1 -->
         <h1 class="text-5xl sm:text-6xl lg:text-7xl font-900 leading-tight mb-6 animate-fade-up">
-          <span data-de="Lassen Sie uns" data-en="Let's">Lassen Sie uns</span><br>
-          <span class="text-gold-gradient" data-de="sprechen." data-en="talk.">sprechen.</span>
+          <span class="i18n" data-cms="contact.hero_title1" data-de="Lassen Sie uns" data-en="Let's">Lassen Sie uns</span><br>
+          <span class="text-gold-gradient i18n" data-cms="contact.hero_title2" data-de="sprechen." data-en="talk.">sprechen.</span>
         </h1>
         <!-- Subline -->
-        <p class="text-gray-400 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl animate-fade-up" style="animation-delay:.2s"
-           data-de="Angebot anfragen, Termin buchen oder einfach Hallo sagen – wir antworten innerhalb von 24 Stunden."
-           data-en="Request a quote, book an appointment or just say hello – we respond within 24 hours.">
+        <p class="text-gray-400 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl animate-fade-up i18n" style="animation-delay:.2s"
+           data-cms="contact.hero_subline"
+           data-de="Angebot anfragen, Termin buchen oder einfach Hallo sagen – wir antworten innerhalb von 24 Stunden.">
           Angebot anfragen, Termin buchen oder einfach Hallo sagen – wir antworten innerhalb von 24 Stunden.
         </p>
         <!-- 3 Kontakt-Karten -->
@@ -254,7 +254,7 @@
   <section id="karte" class="py-0 bg-navy-950">
     <div class="relative h-64 overflow-hidden" style="background:linear-gradient(135deg,#0a0f1e,#162035)">
       <!-- Decorative grid -->
-      <div class="absolute inset-0" style="background-image:linear-gradient(rgba(245,158,11,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,0.04) 1px,transparent 1px);background-size:40px 40px"></div>
+      <div class="absolute inset-0" style="background-image:linear-gradient(rgba(229,197,0,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(229,197,0,0.04) 1px,transparent 1px);background-size:40px 40px"></div>
       <!-- Center marker -->
       <div class="absolute inset-0 flex items-center justify-center flex-col gap-3">
         <div class="w-16 h-16 gold-gradient rounded-full flex items-center justify-center shadow-2xl animate-float">
@@ -266,7 +266,7 @@
         </div>
       </div>
       <!-- Radial glow -->
-      <div class="absolute inset-0" style="background:radial-gradient(circle at center,rgba(245,158,11,0.08) 0%,transparent 70%)"></div>
+      <div class="absolute inset-0" style="background:radial-gradient(circle at center,rgba(229,197,0,0.08) 0%,transparent 70%)"></div>
     </div>
   </section>
 

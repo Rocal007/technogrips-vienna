@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Supertechno 50+ Kamerakran – Professionelle Vermietung mit erfahrenem Operator-Service aus Wien. 15m Reichweite, 100kg Nutzlast, Techno Z-Head.">
+  <meta name="description" content="Supertechno 50+ Kamerakran – Professionelle Vermietung mit erfahrenem Operator-Service aus Wien. 15,11m Reichweite, 100kg Nutzlast, Techno S-Head.">
   <title>Supertechno 50+ – Technogrips Vienna</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -13,7 +13,7 @@
         extend: {
           colors: {
             navy: { 950:'#020817', 900:'#0a0f1e', 800:'#0f1729', 700:'#162035', 600:'#1e2d47' },
-            gold: { 300:'#fcd34d', 400:'#fbbf24', 500:'#f59e0b', 600:'#d97706', 700:'#b45309' }
+            gold: { 300:'#f2e44d', 400:'#ebd600', 500:'#e5c500', 600:'#ccb000', 700:'#a69000' }
           },
           fontFamily: { sans: ['Inter','system-ui','sans-serif'] }
         }
@@ -36,21 +36,21 @@
     .gallery-item:hover img { transform:scale(1.06); }
     .gallery-item::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(2,8,23,0.6) 0%, transparent 50%); opacity:0; transition:opacity 0.3s; }
     .gallery-item:hover::after { opacity:1; }
-    .gallery-item .expand-icon { position:absolute; bottom:12px; right:12px; background:rgba(245,158,11,0.9); color:#000; border-radius:8px; padding:6px; opacity:0; transform:scale(0.8); transition:all 0.3s; z-index:2; }
+    .gallery-item .expand-icon { position:absolute; bottom:12px; right:12px; background:rgba(229,197,0,0.9); color:#000; border-radius:8px; padding:6px; opacity:0; transform:scale(0.8); transition:all 0.3s; z-index:2; }
     .gallery-item:hover .expand-icon { opacity:1; transform:scale(1); }
 
     /* Hero image */
     .hero-image-wrap { position:relative; border-radius:20px; overflow:hidden; box-shadow:0 40px 80px rgba(0,0,0,0.6); }
     .hero-image-wrap img { width:100%; height:520px; object-fit:cover; }
-    .hero-image-wrap::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(245,158,11,0.15) 0%, transparent 60%); z-index:1; pointer-events:none; }
+    .hero-image-wrap::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(229,197,0,0.15) 0%, transparent 60%); z-index:1; pointer-events:none; }
 
     /* Spec table */
     .spec-row { display:flex; justify-content:space-between; align-items:center; padding:0.875rem 1.25rem; border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s; }
-    .spec-row:hover { background:rgba(245,158,11,0.05); }
+    .spec-row:hover { background:rgba(229,197,0,0.05); }
     .spec-row:last-child { border-bottom:none; }
 
     /* Technical diagram */
-    .diagram-wrap { background:#fff; border-radius:16px; padding:1rem; border:3px solid rgba(245,158,11,0.3); }
+    .diagram-wrap { background:#fff; border-radius:16px; padding:1rem; border:3px solid rgba(229,197,0,0.3); }
   </style>
 </head>
 
@@ -63,7 +63,7 @@
   <section id="hero" class="relative min-h-screen flex items-center overflow-hidden hero-bg grain">
     <!-- Background image -->
     <div class="absolute inset-0">
-      <img src="/assets/images/st50/st50-9.jpg" alt="Supertechno 50+ weltweit im Einsatz" class="w-full h-full object-cover opacity-30">
+      <img data-cms-img="product.hero_bg_image" src="/assets/images/st50/st50-9.jpg" alt="Supertechno 50+ weltweit im Einsatz" class="w-full h-full object-cover opacity-30">
       <div class="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-900/80 to-transparent"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
     </div>
@@ -79,24 +79,24 @@
         <!-- Badge -->
         <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6 animate-fade-in">
           <span class="w-2 h-2 bg-gold-500 rounded-full animate-pulse"></span>
-          <span class="text-gold-400 text-sm font-600" data-de="Das meistverwendete Teleskop-Kamerakransystem weltweit" data-en="The world's most widely used telescopic camera crane">Das meistverwendete Teleskop-Kamerakransystem weltweit</span>
+          <span class="text-gold-400 text-sm font-600 i18n" data-cms="product.hero_badge" data-de="Das meistverwendete Teleskop-Kamerakransystem weltweit" data-en="The world's most widely used telescopic camera crane">Das meistverwendete Teleskop-Kamerakransystem weltweit</span>
         </div>
         <!-- H1 -->
         <h1 class="text-5xl sm:text-6xl lg:text-7xl font-900 leading-tight mb-6 animate-fade-up">
-          Supertechno<br>
-          <span class="text-gold-gradient">50+</span>
+          <span class="i18n" data-cms="product.hero_title1" data-de="Supertechno" data-en="Supertechno">Supertechno</span><br>
+          <span class="text-gold-gradient i18n" data-cms="product.hero_title2" data-de="50+" data-en="50+">50+</span>
         </h1>
         <!-- Subline -->
         <p class="text-gray-400 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl animate-fade-up" style="animation-delay:.2s"
            data-cms="product.description"
-           data-de="Der Supertechno 50+ ist das meistverwendete Teleskop-Kamerakransystem weltweit. 15m Reichweite, 100kg Nutzlast, Techno Z-Head. Indoor und Outdoor einsetzbar."
-           data-en="The Supertechno 50+ is the world's most widely used telescopic camera crane. 15m reach, 100kg payload, Techno Z-Head. For indoor and outdoor use.">
-          Der Supertechno 50+ ist das meistverwendete Teleskop-Kamerakransystem weltweit. 15m Reichweite, 100kg Nutzlast, Techno Z-Head. Indoor und Outdoor einsetzbar.
+           data-de="Der Supertechno 50+ ist das meistverwendete Teleskop-Kamerakransystem weltweit. 15,11m Reichweite, 100kg Nutzlast, Techno S-Head. Indoor und Outdoor einsetzbar."
+           data-en="The Supertechno 50+ is the world's most widely used telescopic camera crane. 15.11m reach, 100kg payload, Techno S-Head. For indoor and outdoor use.">
+          Der Supertechno 50+ ist das meistverwendete Teleskop-Kamerakransystem weltweit. 15,11m Reichweite, 100kg Nutzlast, Techno S-Head. Indoor und Outdoor einsetzbar.
         </p>
         <!-- Quick Specs inline -->
-        <div class="flex flex-wrap gap-4 mb-10 animate-fade-up" style="animation-delay:.3s">
+        <div class="grid grid-cols-3 gap-4 mb-10 max-w-lg w-full animate-fade-up" style="animation-delay:.3s">
           <div class="glass px-4 py-2 rounded-xl text-center">
-            <div class="text-gold-400 font-800 text-lg" data-cms-text="product.spec_reach">15m</div>
+            <div class="text-gold-400 font-800 text-lg" data-cms-text="product.spec_reach">15,11m</div>
             <div class="text-xs text-gray-500" data-de="Reichweite" data-en="Reach">Reichweite</div>
           </div>
           <div class="glass px-4 py-2 rounded-xl text-center">
@@ -107,18 +107,14 @@
             <div class="text-gold-400 font-800 text-lg">360°</div>
             <div class="text-xs text-gray-500">Pan</div>
           </div>
-          <div class="glass px-4 py-2 rounded-xl text-center">
-            <div class="text-gold-400 font-800 text-lg" data-cms-text="product.spec_setup">~45s</div>
-            <div class="text-xs text-gray-500" data-de="Aufbau" data-en="Setup">Aufbau</div>
-          </div>
         </div>
         <!-- CTAs -->
-        <div class="flex flex-wrap gap-4 animate-fade-up" style="animation-delay:.4s">
-          <a href="/kontakt" class="btn-gold px-8 py-4 rounded-xl text-base font-700 gap-2 animate-pulse-gold">
+        <div class="grid grid-cols-2 gap-4 max-w-lg w-full animate-fade-up" style="animation-delay:.4s">
+          <a href="/kontakt" class="btn-gold w-full justify-center px-8 py-4 rounded-xl text-base font-700 gap-2 animate-pulse-gold">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
             <span data-de="Jetzt anfragen" data-en="Get a Quote">Jetzt anfragen</span>
           </a>
-          <a href="/leistungen" class="btn-outline px-8 py-4 rounded-xl text-base font-600 gap-2">
+          <a href="/leistungen" class="btn-outline w-full justify-center px-8 py-4 rounded-xl text-base font-600 gap-2">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             <span data-de="Alle Leistungen" data-en="All Services">Alle Leistungen</span>
           </a>
@@ -191,7 +187,7 @@
           <div class="expand-icon"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg></div>
         </div>
         <div class="gallery-item" style="height:220px" onclick="openLightbox('/assets/images/st50/st50-14.jpg')">
-          <img src="/assets/images/st50/st50-14.jpg" alt="Techno Z-Head Control System">
+          <img src="/assets/images/st50/st50-14.jpg" alt="Techno S-Head Control System">
           <div class="expand-icon"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg></div>
         </div>
       </div>
@@ -234,7 +230,7 @@
           <div class="glass rounded-2xl overflow-hidden">
             <div class="spec-row">
               <span class="text-gray-400 text-sm" data-de="Reichweite" data-en="Reach">Reichweite</span>
-              <span class="font-700 text-gold-400" data-cms-text="product.spec_reach">15m / 49ft</span>
+              <span class="font-700 text-gold-400" data-cms-text="product.spec_reach">15,11m / 49.5ft</span>
             </div>
             <div class="spec-row">
               <span class="text-gray-400 text-sm" data-de="Nutzlast" data-en="Payload">Nutzlast</span>
@@ -242,7 +238,7 @@
             </div>
             <div class="spec-row">
               <span class="text-gray-400 text-sm" data-de="Remote Head" data-en="Remote Head">Remote Head</span>
-              <span class="font-700 text-gold-400" data-cms-text="product.spec_head">Techno Z-Head</span>
+              <span class="font-700 text-gold-400" data-cms-text="product.spec_head">Techno S-Head</span>
             </div>
             <div class="spec-row">
               <span class="text-gray-400 text-sm">Pan</span>
@@ -251,10 +247,6 @@
             <div class="spec-row">
               <span class="text-gray-400 text-sm" data-de="Einsatzbereich" data-en="Use">Einsatzbereich</span>
               <span class="font-700 text-gold-400" data-cms-text="product.spec_use">Indoor / Outdoor</span>
-            </div>
-            <div class="spec-row">
-              <span class="text-gray-400 text-sm" data-de="Aufbauzeit" data-en="Setup Time">Aufbauzeit</span>
-              <span class="font-700 text-gold-400" data-cms-text="product.spec_setup">~45 Sek.</span>
             </div>
             <div class="spec-row">
               <span class="text-gray-400 text-sm" data-de="Teleskop-Abschnitte" data-en="Sections">Teleskop-Abschnitte</span>
@@ -268,9 +260,8 @@
 
           <!-- USP Badges -->
           <div class="flex flex-wrap gap-2 mt-6">
-            <span class="glass text-xs px-3 py-1.5 rounded-full text-gold-400 font-600">⚡ Schneller Aufbau</span>
             <span class="glass text-xs px-3 py-1.5 rounded-full text-gold-400 font-600">🌍 Bewährt weltweit</span>
-            <span class="glass text-xs px-3 py-1.5 rounded-full text-gold-400 font-600">🎯 Präziser Z-Head</span>
+            <span class="glass text-xs px-3 py-1.5 rounded-full text-gold-400 font-600">🎯 Präziser S-Head</span>
             <span class="glass text-xs px-3 py-1.5 rounded-full text-gold-400 font-600">✅ Operator inklusive</span>
           </div>
         </div>
@@ -308,10 +299,10 @@
         <h2 class="text-4xl font-800" data-de="Für jede Produktion gemacht" data-en="Made for every production">Für jede Produktion gemacht</h2>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="glass-light rounded-2xl overflow-hidden card-hover observe">
           <div class="h-48 overflow-hidden">
-            <img src="/assets/images/st50/st50-5.jpg" alt="Film & Kino" class="w-full h-full object-cover">
+            <img src="/assets/images/st50/st50_einsatz_4.png" alt="Film & Kino" class="w-full h-full object-cover">
           </div>
           <div class="p-6">
             <div class="text-2xl mb-3">🎬</div>
@@ -328,7 +319,7 @@
 
         <div class="glass-light rounded-2xl overflow-hidden card-hover observe">
           <div class="h-48 overflow-hidden">
-            <img src="/assets/images/st50/st50-4.jpg" alt="TV & Werbung" class="w-full h-full object-cover">
+            <img src="/assets/images/st50/st50_einsatz_3.jpg" alt="TV & Werbung" class="w-full h-full object-cover">
           </div>
           <div class="p-6">
             <div class="text-2xl mb-3">📺</div>
@@ -345,7 +336,7 @@
 
         <div class="glass-light rounded-2xl overflow-hidden card-hover observe">
           <div class="h-48 overflow-hidden">
-            <img src="/assets/images/st50/st50-9.jpg" alt="Events & Konzerte" class="w-full h-full object-cover">
+            <img src="/assets/images/st50/st50_einsatz_2.webp" alt="Events & Konzerte" class="w-full h-full object-cover">
           </div>
           <div class="p-6">
             <div class="text-2xl mb-3">🎤</div>
@@ -356,6 +347,23 @@
                data-de="Spektakuläre Shots bei Konzerten, Sportevents und Messen. Maximale Flexibilität dank Outdoor-Eignung."
                data-en="Spectacular shots at concerts, sports events and trade fairs. Maximum flexibility thanks to outdoor suitability.">
               Spektakuläre Shots bei Konzerten, Sportevents und Messen. Maximale Flexibilität dank Outdoor-Eignung.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass-light rounded-2xl overflow-hidden card-hover observe">
+          <div class="h-48 overflow-hidden">
+            <img src="/assets/images/st50/st50_einsatz_1.webp" alt="Sport" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <div class="text-2xl mb-3">🏆</div>
+            <h3 class="text-lg font-700 mb-2"
+                data-cms="product.use4_title" data-de="Sport" data-en="Sports">Sport</h3>
+            <p class="text-gray-400 text-sm leading-relaxed"
+               data-cms="product.use4_desc"
+               data-de="Live-Übertragungen von Sport-Events, Motorsport und Action-Aufnahmen. Dynamische Fahrten und präzise Verfolgung in Höchstgeschwindigkeit."
+               data-en="Live sports broadcasting, motorsports and action shots. Dynamic moves and precise tracking at maximum speed.">
+              Live-Übertragungen von Sport-Events, Motorsport und Action-Aufnahmen. Dynamische Fahrten und präzise Verfolgung in Höchstgeschwindigkeit.
             </p>
           </div>
         </div>
@@ -396,10 +404,10 @@
 
   <!-- ═══ LIGHTBOX ═══ -->
   <div id="lightbox" onclick="closeLightbox()">
-    <button onclick="closeLightbox()" style="position:absolute;top:1.5rem;right:1.5rem;background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.4);color:#fff;width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;z-index:10">✕</button>
-    <button id="lb-prev" onclick="event.stopPropagation();lbNav(-1)" style="position:absolute;left:1.5rem;background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.4);color:#fff;width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;z-index:10">‹</button>
+    <button onclick="closeLightbox()" style="position:absolute;top:1.5rem;right:1.5rem;background:rgba(229,197,0,0.2);border:1px solid rgba(229,197,0,0.4);color:#fff;width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;z-index:10">✕</button>
+    <button id="lb-prev" onclick="event.stopPropagation();lbNav(-1)" style="position:absolute;left:1.5rem;background:rgba(229,197,0,0.2);border:1px solid rgba(229,197,0,0.4);color:#fff;width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;z-index:10">‹</button>
     <img id="lightbox-img" src="" alt="">
-    <button id="lb-next" onclick="event.stopPropagation();lbNav(1)" style="position:absolute;right:1.5rem;background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.4);color:#fff;width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;z-index:10">›</button>
+    <button id="lb-next" onclick="event.stopPropagation();lbNav(1)" style="position:absolute;right:1.5rem;background:rgba(229,197,0,0.2);border:1px solid rgba(229,197,0,0.4);color:#fff;width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;z-index:10">›</button>
     <div id="lb-counter" style="position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.6);font-size:0.8rem;letter-spacing:0.1em"></div>
   </div>
 

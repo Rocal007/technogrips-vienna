@@ -24,11 +24,11 @@
               600: '#1e2d47',
             },
             gold: {
-              300: '#fcd34d',
-              400: '#fbbf24',
-              500: '#f59e0b',
-              600: '#d97706',
-              700: '#b45309',
+              300: '#f2e44d',
+              400: '#ebd600',
+              500: '#e5c500',
+              600: '#ccb000',
+              700: '#a69000',
             }
           },
           fontFamily: {
@@ -45,7 +45,7 @@
             fadeUp: { '0%': { opacity: 0, transform: 'translateY(30px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
             fadeIn: { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
             float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
-            pulseGold: { '0%,100%': { boxShadow: '0 0 0 0 rgba(245,158,11,0.4)' }, '50%': { boxShadow: '0 0 20px 8px rgba(245,158,11,0.2)' } },
+            pulseGold: { '0%,100%': { boxShadow: '0 0 0 0 rgba(229,197,0,0.4)' }, '50%': { boxShadow: '0 0 20px 8px rgba(229,197,0,0.2)' } },
             slideInLeft: { '0%': { opacity: 0, transform: 'translateX(-40px)' }, '100%': { opacity: 1, transform: 'translateX(0)' } },
           }
         }
@@ -59,10 +59,10 @@
 
   <style>
     * { font-family: 'Inter', sans-serif; }
-    .glass { background: rgba(15, 23, 41, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(245,158,11,0.12); }
+    .glass { background: rgba(15, 23, 41, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(229,197,0,0.12); }
     .glass-light { background: rgba(30, 45, 71, 0.5); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); }
-    .gold-gradient { background: linear-gradient(135deg, #f59e0b, #d97706); }
-    .text-gold-gradient { background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gold-gradient { background: linear-gradient(135deg, #e5c500, #ccb000); }
+    .text-gold-gradient { background: linear-gradient(135deg, #ebd600, #e5c500, #ccb000); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .hero-bg { background: radial-gradient(ellipse at top, #1e2d47 0%, #0a0f1e 50%, #020817 100%); }
     .grain { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); }
     .observe { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -71,18 +71,18 @@
     .observe-left.visible { opacity: 1; transform: translateX(0); }
     .observe-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .observe-right.visible { opacity: 1; transform: translateX(0); }
-    .form-input { background: rgba(10,15,30,0.8); border: 1px solid rgba(245,158,11,0.2); color: #fff; transition: border-color 0.3s, box-shadow 0.3s; }
-    .form-input:focus { outline: none; border-color: #f59e0b; box-shadow: 0 0 0 3px rgba(245,158,11,0.15); }
+    .form-input { background: rgba(10,15,30,0.8); border: 1px solid rgba(229,197,0,0.2); color: #fff; transition: border-color 0.3s, box-shadow 0.3s; }
+    .form-input:focus { outline: none; border-color: #e5c500; box-shadow: 0 0 0 3px rgba(229,197,0,0.15); }
     .form-input::placeholder { color: rgba(156,163,175,0.6); }
-    .btn-gold { background: linear-gradient(135deg, #f59e0b, #d97706); color: #000; font-weight: 700; transition: all 0.3s; }
-    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(245,158,11,0.4); filter: brightness(1.1); }
-    .btn-outline { border: 1px solid rgba(245,158,11,0.5); color: #f59e0b; transition: all 0.3s; }
-    .btn-outline:hover { background: rgba(245,158,11,0.1); border-color: #f59e0b; transform: translateY(-2px); }
-    .tab-active { background: linear-gradient(135deg, #f59e0b, #d97706) !important; color: #000 !important; }
+    .btn-gold { background: linear-gradient(135deg, #e5c500, #ccb000); color: #000; font-weight: 700; transition: all 0.3s; }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(229,197,0,0.4); filter: brightness(1.1); }
+    .btn-outline { border: 1px solid rgba(229,197,0,0.5); color: #e5c500; transition: all 0.3s; }
+    .btn-outline:hover { background: rgba(229,197,0,0.1); border-color: #e5c500; transform: translateY(-2px); }
+    .tab-active { background: linear-gradient(135deg, #e5c500, #ccb000) !important; color: #000 !important; }
     .product-card:hover { transform: translateY(-8px); }
     .product-card { transition: transform 0.4s ease, box-shadow 0.4s ease; }
-    .product-card:hover { box-shadow: 0 20px 60px rgba(245,158,11,0.2); }
-    ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #0a0f1e; } ::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 3px; }
+    .product-card:hover { box-shadow: 0 20px 60px rgba(229,197,0,0.2); }
+    ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #0a0f1e; } ::-webkit-scrollbar-thumb { background: #e5c500; border-radius: 3px; }
     .modal-backdrop { background: rgba(2,8,23,0.9); backdrop-filter: blur(8px); }
     .success-toast { background: linear-gradient(135deg, #065f46, #047857); border: 1px solid #10b981; }
     .error-toast { background: linear-gradient(135deg, #7f1d1d, #991b1b); border: 1px solid #ef4444; }
@@ -151,7 +151,7 @@
   <section id="hero" class="relative min-h-screen flex items-center overflow-hidden hero-bg grain">
     <!-- Background image -->
     <div class="absolute inset-0">
-      <img src="/assets/images/crane_50.png" alt="Technogrips Vienna Kamerakran" class="w-full h-full object-cover opacity-30">
+      <img data-cms-img="hero.bg_image" src="/assets/images/crane_50.png" alt="Technogrips Vienna Kamerakran" class="w-full h-full object-cover opacity-30">
       <div class="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-900/80 to-transparent"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
     </div>
@@ -254,7 +254,7 @@
           <div class="mt-6 pt-6 border-t border-white/5">
             <ul class="space-y-2">
               <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Alle Remote-Heads" data-en="All Remote Heads">Alle Remote-Heads</span></li>
-              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Flexibler Aufbau" data-en="Flexible Setup">Flexibler Aufbau</span></li>
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Vielseitig einsetzbar" data-en="Versatile Use">Vielseitig einsetzbar</span></li>
               <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Lieferung nach Wien & AT" data-en="Delivery to Vienna & AT">Lieferung nach Wien & AT</span></li>
             </ul>
           </div>
@@ -283,10 +283,10 @@
             <svg class="w-7 h-7 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
           </div>
           <h3 class="text-xl font-700 mb-3 i18n" data-cms="services.s3_title" data-de="Technischer Support" data-en="Technical Support">Technischer Support</h3>
-          <p class="text-gray-400 leading-relaxed i18n" data-cms="services.s3_desc" data-de="Aufbau, Abbau und technische Beratung für Ihre Produktion. Wir arbeiten mit allen gängigen Remote-Head-Systemen." data-en="Setup, teardown and technical consultation for your production. We work with all common remote head systems.">Aufbau, Abbau und technische Beratung für Ihre Produktion. Wir arbeiten mit allen gängigen Remote-Head-Systemen.</p>
+          <p class="text-gray-400 leading-relaxed i18n" data-cms="services.s3_desc" data-de="Technische Beratung und Betreuung für Ihre Produktion. Wir arbeiten mit allen gängigen Remote-Head-Systemen." data-en="Technical consultation and support for your production. We work with all common remote head systems.">Technische Beratung und Betreuung für Ihre Produktion. Wir arbeiten mit allen gängigen Remote-Head-Systemen.</p>
           <div class="mt-6 pt-6 border-t border-white/5">
             <ul class="space-y-2">
-              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Techno Z-Head" data-en="Techno Z-Head">Techno Z-Head</span></li>
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Techno S-Head" data-en="Techno S-Head">Techno S-Head</span></li>
               <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Schnelle Reaktionszeit" data-en="Fast Response Time">Schnelle Reaktionszeit</span></li>
               <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Location Scouting" data-en="Location Scouting">Location Scouting</span></li>
             </ul>
@@ -338,18 +338,14 @@
           <h3 class="text-3xl font-800 mb-1">Supertechno 50+</h3>
           <p class="text-gold-400 font-600 mb-6 i18n" data-de="Das vielseitigste Teleskop-Kamerakransystem." data-en="The most versatile telescopic camera crane system.">Das vielseitigste Teleskop-Kamerakransystem.</p>
 
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-7">
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-7">
             <div class="glass-light rounded-xl p-4">
-              <div class="text-2xl font-800 text-gold-400">15m</div>
+              <div class="text-2xl font-800 text-gold-400 i18n" data-de="15,11m" data-en="15.11m">15,11m</div>
               <div class="text-gray-400 text-xs mt-0.5 i18n" data-de="Max. Reichweite" data-en="Max. Reach">Max. Reichweite</div>
             </div>
             <div class="glass-light rounded-xl p-4">
               <div class="text-2xl font-800 text-gold-400">100kg</div>
               <div class="text-gray-400 text-xs mt-0.5 i18n" data-de="Max. Nutzlast" data-en="Max. Payload">Max. Nutzlast</div>
-            </div>
-            <div class="glass-light rounded-xl p-4">
-              <div class="text-2xl font-800 text-gold-400">45s</div>
-              <div class="text-gray-400 text-xs mt-0.5 i18n" data-de="Aufbauzeit" data-en="Setup Time">Aufbauzeit</div>
             </div>
             <div class="glass-light rounded-xl p-4">
               <div class="text-2xl font-800 text-gold-400">360°</div>
@@ -360,12 +356,12 @@
               <div class="text-gray-400 text-xs mt-0.5 i18n" data-de="Einsatzbereich" data-en="Use Case">Einsatzbereich</div>
             </div>
             <div class="glass-light rounded-xl p-4">
-              <div class="text-2xl font-800 text-gold-400">Z-Head</div>
+              <div class="text-2xl font-800 text-gold-400">S-Head</div>
               <div class="text-gray-400 text-xs mt-0.5 i18n" data-de="Remote-Head" data-en="Remote Head">Remote-Head</div>
             </div>
           </div>
 
-          <p class="text-gray-400 leading-relaxed mb-7 i18n" data-de="Der Supertechno 50+ ist das meistverwendete Teleskop-Kamerakransystem weltweit. Er lässt sich schnell aufbauen, ist Indoor und Outdoor einsetzbar und bietet mit dem Techno Z-Head präzise Kamerasteuerung für jeden Shot – von der engen Studio-Aufnahme bis zum großen Outdoor-Event." data-en="The Supertechno 50+ is the world's most widely used telescopic camera crane system. It sets up quickly, works indoors and outdoors, and with the Techno Z-Head provides precise camera control for every shot – from tight studio work to large outdoor events.">Der Supertechno 50+ ist das meistverwendete Teleskop-Kamerakransystem weltweit. Er lässt sich schnell aufbauen, ist Indoor und Outdoor einsetzbar und bietet mit dem Techno Z-Head präzise Kamerasteuerung für jeden Shot – von der engen Studio-Aufnahme bis zum großen Outdoor-Event.</p>
+          <p class="text-gray-400 leading-relaxed mb-7 i18n" data-de="Der Supertechno 50+ ist das meistverwendete Teleskop-Kamerakransystem weltweit. Er ist Indoor und Outdoor einsetzbar und bietet mit dem Techno S-Head präzise Kamerasteuerung für jeden Shot – von der engen Studio-Aufnahme bis zum großen Outdoor-Event." data-en="The Supertechno 50+ is the world's most widely used telescopic camera crane system. It works indoors and outdoors, and with the Techno S-Head provides precise camera control for every shot – from tight studio work to large outdoor events.">Der Supertechno 50+ ist das meistverwendete Teleskop-Kamerakransystem weltweit. Er ist Indoor und Outdoor einsetzbar und bietet mit dem Techno S-Head präzise Kamerasteuerung für jeden Shot – von der engen Studio-Aufnahme bis zum großen Outdoor-Event.</p>
 
           <div class="flex flex-wrap gap-3">
             <button onclick="openProductModal('ST50')" class="btn-gold px-7 py-3.5 rounded-xl font-700 flex items-center gap-2">

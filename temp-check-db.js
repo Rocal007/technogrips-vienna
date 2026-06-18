@@ -1,0 +1,9 @@
+const http = require('https');
+
+http.get('https://www.technogrips-vienna.at/api/content.php', (res) => {
+  let data = '';
+  res.on('data', chunk => data += chunk);
+  res.on('end', () => {
+    console.log(data);
+  });
+}).on('error', console.error);

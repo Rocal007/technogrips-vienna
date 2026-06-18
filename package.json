@@ -8,10 +8,11 @@
     "dev": "nodemon server/server.js"
   },
   "dependencies": {
+    "basic-ftp": "^6.0.1",
     "bcryptjs": "^2.4.3",
     "better-sqlite3": "^9.4.3",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
+    "dotenv": "^16.6.1",
     "express": "^4.18.3",
     "express-rate-limit": "^7.2.0",
     "helmet": "^7.1.0",
