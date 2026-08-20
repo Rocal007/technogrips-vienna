@@ -42,6 +42,11 @@ async function deployFast() {
         'kontakt/index.html',
         'tracking/index.html',
         'kran-test/index.html',
+        'agb/index.html',
+        'impressum/index.html',
+        'datenschutz/index.html',
+        'robots.txt',
+        'sitemap.xml',
         'admin/admin_content.html',
         'admin/index.php'
       ];

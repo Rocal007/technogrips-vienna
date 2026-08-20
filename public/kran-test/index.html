@@ -1,3 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="LnGLuN4-mBdBtDTQ_VAxWvk4YK_SZhQMHmLJhfP4w0o" />
+  <meta name="description" content="Interaktiver Kamerakran-Simulator – Steuern Sie den Supertechno 50+ Kamerakran und navigieren Sie spielerisch durch das Menü. Technogrips Vienna.">
+  <title>Kran-Simulator Menü – Technogrips Vienna</title>
+
+  <link rel="stylesheet" href="/assets/css/tailwind.css">
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/shared.css">
+  
+  <!-- Three.js and OrbitControls CDNs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+  <style>
+    /* Digital HUD styling */
+    .mono-font { font-family: 'Share Tech Mono', monospace; }
+    
+    .hud-box {
+      background: rgba(10, 15, 30, 0.7);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(229, 197, 0, 0.15);
       position: relative;
@@ -81,6 +105,10 @@
     .flash-active {
       opacity: 0.95;
     }
+    /* Telemetry Feed Custom Scrollbar */
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(229, 197, 0, 0.5); border-radius: 2px; }
   </style>
   <script type="application/ld+json">
   {
@@ -172,10 +200,12 @@
         <div>
           <div class="inline-flex items-center gap-2 glass px-3 py-1 rounded-full mb-3">
             <span class="w-2 h-2 bg-gold-500 rounded-full animate-ping"></span>
-            <span class="text-gold-400 text-xs font-700 tracking-wider uppercase">Simulator &amp; Lab Mode</span>
+            <span class="text-gold-400 text-xs font-700 tracking-wider uppercase i18n" data-cms="tracking.badge" data-de="Simulator &amp; Lab Mode" data-en="Simulator &amp; Lab Mode" data-fr="Simulator &amp; Lab Mode" data-cs="Simulator &amp; Lab Mode" data-fr="Simulator &amp; Lab Mode" data-cs="Simulator &amp; Lab Mode">Simulator &amp; Lab Mode</span>
           </div>
-          <h1 class="text-3xl md:text-5xl font-900 text-gold-gradient">Kran-Interaktives Menü</h1>
-          <p class="text-gray-400 text-sm mt-2 max-w-xl">
+          <h1 class="text-3xl md:text-5xl font-900 text-gold-gradient i18n" data-cms="tracking.title" data-de="Kran-Interaktives Menü" data-en="Crane Interactive Menu" data-fr="Menu interactif de la grue" data-cs="Interaktivní menu jeřábu" data-fr="Menu interactif de la grue" data-cs="Interaktivní menu jeřábu">Kran-Interaktives Menü</h1>
+          <p class="text-gray-400 text-sm mt-2 max-w-xl i18n" 
+             data-cms="tracking.subline_full"
+             data-de="Steuern Sie den Supertechno 50+ mit Autopilot oder dem manuellen Steuerpult. Entdecken Sie die physikalischen Bewegungen des Krans in Echtzeit." data-en="Control the Supertechno 50+ via autopilot or manual console. Discover physical crane movements in real-time." data-fr="Pilotez le Supertechno 50+ via le pilote automatique ou la console manuelle. Observez la cinématique réelle de la grue en direct." data-cs="Ovládejte Supertechno 50+ pomocí autopilota nebo manuálního pultu. Prozkoumejte fyziku a pohyby jeřábu v reálném čase." data-fr="Pilotez le Supertechno 50+ via le pilote automatique ou la console manuelle. Observez la cinématique réelle de la grue en direct." data-cs="Ovládejte Supertechno 50+ pomocí autopilota nebo manuálního pultu. Prozkoumejte fyziku a pohyby jeřábu v reálném čase.">
             Steuern Sie den Supertechno 50+ mit Autopilot oder dem manuellen Steuerpult. Entdecken Sie die physikalischen Bewegungen des Krans in Echtzeit.
           </p>
         </div>
@@ -258,7 +288,7 @@
           </div>
 
           <div class="flex items-center gap-3">
-            <div class="pointer-events-none">FOCAL: <span id="hudFocalLength">50mm</span></div>
+            <div class="pointer-events-none">FOCAL: <span id="hudFocalLength">18mm</span></div>
             <div class="pointer-events-none">BAT: 100%</div>
             <!-- Fullscreen Button in Header -->
             <button id="fullscreenKranCamBtn" onclick="toggleKranCamFullscreen()" class="hud-box px-2.5 py-1 text-[9px] font-bold text-gold-400 hover:bg-gold-500/20 transition uppercase flex items-center gap-1 pointer-events-auto cursor-pointer border border-gold-500/30 rounded z-30">
@@ -596,6 +626,62 @@
       </section>
 
     </div>
+      <!-- Row 3: Tracking & Telemetry Feed -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch w-full mt-6">
+        
+        <!-- Packet Emulator (technocrane-tools) -->
+        <div class="hud-box p-4 rounded-xl flex flex-col h-64 border border-gold-500/30">
+          <h2 class="text-[10px] font-800 text-gold-500 tracking-widest uppercase mb-2 border-b border-white/5 pb-2 mono-font">PACKET EMULATOR (technocrane-tools)</h2>
+          <div id="packetFeed" class="flex-grow overflow-y-auto text-[8px] mono-font text-emerald-400 space-y-1 pr-2 custom-scrollbar">
+            <!-- Simulated packets will stream here -->
+          </div>
+        </div>
+
+        <!-- Unreal Engine Tracker (technocrane-unreal) -->
+        <div class="hud-box p-4 rounded-xl flex flex-col h-64 border border-blue-500/30 bg-blue-900/10">
+          <h2 class="text-[10px] font-800 text-blue-400 tracking-widest uppercase mb-2 border-b border-white/5 pb-2 mono-font flex items-center justify-between">
+            <span>UNREAL ENGINE LINK</span>
+            <span class="flex items-center gap-1 text-emerald-400"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span> CONNECTED</span>
+          </h2>
+          <div class="flex-grow flex flex-col justify-center gap-4 text-[10px] mono-font text-gray-300">
+            <div class="flex justify-between border-b border-white/10 pb-1"><span>PROTOCOL</span><span class="text-white font-bold">FreeD / UDP</span></div>
+            <div class="flex justify-between border-b border-white/10 pb-1"><span>PORT</span><span class="text-white font-bold">4000</span></div>
+            <div class="flex justify-between border-b border-white/10 pb-1"><span>TX RATE</span><span class="text-white font-bold" id="txRateReadout">60 Hz</span></div>
+            <div class="flex justify-between border-b border-white/10 pb-1"><span>LAST PACKET</span><span class="text-white font-bold text-gold-400" id="lastPacketReadout">0x...</span></div>
+          </div>
+        </div>
+
+        <!-- Raw Recording Trimmer (technocrane-trimmer) -->
+        <div class="hud-box p-4 rounded-xl flex flex-col h-64 border border-red-500/30">
+          <h2 class="text-[10px] font-800 text-red-400 tracking-widest uppercase mb-2 border-b border-white/5 pb-2 mono-font flex items-center gap-2">
+            <span class="w-2 h-2 bg-red-600 rounded-full animate-ping"></span>
+            RAW RECORDING TRIMMER
+          </h2>
+          <div class="flex-grow flex flex-col justify-between">
+            <div class="text-center">
+              <div class="text-[8px] text-gray-500 uppercase tracking-wider mb-1">Current Timecode</div>
+              <div class="text-3xl font-900 mono-font text-white tracking-widest" id="timecodeReadout">00:00:00:00</div>
+            </div>
+            
+            <div class="flex gap-2">
+              <div class="flex-1 bg-navy-950 p-2 rounded border border-white/10 text-center cursor-pointer hover:border-gold-500/50 transition" onclick="document.getElementById('markInReadout').textContent = document.getElementById('timecodeReadout').textContent;">
+                <div class="text-[8px] text-gray-500 mb-1 pointer-events-none">MARK IN</div>
+                <div class="text-[10px] font-bold text-gold-400 pointer-events-none" id="markInReadout">--:--:--:--</div>
+              </div>
+              <div class="flex-1 bg-navy-950 p-2 rounded border border-white/10 text-center cursor-pointer hover:border-gold-500/50 transition" onclick="document.getElementById('markOutReadout').textContent = document.getElementById('timecodeReadout').textContent;">
+                <div class="text-[8px] text-gray-500 mb-1 pointer-events-none">MARK OUT</div>
+                <div class="text-[10px] font-bold text-gold-400 pointer-events-none" id="markOutReadout">--:--:--:--</div>
+              </div>
+            </div>
+            
+            <button class="w-full mt-2 bg-red-600/20 hover:bg-red-600/40 border border-red-500/50 text-red-100 text-[10px] font-bold py-2 rounded uppercase tracking-wider transition" onclick="exportFBX()">
+              Export FBX Segment
+            </button>
+          </div>
+        </div>
+
+      </div>
+
   </main>
 
   <!-- Bottom Panel: Target Focus Detail Card -->
@@ -1006,7 +1092,7 @@
     let viewMode = '2d'; // '2d' or '3d'
     let view3DMode = 'studio'; // 'studio' or 'krancam'
     let is3dInit = false;
-    let scene3d, camera3d, renderer3d, controls3d, craneViewCamera, renderer3dKranCam, kranCamContainer, panoMesh, earthGlobe;
+    let scene3d, camera3d, renderer3d, controls3d, craneViewCamera, renderer3dKranCam, kranCamContainer;
     let crane3dTurret, crane3dPivot, crane3dSec2, crane3dSec3, crane3dSec4, crane3dCamera, crane3dHanger, crane3dFork;
     let target3dMeshes = [];
     let target3dPaths = [];
@@ -1058,7 +1144,6 @@
       // Invert sign per user request (+ tilts down, - tilts up)
       let pitchRad = -valFloat * Math.PI / 180;
 
-      const L_meters = 3.47 + ((currentLength - L_min) / (L_max - L_min)) * (14.77 - 3.47);
       // Unconditional pitch limits: -3° (left limit) to +50° (right limit), 100% independent of column lift or telescope extension
       const minPitchRad = -50 * Math.PI / 180; // +50° display limit (slider right)
       const maxPitchRad = 3 * Math.PI / 180;   // -3° display limit (slider left)
@@ -1358,15 +1443,13 @@
           renderer3d.setSize(rect.width, rect.height);
         }
         if (renderer3dKranCam && craneViewCamera) {
-          const pipKranCam = document.getElementById('pipKranCam');
           const targetKCContainer = document.getElementById('canvas3dKranCamContainer');
-          let targetContainer = (document.fullscreenElement && pipKranCam && !pipKranCam.classList.contains('hidden')) ? pipKranCam : targetKCContainer;
-          if (targetContainer) {
-            const rectKC = targetContainer.getBoundingClientRect();
+          if (targetKCContainer) {
+            const rectKC = targetKCContainer.getBoundingClientRect();
             if (rectKC.width > 0 && rectKC.height > 0) {
-                craneViewCamera.aspect = rectKC.width / rectKC.height;
-                craneViewCamera.updateProjectionMatrix();
-                renderer3dKranCam.setSize(rectKC.width, rectKC.height);
+              craneViewCamera.aspect = rectKC.width / rectKC.height;
+              craneViewCamera.updateProjectionMatrix();
+              renderer3dKranCam.setSize(rectKC.width, rectKC.height);
             }
           }
         }
@@ -1445,73 +1528,22 @@
       panoTexture.minFilter = THREE.LinearFilter;
       panoTexture.magFilter = THREE.LinearFilter;
       if (THREE.SRGBColorSpace) panoTexture.colorSpace = THREE.SRGBColorSpace;
-
+      
       // Shift texture UV offset vertically (-0.06) so building entrance doors sit 100% flush on the world map floor
       panoTexture.offset.y = -0.06;
+
+      // 360-degree Stephansplatz Panorama Skybox (100% Viewport Coverage)
       const panoGeom = new THREE.SphereGeometry(975, 64, 40);
       const panoMat = new THREE.MeshBasicMaterial({ 
         map: panoTexture, 
         side: THREE.BackSide 
       });
-      panoMesh = new THREE.Mesh(panoGeom, panoMat);
+      const panoMesh = new THREE.Mesh(panoGeom, panoMat);
       panoMesh.rotation.y = Math.PI * 0.85; // Rotate main plaza scene to face camera
       panoMesh.position.set(0, 0, 13.77); // Centered at optical origin for 100% distortion-free 360 perspective
       scene3d.add(panoMesh);
       
       scene3d.environment = panoTexture;
-
-      // Global function to change background
-      window.changeEnvironment = function(bgName) {
-        const textureLoader = new THREE.TextureLoader();
-        let imagePath = '/assets/images/stephansplatz_highres_far.png';
-        let rotationY = -Math.PI / 4;
-        let positionY = -15;
-        
-        if (bgName === 'venice') {
-          imagePath = '/assets/images/bg_venice.png';
-          rotationY = 0;
-          positionY = 1.6;
-        } else if (bgName === 'plzen') {
-          imagePath = '/assets/images/bg_plzen.png';
-          rotationY = 0;
-          positionY = 1.6;
-        } else if (bgName === 'polyhaven') {
-          imagePath = '/assets/images/ph_factory.jpg';
-          rotationY = 0;
-          positionY = 1.6;
-        }
-        
-        textureLoader.load(imagePath, function(texture) {
-          texture.mapping = THREE.EquirectangularReflectionMapping;
-          if (panoMesh) {
-            panoMesh.material.map = texture;
-            panoMesh.material.needsUpdate = true;
-            panoMesh.rotation.y = rotationY;
-            panoMesh.position.set(0, positionY, 13.77); // Keep panorama centered on crane base
-            
-            if (panoMesh.geometry) panoMesh.geometry.dispose();
-            const newGeo = new THREE.SphereGeometry(975, 64, 40);
-            newGeo.scale(-1, 1, 1);
-            if (positionY > 0) {
-              const pos = newGeo.attributes.position;
-              for (let i = 0; i < pos.count; i++) {
-                let y = pos.getY(i);
-                if (y < -positionY) {
-                  const x = pos.getX(i);
-                  const z = pos.getZ(i);
-                  const ratio = -positionY / y;
-                  pos.setXYZ(i, x * ratio, -positionY, z * ratio);
-                }
-              }
-              newGeo.computeVertexNormals();
-            }
-            panoMesh.geometry = newGeo;
-          }
-          if (scene3d) {
-            scene3d.environment = texture;
-          }
-        });
-      };
 
       // 4. Orbit Controls (Interactive camera pan/zoom/orbit)
       controls3d = new THREE.OrbitControls(camera3d, renderer3d.domElement);
@@ -1540,7 +1572,7 @@
       sunLight.shadow.camera.bottom = -30;
       scene3d.add(sunLight);
 
-      // 8. Reflective Concrete Map Floor (Europe map texture)
+      // 8. Flat Reflective Map Floor (Europe map texture)
       const textureLoader = new THREE.TextureLoader();
       const floorTexture = textureLoader.load('/kran-test/europe_map.png');
       floorTexture.wrapS = THREE.ClampToEdgeWrapping;
@@ -1548,19 +1580,20 @@
 
       const floorMat = new THREE.MeshStandardMaterial({
         map: floorTexture,
-        roughness: 0.22,
-        metalness: 0.82
+        roughness: 0.35,
+        metalness: 0.45,
+        side: THREE.DoubleSide
       });
 
-      // A flat circular floor
+      // Flat circular floor plane lying flat at Y = 0
       const floorGeom = new THREE.CircleGeometry(150, 64);
-      earthGlobe = new THREE.Mesh(floorGeom, floorMat);
-      earthGlobe.rotation.x = -Math.PI / 2; // Rotate flat
-      earthGlobe.position.set(0, 0, 0); // Exactly at y = 0
-      earthGlobe.receiveShadow = true;
-      earthGlobe.visible = true; // Render floor visually per request ("Boden-Grafik einblenden")
-      earthGlobe.userData.mapMat = floorMat; // Save material for toggling
-      scene3d.add(earthGlobe);
+      const floor = new THREE.Mesh(floorGeom, floorMat);
+      floor.rotation.x = -Math.PI / 2; // Lie flat on X-Z plane
+      floor.position.set(0, 0, 0); // Ground plane at Y = 0
+      floor.receiveShadow = true;
+      floor.visible = true; // Floor graphic enabled and visible
+      scene3d.add(floor);
+      earthGlobe = floor;
 
       // Technogrips Official Yellow Blueprint Robotic Arm Emblem Decal on Floor
       const logoTexture = textureLoader.load('/assets/images/logo_transparent.png?v=yellow_blueprint_v3');
@@ -2735,33 +2768,18 @@
       ffCable.rotation.z = 0.5;
       lensGroup.add(ffCable);
 
-      // ── MATTEBOX / LENS SHADE (hollow frame to reveal lens) ──
-      const mbDepth = 0.015;
-      const mbZ = -0.28;
-      
-      // Top frame
-      const mbTop = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.04, mbDepth), headBlackMat);
-      mbTop.position.set(0, 0.07, mbZ);
-      mbTop.castShadow = true;
-      lensGroup.add(mbTop);
+      // ── MATTEBOX / LENS SHADE (optional front accessory, minimal) ──
+      const mbFrame = new THREE.Mesh(
+        new THREE.BoxGeometry(0.22, 0.18, 0.015), headBlackMat);
+      mbFrame.position.set(0, 0, -0.28);
+      mbFrame.castShadow = true;
+      lensGroup.add(mbFrame);
 
-      // Bottom frame
-      const mbBottom = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.04, mbDepth), headBlackMat);
-      mbBottom.position.set(0, -0.07, mbZ);
-      mbBottom.castShadow = true;
-      lensGroup.add(mbBottom);
-
-      // Left frame
-      const mbLeft = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.10, mbDepth), headBlackMat);
-      mbLeft.position.set(0.09, 0, mbZ);
-      mbLeft.castShadow = true;
-      lensGroup.add(mbLeft);
-
-      // Right frame
-      const mbRight = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.10, mbDepth), headBlackMat);
-      mbRight.position.set(-0.09, 0, mbZ);
-      mbRight.castShadow = true;
-      lensGroup.add(mbRight);
+      // Mattebox inner cutout (simulated with darker box slightly set back)
+      const mbInner = new THREE.Mesh(
+        new THREE.BoxGeometry(0.18, 0.145, 0.012), headDarkMat);
+      mbInner.position.set(0, 0, -0.279);
+      lensGroup.add(mbInner);
 
       // Mattebox top flag (sun shade)
       const mbTopFlag = new THREE.Mesh(
@@ -3418,6 +3436,7 @@
           let targetContainer = (document.fullscreenElement && pipKranCam && !pipKranCam.classList.contains('hidden')) ? pipKranCam : targetKCContainer;
           if (targetContainer) {
             const crectKC = targetContainer.getBoundingClientRect();
+            // Prevent 0 width/height division
             if (crectKC.width > 0 && crectKC.height > 0) {
                 craneViewCamera.aspect = crectKC.width / crectKC.height;
                 craneViewCamera.updateProjectionMatrix();
@@ -3491,12 +3510,10 @@
       let targetYaw = -(currentAngle + Math.PI / 2);
       
       const ratio = (currentLength - L_min) / (L_max - L_min);
-      // The focal length we WANT when fully locked (target framing)
-      const targetFocal = 25 + (typeof lockPercent !== 'undefined' ? lockPercent * 50 : 0);
-      // Dynamic camera offset based on target lens focal length
-      const idealOffset = (2.50 * targetFocal) / 36;
-      
-      let activeFocal = targetFocal; // Will be overridden by Dolly Zoom if in auto mode
+      // Fixed Cooke 18mm Prime Lens focal length
+      const activeFocal = 18;
+      // Dynamic camera offset based on lens focal length: H = 2.50m ensures pedestal and floating nameplate are in frame
+      const idealOffset = (2.50 * activeFocal) / 36;
       
       let targetLen3d;
       if (controlMode === 'auto' && activeTarget) {
@@ -3517,17 +3534,6 @@
         
         // Solve for the required 3D length of the crane arm (the hypotenuse)
         const idealLen3D = Math.max(min3dLen, Math.min(max3dLen, Math.sqrt(H*H + D*D)));
-        
-        // Calculate true Dolly Zoom focal length to maintain exact framing!
-        if (typeof currentCamWorldPos !== 'undefined' && currentCamWorldPos) {
-          const tWorld = new THREE.Vector3(activeTarget.x3d, targetY, activeTarget.z3d);
-          const currentDist = currentCamWorldPos.distanceTo(tWorld);
-          const ideal3DDist = Math.sqrt(H*H + idealOffset*idealOffset);
-          
-          // Scale focal length directly proportional to distance (Dolly Zoom formula)
-          activeFocal = targetFocal * (currentDist / Math.max(0.1, ideal3DDist));
-          activeFocal = Math.max(12, Math.min(300, activeFocal)); // Clamp to realistic cine lenses
-        }
         
         // Scale extension based on 2D progress towards the target distance
         const progress = (currentLength - L_min) / (targetLength - L_min);
@@ -4095,6 +4101,8 @@
       update(dt);
       draw();
       update3D(dt);
+
+      if (typeof updateTelemetry === 'function') updateTelemetry();
 
       requestAnimationFrame(gameLoop);
     }
@@ -4901,7 +4909,7 @@
 
 
     // Initialize navigation/footer and trigger TG dynamic features
-    TG.init('home');
+    TG.init('tracking');
 
     // Select the first target by default and initialize Three.js
     setTimeout(() => {
@@ -4910,6 +4918,94 @@
       // Start the physics game loop
       requestAnimationFrame(gameLoop);
     }, 100);
+
+    // --- Telemetry & Tracking Logic ---
+    const packetFeed = document.getElementById('packetFeed');
+    const lastPacketReadout = document.getElementById('lastPacketReadout');
+    const timecodeReadout = document.getElementById('timecodeReadout');
+    let lastPacketTime = performance.now();
+
+    function generateHexPacket() {
+      const p = Math.floor(Math.abs(currentAngle)*100).toString(16).padStart(4,'0');
+      const t = Math.floor(Math.abs(crane3dPitch)*100).toString(16).padStart(4,'0');
+      const e = Math.floor(Math.abs(crane3dLen)*100).toString(16).padStart(4,'0');
+      const c = Math.floor(Math.abs(currentColumnHeight)*100).toString(16).padStart(4,'0');
+      const crc = Math.floor(Math.random()*65535).toString(16).padStart(4,'0');
+      return `0x54 0x43 0x${p} 0x${t} 0x${e} 0x${c} 0x${crc}`.toUpperCase();
+    }
+
+    function updateTelemetry() {
+      if (!packetFeed || !lastPacketReadout || !timecodeReadout) return;
+      const now = performance.now();
+      
+      // 1. Packet Emulator (~20fps UI update)
+      if (now - lastPacketTime > 50) { 
+        const hex = generateHexPacket();
+        lastPacketReadout.textContent = hex;
+        
+        const line = document.createElement('div');
+        line.textContent = `[${new Date().toISOString().split('T')[1].slice(0,-1)}] TX: ${hex}`;
+        packetFeed.appendChild(line);
+        if (packetFeed.childNodes.length > 50) {
+          packetFeed.removeChild(packetFeed.firstChild);
+        }
+        packetFeed.scrollTop = packetFeed.scrollHeight;
+        lastPacketTime = now;
+      }
+
+      // 2. Timecode Trimmer Update
+      const d = new Date();
+      const h = String(d.getHours()).padStart(2,'0');
+      const m = String(d.getMinutes()).padStart(2,'0');
+      const s = String(d.getSeconds()).padStart(2,'0');
+      const f = String(Math.floor(d.getMilliseconds() / 40)).padStart(2,'0'); // 25fps frame
+      timecodeReadout.textContent = `${h}:${m}:${s}:${f}`;
+    }
+
+    function exportFBX() {
+      const markIn = document.getElementById('markInReadout').textContent;
+      const markOut = document.getElementById('markOutReadout').textContent;
+      
+      if (markIn === '--:--:--:--' || markOut === '--:--:--:--') {
+        TG.toast('error', 'Export Fehler', 'Bitte setze einen Mark In und Mark Out Punkt.');
+        return;
+      }
+      
+      // Simulate FBX content
+      const content = `FBXHeaderExtension:  {
+  FBXHeaderVersion: 1003
+  Creator: "Technocrane Tracking Simulator"
+  CreationTimeStamp: {
+    Version: 1000
+    Year: ${new Date().getFullYear()}
+    Month: ${new Date().getMonth() + 1}
+    Day: ${new Date().getDate()}
+    Hour: ${new Date().getHours()}
+    Minute: ${new Date().getMinutes()}
+    Second: ${new Date().getSeconds()}
+  }
+}
+GlobalSettings:  {
+  Version: 1000
+  Properties70:  {
+    P: "TimeMode", "enum", "", "",11
+    P: "CustomFrameRate", "double", "Number", "",25.0
+  }
+}
+; Generated segment from ${markIn} to ${markOut}
+`;
+      const blob = new Blob([content], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `technocrane_track_${Date.now()}.fbx`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      TG.toast('success', 'FBX Export', `Export abgeschlossen für Segment ${markIn} - ${markOut}`);
+    }
 
   </script>
 </body>
