@@ -1,8 +1,25 @@
 const express = require('express');
 const db = require('../db');
 const authMiddleware = require('../middleware/auth');
+const nodemailer = require('nodemailer');
 
 const router = express.Router();
+
+let transporter = null;
+const getTransporter = () => {
+  if (!transporter && process.env.SMTP_USER && process.env.SMTP_PASS) {
+    transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST || 'smtp.gmail.com',
+      port: parseInt(process.env.SMTP_PORT || '587'),
+      secure: false,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
+      }
+    });
+  }
+  return transporter;
+};
 
 // Support token as query param for CSV downloads (browser direct link)
 const flexAuth = (req, res, next) => {
@@ -92,7 +109,61 @@ router.get('/leads', (req, res) => {
 router.get('/leads/:id', (req, res) => {
   const lead = db.prepare('SELECT * FROM leads WHERE id = ?').get(req.params.id);
   if (!lead) return res.status(404).json({ error: 'Lead not found' });
-  res.json(lead);
+  const replies = db.prepare('SELECT * FROM lead_replies WHERE lead_id = ? ORDER BY created_at ASC').all(req.params.id);
+  res.json({ ...lead, replies });
+});
+
+// ─────────────────────────────────────────────
+// POST /api/admin/leads/:id/reply – Send email reply
+// ─────────────────────────────────────────────
+router.post('/leads/:id/reply', async (req, res) => {
+  const { recipient, subject, message } = req.body;
+  const leadId = req.params.id;
+  const lead = db.prepare('SELECT * FROM leads WHERE id = ?').get(leadId);
+  if (!lead) return res.status(404).json({ error: 'Lead not found' });
+
+  if (!recipient || !message) {
+    return res.status(400).json({ error: 'Empfänger und Nachricht sind erforderlich' });
+  }
+
+  const sentBy = req.user?.username || 'admin';
+  const sub = subject || 'Re: Ihre Anfrage bei Technogrips Vienna';
+
+  const t = getTransporter();
+  if (t) {
+    try {
+      await t.sendMail({
+        from: '"Technogrips Vienna" <office@technogrips-vienna.at>',
+        to: recipient,
+        bcc: 'office@technogrips-vienna.at',
+        subject: sub,
+        text: message,
+        html: `<div style="font-family:sans-serif; background:#111; color:#eee; padding:20px; border-radius:10px;">
+          <h2 style="color:#e5c500;">TECHNOGRIPS VIENNA</h2>
+          <div style="margin:20px 0; white-space:pre-wrap; font-size:15px; line-height:1.6;">${message}</div>
+          <hr style="border:0; border-top:1px solid #333; margin:20px 0;">
+          <p style="color:#888; font-size:12px;">Technogrips Vienna · Gerhard Deimel · office@technogrips-vienna.at</p>
+        </div>`
+      });
+      // Also send direct copy to office@technogrips-vienna.at
+      await t.sendMail({
+        from: '"Technogrips System" <webmaster@technogrips-vienna.at>',
+        to: 'office@technogrips-vienna.at',
+        subject: `[Admin-Antwort Kopie] ${sub}`,
+        text: `Gesendet an: ${recipient}\n\n${message}`
+      });
+    } catch (e) {
+      console.error('Email send error:', e.message);
+    }
+  }
+
+  const info = db.prepare('INSERT INTO lead_replies (lead_id, recipient, subject, message, sent_by, status) VALUES (?, ?, ?, ?, ?, ?)')
+    .run(leadId, recipient, sub, message, sentBy, 'sent');
+
+  db.prepare("UPDATE leads SET status = 'contacted' WHERE id = ? AND status = 'new'").run(leadId);
+
+  const reply = db.prepare('SELECT * FROM lead_replies WHERE id = ?').get(info.lastInsertRowid);
+  res.json({ success: true, message: 'Antwort gesendet und gespeichert (Kopie an office@technogrips-vienna.at)', reply });
 });
 
 // ─────────────────────────────────────────────
@@ -179,13 +250,18 @@ router.get('/content/:section', (req, res) => {
 // PUT /api/admin/content – Update a field
 // ─────────────────────────────────────────────
 router.put('/content', (req, res) => {
-  const { section, key, value_de, value_en } = req.body;
+  const { section, key, value_de, value_en, value_fr, value_cs } = req.body;
   if (!section || !key) return res.status(400).json({ error: 'section and key required' });
 
   db.prepare(`
-    UPDATE page_content SET value_de = ?, value_en = ?, updated_at = CURRENT_TIMESTAMP
+    UPDATE page_content SET 
+      value_de = ?, 
+      value_en = ?, 
+      value_fr = ?, 
+      value_cs = ?, 
+      updated_at = CURRENT_TIMESTAMP
     WHERE section = ? AND key = ?
-  `).run(value_de, value_en, section, key);
+  `).run(value_de ?? '', value_en ?? '', value_fr ?? '', value_cs ?? '', section, key);
 
   res.json({ success: true, section, key });
 });
@@ -198,13 +274,25 @@ router.put('/content/batch', (req, res) => {
   if (!Array.isArray(updates)) return res.status(400).json({ error: 'updates array required' });
 
   const stmt = db.prepare(`
-    UPDATE page_content SET value_de = ?, value_en = ?, updated_at = CURRENT_TIMESTAMP
+    UPDATE page_content SET 
+      value_de = ?, 
+      value_en = ?, 
+      value_fr = ?, 
+      value_cs = ?, 
+      updated_at = CURRENT_TIMESTAMP
     WHERE section = ? AND key = ?
   `);
 
   const batchUpdate = db.transaction((items) => {
-    for (const { section, key, value_de, value_en } of items) {
-      stmt.run(value_de, value_en, section, key);
+    for (const item of items) {
+      stmt.run(
+        item.value_de ?? '', 
+        item.value_en ?? '', 
+        item.value_fr ?? '', 
+        item.value_cs ?? '', 
+        item.section, 
+        item.key
+      );
     }
   });
 

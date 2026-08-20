@@ -72,7 +72,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 <body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
     <div class="bg-gray-800 p-8 rounded-2xl shadow-2xl w-full max-w-md border border-gray-700">
         <div class="flex justify-center mb-6">
-            <img src="../assets/images/logo.png" alt="Logo" class="h-12" onerror="this.style.display='none'">
+            <img src="../assets/images/logo.jpg" alt="Logo" class="h-12" onerror="this.style.display='none'">
         </div>
         <h1 class="text-2xl font-bold text-center mb-6">Admin Panel</h1>
         

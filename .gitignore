@@ -5,4 +5,12 @@ server/db.sqlite
 server/db.sqlite-journal
 server/db.sqlite-wal
 server/db.sqlite-shm
+*.db-wal
+*.db-shm
+*.sqlite-wal
+*.sqlite-shm
+__pycache__/
+*.pyc
+ftp_files.txt
+remote-index.html
 public/assets/images/uploads/

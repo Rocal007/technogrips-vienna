@@ -5,7 +5,8 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
-    "dev": "nodemon server/server.js"
+    "dev": "nodemon server/server.js",
+    "build:css": "npx tailwindcss -i ./src/input.css -o ./public/assets/css/tailwind.css --minify"
   },
   "dependencies": {
     "basic-ftp": "^6.0.1",
@@ -22,6 +23,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "tailwindcss": "^3.4.0"
   }
 }

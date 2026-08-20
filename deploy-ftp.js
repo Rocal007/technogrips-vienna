@@ -1,5 +1,6 @@
 require('dotenv').config();
 const ftp = require('basic-ftp');
+const { execSync } = require('child_process');
 
 async function deploy() {
   const client = new ftp.Client();
@@ -14,9 +15,15 @@ async function deploy() {
       secure: process.env.FTP_SECURE === 'true'
     });
     
-    const targetDir = "/technogrips-viennaat/hidden-deploy";
+    const targetDir = "/httpdocs";
     console.log(`Wechsle in Zielverzeichnis: ${targetDir}`);
     await client.ensureDir(targetDir);
+    
+    console.log("Installiere Abhängigkeiten (falls nötig)...");
+    execSync('npm install', { stdio: 'inherit' });
+    
+    console.log("Erstelle Tailwind CSS Build...");
+    execSync('npm run build:css', { stdio: 'inherit' });
     
     console.log("Starte Upload des 'public' Ordners...");
     await client.uploadFromDir("e:/technogrips-vienna/public");

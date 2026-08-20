@@ -24,7 +24,15 @@ const getTransporter = () => {
 // Send lead notification email
 const notifyAdmin = async (lead) => {
   const t = getTransporter();
-  if (!t || !process.env.ADMIN_EMAIL) return;
+  let adminEmail = process.env.ADMIN_EMAIL || 'office@technogrips-vienna.at';
+  try {
+    const row = db.prepare("SELECT value_de FROM page_content WHERE section = 'contact' AND key = 'email'").get();
+    if (row?.value_de) {
+      adminEmail = row.value_de.trim();
+    }
+  } catch (err) {}
+
+  if (!t || !adminEmail) return;
 
   const typeLabels = {
     contact: '📧 Kontaktanfrage',
@@ -37,7 +45,7 @@ const notifyAdmin = async (lead) => {
   try {
     await t.sendMail({
       from: `"${process.env.FROM_NAME || 'Technogrips Vienna'}" <${process.env.FROM_EMAIL || process.env.SMTP_USER}>`,
-      to: process.env.ADMIN_EMAIL,
+      to: adminEmail,
       subject: `🎬 Neuer Lead: ${typeLabels[lead.type] || lead.type} – ${lead.name || lead.email}`,
       html: `
         <div style="font-family: Inter, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0f1e; color: #fff; padding: 24px; border-radius: 12px;">
@@ -148,7 +156,7 @@ router.post('/catalog', async (req, res) => {
   res.status(201).json({
     success: true,
     message: 'Katalog wird heruntergeladen...',
-    downloadUrl: 'https://www.supertechno.com/download.php?fid=1069',
+    downloadUrl: '/assets/docs/supertechno_50_plus_manual.pdf',
     id: lead.id
   });
 });

@@ -6,24 +6,9 @@
   <meta name="description" content="Interaktiver Kamerakran-Simulator – Steuern Sie den Supertechno 50+ Kamerakran und navigieren Sie spielerisch durch das Menü. Technogrips Vienna.">
   <title>Kran-Simulator Menü – Technogrips Vienna</title>
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            navy: { 950:'#020817', 900:'#0a0f1e', 800:'#0f1729', 700:'#162035', 600:'#1e2d47' },
-            gold: { 300:'#f2e44d', 400:'#ebd600', 500:'#e5c500', 600:'#ccb000', 700:'#a69000' }
-          },
-          fontFamily: { sans: ['Inter','system-ui','sans-serif'] }
-        }
-      }
-    }
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/shared.css">
+  <link rel="stylesheet" href="/assets/css/tailwind.css">
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/shared.css">
   
   <!-- Three.js and OrbitControls CDNs -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -119,13 +104,86 @@
       opacity: 0.95;
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Technogrips Vienna",
+    "description": "Professionelle Kamerakran-Vermietung mit erfahrenem Operator-Service in Wien. Supertechno 30, 50+, 75+ für Film, TV, Events und Werbung.",
+    "url": "https://technogrips-vienna.at",
+    "telephone": "+436504542261",
+    "email": "office@technogrips-vienna.at",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Wien",
+      "addressCountry": "AT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 48.2082,
+      "longitude": 16.3738
+    },
+    "image": "https://technogrips-vienna.at/assets/images/logo_transparent.png",
+    "logo": "https://technogrips-vienna.at/assets/images/logo_transparent.png",
+    "priceRange": "€€€",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "areaServed": [
+      { "@type": "Country", "name": "Austria" },
+      { "@type": "Country", "name": "Germany" },
+      { "@type": "Country", "name": "Czech Republic" },
+      { "@type": "Country", "name": "Hungary" },
+      { "@type": "Country", "name": "Slovakia" }
+    ],
+    "knowsLanguage": ["de", "en", "fr", "cs"],
+    "sameAs": [
+      "https://www.instagram.com/technogripsvienna",
+      "https://vimeo.com/technogripsvienna",
+      "https://www.linkedin.com/company/technogrips-vienna"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Kamerakran-Vermietung & Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Kamerakran-Vermietung mit Operator",
+            "description": "Supertechno Teleskop-Kamerakran inklusive erfahrenem Kranoperator für Film, TV, Events und Werbung."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Camera Tracking & Telemetrie",
+            "description": "Mo-Sys StarTracker, Ncam und Stype Kamera-Tracking-Systeme für Virtual Production und VFX."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Transport & Logistik",
+            "description": "Lieferung und Aufbau des Kamerakrans in ganz Österreich und Europa."
+          }
+        }
+      ]
+    }
+  }
+  </script>
 </head>
 <body class="bg-navy-950 text-white overflow-x-hidden min-h-screen flex flex-col grain">
 
   <!-- Navigation -->
   <div id="nav-container"></div>
   <!-- Hero Section -->
-  <div class="pt-24 pb-6 px-6 max-w-[1650px] mx-auto w-full">
+  <div class="pt-40 lg:pt-44 pb-6 px-6 max-w-[1650px] mx-auto w-full">
     <div class="hud-box p-6 md:p-8 rounded-2xl flex flex-col lg:flex-row items-center justify-between gap-8 relative overflow-hidden">
       <!-- Decorative background glow -->
       <div class="absolute -top-24 -left-24 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl pointer-events-none"></div>
@@ -155,12 +213,7 @@
         </div>
       </div>
       
-      <!-- Hero Graphic Container -->
-      <div class="w-full lg:w-[480px] h-[120px] lg:h-[140px] flex items-center justify-center bg-navy-900/50 border border-white/5 rounded-xl p-6 shrink-0 relative group overflow-hidden z-10">
-        <!-- Scanline or grid overlay for high-tech HUD look -->
-        <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] opacity-20 pointer-events-none"></div>
-        <img src="/assets/images/logo_hero.png" alt="Technogrips Vienna Logo" class="h-auto max-h-[85px] w-auto object-contain filter drop-shadow-[0_0_15px_rgba(229,197,0,0.35)] transition-all duration-500 group-hover:scale-[1.05] group-hover:drop-shadow-[0_0_25px_rgba(229,197,0,0.55)]">
-      </div>
+
     </div>
   </div>
 
@@ -168,34 +221,8 @@
   <main class="max-w-[1650px] mx-auto px-6 w-full flex-grow flex flex-col gap-6 pb-20">
     
     <!-- Row 1: Simulation Deck & Joysticks (Horizontal Stack) -->
-    <div id="simulationDeck" class="grid grid-cols-1 lg:grid-cols-4 gap-6 w-full">
-      
-      <!-- Viewport 1: 2D Radar -->
-      <div class="hud-box p-2 flex flex-col justify-between relative overflow-hidden group">
-        <!-- Scanline Overlay -->
-        <div class="scanline"></div>
-
-        <!-- Canvas Viewport Header Overlay -->
-        <div class="absolute top-4 left-4 right-4 flex justify-between items-center text-[10px] text-gold-500/80 mono-font z-20 select-none">
-          <div class="flex items-center gap-1.5 pointer-events-none">
-            <span class="w-2 h-2 bg-red-600 rounded-full inline-block animate-ping"></span>
-            <span>2D RADAR MONITORING</span>
-          </div>
-          <div class="text-[9px] text-gray-400 uppercase">SYS_GRID: ON</div>
-        </div>
-
-        <!-- Canvas Container -->
-        <div class="relative w-full aspect-[5/3] bg-navy-950/80 rounded-lg overflow-hidden border border-white/5 mt-8">
-          <canvas id="craneCanvas" class="absolute inset-0 w-full h-full cursor-crosshair"></canvas>
-        </div>
-
-        <!-- Viewport Footer Overlay -->
-        <div class="p-2 border-t border-white/5 flex justify-between items-center text-[10px] text-gray-500 mono-font mt-2">
-          <div>GRID: ACTIVE</div>
-          <div class="text-gold-500/80 font-bold" id="coordinateReadout">TARGET: X=0.0 Y=0.0</div>
-          <div>SYS_STATUS: NOMINAL</div>
-        </div>
-      </div>
+    <div style="display:none;"><canvas id="craneCanvas"></canvas><div id="coordinateReadout"></div></div>
+    <div id="simulationDeck" class="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full">
 
       <!-- Viewport 2: 3D Studio -->
       <div class="hud-box p-2 flex flex-col justify-between relative overflow-hidden group">
@@ -203,46 +230,38 @@
         <div class="scanline"></div>
 
         <!-- Canvas Viewport Header Overlay -->
-        <div class="absolute top-4 left-4 right-4 flex justify-between items-center text-[10px] text-gold-500/80 mono-font z-20 select-none pointer-events-auto">
+        <div class="absolute top-4 left-4 right-4 flex justify-between items-center text-[10px] text-gold-500/80 mono-font z-20 select-none">
           <div class="flex items-center gap-1.5 pointer-events-none">
-            <span class="w-2 h-2 bg-green-500 rounded-full inline-block animate-pulse"></span>
+            <span class="w-2.5 h-2.5 bg-green-500 rounded-full inline-block animate-ping"></span>
             <span>3D PERSPECTIVE STUDIO</span>
           </div>
+
           <div class="flex items-center gap-3">
-            <select id="bgSelector" class="bg-navy-900 border border-gold-500/30 text-gold-400 text-[9px] py-0.5 px-1.5 rounded cursor-pointer outline-none hover:border-gold-500/60 transition" onchange="changeEnvironment(this.value)">
-              <option value="wien">Wien Stephansplatz</option>
-              <option value="venice">Venedig Sonnenuntergang</option>
-              <option value="plzen">Plzeň (Technocrane HQ)</option>
-              <option value="polyhaven">Poly Haven: Fabrik</option>
-            </select>
-            <label class="flex items-center gap-1 text-[9px] text-gray-400 cursor-pointer hover:text-gold-400 transition" title="Boden-Grafik umschalten (Schatten bleibt)">
-              <input type="checkbox" checked onchange="if(earthGlobe) { earthGlobe.material = this.checked ? earthGlobe.userData.mapMat : new THREE.ShadowMaterial({ opacity: 0.6 }); }" class="accent-gold-500 cursor-pointer w-3 h-3">
-              Boden
-            </label>
-            <div class="text-[9px] text-gray-400 uppercase pointer-events-none hidden sm:block">MOUSE: ORBIT CONTROL</div>
+            <div class="pointer-events-none">VIEW: <span>360° ORBIT</span></div>
+            <div class="pointer-events-none">SYS: 100%</div>
+            <!-- Fullscreen Button in Header -->
+            <button id="fullscreen3dBtn" onclick="toggle3dFullscreen()" class="hud-box px-2.5 py-1 text-[9px] font-bold text-gold-400 hover:bg-gold-500/20 transition uppercase flex items-center gap-1 pointer-events-auto cursor-pointer border border-gold-500/30 rounded z-30">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+              <span id="fullscreen3dBtnText" data-de="Vollbild" data-en="Fullscreen" data-fr="Fullscreen" data-cs="Fullscreen" data-fr="Plein écran" data-cs="Celá obrazovka">Vollbild</span>
+            </button>
           </div>
         </div>
 
         <!-- Canvas Container -->
-        <div class="relative w-full aspect-[5/3] bg-navy-950/80 rounded-lg overflow-hidden border border-white/5 mt-8">
-          <div id="canvas3dContainer" class="absolute inset-0 w-full h-full">
-            <!-- Fullscreen Button -->
-            <button id="fullscreen3dBtn" onclick="toggle3dFullscreen()" class="absolute bottom-4 right-4 z-30 hud-box px-3 py-1.5 text-[10px] font-bold text-gold-400 hover:bg-gold-500/10 transition uppercase flex items-center gap-1.5 pointer-events-auto select-none">
-              <span>🖥️</span> Vollbild
-            </button>
-            
-            <!-- PiP Kran-Cam for Fullscreen -->
-            <div id="pipKranCam" class="hidden absolute bottom-16 right-4 w-72 aspect-[16/9] border-2 border-gold-500 rounded-lg shadow-[0_10px_30px_rgba(0,0,0,0.8)] overflow-hidden z-30 pointer-events-none bg-black">
-              <div id="pipResizer" class="absolute top-0 left-0 w-8 h-8 cursor-nwse-resize z-40 bg-gold-500/50 hover:bg-gold-500 rounded-br-lg pointer-events-auto transition-colors" style="clip-path: polygon(0 0, 100% 0, 0 100%);" title="Größe anpassen"></div>
-            </div>
+        <div id="studioViewportWrapper" class="relative w-full aspect-[5/3] bg-navy-950/80 rounded-lg overflow-hidden border border-white/5 mt-8 group/studio">
+          <div id="canvas3dContainer" class="absolute inset-0 w-full h-full"></div>
+          
+          <!-- PiP Kran-Cam for Fullscreen -->
+          <div id="pipKranCam" class="hidden absolute bottom-16 right-4 w-72 aspect-[16/9] border-2 border-gold-500 rounded-lg shadow-[0_10px_30px_rgba(0,0,0,0.8)] overflow-hidden z-30 pointer-events-none bg-black">
+            <div id="pipResizer" class="absolute top-0 left-0 w-8 h-8 cursor-nwse-resize z-40 bg-gold-500/50 hover:bg-gold-500 rounded-br-lg pointer-events-auto transition-colors" style="clip-path: polygon(0 0, 100% 0, 0 100%);" title="Größe anpassen"></div>
           </div>
         </div>
 
         <!-- Viewport Footer Overlay -->
         <div class="p-2 border-t border-white/5 flex justify-between items-center text-[10px] text-gray-500 mono-font mt-2">
-          <div>RENDERER: WEBGL_2.0</div>
-          <div class="text-gold-500/80 font-bold">MODE: PERSPECTIVE CAMERA</div>
-          <div>FEED: ACTIVE</div>
+          <div>STUDIO_FEED: ONLINE</div>
+          <div class="text-gold-500/80 font-bold">SCENE: STEPHANSPLATZ | CAM: <span class="text-emerald-400">ORBIT 3D</span></div>
+          <div class="text-emerald-400 font-bold uppercase">STATUS: ECHTZEIT-PHYSIK (RENDERER 60FPS)</div>
         </div>
       </div>
 
@@ -260,21 +279,26 @@
             <span>KRAN-CAM VIEW [REC]</span>
           </div>
 
-          <div class="flex items-center gap-4 pointer-events-none">
-            <div>FOCAL: <span id="hudFocalLength">50mm</span></div>
-            <div>BAT: 100%</div>
+          <div class="flex items-center gap-3">
+            <div class="pointer-events-none">FOCAL: <span id="hudFocalLength">50mm</span></div>
+            <div class="pointer-events-none">BAT: 100%</div>
+            <!-- Fullscreen Button in Header -->
+            <button id="fullscreenKranCamBtn" onclick="toggleKranCamFullscreen()" class="hud-box px-2.5 py-1 text-[9px] font-bold text-gold-400 hover:bg-gold-500/20 transition uppercase flex items-center gap-1 pointer-events-auto cursor-pointer border border-gold-500/30 rounded z-30">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+              <span id="fullscreenKranCamBtnText" data-de="Vollbild" data-en="Fullscreen" data-fr="Fullscreen" data-cs="Fullscreen" data-fr="Plein écran" data-cs="Celá obrazovka">Vollbild</span>
+            </button>
           </div>
         </div>
 
         <!-- Canvas Container -->
-        <div class="relative w-full aspect-[5/3] bg-navy-950/80 rounded-lg overflow-hidden border border-white/5 mt-8">
+        <div id="kranCamViewportWrapper" class="relative w-full aspect-[5/3] bg-navy-950/80 rounded-lg overflow-hidden border border-white/5 mt-8 group/kc">
           <div id="canvas3dKranCamContainer" class="absolute inset-0 w-full h-full"></div>
           
           <!-- Compact HUD Target Card inside Kran-Cam -->
           <div id="kranCamDetailCard" class="hidden absolute bottom-2 left-2 right-2 bg-navy-950/95 border border-gold-500/30 rounded-lg p-2.5 z-20 flex items-center gap-3 backdrop-blur-[4px] transition-all duration-300">
             <!-- Thumbnail Image -->
             <div class="w-12 h-12 rounded overflow-hidden border border-white/10 bg-navy-900 flex-shrink-0">
-              <img id="kcCardImage" src="../assets/images/hero_crane.png" class="w-full h-full object-cover" alt="Vorschau">
+              <img id="kcCardImage" src="/assets/images/hero_crane.png" class="w-full h-full object-cover" alt="Vorschau">
             </div>
             <!-- Info Text -->
             <div class="flex-grow flex flex-col justify-center min-w-0">
@@ -301,8 +325,8 @@
         <!-- Viewport Footer Overlay -->
         <div class="p-2 border-t border-white/5 flex justify-between items-center text-[10px] text-gray-500 mono-font mt-2">
           <div>CAM_FEED: ONLINE</div>
-          <div class="text-gold-500/80 font-bold">LENS: COOKE 25MM | ALT: <span id="hudHeight" class="text-emerald-400">2.50m</span></div>
-          <div>STABILIZER: ACTIVE</div>
+          <div class="text-gold-500/80 font-bold">LENS: COOKE 18MM | ALT: <span id="hudHeight" class="text-emerald-400">2.50m</span></div>
+          <div class="text-emerald-400 font-bold uppercase">BODEN: GERADE FLÄCHE (MIN. 5cm ARM-ABSTAND)</div>
         </div>
       </div>
 
@@ -370,7 +394,7 @@
           <!-- Metrics Readouts -->
           <div class="text-[9px] text-gray-400 flex flex-wrap justify-center gap-x-3 gap-y-1 mono-font mt-1 max-w-[420px]">
             <div>DREHUNG: <span class="text-gold-400 font-bold" id="joyAngle">0°</span></div>
-            <div>NEIGUNG: <span class="text-gold-400 font-bold" id="joyPitchReadout">0°</span></div>
+            <div>NEIGUNG: <span class="text-gold-400 font-bold" id="joyPitchReadout">+5°</span></div>
             <div>AUSZUG: <span class="text-gold-400 font-bold" id="joyExtend">3.47 m</span></div>
             <div>SÄULE: <span class="text-gold-400 font-bold" id="joyLiftColReadout">1.54 m</span></div>
             <div>CAM ROLL: <span class="text-gold-400 font-bold" id="joyCamRoll">0°</span></div>
@@ -490,18 +514,18 @@
                 <div class="bg-navy-950/40 border border-white/5 p-3 rounded-lg flex flex-col gap-1.5">
                   <div class="flex justify-between text-[10px] text-gray-400 tracking-wider uppercase font-bold">
                     <span>Säulen-Lift (Column Height)</span>
-                    <span id="columnHeightReadout" class="mono-font text-gold-400 font-bold">1.54 m</span>
+                    <span id="columnHeightReadout" class="mono-font text-gold-400 font-bold">2.20 m</span>
                   </div>
-                  <input type="range" id="columnHeightSlider" min="1.54" max="3.63" step="0.01" value="1.54" class="w-full accent-gold-500 cursor-pointer bg-navy-900 border border-white/10 rounded h-1.5 outline-none" oninput="updateColumnHeight(this.value)">
+                  <input type="range" id="columnHeightSlider" min="1.00" max="3.63" step="0.01" value="2.20" class="w-full accent-gold-500 cursor-pointer bg-navy-900 border border-white/10 rounded h-1.5 outline-none" oninput="updateColumnHeight(this.value)">
                 </div>
 
                 <!-- Arm Pitch Slider -->
                 <div id="armPitchSliderContainer" class="bg-navy-950/40 border border-white/5 p-3 rounded-lg flex flex-col gap-1.5">
                   <div class="flex justify-between text-[10px] text-gray-400 tracking-wider uppercase font-bold">
                     <span>Arm-Neigung (Arm Pitch)</span>
-                    <span id="armPitchReadout" class="mono-font text-gold-400 font-bold">0°</span>
+                    <span id="armPitchReadout" class="mono-font text-gold-400 font-bold">+5°</span>
                   </div>
-                  <input type="range" id="armPitchSlider" min="-57" max="60" step="1" value="0" class="w-full accent-gold-500 cursor-pointer bg-navy-900 border border-white/10 rounded h-1.5 outline-none" oninput="updateArmPitch(this.value)">
+                  <input type="range" id="armPitchSlider" min="-3" max="50" step="1" value="5" class="w-full accent-gold-500 cursor-pointer bg-navy-900 border border-white/10 rounded h-1.5 outline-none" oninput="updateArmPitch(this.value)">
                 </div>
 
                 <!-- Telescope Reach Slider -->
@@ -605,7 +629,7 @@
       <div class="flex flex-col md:flex-row items-center md:items-stretch gap-6 relative z-10">
         <!-- Target Preview Image -->
         <div class="w-full md:w-56 h-36 md:h-auto flex-shrink-0 rounded-lg overflow-hidden border border-white/10 bg-navy-950/60 relative">
-          <img id="cardImage" src="../assets/images/hero_crane.png" class="w-full h-full object-cover transition-opacity duration-300" alt="Vorschau">
+          <img id="cardImage" src="/assets/images/hero_crane.png" class="w-full h-full object-cover transition-opacity duration-300" alt="Vorschau">
         </div>
 
         <div class="flex-grow flex flex-col justify-center max-w-2xl">
@@ -633,7 +657,7 @@
   <!-- Footer -->
   <div id="footer-container"></div>
 
-  <script src="../assets/js/shared.js"></script>
+  <script src="/assets/js/shared.js"></script>
   <script>
     // ── Global Error Logger for diagnostics ──
     window.onerror = function(message, source, lineno, colno, error) {
@@ -849,7 +873,7 @@
         desc: 'Die Heimat von erstklassigen Teleskop-Kamerakranen und professionellem Grip-Equipment. Erfahren Sie mehr über unsere Flotte, Specials und Services.',
         descEn: 'The home of premium telescopic camera cranes and professional grip equipment. Learn more about our fleet, specials, and services.',
         color: '#fbbf24',
-        image: '../assets/images/hero_crane.png'
+        image: '/assets/images/hero_crane.png'
       },
       {
         id: 'st50',
@@ -864,22 +888,7 @@
         desc: 'Teleskop-Kamerakran mit patentiertem offenem Gitterausleger, 3.47 bis 14.77 Metern Reichweite ab Drehpunkt, 35 kg maximaler Nutzlast und dynamic-telescoping Lift-Säule.',
         descEn: 'Telescopic camera crane with patented open truss design, 3.47 to 14.77-meter reach from pivot, 35 kg maximum payload, and a dynamic-telescoping lift column.',
         color: '#e5c500',
-        image: '../assets/images/st50/st50-7.jpg'
-      },
-      {
-        id: 'shead',
-        label: 'S-Head',
-        labelEn: 'S-Head',
-        category: 'EQUIPMENT',
-        angle: -102 * Math.PI / 180,
-        distance: 400,
-        x3d: -2.5, y3d: 1.9, z3d: -9.5,
-        url: '#',
-        title: 'S-Head Remote Head',
-        desc: 'Präziser Kamerakopf für unseren Kranarm, maximal detailliert und stabilisiert für komplexe Shots.',
-        descEn: 'Precise remote head for our crane arm, highly detailed and stabilized for complex shots.',
-        color: '#fbbf24',
-        image: '../assets/images/s-head.png'
+        image: '/assets/images/st50/st50-7.jpg'
       },
       {
         id: 'leistungen',
@@ -894,7 +903,7 @@
         desc: 'Wir vermieten nicht nur den Kran – wir betreiben ihn auch selbst. Von Transport & Logistik über Sicherheitsplanung bis hin zu präzisen Operators vor Ort.',
         descEn: 'We don’t just rent the crane – we operate it ourselves. From transport & logistics to safety planning and highly skilled operators on-set.',
         color: '#d97706',
-        image: '../assets/images/st50/st50-6.jpg'
+        image: '/assets/images/st50/st50-6.jpg'
       },
       {
         id: 'ueberuns',
@@ -909,7 +918,7 @@
         desc: 'Erfahrene Operators und Key Grips, die mit Präzision und Leidenschaft atemberaubende Bildbewegungen für Kinofilme, TV-Werbungen und Events realisieren.',
         descEn: 'Experienced operators and key grips executing breathtaking camera movements with precision and passion for cinema, commercials, and live events.',
         color: '#fbbf24',
-        image: '../assets/images/st50/st50-10.jpg'
+        image: '/assets/images/evolution_operator.png'
       },
       {
         id: 'kontakt',
@@ -924,7 +933,7 @@
         desc: 'Haben Sie Fragen zur Durchführbarkeit, Preisen oder logistischen Details? Kontaktieren Sie unser Wiener Büro für ein unverbindliches Angebot.',
         descEn: 'Have questions regarding feasibility, pricing, or logistical logistics? Contact our Vienna office for a custom, no-obligation quote.',
         color: '#e5c500',
-        image: '../assets/images/cafebar.png'
+        image: '/assets/images/cafebar.png'
       }
     ];
 
@@ -945,7 +954,7 @@
       btn.innerHTML = `
         <span class="flex items-center gap-2">
           <span class="text-gold-500 font-bold">${idx + 1}.</span>
-          <span data-de="${target.label}" data-en="${target.labelEn}">${target.label}</span>
+          <span data-de="${target.label}" data-en="${target.labelEn}" data-fr="${target.labelEn}" data-cs="${target.labelEn}" data-fr="${target.labelEn}" data-cs="${target.labelEn}">${target.label}</span>
         </span>
         <span class="text-[9px] text-gray-500 mono-font">${Math.abs(Math.round(target.angle * 180 / Math.PI))}° / ${Math.round(target.distance / 10)}m</span>
       `;
@@ -957,14 +966,16 @@
     // Canvas & Crane Physics Engine
     // ═════════════════════════════════════════════════════════════════════════
     const canvas = document.getElementById('craneCanvas');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas ? canvas.getContext('2d') : null;
 
     // Simulation resolution
     const simWidth = 1000;
     const simHeight = 600;
 
-    canvas.width = simWidth;
-    canvas.height = simHeight;
+    if (canvas) {
+      canvas.width = simWidth;
+      canvas.height = simHeight;
+    }
 
     // Crane Dimensions & Base placement
     const baseX = simWidth / 2;
@@ -1006,7 +1017,7 @@
     let manualJoyRightY = 0;
     let manualJoyCamX = 0;
     let manualJoyCamY = 0;
-    let manualPitch = 0.0; // in radians, range -30° to +50°
+    let manualPitch = -5 * Math.PI / 180; // in radians, start at +5° elevation
     let manualCamPan = 0.0;  // in radians
     let manualCamTilt = 0.0; // in radians
     let manualCamRoll = 0.0; // in radians
@@ -1017,7 +1028,7 @@
     let viewMode = '2d'; // '2d' or '3d'
     let view3DMode = 'studio'; // 'studio' or 'krancam'
     let is3dInit = false;
-    let scene3d, camera3d, renderer3d, controls3d, craneViewCamera, renderer3dKranCam, panoMesh, earthGlobe;
+    let scene3d, camera3d, renderer3d, controls3d, craneViewCamera, renderer3dKranCam, kranCamContainer, panoMesh, earthGlobe;
     let crane3dTurret, crane3dPivot, crane3dSec2, crane3dSec3, crane3dSec4, crane3dCamera, crane3dHanger, crane3dFork;
     let target3dMeshes = [];
     let target3dPaths = [];
@@ -1029,7 +1040,7 @@
 
     // 3D Crane kinematics state (Supertechno 50+ Specifications ab SimonRecker.de)
     let crane3dYaw = 0.0;
-    let crane3dPitch = 0.0;
+    let crane3dPitch = -5 * Math.PI / 180;
     let crane3dLen = 3.47; // retracted (3.47m ab Drehpunkt)
     const min3dLen = 3.47;  // retracted nose-to-pivot
     const max3dLen = 14.77; // extended nose-to-pivot
@@ -1040,19 +1051,20 @@
     let currentTz = -5.0;
     
     // 3D Column lift state (Supertechno 50+ column vertical travel)
-    let targetColumnHeight = 1.54;
-    let currentColumnHeight = 1.54;
+    let targetColumnHeight = 2.20;
+    let currentColumnHeight = 2.20;
     let standBase, standCyl1, standCyl2;
 
-    // Utility function to get the actual floor Y height of the curved cyclorama dome
+    // Utility function: Crane is on flat level surface (Y = 0)
     function getFloorY(x, z) {
-      const r2 = x*x + z*z;
-      if (r2 >= 6400) return -80;
-      return Math.sqrt(6400 - r2) - 80;
+      return 0.0;
     }
 
     function updateColumnHeight(val) {
       targetColumnHeight = parseFloat(val);
+      if (targetColumnHeight < 1.0) targetColumnHeight = 1.0;
+      if (targetColumnHeight > 3.63) targetColumnHeight = 3.63;
+
       const readout = document.getElementById('columnHeightReadout');
       if (readout) {
         readout.innerText = targetColumnHeight.toFixed(2) + ' m';
@@ -1065,36 +1077,23 @@
 
     function updateArmPitch(val) {
       const valFloat = parseFloat(val);
-      let pitchRad = valFloat * Math.PI / 180;
+      // Invert sign per user request (+ tilts down, - tilts up)
+      let pitchRad = -valFloat * Math.PI / 180;
 
-      // Calculate dynamic limits to prevent floor collision on the curved cyclorama
       const L_meters = 3.47 + ((currentLength - L_min) / (L_max - L_min)) * (14.77 - 3.47);
-      const columnHeight = targetColumnHeight;
-      const craneYaw = -(currentAngle + Math.PI / 2);
-      
-      const frontX = L_meters * Math.sin(craneYaw);
-      const frontZ = 13.77 - L_meters * Math.cos(craneYaw);
-      const floorY_front = getFloorY(frontX, frontZ);
-
-      const rearX = -3.66 * Math.sin(craneYaw);
-      const rearZ = 13.77 + 3.66 * Math.cos(craneYaw);
-      const floorY_rear = getFloorY(rearX, rearZ);
-
-      const minSinPitch = (floorY_front + 1.15 - (columnHeight + 0.4)) / L_meters;
-      const minPitchRad = Math.max(-57 * Math.PI / 180, Math.asin(Math.max(-1.0, Math.min(1.0, minSinPitch))));
-
-      const maxSinPitch = (columnHeight + 0.4 - floorY_rear - 0.05) / 3.66;
-      const maxPitchRad = Math.min(60 * Math.PI / 180, Math.asin(Math.max(-1.0, Math.min(1.0, maxSinPitch))));
+      // Unconditional pitch limits: -3° (left limit) to +50° (right limit), 100% independent of column lift or telescope extension
+      const minPitchRad = -50 * Math.PI / 180; // +50° display limit (slider right)
+      const maxPitchRad = 3 * Math.PI / 180;   // -3° display limit (slider left)
 
       if (pitchRad < minPitchRad) pitchRad = minPitchRad;
       if (pitchRad > maxPitchRad) pitchRad = maxPitchRad;
 
       manualPitch = pitchRad;
-      const pitchDeg = Math.round(pitchRad * 180 / Math.PI);
+      const pitchDeg = -Math.round(pitchRad * 180 / Math.PI);
 
       const readout = document.getElementById('armPitchReadout');
       if (readout) {
-        readout.innerText = pitchDeg + '°';
+        readout.innerText = (pitchDeg > 0 ? '+' : '') + pitchDeg + '°';
       }
       const slider = document.getElementById('armPitchSlider');
       if (slider && parseInt(slider.value) !== pitchDeg) {
@@ -1105,20 +1104,8 @@
     function updateTelescopeLength(val) {
       const valFloat = parseFloat(val);
       let L_meters = valFloat;
-      const columnHeight = targetColumnHeight;
 
-      if (manualPitch < 0) {
-        const craneYaw = -(currentAngle + Math.PI / 2);
-        const frontX = L_meters * Math.sin(craneYaw);
-        const frontZ = 13.77 - L_meters * Math.cos(craneYaw);
-        const floorY_front = getFloorY(frontX, frontZ);
-        const maxSafeL = (floorY_front + 1.15 - (columnHeight + 0.4)) / Math.sin(manualPitch);
-        if (L_meters > maxSafeL) {
-          L_meters = maxSafeL;
-        }
-      }
-
-      // Clamp to mechanical limits
+      // Clamp strictly to mechanical limits (3.47m min to 14.77m max)
       if (L_meters < 3.47) L_meters = 3.47;
       if (L_meters > 14.77) L_meters = 14.77;
 
@@ -1223,64 +1210,78 @@
       const joyAngleEl = document.getElementById('joyAngle');
       if (joyAngleEl) {
         const curDeg = Math.round(currentAngle * 180 / Math.PI);
-        joyAngleEl.textContent = curDeg + '°';
+        const text = curDeg + '°';
+        if (joyAngleEl.textContent !== text) joyAngleEl.textContent = text;
       }
 
-      // 2. Neigung Pitch
+      // 2. Neigung Pitch (+ tilts down, - tilts up)
       const joyPitchReadout = document.getElementById('joyPitchReadout');
       if (joyPitchReadout) {
         const pitchVal = (controlMode === 'auto' && typeof crane3dPitch !== 'undefined') ? crane3dPitch : manualPitch;
-        const pitchDeg = Math.round(pitchVal * 180 / Math.PI);
-        joyPitchReadout.textContent = pitchDeg + '°';
+        const pitchDeg = -Math.round(pitchVal * 180 / Math.PI);
+        const text = (pitchDeg > 0 ? '+' : '') + pitchDeg + '°';
+        if (joyPitchReadout.textContent !== text) joyPitchReadout.textContent = text;
       }
 
       // 3. Auszug length
       const joyExtendEl = document.getElementById('joyExtend');
       if (joyExtendEl) {
         const L_meters = 3.47 + ((currentLength - L_min) / (L_max - L_min)) * (14.77 - 3.47);
-        joyExtendEl.textContent = L_meters.toFixed(2) + ' m';
+        const text = L_meters.toFixed(2) + ' m';
+        if (joyExtendEl.textContent !== text) joyExtendEl.textContent = text;
       }
 
       // 4. Säule Height
       const joyLiftColReadout = document.getElementById('joyLiftColReadout');
       if (joyLiftColReadout) {
         const colVal = (controlMode === 'auto' && typeof currentColumnHeight !== 'undefined') ? currentColumnHeight : targetColumnHeight;
-        joyLiftColReadout.textContent = colVal.toFixed(2) + ' m';
+        const text = colVal.toFixed(2) + ' m';
+        if (joyLiftColReadout.textContent !== text) joyLiftColReadout.textContent = text;
       }
 
       // 5. Camera Roll
       const joyCamRollEl = document.getElementById('joyCamRoll');
       if (joyCamRollEl) {
         const rollDeg = Math.round(manualCamRoll * 180 / Math.PI);
-        joyCamRollEl.textContent = rollDeg + '°';
+        const text = rollDeg + '°';
+        if (joyCamRollEl.textContent !== text) joyCamRollEl.textContent = text;
       }
 
       // 6. Camera Height
       const joyCamHeightEl = document.getElementById('joyCamHeight');
       if (joyCamHeightEl) {
         const currentHeight = (typeof currentCamWorldPos !== 'undefined') ? currentCamWorldPos.y : 2.50;
-        joyCamHeightEl.textContent = currentHeight.toFixed(2) + ' m';
+        const text = currentHeight.toFixed(2) + ' m';
+        if (joyCamHeightEl.textContent !== text) joyCamHeightEl.textContent = text;
       }
     }
 
     function adjustJoystickPosition() {
       const joyArea = document.getElementById('manualControlsArea');
       const joyContainer = document.getElementById('joystickConsoleContainer');
-      const container3d = document.getElementById('canvas3dContainer');
       const lockOverlay = document.getElementById('joystickLockOverlay');
-      if (!joyArea || !joyContainer || !container3d) return;
+      if (!joyArea || !joyContainer) return;
 
-      const isFullscreen = !!document.fullscreenElement;
+      const fsElem = document.fullscreenElement;
 
-      if (isFullscreen && document.fullscreenElement === container3d) {
-        container3d.appendChild(joyArea);
-        joyArea.className = 'absolute bottom-4 left-4 z-30 hud-box p-4 bg-navy-950/85 border border-white/10 rounded-lg pointer-events-auto select-none flex flex-col items-center gap-3';
-        joyArea.style.transform = 'scale(0.6)';
-        joyArea.style.transformOrigin = 'bottom left';
+      if (fsElem) {
+        // Append inside active fullscreen container with fixed screen-bottom anchoring
+        fsElem.appendChild(joyArea);
+        joyArea.className = 'fixed bottom-6 left-1/2 z-[999999] hud-box p-3 bg-navy-950/95 border border-gold-500/40 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.95)] backdrop-blur-md pointer-events-auto select-none flex flex-col items-center gap-2 w-auto max-w-lg';
+        joyArea.style.position = 'fixed';
+        joyArea.style.bottom = '24px';
+        joyArea.style.left = '50%';
+        joyArea.style.transform = 'translateX(-50%) scale(0.65)';
+        joyArea.style.transformOrigin = 'bottom center';
+        joyArea.style.zIndex = '999999';
       } else {
         joyContainer.appendChild(joyArea);
         joyArea.className = 'hud-box p-4 md:p-5 rounded-xl bg-navy-900/90 border border-gold-500/20 shadow-2xl relative overflow-hidden flex flex-col items-center gap-3 w-full h-full justify-center';
+        joyArea.style.position = 'relative';
+        joyArea.style.bottom = 'auto';
+        joyArea.style.left = 'auto';
         joyArea.style.transform = 'none';
+        joyArea.style.zIndex = 'auto';
       }
 
       if (controlMode === 'auto') {
@@ -1296,7 +1297,30 @@
     }
 
     function toggle3dFullscreen() {
-      const container = document.getElementById('canvas3dContainer');
+      const container = document.getElementById('studioViewportWrapper') || document.getElementById('canvas3dContainer');
+      if (!container) return;
+      if (!document.fullscreenElement) {
+        if (container.requestFullscreen) {
+          container.requestFullscreen();
+        } else if (container.webkitRequestFullscreen) {
+          container.webkitRequestFullscreen();
+        } else if (container.msRequestFullscreen) {
+          container.msRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      }
+    }
+
+    function toggleKranCamFullscreen() {
+      const container = document.getElementById('kranCamViewportWrapper') || document.getElementById('canvas3dKranCamContainer');
+      if (!container) return;
       if (!document.fullscreenElement) {
         if (container.requestFullscreen) {
           container.requestFullscreen();
@@ -1317,18 +1341,27 @@
     }
 
     document.addEventListener('fullscreenchange', () => {
-      const btn = document.getElementById('fullscreen3dBtn');
+      const btn3dText = document.getElementById('fullscreen3dBtnText');
+      const kranCamBtnText = document.getElementById('fullscreenKranCamBtnText');
       const pipKranCam = document.getElementById('pipKranCam');
       const originalKranCamContainer = document.getElementById('canvas3dKranCamContainer');
+      const kcWrapper = document.getElementById('kranCamViewportWrapper') || originalKranCamContainer;
+      const studioWrapper = document.getElementById('studioViewportWrapper') || document.getElementById('canvas3dContainer');
       
       if (document.fullscreenElement) {
-        if (btn) btn.innerHTML = '<span>🔙</span> Schließen';
-        if (pipKranCam && typeof renderer3dKranCam !== 'undefined') {
-           pipKranCam.classList.remove('hidden');
-           pipKranCam.appendChild(renderer3dKranCam.domElement);
+        if (document.fullscreenElement === studioWrapper || document.fullscreenElement === document.getElementById('canvas3dContainer')) {
+          if (btn3dText) btn3dText.innerText = 'Beenden';
+          if (pipKranCam && typeof renderer3dKranCam !== 'undefined') {
+             pipKranCam.classList.remove('hidden');
+             pipKranCam.appendChild(renderer3dKranCam.domElement);
+          }
+        }
+        if (document.fullscreenElement === kcWrapper) {
+          if (kranCamBtnText) kranCamBtnText.innerText = 'Beenden';
         }
       } else {
-        if (btn) btn.innerHTML = '<span>🖥️</span> Vollbild';
+        if (btn3dText) btn3dText.innerText = 'Vollbild';
+        if (kranCamBtnText) kranCamBtnText.innerText = 'Vollbild';
         if (pipKranCam && originalKranCamContainer && typeof renderer3dKranCam !== 'undefined') {
            pipKranCam.classList.add('hidden');
            originalKranCamContainer.appendChild(renderer3dKranCam.domElement);
@@ -1348,8 +1381,8 @@
         }
         if (renderer3dKranCam && craneViewCamera) {
           const pipKranCam = document.getElementById('pipKranCam');
-          const kranCamContainer = document.getElementById('canvas3dKranCamContainer');
-          let targetContainer = document.fullscreenElement && !pipKranCam.classList.contains('hidden') ? pipKranCam : kranCamContainer;
+          const targetKCContainer = document.getElementById('canvas3dKranCamContainer');
+          let targetContainer = (document.fullscreenElement && pipKranCam && !pipKranCam.classList.contains('hidden')) ? pipKranCam : targetKCContainer;
           if (targetContainer) {
             const rectKC = targetContainer.getBoundingClientRect();
             if (rectKC.width > 0 && rectKC.height > 0) {
@@ -1402,9 +1435,9 @@
       scene3d = new THREE.Scene();
       // scene3d.fog removed for clear panorama view
 
-      // 2. Perspective Camera
-      camera3d = new THREE.PerspectiveCamera(40, rect.width / rect.height, 0.1, 2000);
-      camera3d.position.set(0, 5.2, 13.5);
+      // 2. Perspective Camera (Diagonal high-angle POV showing full crane at all times)
+      camera3d = new THREE.PerspectiveCamera(45, rect.width / rect.height, 0.1, 2000);
+      camera3d.position.set(22, 18, 35);
 
       // 3. WebGL Renderer
       renderer3d = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -1415,27 +1448,36 @@
       container.appendChild(renderer3d.domElement);
 
       // 3.c WebGL Renderer for Kran-Cam
-      const kranCamContainer = document.getElementById('canvas3dKranCamContainer');
-      const rectKC = kranCamContainer.getBoundingClientRect();
-      renderer3dKranCam = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-      renderer3dKranCam.setSize(rectKC.width, rectKC.height);
-      renderer3dKranCam.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer3dKranCam.shadowMap.enabled = true;
-      renderer3dKranCam.shadowMap.type = THREE.PCFSoftShadowMap;
-      kranCamContainer.appendChild(renderer3dKranCam.domElement);
+      kranCamContainer = document.getElementById('canvas3dKranCamContainer');
+      if (kranCamContainer) {
+        const rectKC = kranCamContainer.getBoundingClientRect();
+        renderer3dKranCam = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer3dKranCam.setSize(rectKC.width, rectKC.height);
+        renderer3dKranCam.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer3dKranCam.shadowMap.enabled = true;
+        renderer3dKranCam.shadowMap.type = THREE.PCFSoftShadowMap;
+        kranCamContainer.appendChild(renderer3dKranCam.domElement);
+      }
 
-      // 3.b Load Panorama Skybox (Vienna Stephansplatz)
-      const panoTexture = new THREE.TextureLoader().load('../assets/images/stephansplatz_highres_far.png');
+      // 3.b Load Panorama Skybox (Vienna Stephansplatz Ultra-Level 8K Seamless 360 Panorama)
+      const panoTexture = new THREE.TextureLoader().load('/assets/images/stephansplatz_highres_far.png?v=level8k_v2');
       panoTexture.mapping = THREE.EquirectangularReflectionMapping;
+      panoTexture.wrapS = THREE.RepeatWrapping;
+      panoTexture.wrapT = THREE.ClampToEdgeWrapping;
+      panoTexture.minFilter = THREE.LinearFilter;
+      panoTexture.magFilter = THREE.LinearFilter;
+      if (THREE.SRGBColorSpace) panoTexture.colorSpace = THREE.SRGBColorSpace;
 
+      // Shift texture UV offset vertically (-0.06) so building entrance doors sit 100% flush on the world map floor
+      panoTexture.offset.y = -0.06;
       const panoGeom = new THREE.SphereGeometry(975, 64, 40);
       const panoMat = new THREE.MeshBasicMaterial({ 
         map: panoTexture, 
         side: THREE.BackSide 
       });
       panoMesh = new THREE.Mesh(panoGeom, panoMat);
-      panoMesh.rotation.y = -Math.PI / 4; 
-      panoMesh.position.set(0, -15, 13.77); // Center panorama at crane base
+      panoMesh.rotation.y = Math.PI * 0.85; // Rotate main plaza scene to face camera
+      panoMesh.position.set(0, 0, 13.77); // Centered at optical origin for 100% distortion-free 360 perspective
       scene3d.add(panoMesh);
       
       scene3d.environment = panoTexture;
@@ -1443,20 +1485,20 @@
       // Global function to change background
       window.changeEnvironment = function(bgName) {
         const textureLoader = new THREE.TextureLoader();
-        let imagePath = '../assets/images/stephansplatz_highres_far.png';
+        let imagePath = '/assets/images/stephansplatz_highres_far.png';
         let rotationY = -Math.PI / 4;
         let positionY = -15;
         
         if (bgName === 'venice') {
-          imagePath = '../assets/images/bg_venice.png';
+          imagePath = '/assets/images/bg_venice.png';
           rotationY = 0;
           positionY = 1.6;
         } else if (bgName === 'plzen') {
-          imagePath = '../assets/images/bg_plzen.png';
+          imagePath = '/assets/images/bg_plzen.png';
           rotationY = 0;
           positionY = 1.6;
         } else if (bgName === 'polyhaven') {
-          imagePath = '../assets/images/ph_factory.jpg';
+          imagePath = '/assets/images/ph_factory.jpg';
           rotationY = 0;
           positionY = 1.6;
         }
@@ -1497,10 +1539,10 @@
       controls3d = new THREE.OrbitControls(camera3d, renderer3d.domElement);
       controls3d.enableDamping = true;
       controls3d.dampingFactor = 0.05;
-      controls3d.maxPolarAngle = Math.PI / 2 - 0.04; // Constrain camera above floor level
-      controls3d.minDistance = 3.5;
-      controls3d.maxDistance = 20;
-      controls3d.target.set(0, 1.8, 0);
+      controls3d.maxPolarAngle = Math.PI / 2 - 0.02; // Constrain camera above floor level
+      controls3d.minDistance = 5.0;
+      controls3d.maxDistance = 100;
+      controls3d.target.set(0, 3.5, 9.0);
 
       // 5. Outdoor Lighting System (Daylight Setup)
       const ambient = new THREE.AmbientLight(0xffffff, 0.85);
@@ -1538,8 +1580,24 @@
       earthGlobe.rotation.x = -Math.PI / 2; // Rotate flat
       earthGlobe.position.set(0, 0, 0); // Exactly at y = 0
       earthGlobe.receiveShadow = true;
+      earthGlobe.visible = true; // Render floor visually per request ("Boden-Grafik einblenden")
       earthGlobe.userData.mapMat = floorMat; // Save material for toggling
       scene3d.add(earthGlobe);
+
+      // Technogrips Official Yellow Blueprint Robotic Arm Emblem Decal on Floor
+      const logoTexture = textureLoader.load('/assets/images/logo_transparent.png?v=yellow_blueprint_v3');
+      const logoMat = new THREE.MeshBasicMaterial({
+        map: logoTexture,
+        transparent: true,
+        opacity: 0.95,
+        depthWrite: false,
+        side: THREE.DoubleSide
+      });
+      const logoGeom = new THREE.PlaneGeometry(29.0, 29.0);
+      const logoMesh = new THREE.Mesh(logoGeom, logoMat);
+      logoMesh.rotation.x = -Math.PI / 2;
+      logoMesh.position.set(0, 0.02, 13.77); // Centered at crane base on floor
+      scene3d.add(logoMesh);
 
       // Overhead trusses / girders removed for clear view of panorama
 
@@ -1663,83 +1721,105 @@
 
 
       // 10. Rigging the Procedural 3D Supertechno Crane (Camera Robot)
+      // Crane Root Group scaled by 1.5x (+50% size per user request)
+      const crane3dRoot = new THREE.Group();
+      crane3dRoot.position.set(0, 0, 0);
+      crane3dRoot.scale.set(1.5, 1.5, 1.5);
+      scene3d.add(crane3dRoot);
+
       const matteBlackMat = new THREE.MeshStandardMaterial({ color: 0x16191e, roughness: 0.52, metalness: 0.68 });
       const chromeMat = new THREE.MeshStandardMaterial({ color: 0xdddddd, roughness: 0.12, metalness: 0.95 });
       const darkSteelMat = new THREE.MeshStandardMaterial({ color: 0x242830, roughness: 0.35, metalness: 0.88 });
 
-      // Track rails
-      const railGeom = new THREE.CylinderGeometry(0.025, 0.025, 14, 8);
-      const railL = new THREE.Mesh(railGeom, darkSteelMat);
-      railL.rotation.z = Math.PI / 2;
-      railL.position.set(0, 0.025, 12.77);
-      scene3d.add(railL);
-
-      const railR = railL.clone();
-      railR.position.set(0, 0.025, 14.77);
-      scene3d.add(railR);
-
-      // Wheeled chassis dolly (Supertechno 50+ Specs: 1.88m width x 2.45m length)
+      // Wheeled mobile chassis dolly (Supertechno 50+ Specs: 1.88m width x 2.45m length - No Track Rails)
       const chassis = new THREE.Mesh(new THREE.BoxGeometry(1.88, 0.15, 2.45), matteBlackMat);
       chassis.position.set(0, 0.2, 13.77); // Center crane at (0, 0, 13.77)
       chassis.castShadow = true;
       chassis.receiveShadow = true;
-      scene3d.add(chassis);
+      crane3dRoot.add(chassis);
 
-      // Wheels with chrome rims & center axle nuts (aligned with the rails at z = 12.77 and z = 14.77)
+      // Heavy-duty rubber wheels with chrome rims & axle nuts (resting directly on the floor plane)
       const wheelMat = new THREE.MeshStandardMaterial({ color: 0x0f1115, roughness: 0.82 });
-      for (let wx = -0.8; wx <= 0.8; wx += 1.6) {
-        for (let wz = 12.77; wz <= 14.77; wz += 2.0) {
+      for (let wx of [-0.88, 0.88]) {
+        for (let wz of [12.77, 14.77]) {
           // Black rubber tire
           const wheel = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.1, 16), wheelMat);
           wheel.rotation.x = Math.PI / 2;
           wheel.position.set(wx, 0.12, wz);
           wheel.castShadow = true;
           wheel.receiveShadow = true;
-          scene3d.add(wheel);
+          crane3dRoot.add(wheel);
 
           // Silver steel/chrome rim insert
           const rim = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 0.105, 12), chromeMat);
           rim.rotation.x = Math.PI / 2;
           rim.position.set(wx, 0.12, wz);
           rim.castShadow = true;
-          scene3d.add(rim);
+          crane3dRoot.add(rim);
 
           // Central axle nut
           const axleNut = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.018, 0.11, 8), darkSteelMat);
           axleNut.rotation.x = Math.PI / 2;
           axleNut.position.set(wx, 0.12, wz);
-          scene3d.add(axleNut);
+          crane3dRoot.add(axleNut);
         }
       }
 
-      // Heavy vertical hydraulic outrigger jacks for the Supertechno 50+
-      for (let jx of [-0.94, 0.94]) {
-        for (let jz of [12.55, 14.99]) {
-          const jackGroup = new THREE.Group();
-          jackGroup.position.set(jx, 0.2, jz);
+      // Extended realistic hydraulic outriggers with ground leveling pads (Ausgefahrene Stützen)
+      const outriggerCorners = [
+        { signX: -1, signZ: -1 },
+        { signX:  1, signZ: -1 },
+        { signX: -1, signZ:  1 },
+        { signX:  1, signZ:  1 }
+      ];
 
-          // Vertical outer jack sleeve
-          const sleeve = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.3, 12), matteBlackMat);
-          sleeve.position.set(0, 0.05, 0);
-          sleeve.castShadow = true;
-          sleeve.receiveShadow = true;
-          jackGroup.add(sleeve);
+      outriggerCorners.forEach(c => {
+        const jackGroup = new THREE.Group();
+        const startX = c.signX * 0.85;
+        const startZ = 13.77 + c.signZ * 1.1;
+        const tipX   = c.signX * 1.45;
+        const tipZ   = 13.77 + c.signZ * 1.65;
 
-          // Vertical chrome piston
-          const screw = new THREE.Mesh(new THREE.CylinderGeometry(0.038, 0.038, 0.32, 12), chromeMat);
-          screw.position.set(0, -0.06, 0);
-          screw.castShadow = true;
-          jackGroup.add(screw);
+        // 1. Horizontal telescoping extension beam extending out from chassis corner
+        const armLength = Math.hypot(tipX - startX, tipZ - startZ);
+        const armAngle = Math.atan2(tipX - startX, tipZ - startZ);
+        
+        const extBeam = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.12, armLength), matteBlackMat);
+        extBeam.position.set((startX + tipX) / 2, 0.2, (startZ + tipZ) / 2);
+        extBeam.rotation.y = armAngle;
+        extBeam.castShadow = true;
+        crane3dRoot.add(extBeam);
 
-          // Large flat foot pad at the bottom (just above the floor)
-          const pad = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 0.02, 12), darkSteelMat);
-          pad.position.set(0, -0.21, 0);
-          pad.castShadow = true;
-          jackGroup.add(pad);
+        // 2. Vertical outer hydraulic cylinder sleeve at the end of extension beam
+        jackGroup.position.set(tipX, 0.2, tipZ);
 
-          scene3d.add(jackGroup);
-        }
-      }
+        const sleeve = new THREE.Mesh(new THREE.CylinderGeometry(0.065, 0.065, 0.32, 16), matteBlackMat);
+        sleeve.position.set(0, 0.05, 0);
+        sleeve.castShadow = true;
+        sleeve.receiveShadow = true;
+        jackGroup.add(sleeve);
+
+        // 3. Vertical chrome hydraulic piston extending down to ground level
+        const screw = new THREE.Mesh(new THREE.CylinderGeometry(0.042, 0.042, 0.34, 16), chromeMat);
+        screw.position.set(0, -0.06, 0);
+        screw.castShadow = true;
+        jackGroup.add(screw);
+
+        // 4. Heavy octagonal steel leveling foot pad (Stützteller) resting flat on floor plane
+        const pad = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.16, 0.03, 16), darkSteelMat);
+        pad.position.set(0, -0.19, 0); // Touches y = 0.01 ground plane
+        pad.castShadow = true;
+        pad.receiveShadow = true;
+        jackGroup.add(pad);
+
+        // 5. Locking pin handle on top of outrigger jack
+        const handleRing = new THREE.Mesh(new THREE.TorusGeometry(0.04, 0.008, 8, 16), chromeMat);
+        handleRing.position.set(0, 0.22, 0);
+        handleRing.rotation.x = Math.PI / 2;
+        jackGroup.add(handleRing);
+
+        crane3dRoot.add(jackGroup);
+      });
 
       // Stand pedestal (Telescoping dynamic lift column for Supertechno 50+)
       // Base static outer column - massive square body
@@ -1756,7 +1836,7 @@
         rail.castShadow = true;
         standBase.add(rail);
       });
-      scene3d.add(standBase);
+      crane3dRoot.add(standBase);
 
       // Inner cylinder 1 (first stage) -> Now a massive inner square lift column
       const cylGeo = new THREE.BoxGeometry(0.56, 1.0, 0.56);
@@ -1771,14 +1851,14 @@
       const tL = new THREE.Mesh(trackGeo, darkSteelMat);
       standCyl1.add(tL); // Overlaps sides
       
-      scene3d.add(standCyl1);
+      crane3dRoot.add(standCyl1);
 
       // Inner cylinder 2 (removed to prevent subdivided look)
 
       // Turret base (Y-axis panning group)
       crane3dTurret = new THREE.Group();
       crane3dTurret.position.set(0, 1.5, 13.77); // 1.5m base height
-      scene3d.add(crane3dTurret);
+      crane3dRoot.add(crane3dTurret);
 
       // Chrome turret shaft connector extending downwards (eliminates sliding gaps)
       const turretShaft = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.8, 16), chromeMat);
@@ -2393,11 +2473,11 @@
       crane3dCamera.position.set(0, -0.58, 0);
       crane3dFork.add(crane3dCamera);
 
-      // Create crane view camera (virtual, attached inside the real camera body)
+      // Create crane view camera (virtual, attached cleanly in front of lens/mattebox)
       const container3d = document.getElementById('canvas3dContainer');
       const rect3d = container3d.getBoundingClientRect();
       craneViewCamera = new THREE.PerspectiveCamera(50, rect3d.width / rect3d.height, 0.1, 2000);
-      craneViewCamera.position.set(0, 0, -0.38); // placed at front lens
+      craneViewCamera.position.set(0, -0.10, -0.60); // Positioned in front of mattebox so no crane arm geometry clips into frame
       crane3dCamera.add(craneViewCamera);
 
       // ARRI Alexa LF specific materials
@@ -3130,7 +3210,7 @@
         return group;
       }
 
-      const allowed3dIds = ['home', 'st50', 'shead', 'leistungen', 'ueberuns', 'kontakt'];
+      const allowed3dIds = [];
       let signIdx = 0;
       menuTargets.forEach((target) => {
         if (!allowed3dIds.includes(target.id)) return;
@@ -3292,12 +3372,12 @@
           ratio = Math.max(0, Math.min(1, ratio));
           const newLength = L_min + ratio * (L_max - L_min);
           
-          // 2. Calculate Swing
+          // 2. Calculate Swing (Continuous delta without wrapping jumps)
           let targetYaw = Math.atan2(V.x, V.z);
-          let newAngle = -targetYaw - Math.PI / 2;
-          // Normalize to [-PI, PI]
-          while (newAngle <= -Math.PI) newAngle += 2 * Math.PI;
-          while (newAngle > Math.PI) newAngle -= 2 * Math.PI;
+          let rawAngle = -targetYaw - Math.PI / 2;
+          let diff = rawAngle - currentAngle;
+          diff = Math.atan2(Math.sin(diff), Math.cos(diff));
+          let newAngle = currentAngle + diff;
           
           // 3. Calculate Tilt
           const newPitchRad = Math.asin(Math.max(-1.0, Math.min(1.0, V.y / dist)));
@@ -3356,8 +3436,8 @@
         }
         if (renderer3dKranCam && craneViewCamera) {
           const pipKranCam = document.getElementById('pipKranCam');
-          const kranCamContainer = document.getElementById('canvas3dKranCamContainer');
-          let targetContainer = document.fullscreenElement && !pipKranCam.classList.contains('hidden') ? pipKranCam : kranCamContainer;
+          const targetKCContainer = document.getElementById('canvas3dKranCamContainer');
+          let targetContainer = (document.fullscreenElement && pipKranCam && !pipKranCam.classList.contains('hidden')) ? pipKranCam : targetKCContainer;
           if (targetContainer) {
             const crectKC = targetContainer.getBoundingClientRect();
             if (crectKC.width > 0 && crectKC.height > 0) {
@@ -3483,9 +3563,7 @@
       if (activeTarget) {
         ty = activeTarget.y3d + 0.9; // Point camera at the center of the picture card
       } else {
-        const angleDiffFromCenter = Math.abs(currentAngle - (-Math.PI / 2));
-        const normalizedDiff = Math.min(1.0, angleDiffFromCenter / (50 * Math.PI / 180));
-        ty = 6.2 - normalizedDiff * 1.7;
+        ty = 6.2; // Constant neutral target height during continuous 360-degree swiveling
       }
 
       // ── AUTOPILOT VERTICAL SOLVER (Supertechno 50+ Blueprint Math) ──
@@ -3524,43 +3602,41 @@
 
       let targetPitch;
       if (controlMode === 'auto') {
-        const targetY = activeTarget ? (activeTarget.y3d + 0.9) : ty;
-        const H = targetY - (currentColumnHeight + 0.4) + 0.32;
-        
-        // Solve for pitch using inverse sine: sin(pitch) = H / crane3dLen
-        // Clamp to [-0.999, 0.999] to prevent domain errors
-        const ratioForAsin = Math.max(-0.999, Math.min(0.999, H / Math.max(0.1, crane3dLen)));
-        targetPitch = Math.asin(ratioForAsin);
+        if (activeTarget) {
+          const targetY = activeTarget.y3d + 0.9;
+          const H = targetY - (currentColumnHeight + 0.4) + 0.32;
+          
+          // Solve for pitch using inverse sine: sin(pitch) = H / crane3dLen
+          // Clamp to [-0.999, 0.999] to prevent domain errors
+          const ratioForAsin = Math.max(-0.999, Math.min(0.999, H / Math.max(0.1, crane3dLen)));
+          targetPitch = Math.asin(ratioForAsin);
+        } else {
+          // Default initial/neutral elevation is 5° higher (+5°)
+          targetPitch = -5 * Math.PI / 180;
+        }
       } else {
         targetPitch = manualPitch;
       }
 
-      // Clamp targetPitch to dynamic floor collision limits (curved cyclorama bounds)
-      const frontX = targetLen3d * Math.sin(crane3dYaw);
-      const frontZ = 13.77 - targetLen3d * Math.cos(crane3dYaw);
-      const floorY_front = getFloorY(frontX, frontZ);
-
-      const rearX = -3.66 * Math.sin(crane3dYaw);
-      const rearZ = 13.77 + 3.66 * Math.cos(crane3dYaw);
-      const floorY_rear = getFloorY(rearX, rearZ);
-
-      const minSinPitch3d = (floorY_front + 1.15 - (currentColumnHeight + 0.4)) / targetLen3d;
-      const minPitchRad3d = Math.max(-57 * Math.PI / 180, Math.asin(Math.max(-1.0, Math.min(1.0, minSinPitch3d))));
-
-      const maxSinPitch3d = (currentColumnHeight + 0.4 - floorY_rear - 0.05) / 3.66;
-      const maxPitchRad3d = Math.min(60 * Math.PI / 180, Math.asin(Math.max(-1.0, Math.min(1.0, maxSinPitch3d))));
+      // Unconditional pitch limits for 3D model: -3° (left limit) to +50° (right limit)
+      const minPitchRad3d = -50 * Math.PI / 180; // +50° display limit (slider right)
+      const maxPitchRad3d = 3 * Math.PI / 180;   // -3° display limit (slider left)
 
       if (targetPitch < minPitchRad3d) targetPitch = minPitchRad3d;
       if (targetPitch > maxPitchRad3d) targetPitch = maxPitchRad3d;
 
-      // Ease angles smoothly
-      let yawDiff = targetYaw - crane3dYaw;
-      while (yawDiff < -Math.PI) yawDiff += Math.PI * 2;
-      while (yawDiff > Math.PI) yawDiff -= Math.PI * 2;
-      crane3dYaw += yawDiff * 0.08 * dt;
-
-      crane3dPitch += (targetPitch - crane3dPitch) * 0.08 * dt;
-      crane3dLen += (targetLen3d - crane3dLen) * 0.08 * dt;
+      // Smooth 3D angles update (direct 1:1 mapping in manual mode to prevent wrapping jumps)
+      if (controlMode === 'manual') {
+        crane3dYaw = targetYaw;
+        crane3dPitch = targetPitch;
+        crane3dLen = targetLen3d;
+      } else {
+        let yawDiff = targetYaw - crane3dYaw;
+        yawDiff = Math.atan2(Math.sin(yawDiff), Math.cos(yawDiff));
+        crane3dYaw += yawDiff * 0.08 * dt;
+        crane3dPitch += (targetPitch - crane3dPitch) * 0.08 * dt;
+        crane3dLen += (targetLen3d - crane3dLen) * 0.08 * dt;
+      }
 
       // Update 3D parts orientations
       crane3dTurret.rotation.y = crane3dYaw;
@@ -3576,7 +3652,7 @@
       crane3dHanger.rotation.x = crane3dPitch; // Keep hanger vertical relative to the world
 
       let tx = 0, tz = -5;
-      if (activeTarget) {
+      if (controlMode === 'auto' && activeTarget) {
         tx = activeTarget.x3d;
         tz = activeTarget.z3d;
       } else {
@@ -3585,16 +3661,9 @@
         tz = 13.77 - Math.cos(crane3dYaw) * 10;
       }
 
-      // In autopilot mode, the camera must always frame the respective menu button (no lag/interpolation to keep it perfectly centered)
-      if (controlMode === 'auto' && activeTarget) {
-        currentTx = tx;
-        currentTy = ty;
-        currentTz = tz;
-      } else {
-        currentTx = tx;
-        currentTy = ty;
-        currentTz = tz;
-      }
+      currentTx = tx;
+      currentTy = ty;
+      currentTz = tz;
 
       const cameraWorldPos = new THREE.Vector3();
       crane3dCamera.getWorldPosition(cameraWorldPos);
@@ -3608,43 +3677,33 @@
       let worldCamPan = Math.atan2(cdx, -cdz);
 
       // Apply local rotations to remote head joints
-      if (controlMode === 'auto' || !isCameraManuallyControlled) {
+      if (controlMode === 'auto') {
         let forkYawDiff = worldCamPan - crane3dYaw;
-        while (forkYawDiff < -Math.PI) forkYawDiff += Math.PI * 2;
-        while (forkYawDiff > Math.PI) forkYawDiff -= Math.PI * 2;
+        forkYawDiff = Math.atan2(Math.sin(forkYawDiff), Math.cos(forkYawDiff));
         crane3dFork.rotation.y = forkYawDiff;
         crane3dCamera.rotation.x = worldCamTilt;
-        
-        if (!isCameraManuallyControlled) {
-          crane3dCamera.rotation.z = manualCamRoll; // Let roll slider work
-        } else {
-          crane3dCamera.rotation.z = 0;
-        }
+        crane3dCamera.rotation.z = 0;
 
         // Smooth handover: inherit absolute values from autopilot/auto-tracking
         manualCamPan = worldCamPan;
         manualCamTilt = worldCamTilt;
+        manualCamRoll = 0.0;
         
-        if (controlMode === 'auto') {
-          manualCamRoll = 0.0;
-          // Synchronize manual roll slider back to 0
-          const rollSlider = document.getElementById('camRollSlider');
-          if (rollSlider) {
-            rollSlider.value = 0;
-          }
-          const rollReadout = document.getElementById('joyCamRollReadout');
-          if (rollReadout) {
-            rollReadout.innerText = '0°';
-          }
-        }
+        const rollSlider = document.getElementById('camRollSlider');
+        if (rollSlider) rollSlider.value = 0;
+        const rollReadout = document.getElementById('joyCamRollReadout');
+        if (rollReadout) rollReadout.innerText = '0°';
       } else {
-        // Manual mode with C-Stick override active
-        let forkYawDiff = manualCamPan - crane3dYaw;
-        while (forkYawDiff < -Math.PI) forkYawDiff += Math.PI * 2;
-        while (forkYawDiff > Math.PI) forkYawDiff -= Math.PI * 2;
-        crane3dFork.rotation.y = forkYawDiff;
-        crane3dCamera.rotation.x = manualCamTilt;
-        crane3dCamera.rotation.z = manualCamRoll;
+        // Pure 1:1 manual mode: camera head rotates smoothly with crane arm (no atan2 wrapping jumps)
+        if (isCameraManuallyControlled) {
+          crane3dFork.rotation.y = manualCamPan;
+          crane3dCamera.rotation.x = manualCamTilt;
+          crane3dCamera.rotation.z = manualCamRoll;
+        } else {
+          crane3dFork.rotation.y = 0;
+          crane3dCamera.rotation.x = 0;
+          crane3dCamera.rotation.z = manualCamRoll;
+        }
       }
 
       // Smoothly zoom the 3D perspective camera slightly as well
@@ -3858,7 +3917,7 @@
 
         const cardImage = document.getElementById('cardImage');
         if (cardImage) {
-          cardImage.src = '../assets/images/hero_crane.png';
+          cardImage.src = '/assets/images/hero_crane.png';
         }
 
         // Update Kran-Cam HUD Card
@@ -3872,7 +3931,7 @@
         document.getElementById('kcCardLinkText').textContent = lang === 'de' ? 'Öffnen' : 'Open';
         const kcCardImage = document.getElementById('kcCardImage');
         if (kcCardImage) {
-          kcCardImage.src = '../assets/images/hero_crane.png';
+          kcCardImage.src = '/assets/images/hero_crane.png';
         }
         
         updateJoystickLabels();
@@ -4067,10 +4126,9 @@
 
       if (controlMode === 'auto') {
         // --- AUTOPILOT MODE ---
-        // Angle Interpolation (handling wrapping at -PI / PI)
+        // Angle Interpolation (continuous without wrapping jumps)
         let angleDiff = targetAngle - currentAngle;
-        while (angleDiff < -Math.PI) angleDiff += Math.PI * 2;
-        while (angleDiff > Math.PI) angleDiff -= Math.PI * 2;
+        angleDiff = Math.atan2(Math.sin(angleDiff), Math.cos(angleDiff));
 
         // Apply smooth spring-like acceleration
         rotationSpeed = angleDiff * 0.08;
@@ -4120,8 +4178,8 @@
 
         if (keysPressed['ArrowLeft'] || keysPressed['a'] || keysPressed['A']) keyboardPan = -1;
         if (keysPressed['ArrowRight'] || keysPressed['d'] || keysPressed['D']) keyboardPan = 1;
-        if (keysPressed['ArrowUp'] || keysPressed['w'] || keysPressed['W']) keyboardTilt = 1; // UP = HEBEN
-        if (keysPressed['ArrowDown'] || keysPressed['s'] || keysPressed['S']) keyboardTilt = -1; // DOWN = SENKEN
+        if (keysPressed['ArrowUp'] || keysPressed['w'] || keysPressed['W']) keyboardTilt = -1; // UP = HEBEN
+        if (keysPressed['ArrowDown'] || keysPressed['s'] || keysPressed['S']) keyboardTilt = 1; // DOWN = SENKEN
         if (keysPressed['q'] || keysPressed['Q'] || keysPressed['PageUp']) keyboardExtend = 1;
         if (keysPressed['e'] || keysPressed['E'] || keysPressed['PageDown']) keyboardExtend = -1;
         if (keysPressed['r'] || keysPressed['R']) keyboardColumn = 1;
@@ -4138,31 +4196,17 @@
         }
 
         // 1. Panning physics: Left Joystick X / Keyboard
-        let targetPanValue = -manualJoyLeftX; // Inverted pan
+        let targetPanValue = manualJoyLeftX;
         if (keyboardPan !== 0) {
           targetPanValue = keyboardPan;
         }
         rotationSpeed += (targetPanValue * 0.003 - rotationSpeed * 0.1) * dt;
         currentAngle += rotationSpeed * dt;
         
-        // Clamp angle to 180 degrees range centered around -Math.PI / 2 (-90°)
-        const angleCenter = -Math.PI / 2;
-        let angleDiff = currentAngle - angleCenter;
-        while (angleDiff < -Math.PI) angleDiff += Math.PI * 2;
-        while (angleDiff > Math.PI) angleDiff -= Math.PI * 2;
-        
-        const limitRad = 90 * Math.PI / 180;
-        if (angleDiff < -limitRad) {
-          angleDiff = -limitRad;
-          rotationSpeed = 0;
-        } else if (angleDiff > limitRad) {
-          angleDiff = limitRad;
-          rotationSpeed = 0;
-        }
-        currentAngle = angleCenter + angleDiff;
+        // Continuous 360-degree rotation without any angle limits or clamping jumps
 
-        // 2. Pitch/Tilt physics: Left Joystick Y / Keyboard
-        let targetPitchValue = manualJoyLeftY; // Inverted tilt
+        // 2. Pitch/Tilt physics: Left Joystick Y / Keyboard (UP = HEBEN, DOWN = SENKEN)
+        let targetPitchValue = manualJoyLeftY;
         if (keyboardTilt !== 0) {
           targetPitchValue = keyboardTilt;
         }
@@ -4195,11 +4239,9 @@
         const rearZ = 13.77 + 3.66 * Math.cos(craneYaw);
         const floorY_rear = getFloorY(rearX, rearZ);
 
-        const minSinPitch = (floorY_front + 1.15 - (columnHeight + 0.4)) / L_meters;
-        const minPitchRad = Math.max(-57 * Math.PI / 180, Math.asin(Math.max(-1.0, Math.min(1.0, minSinPitch))));
-
-        const maxSinPitch = (columnHeight + 0.4 - floorY_rear - 0.05) / 3.66;
-        const maxPitchRad = Math.min(60 * Math.PI / 180, Math.asin(Math.max(-1.0, Math.min(1.0, maxSinPitch))));
+        // Unconditional pitch limits: -3° (left limit) to +50° (right limit), 100% independent of column lift or telescope extension
+        const minPitchRad = -50 * Math.PI / 180; // +50° display limit (slider right)
+        const maxPitchRad = 3 * Math.PI / 180;   // -3° display limit (slider left)
 
         if (manualPitch < minPitchRad) {
           manualPitch = minPitchRad;
@@ -4209,8 +4251,17 @@
           pitchSpeed = 0;
         }
 
-        // Sync to UI slider
-        updateArmPitch(Math.round(manualPitch * 180 / Math.PI));
+        // Sync to UI slider smoothly without mutating floating-point manualPitch
+        const pitchDegDisplay = -Math.round(manualPitch * 180 / Math.PI);
+        const pitchReadoutEl = document.getElementById('armPitchReadout');
+        if (pitchReadoutEl) {
+          const pitchText = (pitchDegDisplay > 0 ? '+' : '') + pitchDegDisplay + '°';
+          if (pitchReadoutEl.innerText !== pitchText) pitchReadoutEl.innerText = pitchText;
+        }
+        const pitchSliderEl = document.getElementById('armPitchSlider');
+        if (pitchSliderEl && parseInt(pitchSliderEl.value) !== pitchDegDisplay) {
+          pitchSliderEl.value = pitchDegDisplay;
+        }
 
         // 4. Telescoping Extension physics: Right Joystick Y / Keyboard (UP extends arm)
         let targetExtendValue = -manualJoyRightY;
@@ -4230,21 +4281,6 @@
           extensionSpeed = 0;
         }
 
-        // Clamp to dynamic floor clearance limits (prevent extending into the ground)
-        if (manualPitch < 0) {
-          const L_meters = 3.47 + ((currentLength - L_min) / (L_max - L_min)) * (14.77 - 3.47);
-          const craneYaw = -(currentAngle + Math.PI / 2);
-          const frontX = L_meters * Math.sin(craneYaw);
-          const frontZ = 13.77 - L_meters * Math.cos(craneYaw);
-          const floorY_front = getFloorY(frontX, frontZ);
-          const maxSafeL = (floorY_front + 1.15 - (columnHeight + 0.4)) / Math.sin(manualPitch);
-          const maxSafeLengthPx = L_min + ((maxSafeL - 3.47) / (14.77 - 3.47)) * (L_max - L_min);
-          if (currentLength > maxSafeLengthPx) {
-            currentLength = maxSafeLengthPx;
-            extensionSpeed = 0;
-          }
-        }
-
         // Sync telescope slider/readout to current length during manual keyboard/joystick control
         if (controlMode === 'manual') {
           const L_meters = 3.47 + ((currentLength - L_min) / (L_max - L_min)) * (14.77 - 3.47);
@@ -4260,7 +4296,7 @@
         }
 
         // 5. Camera Head Panning & Tilting physics: Cam Joystick / Keyboard
-        let targetCamPanValue = manualJoyCamX;
+        let targetCamPanValue = -manualJoyCamX;
         if (keyboardCamPan !== 0) {
           targetCamPanValue = keyboardCamPan;
         }
@@ -4281,51 +4317,10 @@
 
         speedFactor = Math.abs(rotationSpeed) * 20 + Math.abs(extensionSpeed) * 1.2 + Math.abs(pitchSpeed) * 150 + Math.abs(camPanSpeed) * 120 + Math.abs(camTiltSpeed) * 120;
 
-        // Check if manual angle is hovering over any menu target's axis (Angle-based Magnetic Snap)
-        let foundHoverTarget = null;
-        menuTargets.forEach(target => {
-          let aDiff = currentAngle - target.angle;
-          while (aDiff < -Math.PI) aDiff += Math.PI * 2;
-          while (aDiff > Math.PI) aDiff -= Math.PI * 2;
-
-          // If within 6 degrees (about 0.104 radians)
-          if (Math.abs(aDiff) < 6 * Math.PI / 180) {
-            foundHoverTarget = target;
-            // Magnetic snap to the correct angle ("den kran im richtigen winkel führen")
-            // Only snap if the user isn't forcing a strong manual pan input
-            if (Math.abs(targetPanValue) < 0.8) {
-              currentAngle -= aDiff * 0.15 * dt;
-              rotationSpeed *= 0.6; // Dampen momentum to prevent overshoot
-            }
-          }
-        });
-
-        if (foundHoverTarget) {
-          if (activeTarget !== foundHoverTarget) {
-            activeTarget = foundHoverTarget;
-            isLocked = false;
-            lockPercent = 0.0;
-          }
-
-          if (!isLocked) {
-            lockPercent += 0.06 * dt;
-            if (lockPercent >= 1.0) {
-              lockPercent = 1.0;
-              isLocked = true;
-              triggerLockFlash();
-              // Display details dynamically
-              displayTargetDetails(foundHoverTarget);
-            }
-          }
-        } else {
-          // Slowly decay lock percent if steered away
-          if (lockPercent > 0) {
-            lockPercent = Math.max(0, lockPercent - 0.04 * dt);
-          } else {
-            activeTarget = null;
-            isLocked = false;
-          }
-        }
+        // In manual mode, keep activeTarget = null so swiveling is 100% natural and continuous without 5-target snaps
+        activeTarget = null;
+        isLocked = false;
+        lockPercent = 0.0;
       }
 
 
@@ -4395,17 +4390,13 @@
 
     function updateDOMReadouts() {
       // Angle to positive degree (0 - 360)
-      let deg = Math.round(currentAngle * 180 / Math.PI);
-      if (deg < 0) deg += 360;
+      let displayAngle = ((currentAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+      let deg = Math.round(displayAngle * 180 / Math.PI);
       document.getElementById('panAngleReadout').textContent = deg.toFixed(1) + '°';
       
-      // Calculate pan percentage within the 240° range (from -210° to 30°)
-      const minPanAngle = -210 * Math.PI / 180;
-      let panDiff = currentAngle - minPanAngle;
-      while (panDiff < -Math.PI) panDiff += Math.PI * 2;
-      while (panDiff > Math.PI) panDiff -= Math.PI * 2;
-      const panPercent = Math.max(0, Math.min(100, (panDiff / (240 * Math.PI / 180)) * 100));
-      document.getElementById('panBar').style.width = panPercent + '%';
+      // Calculate pan percentage smoothly without wrapping jumps
+      const panPercent = (displayAngle / (Math.PI * 2)) * 100;
+      document.getElementById('panBar').style.width = panPercent.toFixed(1) + '%';
 
       // Map canvas pixel length to realistic crane reach in meters (3.47m to 14.77m)
       const L_meters = 3.47 + ((currentLength - L_min) / (L_max - L_min)) * (14.77 - 3.47);
@@ -4435,8 +4426,8 @@
         }
       }
 
-      // Fixed Cooke 25mm Prime Lens
-      document.getElementById('hudFocalLength').textContent = '25mm';
+      // Fixed Cooke 18mm Prime Lens
+      document.getElementById('hudFocalLength').textContent = '18mm';
 
       // Lock status textual coloring
       const lockStatusEl = document.getElementById('targetLockStatus');
@@ -4498,6 +4489,7 @@
     // Canvas Drawing Methods
     // ═════════════════════════════════════════════════════════════════════════
     function draw() {
+      if (!ctx) return;
       ctx.clearRect(0, 0, simWidth, simHeight);
 
       // 1. Draw Viewfinder Grid
@@ -4931,7 +4923,7 @@
 
 
     // Initialize navigation/footer and trigger TG dynamic features
-    TG.init('leistungen'); // Highlight 'Leistungen' or empty, since this is a test page
+    TG.init('home');
 
     // Select the first target by default and initialize Three.js
     setTimeout(() => {

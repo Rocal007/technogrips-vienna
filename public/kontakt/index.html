@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="P-fPSdEPcQmgsZ7om6Xqiwa-LwMcqNpctpZEyblKeME" />
   <meta name="description" content="Kontakt – Technogrips Vienna. Kran anfragen, Angebot einholen oder Beratungstermin buchen. Allgemeine Anfrage, Produktanfrage oder Terminbuchung.">
   <title>Kontakt – Technogrips Vienna</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{navy:{950:'#020817',900:'#0a0f1e',800:'#0f1729',700:'#162035',600:'#1e2d47'},gold:{300:'#f2e44d',400:'#ebd600',500:'#e5c500',600:'#ccb000',700:'#a69000'}},fontFamily:{sans:['Inter','system-ui','sans-serif']}}}}</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/tailwind.css">
+  <link rel="stylesheet" href="/assets/css/fonts.css">
   <link rel="stylesheet" href="/assets/css/shared.css">
   <style>
     .tab-btn { border: 1px solid rgba(255,255,255,0.08); background: transparent; color: #9ca3af; transition: all 0.25s; cursor:pointer; }
@@ -18,6 +17,79 @@
     .tab-pane.active { display: block; }
     select option { background: #0a0f1e; }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Technogrips Vienna",
+    "description": "Professionelle Kamerakran-Vermietung mit erfahrenem Operator-Service in Wien. Supertechno 30, 50+, 75+ für Film, TV, Events und Werbung.",
+    "url": "https://technogrips-vienna.at",
+    "telephone": "+436504542261",
+    "email": "office@technogrips-vienna.at",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Wien",
+      "addressCountry": "AT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 48.2082,
+      "longitude": 16.3738
+    },
+    "image": "https://technogrips-vienna.at/assets/images/logo_transparent.png",
+    "logo": "https://technogrips-vienna.at/assets/images/logo_transparent.png",
+    "priceRange": "€€€",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "areaServed": [
+      { "@type": "Country", "name": "Austria" },
+      { "@type": "Country", "name": "Germany" },
+      { "@type": "Country", "name": "Czech Republic" },
+      { "@type": "Country", "name": "Hungary" },
+      { "@type": "Country", "name": "Slovakia" }
+    ],
+    "knowsLanguage": ["de", "en", "fr", "cs"],
+    "sameAs": [
+      "https://www.instagram.com/technogripsvienna",
+      "https://vimeo.com/technogripsvienna",
+      "https://www.linkedin.com/company/technogrips-vienna"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Kamerakran-Vermietung & Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Kamerakran-Vermietung mit Operator",
+            "description": "Supertechno Teleskop-Kamerakran inklusive erfahrenem Kranoperator für Film, TV, Events und Werbung."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Camera Tracking & Telemetrie",
+            "description": "Mo-Sys StarTracker, Ncam und Stype Kamera-Tracking-Systeme für Virtual Production und VFX."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Transport & Logistik",
+            "description": "Lieferung und Aufbau des Kamerakrans in ganz Österreich und Europa."
+          }
+        }
+      ]
+    }
+  }
+  </script>
 </head>
 <body class="bg-navy-950 text-white overflow-x-hidden">
   <div id="nav-container"></div>
@@ -35,47 +107,47 @@
       <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl animate-pulse"></div>
       <div class="absolute bottom-1/3 left-1/3 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style="animation-delay:2s"></div>
     </div>
-    <div class="relative max-w-7xl mx-auto px-6 pt-32 pb-20 w-full">
+    <div class="relative max-w-7xl mx-auto px-6 pt-48 sm:pt-52 lg:pt-60 xl:pt-64 pb-20 lg:pb-28 w-full">
       <div class="max-w-3xl">
-        <!-- Breadcrumb -->
-        <nav class="breadcrumb mb-6 animate-fade-in"><a href="/">Startseite</a><span class="sep">/</span><span class="current" data-de="Kontakt" data-en="Contact">Kontakt</span></nav>
+
         <!-- Badge -->
         <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6 animate-fade-in">
           <span class="w-2 h-2 bg-gold-500 rounded-full animate-pulse"></span>
-          <span class="text-gold-400 text-sm font-600 i18n" data-cms="contact.hero_badge" data-de="Antwort innerhalb von 24 Stunden" data-en="Response within 24 hours">Antwort innerhalb von 24 Stunden</span>
+          <span class="text-gold-400 text-sm font-600 i18n" data-cms="contact.hero_badge" data-de="Antwort innerhalb von 24 Stunden" data-en="Response within 24 hours" data-fr="Réponse sous 24 heures" data-cs="Odpověď do 24 hodin" data-fr="Réponse sous 24 heures" data-cs="Odpověď do 24 hodin">Antwort innerhalb von 24 Stunden</span>
         </div>
         <!-- H1 -->
         <h1 class="text-5xl sm:text-6xl lg:text-7xl font-900 leading-tight mb-6 animate-fade-up">
-          <span class="i18n" data-cms="contact.hero_title1" data-de="Lassen Sie uns" data-en="Let's">Lassen Sie uns</span><br>
-          <span class="text-gold-gradient i18n" data-cms="contact.hero_title2" data-de="sprechen." data-en="talk.">sprechen.</span>
+          <span class="i18n" data-cms="contact.hero_title1" data-de="Lassen Sie uns" data-en="Let's" data-fr="Parlons" data-cs="Pojďme" data-fr="Parlons" data-cs="Pojďme">Lassen Sie uns</span><br>
+          <span class="text-gold-gradient i18n" data-cms="contact.hero_title2" data-de="sprechen." data-en="talk." data-fr="ensemble." data-cs="spolu mluvit." data-fr="ensemble." data-cs="spolu mluvit.">sprechen.</span>
         </h1>
         <!-- Subline -->
         <p class="text-gray-400 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl animate-fade-up i18n" style="animation-delay:.2s"
            data-cms="contact.hero_subline"
-           data-de="Angebot anfragen, Termin buchen oder einfach Hallo sagen – wir antworten innerhalb von 24 Stunden.">
+           data-de="Angebot anfragen, Termin buchen oder einfach Hallo sagen – wir antworten innerhalb von 24 Stunden." data-en="" data-fr="Demandez un devis, réservez un créneau ou contactez-nous – nous répondons sous 24 heures." data-cs="Požádejte o nabídku, rezervujte si termín nebo nás jen pozdravte – odpovíme do 24 hodin." data-fr="Demandez un devis, réservez un créneau ou contactez-nous – nous répondons sous 24 heures." data-cs="Požádejte o nabídku, rezervujte si termín nebo nás jen pozdravte – odpovíme do 24 hodin.">
           Angebot anfragen, Termin buchen oder einfach Hallo sagen – wir antworten innerhalb von 24 Stunden.
         </p>
-        <!-- 3 Kontakt-Karten -->
+        <!-- Kontakt-Karten -->
         <div class="flex flex-wrap gap-4 mb-10 animate-fade-up" style="animation-delay:.3s">
-          <a href="tel:+431234567890" class="glass px-5 py-3 rounded-xl flex items-center gap-3 hover:border-gold-500/40 transition-all group">
-            <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-            <span class="font-600 text-sm" data-cms-contact="phone">+43 1 234 5678</span>
+          <a href="tel:+436504542261" class="glass px-6 py-3.5 rounded-xl flex items-center gap-3 hover:border-gold-500/40 transition-all group" data-cms-contact-href="phone_mobile">
+            <svg class="w-5 h-5 text-gold-400 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            <span class="font-600 text-base text-white group-hover:text-gold-400 transition-colors" data-de="Mobil" data-en="Mobile" data-fr="Mobile" data-cs="Mobil">Mobil</span>
           </a>
-          <a href="mailto:info@technogrips.at" class="glass px-5 py-3 rounded-xl flex items-center gap-3 hover:border-gold-500/40 transition-all group">
-            <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            <span class="font-600 text-sm" data-cms-contact="email">info@technogrips.at</span>
+          <a href="tel:+436765919172" class="glass px-6 py-3.5 rounded-xl flex items-center gap-3 hover:border-gold-500/40 transition-all group" data-cms-contact-href="phone_office">
+            <svg class="w-5 h-5 text-gold-400 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            <span class="font-600 text-base text-white group-hover:text-gold-400 transition-colors" data-de="Office" data-en="Office" data-fr="Bureau" data-cs="Kancelář">Office</span>
           </a>
-          <div class="glass px-5 py-3 rounded-xl flex items-center gap-3">
-            <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
-            <span class="font-600 text-sm" data-cms-contact="location">Wien, Österreich</span>
+          <a href="mailto:office@technogrips-vienna.at" class="glass px-6 py-3.5 rounded-xl flex items-center gap-3 hover:border-gold-500/40 transition-all group" data-cms-contact-href="email">
+            <svg class="w-5 h-5 text-gold-400 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span class="font-600 text-base text-white group-hover:text-gold-400 transition-colors" data-de="E-Mail" data-en="Email" data-fr="E-mail" data-cs="E-mail">E-Mail</span>
+          </a>
+          <div class="glass px-6 py-3.5 rounded-xl flex items-center gap-3">
+            <svg class="w-5 h-5 text-gold-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+            <span class="font-600 text-base text-white" data-cms-contact="location">Wien, Österreich</span>
           </div>
         </div>
         <!-- CTA -->
         <div class="animate-fade-up" style="animation-delay:.4s">
-          <a href="#formulare" class="btn-gold px-8 py-4 rounded-xl text-base font-700 gap-2 animate-pulse-gold">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            <span data-de="Zum Kontaktformular" data-en="To the contact form">Zum Kontaktformular</span>
-          </a>
+          <a href="#formulare" class="btn-gold px-8 py-4 rounded-xl text-base font-700 gap-2 animate-pulse-gold"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg><span class="i18n" data-cms="contact.cta_scroll_form" data-de="Zum Kontaktformular" data-en="To the contact form" data-fr="Vers le formulaire de contact" data-cs="Přejít na formulář">Zum Kontaktformular</span></a>
         </div>
       </div>
     </div>
@@ -93,138 +165,138 @@
       <!-- Tab Buttons -->
       <div class="flex gap-2 mb-8 observe flex-wrap">
         <button class="tab-btn active flex-1 px-4 py-3 rounded-xl font-600 text-sm" onclick="switchTab('contact', this)">
-          📧 <span data-de="Allgemeine Anfrage" data-en="General Inquiry">Allgemeine Anfrage</span>
+          📧 <span class="i18n" data-cms="contact.tab_contact" data-de="Allgemeine Anfrage" data-en="General Inquiry" data-fr="Demande générale" data-cs="Obecný dotaz">Allgemeine Anfrage</span>
         </button>
         <button class="tab-btn flex-1 px-4 py-3 rounded-xl font-600 text-sm" onclick="switchTab('product', this)">
-          🎥 <span data-de="Produktanfrage" data-en="Product Inquiry">Produktanfrage</span>
+          🎥 <span class="i18n" data-cms="contact.tab_product" data-de="Produktanfrage" data-en="Product Inquiry" data-fr="Demande de matériel" data-cs="Poptávka techniky">Produktanfrage</span>
         </button>
         <button class="tab-btn flex-1 px-4 py-3 rounded-xl font-600 text-sm" onclick="switchTab('booking', this)">
-          📅 <span data-de="Beratungstermin" data-en="Consultation">Beratungstermin</span>
+          📅 <span class="i18n" data-cms="contact.tab_booking" data-de="Beratungstermin" data-en="Consultation" data-fr="Rendez-vous conseil" data-cs="Konzultace">Beratungstermin</span>
         </button>
       </div>
 
       <!-- TAB: Allgemeine Anfrage -->
       <div id="tab-contact" class="tab-pane active glass rounded-2xl p-8 observe">
-        <h2 class="text-xl font-700 mb-6" data-de="Allgemeine Anfrage" data-en="General Inquiry">Allgemeine Anfrage</h2>
+        <h2 class="text-xl font-700 mb-6" data-de="Allgemeine Anfrage" data-en="General Inquiry" data-fr="Demande générale" data-cs="Obecný dotaz" data-fr="Demande générale" data-cs="Obecný dotaz">Allgemeine Anfrage</h2>
         <form id="form-contact" onsubmit="handleSubmit(event,'contact','form-contact')">
           <div class="grid sm:grid-cols-2 gap-4 mb-4">
             <div>
-              <label class="block text-xs text-gray-400 mb-1.5" data-de="Name *" data-en="Name *">Name *</label>
+              <label class="block text-xs text-gray-400 mb-1.5" data-de="Name *" data-en="Name *" data-fr="Nom *" data-cs="Jméno *" data-fr="Nom *" data-cs="Jméno *">Name *</label>
               <input type="text" name="name" required class="form-input px-4 py-3 rounded-xl">
             </div>
             <div>
-              <label class="block text-xs text-gray-400 mb-1.5" data-de="E-Mail *" data-en="Email *">E-Mail *</label>
+              <label class="block text-xs text-gray-400 mb-1.5" data-de="E-Mail *" data-en="Email *" data-fr="E-mail *" data-cs="E-mail *" data-fr="E-mail *" data-cs="E-mail *">E-Mail *</label>
               <input type="email" name="email" required class="form-input px-4 py-3 rounded-xl">
             </div>
           </div>
           <div class="grid sm:grid-cols-2 gap-4 mb-4">
             <div>
-              <label class="block text-xs text-gray-400 mb-1.5" data-de="Telefon" data-en="Phone">Telefon</label>
+              <label class="block text-xs text-gray-400 mb-1.5" data-de="Telefon" data-en="Phone" data-fr="Téléphone" data-cs="Telefon" data-fr="Téléphone" data-cs="Telefon">Telefon</label>
               <input type="tel" name="phone" class="form-input px-4 py-3 rounded-xl" placeholder="+43 ...">
             </div>
             <div>
-              <label class="block text-xs text-gray-400 mb-1.5" data-de="Unternehmen" data-en="Company">Unternehmen</label>
+              <label class="block text-xs text-gray-400 mb-1.5" data-de="Unternehmen" data-en="Company" data-fr="Société" data-cs="Společnost" data-fr="Société" data-cs="Společnost">Unternehmen</label>
               <input type="text" name="company" class="form-input px-4 py-3 rounded-xl">
             </div>
           </div>
           <div class="mb-4">
-            <label class="block text-xs text-gray-400 mb-1.5" data-de="Nachricht *" data-en="Message *">Nachricht *</label>
+            <label class="block text-xs text-gray-400 mb-1.5" data-de="Nachricht *" data-en="Message *" data-fr="Message *" data-cs="Zpráva *" data-fr="Message *" data-cs="Zpráva *">Nachricht *</label>
             <textarea name="message" required rows="5" class="form-input px-4 py-3 rounded-xl resize-none" data-de-placeholder="Beschreiben Sie Ihr Anliegen..." placeholder="Beschreiben Sie Ihr Anliegen..."></textarea>
           </div>
           <div class="flex items-center gap-3 mb-5">
             <input type="checkbox" id="priv-c" required class="w-4 h-4 accent-gold-500">
-            <label for="priv-c" class="text-xs text-gray-400" data-de="Ich stimme der Datenschutzerklärung zu." data-en="I agree to the Privacy Policy.">Ich stimme der Datenschutzerklärung zu.</label>
+            <label for="priv-c" class="text-xs text-gray-400" data-de="Ich stimme der Datenschutzerklärung zu." data-en="I agree to the Privacy Policy." data-fr="J'accepte la politique de confidentialité." data-cs="Souhlasím se zásadami ochrany osobních údajů." data-fr="J'accepte la politique de confidentialité." data-cs="Souhlasím se zásadami ochrany osobních údajů.">Ich stimme der Datenschutzerklärung zu.</label>
           </div>
           <button type="submit" class="btn-gold w-full py-4 rounded-xl font-700 gap-2 justify-center">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-            <span data-de="Nachricht senden" data-en="Send Message">Nachricht senden</span>
+            <span class="i18n" data-cms="contact.form_submit_general" data-de="Nachricht senden" data-en="Send Message" data-fr="Envoyer le message" data-cs="Odeslat zprávu">Nachricht senden</span>
           </button>
         </form>
       </div>
 
       <!-- TAB: Produktanfrage -->
       <div id="tab-product" class="tab-pane glass rounded-2xl p-8">
-        <h2 class="text-xl font-700 mb-6" data-de="Produktanfrage / Angebot" data-en="Product Inquiry / Quote">Produktanfrage / Angebot</h2>
+        <h2 class="text-xl font-700 mb-6" data-de="Produktanfrage / Angebot" data-en="Product Inquiry / Quote" data-fr="Demande de matériel / Devis" data-cs="Poptávka techniky / Nabídka" data-fr="Demande de matériel / Devis" data-cs="Poptávka techniky / Nabídka">Produktanfrage / Angebot</h2>
         <form id="form-product" onsubmit="handleSubmit(event,'product','form-product')">
           <div class="grid sm:grid-cols-2 gap-4 mb-4">
             <div>
-              <label class="block text-xs text-gray-400 mb-1.5" data-de="Name *" data-en="Name *">Name *</label>
+              <label class="block text-xs text-gray-400 mb-1.5" data-de="Name *" data-en="Name *" data-fr="Nom *" data-cs="Jméno *" data-fr="Nom *" data-cs="Jméno *">Name *</label>
               <input type="text" name="name" required class="form-input px-4 py-3 rounded-xl">
             </div>
             <div>
-              <label class="block text-xs text-gray-400 mb-1.5" data-de="E-Mail *" data-en="Email *">E-Mail *</label>
+              <label class="block text-xs text-gray-400 mb-1.5" data-de="E-Mail *" data-en="Email *" data-fr="E-mail *" data-cs="E-mail *" data-fr="E-mail *" data-cs="E-mail *">E-Mail *</label>
               <input type="email" name="email" required class="form-input px-4 py-3 rounded-xl">
             </div>
           </div>
           <div class="grid sm:grid-cols-2 gap-4 mb-4">
             <div>
-              <label class="block text-xs text-gray-400 mb-1.5" data-de="Telefon" data-en="Phone">Telefon</label>
+              <label class="block text-xs text-gray-400 mb-1.5" data-de="Telefon" data-en="Phone" data-fr="Téléphone" data-cs="Telefon" data-fr="Téléphone" data-cs="Telefon">Telefon</label>
               <input type="tel" name="phone" class="form-input px-4 py-3 rounded-xl" placeholder="+43 ...">
             </div>
             <div>
-              <label class="block text-xs text-gray-400 mb-1.5" data-de="Kran-Modell *" data-en="Crane Model *">Kran-Modell *</label>
+              <label class="block text-xs text-gray-400 mb-1.5" data-de="Kran-Modell *" data-en="Crane Model *" data-fr="Modèle de grue *" data-cs="Model jeřábu *" data-fr="Modèle de grue *" data-cs="Model jeřábu *">Kran-Modell *</label>
               <select name="product" required class="form-input px-4 py-3 rounded-xl">
-                <option value="" disabled selected data-de="Bitte wählen..." data-en="Please select...">Bitte wählen...</option>
+                <option value="" disabled selected data-de="Bitte wählen..." data-en="Please select..." data-fr="Veuillez choisir..." data-cs="Prosím vyberte..." data-fr="Veuillez choisir..." data-cs="Prosím vyberte...">Bitte wählen...</option>
                 <option value="Supertechno 30">Supertechno 30</option>
                 <option value="Supertechno 50+">Supertechno 50+</option>
                 <option value="Supertechno 75+">Supertechno 75+</option>
-                <option value="Beratung nötig" data-de="Beratung nötig" data-en="Need consultation">Beratung nötig</option>
+                <option value="Beratung nötig" data-de="Beratung nötig" data-en="Need consultation" data-fr="Conseil requis" data-cs="Potřebuji poradit" data-fr="Conseil requis" data-cs="Potřebuji poradit">Beratung nötig</option>
               </select>
             </div>
           </div>
           <div class="grid sm:grid-cols-2 gap-4 mb-4">
             <div>
-              <label class="block text-xs text-gray-400 mb-1.5" data-de="Drehtag / Datum" data-en="Shooting Date">Drehtag / Datum</label>
+              <label class="block text-xs text-gray-400 mb-1.5" data-de="Drehtag / Datum" data-en="Shooting Date" data-fr="Jour de tournage / Date" data-cs="Natáčecí den / Datum" data-fr="Jour de tournage / Date" data-cs="Natáčecí den / Datum">Drehtag / Datum</label>
               <input type="date" name="event_date" class="form-input px-4 py-3 rounded-xl">
             </div>
             <div>
-              <label class="block text-xs text-gray-400 mb-1.5" data-de="Dauer" data-en="Duration">Dauer</label>
+              <label class="block text-xs text-gray-400 mb-1.5" data-de="Dauer" data-en="Duration" data-fr="Durée" data-cs="Doba trvání" data-fr="Durée" data-cs="Doba trvání">Dauer</label>
               <input type="text" name="duration" class="form-input px-4 py-3 rounded-xl" placeholder="z.B. 2 Tage">
             </div>
           </div>
           <div class="mb-4">
-            <label class="block text-xs text-gray-400 mb-1.5" data-de="Projektbeschreibung" data-en="Project description">Projektbeschreibung</label>
+            <label class="block text-xs text-gray-400 mb-1.5" data-de="Projektbeschreibung" data-en="Project description" data-fr="Description du projet" data-cs="Popis projektu" data-fr="Description du projet" data-cs="Popis projektu">Projektbeschreibung</label>
             <textarea name="message" rows="4" class="form-input px-4 py-3 rounded-xl resize-none" placeholder="Produktion, Location, Besonderheiten..."></textarea>
           </div>
           <div class="flex items-center gap-3 mb-5">
             <input type="checkbox" id="priv-p" required class="w-4 h-4 accent-gold-500">
-            <label for="priv-p" class="text-xs text-gray-400" data-de="Ich stimme der Datenschutzerklärung zu." data-en="I agree to the Privacy Policy.">Ich stimme der Datenschutzerklärung zu.</label>
+            <label for="priv-p" class="text-xs text-gray-400" data-de="Ich stimme der Datenschutzerklärung zu." data-en="I agree to the Privacy Policy." data-fr="J'accepte la politique de confidentialité." data-cs="Souhlasím se zásadami ochrany osobních údajů." data-fr="J'accepte la politique de confidentialité." data-cs="Souhlasím se zásadami ochrany osobních údajů.">Ich stimme der Datenschutzerklärung zu.</label>
           </div>
           <button type="submit" class="btn-gold w-full py-4 rounded-xl font-700 gap-2 justify-center">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-            <span data-de="Angebot anfragen" data-en="Request Quote">Angebot anfragen</span>
+            <span class="i18n" data-cms="contact.form_submit_quote" data-de="Angebot anfragen" data-en="Request Quote" data-fr="Demander un devis" data-cs="Požádat o nabídku">Angebot anfragen</span>
           </button>
         </form>
       </div>
 
       <!-- TAB: Beratungstermin -->
       <div id="tab-booking" class="tab-pane glass rounded-2xl p-8">
-        <h2 class="text-xl font-700 mb-6" data-de="Beratungstermin buchen" data-en="Book Consultation">Beratungstermin buchen</h2>
+        <h2 class="text-xl font-700 mb-6" data-de="Beratungstermin buchen" data-en="Book Consultation" data-fr="Prendre rendez-vous" data-cs="Rezervovat konzultaci" data-fr="Prendre rendez-vous" data-cs="Rezervovat konzultaci">Beratungstermin buchen</h2>
         <form id="form-booking" onsubmit="handleSubmit(event,'booking','form-booking')">
           <div class="grid sm:grid-cols-2 gap-4 mb-4">
             <div>
-              <label class="block text-xs text-gray-400 mb-1.5" data-de="Name *" data-en="Name *">Name *</label>
+              <label class="block text-xs text-gray-400 mb-1.5" data-de="Name *" data-en="Name *" data-fr="Nom *" data-cs="Jméno *" data-fr="Nom *" data-cs="Jméno *">Name *</label>
               <input type="text" name="name" required class="form-input px-4 py-3 rounded-xl">
             </div>
             <div>
-              <label class="block text-xs text-gray-400 mb-1.5" data-de="E-Mail *" data-en="Email *">E-Mail *</label>
+              <label class="block text-xs text-gray-400 mb-1.5" data-de="E-Mail *" data-en="Email *" data-fr="E-mail *" data-cs="E-mail *" data-fr="E-mail *" data-cs="E-mail *">E-Mail *</label>
               <input type="email" name="email" required class="form-input px-4 py-3 rounded-xl">
             </div>
           </div>
           <div class="grid sm:grid-cols-2 gap-4 mb-4">
             <div>
-              <label class="block text-xs text-gray-400 mb-1.5" data-de="Telefon" data-en="Phone">Telefon</label>
+              <label class="block text-xs text-gray-400 mb-1.5" data-de="Telefon" data-en="Phone" data-fr="Téléphone" data-cs="Telefon" data-fr="Téléphone" data-cs="Telefon">Telefon</label>
               <input type="tel" name="phone" class="form-input px-4 py-3 rounded-xl" placeholder="+43 ...">
             </div>
             <div>
-              <label class="block text-xs text-gray-400 mb-1.5" data-de="Wunschdatum *" data-en="Preferred date *">Wunschdatum *</label>
+              <label class="block text-xs text-gray-400 mb-1.5" data-de="Wunschdatum *" data-en="Preferred date *" data-fr="Date souhaitée *" data-cs="Požadované datum *" data-fr="Date souhaitée *" data-cs="Požadované datum *">Wunschdatum *</label>
               <input type="date" name="booking_date" required class="form-input px-4 py-3 rounded-xl">
             </div>
           </div>
           <div class="mb-4">
-            <label class="block text-xs text-gray-400 mb-1.5" data-de="Uhrzeit" data-en="Time">Uhrzeit</label>
+            <label class="block text-xs text-gray-400 mb-1.5" data-de="Uhrzeit" data-en="Time" data-fr="Heure" data-cs="Čas" data-fr="Heure" data-cs="Čas">Uhrzeit</label>
             <select name="booking_time" class="form-input px-4 py-3 rounded-xl">
-              <option value="" data-de="Beliebig" data-en="Anytime">Beliebig</option>
+              <option value="" data-de="Beliebig" data-en="Anytime" data-fr="Indifférent" data-cs="Kdykoliv" data-fr="Indifférent" data-cs="Kdykoliv">Beliebig</option>
               <option value="09:00">09:00</option>
               <option value="10:00">10:00</option>
               <option value="11:00">11:00</option>
@@ -234,16 +306,16 @@
             </select>
           </div>
           <div class="mb-4">
-            <label class="block text-xs text-gray-400 mb-1.5" data-de="Worum geht es?" data-en="What is it about?">Worum geht es?</label>
+            <label class="block text-xs text-gray-400 mb-1.5" data-de="Worum geht es?" data-en="What is it about?" data-fr="De quoi s'agit-il ?" data-cs="O co se jedná?" data-fr="De quoi s'agit-il ?" data-cs="O co se jedná?">Worum geht es?</label>
             <textarea name="message" rows="4" class="form-input px-4 py-3 rounded-xl resize-none" placeholder="Kurze Projektbeschreibung..."></textarea>
           </div>
           <div class="flex items-center gap-3 mb-5">
             <input type="checkbox" id="priv-b" required class="w-4 h-4 accent-gold-500">
-            <label for="priv-b" class="text-xs text-gray-400" data-de="Ich stimme der Datenschutzerklärung zu." data-en="I agree to the Privacy Policy.">Ich stimme der Datenschutzerklärung zu.</label>
+            <label for="priv-b" class="text-xs text-gray-400" data-de="Ich stimme der Datenschutzerklärung zu." data-en="I agree to the Privacy Policy." data-fr="J'accepte la politique de confidentialité." data-cs="Souhlasím se zásadami ochrany osobních údajů." data-fr="J'accepte la politique de confidentialité." data-cs="Souhlasím se zásadami ochrany osobních údajů.">Ich stimme der Datenschutzerklärung zu.</label>
           </div>
           <button type="submit" class="btn-gold w-full py-4 rounded-xl font-700 gap-2 justify-center">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-            <span data-de="Termin bestätigen" data-en="Confirm booking">Termin bestätigen</span>
+            <span class="i18n" data-cms="contact.form_submit_booking" data-de="Termin bestätigen" data-en="Confirm booking" data-fr="Confirmer le rendez-vous" data-cs="Potvrdit termín">Termin bestätigen</span>
           </button>
         </form>
       </div>
@@ -262,7 +334,7 @@
         </div>
         <div class="glass px-6 py-3 rounded-xl text-center">
           <div class="font-700 text-gold-400" data-cms-contact="location">Wien, Österreich</div>
-          <div class="text-xs text-gray-500 mt-1" data-de="Genaue Adresse auf Anfrage" data-en="Exact address on request">Genaue Adresse auf Anfrage</div>
+          <div class="text-xs text-gray-500 mt-1 i18n" data-cms="contact.map_address_note" data-de="Genaue Adresse auf Anfrage" data-en="Exact address on request" data-fr="Adresse exacte sur demande" data-cs="Přesná adresa na vyžádání">Genaue Adresse auf Anfrage</div>
         </div>
       </div>
       <!-- Radial glow -->

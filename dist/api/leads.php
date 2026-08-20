@@ -93,7 +93,139 @@ if ($method === 'GET') {
     if (isset($_GET['id'])) {
         $stmt = $db->prepare('SELECT * FROM leads WHERE id = ?');
         $stmt->execute([$_GET['id']]);
-        echo json_encode($stmt->fetch());
+        $lead = $stmt->fetch();
+        if ($lead) {
+            $stmtReplies = $db->prepare('SELECT * FROM lead_replies WHERE lead_id = ? ORDER BY created_at ASC');
+            $stmtReplies->execute([$_GET['id']]);
+            $lead['replies'] = $stmtReplies->fetchAll();
+        }
+        echo json_encode($lead);
+        exit;
+    }
+}
+
+if ($method === 'POST') {
+    if ($action === 'reply' || isset($_GET['reply'])) {
+        $input = json_decode(file_get_contents('php://input'), true);
+        if (!$input) {
+            $input = $_POST;
+        }
+
+        $lead_id = (int)($input['lead_id'] ?? $_GET['id'] ?? 0);
+        $recipient = trim($input['recipient'] ?? '');
+        $subject = trim($input['subject'] ?? 'Re: Ihre Anfrage bei Technogrips Vienna');
+        $message = trim($input['message'] ?? '');
+        $sent_by = trim($input['sent_by'] ?? $_SESSION['admin_username'] ?? 'Technogrips Vienna Team');
+
+        if (!$lead_id || empty($recipient) || empty($message)) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Lead-ID, Empfänger und Nachricht sind erforderlich.']);
+            exit;
+        }
+
+        if (!filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Ungültige Empfänger-E-Mail-Adresse.']);
+            exit;
+        }
+
+        // Verify lead exists
+        $stmtLead = $db->prepare('SELECT * FROM leads WHERE id = ?');
+        $stmtLead->execute([$lead_id]);
+        $lead = $stmtLead->fetch();
+        if (!$lead) {
+            http_response_code(404);
+            echo json_encode(['error' => 'Lead nicht gefunden.']);
+            exit;
+        }
+
+        // Format HTML Email
+        $htmlMessage = nl2br(htmlspecialchars($message, ENT_QUOTES, 'UTF-8'));
+        $emailHtml = '<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #0d0e12; color: #e5e7eb; margin: 0; padding: 20px; }
+  .container { max-width: 600px; margin: 0 auto; background: #14161d; border: 1px solid rgba(229,197,0,0.25); border-radius: 16px; overflow: hidden; }
+  .header { background: #0b0c10; padding: 24px; border-bottom: 2px solid #e5c500; text-align: center; }
+  .header h1 { margin: 0; color: #e5c500; font-size: 22px; font-weight: 800; letter-spacing: 1px; }
+  .header p { margin: 4px 0 0; color: #9ca3af; font-size: 13px; }
+  .content { padding: 28px; line-height: 1.65; font-size: 15px; color: #f3f4f6; }
+  .footer { background: #0b0c10; padding: 20px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 12px; color: #6b7280; text-align: center; }
+  .footer a { color: #e5c500; text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>TECHNOGRIPS VIENNA</h1>
+      <p>Supertechno Kamerakran Vermietung &amp; Operator Service</p>
+    </div>
+    <div class="content">
+      ' . $htmlMessage . '
+    </div>
+    <div class="footer">
+      <p style="margin:0 0 4px; font-weight:bold; color:#e5c500;">Technogrips Vienna</p>
+      <p style="margin:0 0 4px;">Gerhard Deimel · Wien, Österreich</p>
+      <p style="margin:0;"><a href="https://technogrips-vienna.at">www.technogrips-vienna.at</a> · <a href="mailto:office@technogrips-vienna.at">office@technogrips-vienna.at</a></p>
+    </div>
+  </div>
+</body>
+</html>';
+
+        $plainBody = $message . "\n\n--\nTechnogrips Vienna\nGerhard Deimel · Supertechno Kamerakran Vermietung\nWien, Österreich\nhttps://technogrips-vienna.at\noffice@technogrips-vienna.at";
+
+        $boundary = md5(uniqid((string)time()));
+        $headers = "From: Technogrips Vienna <office@technogrips-vienna.at>\r\n";
+        $headers .= "Reply-To: office@technogrips-vienna.at\r\n";
+        $headers .= "Bcc: office@technogrips-vienna.at\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: multipart/alternative; boundary=\"$boundary\"\r\n";
+
+        $fullBody = "--$boundary\r\n";
+        $fullBody .= "Content-Type: text/plain; charset=UTF-8\r\n";
+        $fullBody .= "Content-Transfer-Encoding: 8bit\r\n\r\n";
+        $fullBody .= $plainBody . "\r\n\r\n";
+        $fullBody .= "--$boundary\r\n";
+        $fullBody .= "Content-Type: text/html; charset=UTF-8\r\n";
+        $fullBody .= "Content-Transfer-Encoding: 8bit\r\n\r\n";
+        $fullBody .= $emailHtml . "\r\n\r\n";
+        $fullBody .= "--$boundary--";
+
+        // Send to customer
+        $mailSent = @mail($recipient, $subject, $fullBody, $headers);
+
+        // Also send direct copy to office@technogrips-vienna.at
+        $copyHeaders = "From: Technogrips System <webmaster@technogrips-vienna.at>\r\n";
+        $copyHeaders .= "Reply-To: $recipient\r\n";
+        $copyHeaders .= "MIME-Version: 1.0\r\n";
+        $copyHeaders .= "Content-Type: multipart/alternative; boundary=\"$boundary\"\r\n";
+        $copySubject = "[Admin-Antwort Kopie] " . $subject;
+        @mail('office@technogrips-vienna.at', $copySubject, $fullBody, $copyHeaders);
+
+        // Insert reply record into DB
+        $stmtInsert = $db->prepare('INSERT INTO lead_replies (lead_id, recipient, subject, message, sent_by, status) VALUES (?, ?, ?, ?, ?, ?)');
+        $stmtInsert->execute([$lead_id, $recipient, $subject, $message, $sent_by, $mailSent ? 'sent' : 'logged']);
+        $replyId = (int)$db->lastInsertId();
+
+        // Update lead status to 'contacted' if it was 'new'
+        $db->prepare("UPDATE leads SET status = 'contacted' WHERE id = ? AND status = 'new'")->execute([$lead_id]);
+
+        echo json_encode([
+            'success' => true,
+            'message' => 'Antwort wurde erfolgreich versendet und gespeichert (Kopie an office@technogrips-vienna.at übermittelt).',
+            'reply' => [
+                'id' => $replyId,
+                'lead_id' => $lead_id,
+                'recipient' => $recipient,
+                'subject' => $subject,
+                'message' => $message,
+                'sent_by' => $sent_by,
+                'status' => 'sent',
+                'created_at' => date('Y-m-d H:i:s')
+            ]
+        ]);
         exit;
     }
 }

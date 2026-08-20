@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="P-fPSdEPcQmgsZ7om6Xqiwa-LwMcqNpctpZEyblKeME" />
   <meta name="description" content="Technogrips Vienna – Leistungen: Supertechno Kamerakran-Vermietung, professioneller Operator-Service und technischer Support für Film, TV und Events in Wien.">
   <title>Leistungen – Technogrips Vienna</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{navy:{950:'#020817',900:'#0a0f1e',800:'#0f1729',700:'#162035',600:'#1e2d47'},gold:{300:'#f2e44d',400:'#ebd600',500:'#e5c500',600:'#ccb000',700:'#a69000'}},fontFamily:{sans:['Inter','system-ui','sans-serif']}}}}</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/tailwind.css">
+  <link rel="stylesheet" href="/assets/css/fonts.css">
   <link rel="stylesheet" href="/assets/css/shared.css">
   <style>
     .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); }
@@ -18,6 +17,79 @@
     .faq-item.active .faq-icon { transform: rotate(45deg); }
     .process-line { position:absolute; top:24px; left:50%; width:100%; height:2px; background:linear-gradient(to right,#e5c500,rgba(229,197,0,0.2)); transform:translateX(-50%); z-index:0; }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Technogrips Vienna",
+    "description": "Professionelle Kamerakran-Vermietung mit erfahrenem Operator-Service in Wien. Supertechno 30, 50+, 75+ für Film, TV, Events und Werbung.",
+    "url": "https://technogrips-vienna.at",
+    "telephone": "+436504542261",
+    "email": "office@technogrips-vienna.at",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Wien",
+      "addressCountry": "AT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 48.2082,
+      "longitude": 16.3738
+    },
+    "image": "https://technogrips-vienna.at/assets/images/logo_transparent.png",
+    "logo": "https://technogrips-vienna.at/assets/images/logo_transparent.png",
+    "priceRange": "€€€",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "areaServed": [
+      { "@type": "Country", "name": "Austria" },
+      { "@type": "Country", "name": "Germany" },
+      { "@type": "Country", "name": "Czech Republic" },
+      { "@type": "Country", "name": "Hungary" },
+      { "@type": "Country", "name": "Slovakia" }
+    ],
+    "knowsLanguage": ["de", "en", "fr", "cs"],
+    "sameAs": [
+      "https://www.instagram.com/technogripsvienna",
+      "https://vimeo.com/technogripsvienna",
+      "https://www.linkedin.com/company/technogrips-vienna"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Kamerakran-Vermietung & Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Kamerakran-Vermietung mit Operator",
+            "description": "Supertechno Teleskop-Kamerakran inklusive erfahrenem Kranoperator für Film, TV, Events und Werbung."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Camera Tracking & Telemetrie",
+            "description": "Mo-Sys StarTracker, Ncam und Stype Kamera-Tracking-Systeme für Virtual Production und VFX."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Transport & Logistik",
+            "description": "Lieferung und Aufbau des Kamerakrans in ganz Österreich und Europa."
+          }
+        }
+      ]
+    }
+  }
+  </script>
 </head>
 <body class="bg-navy-950 text-white overflow-x-hidden">
   <div id="nav-container"></div>
@@ -35,37 +107,30 @@
       <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl animate-pulse"></div>
       <div class="absolute bottom-1/3 left-1/3 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style="animation-delay:2s"></div>
     </div>
-    <div class="relative max-w-7xl mx-auto px-6 pt-32 pb-20">
+    <div class="relative max-w-7xl mx-auto px-6 pt-48 sm:pt-52 lg:pt-60 xl:pt-64 pb-20 lg:pb-28">
       <div class="max-w-3xl">
-        <!-- Breadcrumb -->
-        <nav class="breadcrumb mb-6 animate-fade-in"><a href="/">Startseite</a><span class="sep">/</span><span class="current" data-de="Leistungen" data-en="Services">Leistungen</span></nav>
+
         <!-- Badge -->
         <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6 animate-fade-in">
           <span class="w-2 h-2 bg-gold-500 rounded-full animate-pulse"></span>
-          <span class="text-gold-400 text-sm font-600 i18n" data-cms="services.hero_badge" data-de="Wien, Österreich – Professioneller Operator-Service" data-en="Vienna, Austria – Professional Operator Service">Wien, Österreich – Professioneller Operator-Service</span>
+          <span class="text-gold-400 text-sm font-600 i18n" data-cms="services.hero_badge" data-de="Wien, Österreich – Professioneller Operator-Service" data-en="Vienna, Austria – Professional Operator Service" data-fr="Vienne, Autriche – Service d'opérateur professionnel" data-cs="Vídeň, Rakousko – Profesionální operátorský servis" data-fr="Vienne, Autriche – Service d'opérateur professionnel" data-cs="Vídeň, Rakousko – Profesionální operátorský servis">Wien, Österreich – Professioneller Operator-Service</span>
         </div>
         <!-- H1 -->
         <h1 class="text-5xl sm:text-6xl lg:text-7xl font-900 leading-tight mb-6 animate-fade-up">
-          <span class="i18n" data-cms="services.hero_title1" data-de="Volle" data-en="Full">Volle</span><br>
-          <span class="text-gold-gradient i18n" data-cms="services.hero_title2" data-de="Produktions-" data-en="Production">Produktions-</span><br>
-          <span class="text-gold-gradient i18n" data-cms="services.hero_title3" data-de="unterstützung." data-en="Support.">unterstützung.</span>
+          <span class="i18n" data-cms="services.hero_title1" data-de="Volle" data-en="Full" data-fr="Complet" data-cs="Plná" data-fr="Complet" data-cs="Plná">Volle</span><br>
+          <span class="text-gold-gradient i18n" data-cms="services.hero_title2" data-de="Produktions-" data-en="Production" data-fr="Production" data-cs="Produkční" data-fr="Production" data-cs="Produkční">Produktions-</span><br>
+          <span class="text-gold-gradient i18n" data-cms="services.hero_title3" data-de="unterstützung." data-en="Support." data-fr="Assistance." data-cs="Podpora." data-fr="Assistance." data-cs="Podpora.">unterstützung.</span>
         </h1>
         <!-- Subline -->
         <p class="text-gray-400 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl animate-fade-up i18n" style="animation-delay:.2s"
            data-cms="services.hero_subline"
-           data-de="Kran, Operator und Technik – alles aus einer Hand. Wir decken jeden Aspekt Ihres Kamerakran-Einsatzes ab, von der ersten Anfrage bis zum letzten Shot.">
+           data-de="Kran, Operator und Technik – alles aus einer Hand. Wir decken jeden Aspekt Ihres Kamerakran-Einsatzes ab, von der ersten Anfrage bis zum letzten Shot." data-en="" data-fr="Grue, opérateur et technique – une solution clé en main. Nous couvrons chaque étape de votre déploiement de grue, de la première prise de contact au dernier plan." data-cs="Jeřáb, operátor i technika – vše z jedné ruky. Pokryjeme každý aspekt nasazení kamerového jeřábu, od první poptávky až po poslední záběr." data-fr="Grue, opérateur et technique – une solution clé en main. Nous couvrons chaque étape de votre déploiement de grue, de la première prise de contact au dernier plan." data-cs="Jeřáb, operátor i technika – vše z jedné ruky. Pokryjeme každý aspekt nasazení kamerového jeřábu, od první poptávky až po poslední záběr.">
           Kran, Operator und Technik – alles aus einer Hand. Wir decken jeden Aspekt Ihres Kamerakran-Einsatzes ab, von der ersten Anfrage bis zum letzten Shot.
         </p>
         <!-- CTAs -->
         <div class="flex flex-wrap gap-4 animate-fade-up" style="animation-delay:.4s">
-          <a href="/kontakt" class="btn-gold px-8 py-4 rounded-xl text-base font-700 gap-2 animate-pulse-gold">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-            <span data-de="Angebot anfragen" data-en="Request Quote">Angebot anfragen</span>
-          </a>
-          <a href="/supertechno-50" class="btn-outline px-8 py-4 rounded-xl text-base font-600 gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zM2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-            <span data-de="Produkt ansehen" data-en="View Product">Produkt ansehen</span>
-          </a>
+          <a href="/kontakt" class="btn-gold px-8 py-4 rounded-xl text-base font-700 gap-2 animate-pulse-gold"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg><span class="i18n" data-cms="services.hero_cta_quote" data-de="Angebot anfragen" data-en="Request Quote" data-fr="Demander un devis" data-cs="Požádat o nabídku">Angebot anfragen</span></a>
+          <a href="/supertechno-50" class="btn-outline px-8 py-4 rounded-xl text-base font-600 gap-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zM2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg><span class="i18n" data-cms="services.hero_cta_product" data-de="Produkt ansehen" data-en="View Product" data-fr="Découvrir le produit" data-cs="Prohlédnout produkt">Produkt ansehen</span></a>
         </div>
       </div>
     </div>
@@ -80,8 +145,8 @@
   <section id="services" class="py-24 bg-navy-900">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16 observe">
-        <div class="section-label justify-center"><span class="line"></span><span data-de="Unsere drei Säulen" data-en="Our three pillars">Unsere drei Säulen</span><span class="line"></span></div>
-        <h2 class="text-4xl font-800" data-cms="services.headline" data-de="Unser Service" data-en="Our Services">Unser Service</h2>
+        <div class="section-label justify-center"><span class="line"></span><span class="i18n" data-cms="services.section_label" data-de="Unsere drei Säulen" data-en="Our three pillars" data-fr="Nos trois piliers" data-cs="Naše tři pilíře">Unsere drei Säulen</span><span class="line"></span></div>
+        <h2 class="text-4xl font-800" data-cms="services.headline" data-de="Unser Service" data-en="Our Services" data-fr="Nos services" data-cs="Naše služby" data-fr="Nos services" data-cs="Naše služby">Unser Service</h2>
       </div>
       <div class="grid lg:grid-cols-3 gap-6">
 
@@ -90,14 +155,14 @@
           <div class="w-14 h-14 gold-gradient rounded-2xl flex items-center justify-center mb-6 shrink-0">
             <svg class="w-7 h-7 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg>
           </div>
-          <h3 class="text-xl font-700 mb-3" data-cms="services.s1_title" data-de="Kran-Vermietung" data-en="Crane Rental">Kran-Vermietung</h3>
-          <p class="text-gray-400 text-sm leading-relaxed mb-6" data-cms="services.s1_desc" data-de="Supertechno 50+ Teleskop-Kamerakran für jeden Produktionsumfang. Tages- und Wochenmiete möglich." data-en="Supertechno 50+ telescopic camera crane for every production scale. Daily and weekly rental available.">Supertechno 50+ Teleskop-Kamerakran für jeden Produktionsumfang. Tages- und Wochenmiete möglich.</p>
+          <h3 class="text-xl font-700 mb-3" data-cms="services.s1_title" data-de="Kran-Vermietung" data-en="Crane Rental" data-fr="Location de grue" data-cs="Pronájem jeřábu" data-fr="Location de grue" data-cs="Pronájem jeřábu">Kran-Vermietung</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6" data-cms="services.s1_desc" data-de="Supertechno 50+ Teleskop-Kamerakran für jeden Produktionsumfang. Tages- und Wochenmiete möglich." data-en="Supertechno 50+ telescopic camera crane for every production scale. Daily and weekly rental available." data-fr="Grue télescopique Supertechno 50+ pour tout type de production. Location journalière ou hebdomadaire." data-cs="Teleskopický jeřáb Supertechno 50+ pro každý rozsah produkce. Možnost denního i týdenního pronájmu." data-fr="Grue télescopique Supertechno 50+ pour tout type de production. Location journalière ou hebdomadaire." data-cs="Teleskopický jeřáb Supertechno 50+ pro každý rozsah produkce. Možnost denního i týdenního pronájmu.">Supertechno 50+ Teleskop-Kamerakran für jeden Produktionsumfang. Tages- und Wochenmiete möglich.</p>
           <ul class="space-y-2.5 mt-auto">
-            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Supertechno 50+ mit 15,11m Reichweite" data-en="Supertechno 50+ with 15.11m reach">Supertechno 50+ mit 15,11m Reichweite</span></li>
-            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Techno S-Head Remote Control" data-en="Techno S-Head Remote Control">Techno S-Head Remote Control</span></li>
-            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Indoor & Outdoor einsetzbar" data-en="Indoor & Outdoor use">Indoor &amp; Outdoor einsetzbar</span></li>
-            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Transport & Lieferung nach Wien & AT" data-en="Transport & delivery Vienna & AT">Transport &amp; Lieferung nach Wien &amp; AT</span></li>
-            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Tages- und Wochenmiete" data-en="Daily and weekly rates">Tages- und Wochenmiete</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span class="i18n" data-cms="services.s1_item1" data-de="Supertechno 50+ mit 15,11m Reichweite">Supertechno 50+ mit 15,11m Reichweite</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span class="i18n" data-cms="services.s1_item2" data-de="Techno S-Head Remote Control">Techno S-Head Remote Control</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span class="i18n" data-cms="services.s1_item3" data-de="Indoor & Outdoor einsetzbar">Indoor & Outdoor einsetzbar</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span class="i18n" data-cms="services.s1_item4" data-de="Transport & Lieferung nach Wien & AT">Transport & Lieferung nach Wien & AT</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span class="i18n" data-cms="services.s1_item5" data-de="Tages- und Wochenmiete">Tages- und Wochenmiete</span></li>
           </ul>
         </div>
 
@@ -107,14 +172,14 @@
           <div class="w-14 h-14 gold-gradient rounded-2xl flex items-center justify-center mb-6 shrink-0">
             <svg class="w-7 h-7 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
           </div>
-          <h3 class="text-xl font-700 mb-3 text-gold-400" data-cms="services.s2_title" data-de="Operator-Service" data-en="Operator Service">Operator-Service</h3>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6" data-cms="services.s2_desc" data-de="Wir sind zu mieten und bedienen den Kran selbst. Mit über 20 Jahren Erfahrung bringen wir den Shot sicher ins Ziel." data-en="We're available for hire and operate the crane ourselves. With over 20 years of experience, we deliver the shot safely.">Wir sind zu mieten und bedienen den Kran selbst. Mit über 20 Jahren Erfahrung bringen wir den Shot sicher ins Ziel.</p>
+          <h3 class="text-xl font-700 mb-3 text-gold-400" data-cms="services.s2_title" data-de="Operator-Service" data-en="Operator Service" data-fr="Service opérateur" data-cs="Služba operátora" data-fr="Service opérateur" data-cs="Služba operátora">Operator-Service</h3>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6" data-cms="services.s2_desc" data-de="Wir sind zu mieten und bedienen den Kran selbst. Mit über 20 Jahren Erfahrung bringen wir den Shot sicher ins Ziel." data-en="We're available for hire and operate the crane ourselves. With over 20 years of experience, we deliver the shot safely." data-fr="Nous venons avec le matériel et opérons la grue nous-mêmes. Avec plus de 20 ans d'expérience, nous réalisons votre plan à la perfection." data-cs="Pronajímáme techniku a jeřáb sami obsluhujeme. S více než 20 lety zkušeností dovedeme každý záběr bezpečně k dokonalosti." data-fr="Nous venons avec le matériel et opérons la grue nous-mêmes. Avec plus de 20 ans d'expérience, nous réalisons votre plan à la perfection." data-cs="Pronajímáme techniku a jeřáb sami obsluhujeme. S více než 20 lety zkušeností dovedeme každý záběr bezpečně k dokonalosti.">Wir sind zu mieten und bedienen den Kran selbst. Mit über 20 Jahren Erfahrung bringen wir den Shot sicher ins Ziel.</p>
           <ul class="space-y-2.5 mt-auto">
-            <li class="flex items-start gap-2.5 text-sm text-gray-200"><span class="w-5 h-5 bg-gold-500/30 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Zertifizierter, erfahrener Operator" data-en="Certified, experienced operator">Zertifizierter, erfahrener Operator</span></li>
-            <li class="flex items-start gap-2.5 text-sm text-gray-200"><span class="w-5 h-5 bg-gold-500/30 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Briefing & Shot-Planung vorab" data-en="Briefing & shot planning in advance">Briefing &amp; Shot-Planung vorab</span></li>
-            <li class="flex items-start gap-2.5 text-sm text-gray-200"><span class="w-5 h-5 bg-gold-500/30 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Kommunikation mit DoP & Regie" data-en="Communication with DoP & director">Kommunikation mit DoP &amp; Regie</span></li>
-            <li class="flex items-start gap-2.5 text-sm text-gray-200"><span class="w-5 h-5 bg-gold-500/30 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Wiederholbare, präzise Movements" data-en="Repeatable, precise movements">Wiederholbare, präzise Movements</span></li>
-            <li class="flex items-start gap-2.5 text-sm text-gray-200"><span class="w-5 h-5 bg-gold-500/30 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Flexibel auf Set & reaktionsschnell" data-en="Flexible on set & fast reaction">Flexibel auf Set &amp; reaktionsschnell</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-200"><span class="w-5 h-5 bg-gold-500/30 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span class="i18n" data-cms="services.s2_item1" data-de="Zertifizierter, erfahrener Operator">Zertifizierter, erfahrener Operator</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-200"><span class="w-5 h-5 bg-gold-500/30 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span class="i18n" data-cms="services.s2_item2" data-de="Briefing & Shot-Planung vorab">Briefing & Shot-Planung vorab</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-200"><span class="w-5 h-5 bg-gold-500/30 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span class="i18n" data-cms="services.s2_item3" data-de="Kommunikation mit DoP & Regie">Kommunikation mit DoP & Regie</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-200"><span class="w-5 h-5 bg-gold-500/30 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span class="i18n" data-cms="services.s2_item4" data-de="Wiederholbare, präzise Movements">Wiederholbare, präzise Movements</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-200"><span class="w-5 h-5 bg-gold-500/30 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span class="i18n" data-cms="services.s2_item5" data-de="Flexibel auf Set & reaktionsschnell">Flexibel auf Set & reaktionsschnell</span></li>
           </ul>
         </div>
 
@@ -123,14 +188,14 @@
           <div class="w-14 h-14 gold-gradient rounded-2xl flex items-center justify-center mb-6 shrink-0">
             <svg class="w-7 h-7 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
           </div>
-          <h3 class="text-xl font-700 mb-3" data-cms="services.s3_title" data-de="Technischer Support" data-en="Technical Support">Technischer Support</h3>
-          <p class="text-gray-400 text-sm leading-relaxed mb-6" data-cms="services.s3_desc" data-de="Technische Beratung und Betreuung für Ihre Produktion. Wir arbeiten mit allen gängigen Remote-Head-Systemen." data-en="Technical consultation and support for your production. We work with all common remote head systems.">Technische Beratung und Betreuung für Ihre Produktion. Wir arbeiten mit allen gängigen Remote-Head-Systemen.</p>
+          <h3 class="text-xl font-700 mb-3" data-cms="services.s3_title" data-de="Technischer Support" data-en="Technical Support" data-fr="Support technique" data-cs="Technická podpora" data-fr="Support technique" data-cs="Technická podpora">Technischer Support</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6" data-cms="services.s3_desc" data-de="Technische Beratung und Betreuung für Ihre Produktion. Wir arbeiten mit allen gängigen Remote-Head-Systemen." data-en="Technical consultation and support for your production. We work with all common remote head systems." data-fr="Conseil technique et assistance pour votre production. Nous travaillons avec tous les systèmes de têtes télécommandées courants." data-cs="Technické poradenství a asistence pro vaši produkci. Pracujeme se všemi běžnými systémy remote heads." data-fr="Conseil technique et assistance pour votre production. Nous travaillons avec tous les systèmes de têtes télécommandées courants." data-cs="Technické poradenství a asistence pro vaši produkci. Pracujeme se všemi běžnými systémy remote heads.">Technische Beratung und Betreuung für Ihre Produktion. Wir arbeiten mit allen gängigen Remote-Head-Systemen.</p>
           <ul class="space-y-2.5 mt-auto">
-            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Technische Betreuung inklusive" data-en="Technical support included">Technische Betreuung inklusive</span></li>
-            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Kompatibel mit allen Kamerasystemen" data-en="Compatible with all camera systems">Kompatibel mit allen Kamerasystemen</span></li>
-            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Techno S-Head, Preston FI+Z" data-en="Techno S-Head, Preston FI+Z">Techno S-Head, Preston FI+Z</span></li>
-            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Location Scouting auf Anfrage" data-en="Location scouting on request">Location Scouting auf Anfrage</span></li>
-            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span data-de="Technische Beratung vorab (kostenlos)" data-en="Technical consultation (free)">Technische Beratung vorab (kostenlos)</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span class="i18n" data-cms="services.s3_item1" data-de="Technische Betreuung inklusive">Technische Betreuung inklusive</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span class="i18n" data-cms="services.s3_item2" data-de="Kompatibel mit allen Kamerasystemen">Kompatibel mit allen Kamerasystemen</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span class="i18n" data-cms="services.s3_item3" data-de="Techno S-Head, Preston FI+Z">Techno S-Head, Preston FI+Z</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span class="i18n" data-cms="services.s3_item4" data-de="Location Scouting auf Anfrage">Location Scouting auf Anfrage</span></li>
+            <li class="flex items-start gap-2.5 text-sm text-gray-300"><span class="w-5 h-5 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-700">✓</span><span class="i18n" data-cms="services.s3_item5" data-de="Technische Beratung vorab (kostenlos)">Technische Beratung vorab (kostenlos)</span></li>
           </ul>
         </div>
       </div>
@@ -141,29 +206,29 @@
   <section id="prozess" class="py-20 bg-navy-950">
     <div class="max-w-5xl mx-auto px-6">
       <div class="text-center mb-14 observe">
-        <div class="section-label justify-center"><span class="line"></span><span data-de="So läuft es ab" data-en="How it works">So läuft es ab</span><span class="line"></span></div>
-        <h2 class="text-4xl font-800" data-de="Von der Anfrage zum Shot" data-en="From inquiry to the shot">Von der Anfrage zum Shot</h2>
+        <div class="section-label justify-center"><span class="line"></span><span class="i18n" data-cms="services.process_label" data-de="So läuft es ab" data-en="How it works" data-fr="Comment ça se passe" data-cs="Jak to probíhá">So läuft es ab</span><span class="line"></span></div>
+        <h2 class="text-4xl font-800 i18n" data-cms="services.process_title" data-de="Von der Anfrage zum Shot" data-en="From inquiry to the shot" data-fr="De la demande au tournage" data-cs="Od poptávky k záběru">Von der Anfrage zum Shot</h2>
       </div>
       <div class="grid sm:grid-cols-4 gap-6 relative observe">
         <div class="text-center relative z-10">
           <div class="w-12 h-12 gold-gradient rounded-full flex items-center justify-center mx-auto mb-4 font-800 text-black text-lg">1</div>
-          <h4 class="font-700 mb-2" data-de="Anfrage" data-en="Inquiry">Anfrage</h4>
-          <p class="text-gray-500 text-sm" data-de="Kurzes Formular oder Anruf – wir melden uns in 24h." data-en="Short form or call – we respond within 24h.">Kurzes Formular oder Anruf – wir melden uns in 24h.</p>
+          <h4 class="font-700 mb-2 i18n" data-cms="services.step1_title" data-de="Anfrage">Anfrage</h4>
+          <p class="text-gray-500 text-sm i18n" data-cms="services.step1_desc" data-de="Kurzes Formular oder Anruf – wir melden uns in 24h.">Kurzes Formular oder Anruf – wir melden uns in 24h.</p>
         </div>
         <div class="text-center relative z-10">
           <div class="w-12 h-12 gold-gradient rounded-full flex items-center justify-center mx-auto mb-4 font-800 text-black text-lg">2</div>
-          <h4 class="font-700 mb-2" data-de="Briefing" data-en="Briefing">Briefing</h4>
-          <p class="text-gray-500 text-sm" data-de="Shotliste, Location und Kameraausstattung besprechen." data-en="Discuss shot list, location and camera setup.">Shotliste, Location und Kameraausstattung besprechen.</p>
+          <h4 class="font-700 mb-2 i18n" data-cms="services.step2_title" data-de="Briefing">Briefing</h4>
+          <p class="text-gray-500 text-sm i18n" data-cms="services.step2_desc" data-de="Shotliste, Location und Kameraausstattung besprechen.">Shotliste, Location und Kameraausstattung besprechen.</p>
         </div>
         <div class="text-center relative z-10">
           <div class="w-12 h-12 gold-gradient rounded-full flex items-center justify-center mx-auto mb-4 font-800 text-black text-lg">3</div>
-          <h4 class="font-700 mb-2" data-de="Bereitstellung" data-en="Preparation">Bereitstellung</h4>
-          <p class="text-gray-500 text-sm" data-de="Anlieferung & Einrichtung – in kürzester Zeit einsatzbereit." data-en="Delivery & configuration – ready in no time.">Anlieferung &amp; Einrichtung – in kürzester Zeit einsatzbereit.</p>
+          <h4 class="font-700 mb-2 i18n" data-cms="services.step3_title" data-de="Bereitstellung">Bereitstellung</h4>
+          <p class="text-gray-500 text-sm i18n" data-cms="services.step3_desc" data-de="Anlieferung & Einrichtung – in kürzester Zeit einsatzbereit.">Anlieferung & Einrichtung – in kürzester Zeit einsatzbereit.</p>
         </div>
         <div class="text-center relative z-10">
           <div class="w-12 h-12 gold-gradient rounded-full flex items-center justify-center mx-auto mb-4 font-800 text-black text-lg">4</div>
-          <h4 class="font-700 mb-2" data-de="Shot!" data-en="Shot!">Shot!</h4>
-          <p class="text-gray-500 text-sm" data-de="Operator am Steuer – präzise, wiederholbar, sicher." data-en="Operator at the controls – precise, repeatable, safe.">Operator am Steuer – präzise, wiederholbar, sicher.</p>
+          <h4 class="font-700 mb-2 i18n" data-cms="services.step4_title" data-de="Shot!">Shot!</h4>
+          <p class="text-gray-500 text-sm i18n" data-cms="services.step4_desc" data-de="Operator am Steuer – präzise, wiederholbar, sicher.">Operator am Steuer – präzise, wiederholbar, sicher.</p>
         </div>
       </div>
     </div>
@@ -172,31 +237,35 @@
   <!-- PREISINFO -->
   <section id="preise" class="py-20 bg-navy-900">
     <div class="max-w-4xl mx-auto px-6 text-center observe">
-      <div class="section-label justify-center mb-8"><span class="line"></span><span data-de="Konditionen" data-en="Pricing">Konditionen</span><span class="line"></span></div>
-      <h2 class="text-4xl font-800 mb-6" data-de="Transparente Preisgestaltung" data-en="Transparent pricing">Transparente Preisgestaltung</h2>
+      <div class="section-label justify-center mb-8"><span class="line"></span><span class="i18n" data-cms="services.pricing_label" data-de="Konditionen" data-en="Pricing" data-fr="Tarification" data-cs="Ceník">Konditionen</span><span class="line"></span></div>
+      <h2 class="text-4xl font-800 mb-6 i18n" data-cms="services.pricing_title" data-de="Transparente Preisgestaltung" data-en="Transparent pricing" data-fr="Tarifs clairs et transparents" data-cs="Transparentní tvorba cen">Transparente Preisgestaltung</h2>
       <div class="glass-light rounded-2xl p-8 mb-8 text-left">
         <div class="grid sm:grid-cols-2 gap-6">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 gold-gradient rounded-xl flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-            <div><h4 class="font-700 mb-1" data-de="Angebot auf Anfrage" data-en="Quote on request">Angebot auf Anfrage</h4><p class="text-gray-500 text-sm" data-de="Jede Produktion ist anders – wir kalkulieren individuell nach Aufwand, Dauer und Leistungsumfang." data-en="Every production is different – we calculate individually based on effort, duration and scope.">Jede Produktion ist anders – wir kalkulieren individuell nach Aufwand, Dauer und Leistungsumfang.</p></div>
+            <div><h4 class="font-700 mb-1 i18n" data-cms="services.price1_title" data-de="Angebot auf Anfrage">Angebot auf Anfrage</h4>
+            <p class="text-gray-500 text-sm i18n" data-cms="services.price1_desc" data-de="Jede Produktion ist anders – wir kalkulieren individuell nach Aufwand, Dauer und Leistungsumfang.">Jede Produktion ist anders – wir kalkulieren individuell nach Aufwand, Dauer und Leistungsumfang.</p></div>
           </div>
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 gold-gradient rounded-xl flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
-            <div><h4 class="font-700 mb-1" data-de="Tages- & Wochensätze" data-en="Daily & weekly rates">Tages- &amp; Wochensätze</h4><p class="text-gray-500 text-sm" data-de="Flexible Buchung: Halbtag, ganzer Tag oder Mehrtagesprojekte – mit Mengenrabatt." data-en="Flexible booking: half day, full day or multi-day projects – with volume discount.">Flexible Buchung: Halbtag, ganzer Tag oder Mehrtagesprojekte – mit Mengenrabatt.</p></div>
+            <div><h4 class="font-700 mb-1 i18n" data-cms="services.price2_title" data-de="Tages- & Wochensätze">Tages- &amp; Wochensätze</h4>
+            <p class="text-gray-500 text-sm i18n" data-cms="services.price2_desc" data-de="Flexible Buchung: Halbtag, ganzer Tag oder Mehrtagesprojekte – mit Mengenrabatt.">Flexible Buchung: Halbtag, ganzer Tag oder Mehrtagesprojekte – mit Mengenrabatt.</p></div>
           </div>
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 gold-gradient rounded-xl flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
-            <div><h4 class="font-700 mb-1" data-de="Alle Kosten inklusive" data-en="All costs included">Alle Kosten inklusive</h4><p class="text-gray-500 text-sm" data-de="Transport, Operator, Techno S-Head und Betreuung – keine versteckten Kosten." data-en="Transport, operator, Techno S-Head and support – no hidden costs.">Transport, Operator, Techno S-Head und Betreuung – keine versteckten Kosten.</p></div>
+            <div><h4 class="font-700 mb-1 i18n" data-cms="services.price3_title" data-de="Alle Kosten inklusive">Alle Kosten inklusive</h4>
+            <p class="text-gray-500 text-sm i18n" data-cms="services.price3_desc" data-de="Transport, Operator, Techno S-Head und Betreuung – keine versteckten Kosten.">Transport, Operator, Techno S-Head und Betreuung – keine versteckten Kosten.</p></div>
           </div>
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 gold-gradient rounded-xl flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg></div>
-            <div><h4 class="font-700 mb-1" data-de="Kostenlose Erstberatung" data-en="Free initial consultation">Kostenlose Erstberatung</h4><p class="text-gray-500 text-sm" data-de="Wir besprechen Ihr Projekt vorab und prüfen Machbarkeit – unverbindlich und kostenlos." data-en="We discuss your project upfront and check feasibility – no obligation, no charge.">Wir besprechen Ihr Projekt vorab und prüfen Machbarkeit – unverbindlich und kostenlos.</p></div>
+            <div><h4 class="font-700 mb-1 i18n" data-cms="services.price4_title" data-de="Kostenlose Erstberatung">Kostenlose Erstberatung</h4>
+            <p class="text-gray-500 text-sm i18n" data-cms="services.price4_desc" data-de="Wir besprechen Ihr Projekt vorab und prüfen Machbarkeit – unverbindlich und kostenlos.">Wir besprechen Ihr Projekt vorab und prüfen Machbarkeit – unverbindlich und kostenlos.</p></div>
           </div>
         </div>
       </div>
       <a href="/kontakt" class="btn-gold px-10 py-4 rounded-xl font-700 text-lg gap-2 animate-pulse-gold">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-        <span data-de="Jetzt kostenloses Angebot anfragen" data-en="Request free quote now">Jetzt kostenloses Angebot anfragen</span>
+        <span class="i18n" data-cms="services.pricing_cta_btn" data-de="Jetzt kostenloses Angebot anfragen" data-en="Request free quote now" data-fr="Demander un devis gratuit dès maintenant" data-cs="Požádat o bezplatnou nabídku">Jetzt kostenloses Angebot anfragen</span>
       </a>
     </div>
   </section>
@@ -206,44 +275,44 @@
     <div class="max-w-3xl mx-auto px-6">
       <div class="text-center mb-12 observe">
         <div class="section-label justify-center"><span class="line"></span><span>FAQ</span><span class="line"></span></div>
-        <h2 class="text-4xl font-800" data-de="Häufige Fragen" data-en="Frequently Asked Questions">Häufige Fragen</h2>
+        <h2 class="text-4xl font-800" data-de="Häufige Fragen" data-en="Frequently Asked Questions" data-fr="Foire aux questions" data-cs="Často kladené otázky" data-fr="Foire aux questions" data-cs="Často kladené otázky">Häufige Fragen</h2>
       </div>
       <div class="glass rounded-2xl overflow-hidden observe" id="faq">
         <div class="faq-item">
           <button class="w-full text-left px-6 py-5 flex items-center justify-between gap-4 faq-trigger" onclick="toggleFaq(this)">
-            <span class="font-600" data-de="Ist ein Operator inklusive oder extra?" data-en="Is an operator included or extra?">Ist ein Operator inklusive oder extra?</span>
+            <span class="font-600" data-de="Ist ein Operator inklusive oder extra?" data-en="Is an operator included or extra?" data-fr="L'opérateur est-il inclus ou en supplément ?" data-cs="Je operátor v ceně nebo za příplatek?" data-fr="L'opérateur est-il inclus ou en supplément ?" data-cs="Je operátor v ceně nebo za příplatek?">Ist ein Operator inklusive oder extra?</span>
             <span class="faq-icon text-gold-400 text-2xl font-300 shrink-0">+</span>
           </button>
           <div class="faq-answer px-6 pb-0">
-            <p class="text-gray-400 text-sm leading-relaxed pb-5" data-de="Unser Operator-Service ist das Herzstück unseres Angebots – wir vermieten den Kran immer mit eigenem Operator. Das garantiert Ihnen professionelle Bedienung, kürzere Rüstzeiten und perfekte Shots." data-en="Our operator service is the heart of our offering – we always rent the crane with our own operator. This guarantees professional operation, shorter set-up times and perfect shots.">Unser Operator-Service ist das Herzstück unseres Angebots – wir vermieten den Kran immer mit eigenem Operator. Das garantiert Ihnen professionelle Bedienung, kürzere Rüstzeiten und perfekte Shots.</p>
+            <p class="text-gray-400 text-sm leading-relaxed pb-5" data-de="Unser Operator-Service ist das Herzstück unseres Angebots – wir vermieten den Kran immer mit eigenem Operator. Das garantiert Ihnen professionelle Bedienung, kürzere Rüstzeiten und perfekte Shots." data-en="Our operator service is the heart of our offering – we always rent the crane with our own operator. This guarantees professional operation, shorter set-up times and perfect shots." data-fr="Le service d'opérateur est le cœur de notre offre – la grue est systématiquement louée avec son opérateur dédié. Cela garantit un maniement expert, un gain de temps précieux et des plans impeccables." data-cs="Operátorský servis je srdcem naší nabídky – jeřáb pronajímáme vždy s vlastním operátorem. To vám zaručuje profesionální obsluhu, kratší časy přípravy a dokonalé záběry." data-fr="Le service d'opérateur est le cœur de notre offre – la grue est systématiquement louée avec son opérateur dédié. Cela garantit un maniement expert, un gain de temps précieux et des plans impeccables." data-cs="Operátorský servis je srdcem naší nabídky – jeřáb pronajímáme vždy s vlastním operátorem. To vám zaručuje profesionální obsluhu, kratší časy přípravy a dokonalé záběry.">Unser Operator-Service ist das Herzstück unseres Angebots – wir vermieten den Kran immer mit eigenem Operator. Das garantiert Ihnen professionelle Bedienung, kürzere Rüstzeiten und perfekte Shots.</p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="w-full text-left px-6 py-5 flex items-center justify-between gap-4 faq-trigger" onclick="toggleFaq(this)">
-            <span class="font-600" data-de="Können Sie auch außerhalb von Wien arbeiten?" data-en="Can you work outside Vienna?">Können Sie auch außerhalb von Wien arbeiten?</span>
+            <span class="font-600" data-de="Können Sie auch außerhalb von Wien arbeiten?" data-en="Can you work outside Vienna?" data-fr="Intervenez-vous en dehors de Vienne ?" data-cs="Pracujete i mimo Vídeň?" data-fr="Intervenez-vous en dehors de Vienne ?" data-cs="Pracujete i mimo Vídeň?">Können Sie auch außerhalb von Wien arbeiten?</span>
             <span class="faq-icon text-gold-400 text-2xl font-300 shrink-0">+</span>
           </button>
           <div class="faq-answer px-6 pb-0">
-            <p class="text-gray-400 text-sm leading-relaxed pb-5" data-de="Ja – wir sind österreichweit und auch für internationale Produktionen verfügbar. Anfahrtskosten werden je nach Location individuell kalkuliert. Sprechen Sie uns an." data-en="Yes – we are available throughout Austria and also for international productions. Travel costs are calculated individually depending on the location. Contact us.">Ja – wir sind österreichweit und auch für internationale Produktionen verfügbar. Anfahrtskosten werden je nach Location individuell kalkuliert. Sprechen Sie uns an.</p>
+            <p class="text-gray-400 text-sm leading-relaxed pb-5" data-de="Ja – wir sind österreichweit und auch für internationale Produktionen verfügbar. Anfahrtskosten werden je nach Location individuell kalkuliert. Sprechen Sie uns an." data-en="Yes – we are available throughout Austria and also for international productions. Travel costs are calculated individually depending on the location. Contact us." data-fr="Oui – nous couvrons toute l'Autriche ainsi que les productions internationales. Les frais de déplacement sont ajustés selon le lieu. N'hésitez pas à nous contacter." data-cs="Ano – působíme po celém Rakousku i pro mezinárodní produkce. Cestovní náklady se kalkulují individuálně dle lokace. Kontaktujte nás." data-fr="Oui – nous couvrons toute l'Autriche ainsi que les productions internationales. Les frais de déplacement sont ajustés selon le lieu. N'hésitez pas à nous contacter." data-cs="Ano – působíme po celém Rakousku i pro mezinárodní produkce. Cestovní náklady se kalkulují individuálně dle lokace. Kontaktujte nás.">Ja – wir sind österreichweit und auch für internationale Produktionen verfügbar. Anfahrtskosten werden je nach Location individuell kalkuliert. Sprechen Sie uns an.</p>
           </div>
         </div>
         <div class="faq-item">
           <button class="w-full text-left px-6 py-5 flex items-center justify-between gap-4 faq-trigger" onclick="toggleFaq(this)">
-            <span class="font-600" data-de="Welche Kameras sind kompatibel?" data-en="Which cameras are compatible?">Welche Kameras sind kompatibel?</span>
+            <span class="font-600" data-de="Welche Kameras sind kompatibel?" data-en="Which cameras are compatible?" data-fr="Quelles caméras sont compatibles ?" data-cs="Jaké kamery jsou kompatibilní?" data-fr="Quelles caméras sont compatibles ?" data-cs="Jaké kamery jsou kompatibilní?">Welche Kameras sind kompatibel?</span>
             <span class="faq-icon text-gold-400 text-2xl font-300 shrink-0">+</span>
           </button>
           <div class="faq-answer px-6 pb-0">
-            <p class="text-gray-400 text-sm leading-relaxed pb-5" data-de="Der Supertechno 50+ trägt bis zu 100kg Nutzlast und ist mit allen gängigen Kamerasystemen kompatibel – ARRI, RED, Sony, Canon und mehr. Auch Highspeed-Kameras und Beamsplitter-Rigs sind kein Problem." data-en="The Supertechno 50+ carries up to 100kg payload and is compatible with all common camera systems – ARRI, RED, Sony, Canon and more. High-speed cameras and beamsplitter rigs are also no problem.">Der Supertechno 50+ trägt bis zu 100kg Nutzlast und ist mit allen gängigen Kamerasystemen kompatibel – ARRI, RED, Sony, Canon und mehr. Auch Highspeed-Kameras und Beamsplitter-Rigs sind kein Problem.</p>
+            <p class="text-gray-400 text-sm leading-relaxed pb-5" data-de="Der Supertechno 50+ trägt bis zu 100kg Nutzlast und ist mit allen gängigen Kamerasystemen kompatibel – ARRI, RED, Sony, Canon und mehr. Auch Highspeed-Kameras und Beamsplitter-Rigs sind kein Problem." data-en="The Supertechno 50+ carries up to 100kg payload and is compatible with all common camera systems – ARRI, RED, Sony, Canon and more. High-speed cameras and beamsplitter rigs are also no problem." data-fr="Le Supertechno 50+ supporte jusqu'à 100 kg de charge utile et accueille toutes les caméras professionnelles – ARRI, RED, Sony, Canon, etc. Compatible également avec caméras haute vitesse et rigs 3D/miroir." data-cs="Supertechno 50+ unese až 100 kg užitečného zatížení a je kompatibilní se všemi běžnými kamerovými systémy – ARRI, RED, Sony, Canon a dalšími. Žádný problém nejsou ani high-speed kamery a beamsplitter rigy." data-fr="Le Supertechno 50+ supporte jusqu'à 100 kg de charge utile et accueille toutes les caméras professionnelles – ARRI, RED, Sony, Canon, etc. Compatible également avec caméras haute vitesse et rigs 3D/miroir." data-cs="Supertechno 50+ unese až 100 kg užitečného zatížení a je kompatibilní se všemi běžnými kamerovými systémy – ARRI, RED, Sony, Canon a dalšími. Žádný problém nejsou ani high-speed kamery a beamsplitter rigy.">Der Supertechno 50+ trägt bis zu 100kg Nutzlast und ist mit allen gängigen Kamerasystemen kompatibel – ARRI, RED, Sony, Canon und mehr. Auch Highspeed-Kameras und Beamsplitter-Rigs sind kein Problem.</p>
           </div>
         </div>
         <div class="faq-item" style="border-bottom:none">
           <button class="w-full text-left px-6 py-5 flex items-center justify-between gap-4 faq-trigger" onclick="toggleFaq(this)">
-            <span class="font-600" data-de="Wie früh muss ich buchen?" data-en="How early do I need to book?">Wie früh muss ich buchen?</span>
+            <span class="font-600" data-de="Wie früh muss ich buchen?" data-en="How early do I need to book?" data-fr="Quel est le délai de réservation conseillé ?" data-cs="Jak dlouho dopředu je nutné rezervovat?" data-fr="Quel est le délai de réservation conseillé ?" data-cs="Jak dlouho dopředu je nutné rezervovat?">Wie früh muss ich buchen?</span>
             <span class="faq-icon text-gold-400 text-2xl font-300 shrink-0">+</span>
           </button>
           <div class="faq-answer px-6 pb-0">
-            <p class="text-gray-400 text-sm leading-relaxed pb-5" data-de="Wir empfehlen 1–2 Wochen Vorlauf für normale Produktionen. Für kurzfristige Anfragen (24–48h) tun wir unser Bestes – sprechen Sie uns direkt an." data-en="We recommend 1–2 weeks lead time for standard productions. For short-notice requests (24–48h) we do our best – contact us directly.">Wir empfehlen 1–2 Wochen Vorlauf für normale Produktionen. Für kurzfristige Anfragen (24–48h) tun wir unser Bestes – sprechen Sie uns direkt an.</p>
+            <p class="text-gray-400 text-sm leading-relaxed pb-5" data-de="Wir empfehlen 1–2 Wochen Vorlauf für normale Produktionen. Für kurzfristige Anfragen (24–48h) tun wir unser Bestes – sprechen Sie uns direkt an." data-en="We recommend 1–2 weeks lead time for standard productions. For short-notice requests (24–48h) we do our best – contact us directly." data-fr="Nous conseillons un préavis de 1 à 2 semaines pour les productions standards. Pour les urgences (24-48h), nous faisons notre maximum – appelez-nous directement." data-cs="Doporučujeme 1–2 týdny předem pro standardní produkce. U urgentních poptávek (24–48 h) uděláme maximum – ozvěte se nám přímo." data-fr="Nous conseillons un préavis de 1 à 2 semaines pour les productions standards. Pour les urgences (24-48h), nous faisons notre maximum – appelez-nous directement." data-cs="Doporučujeme 1–2 týdny předem pro standardní produkce. U urgentních poptávek (24–48 h) uděláme maximum – ozvěte se nám přímo.">Wir empfehlen 1–2 Wochen Vorlauf für normale Produktionen. Für kurzfristige Anfragen (24–48h) tun wir unser Bestes – sprechen Sie uns direkt an.</p>
           </div>
         </div>
       </div>

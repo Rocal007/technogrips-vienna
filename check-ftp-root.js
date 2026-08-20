@@ -8,11 +8,14 @@ async function list() {
       host: process.env.FTP_HOST,
       user: process.env.FTP_USER,
       password: process.env.FTP_PASSWORD,
-      port: 21
+      port: process.env.FTP_PORT || 21,
+      secure: process.env.FTP_SECURE === 'true'
     });
-    console.log("=== /technogrips-viennaat ===");
-    let t = await client.list('/technogrips-viennaat');
-    t.forEach(i => console.log(i.name, i.size));
+    console.log("=== /httpdocs ===");
+    let t = await client.list('/httpdocs');
+    const fs = require('fs');
+    fs.writeFileSync('ftp_files.txt', t.map(i => `${i.name} (${i.size})`).join('\n'));
+    console.log("Wrote ftp_files.txt");
   } catch(e) { console.error(e); }
   client.close();
 }

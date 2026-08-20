@@ -160,7 +160,7 @@
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
           Abmelden
         </button>
-        <a href="../index.html" class="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-500 hover:text-gold-400 transition-colors rounded-xl hover:bg-gold-500/10 mt-1">
+        <a href="/" class="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-500 hover:text-gold-400 transition-colors rounded-xl hover:bg-gold-500/10 mt-1">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
           Zur Website
         </a>
@@ -320,7 +320,7 @@
           </div>
           <div class="flex gap-3 items-center">
             <span id="cms-save-status" class="save-indicator text-xs text-gray-500"></span>
-            <a href="../index.html" target="_blank" class="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm border border-white/10 text-gray-400 hover:text-gold-400 hover:border-gold-500/30 transition-colors">
+            <a href="/" target="_blank" class="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm border border-white/10 text-gray-400 hover:text-gold-400 hover:border-gold-500/30 transition-colors">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
               Vorschau
             </a>
@@ -328,27 +328,45 @@
         </div>
 
         <!-- Section Tabs -->
-        <div class="flex gap-1 mb-6 border-b border-white/10 overflow-x-auto">
+        <div class="flex gap-1 mb-4 border-b border-white/10 overflow-x-auto">
           <button onclick="showCmsSection('home')" id="cms-tab-home" class="cms-tab active px-4 py-2.5 text-sm font-600 whitespace-nowrap">🏠 Startseite</button>
           <button onclick="showCmsSection('services')"  id="cms-tab-services"    class="cms-tab px-4 py-2.5 text-sm font-600 text-gray-400 whitespace-nowrap">⚙️ Services</button>
           <button onclick="showCmsSection('product')"   id="cms-tab-product"     class="cms-tab px-4 py-2.5 text-sm font-600 text-gray-400 whitespace-nowrap">🏗️ Produkt</button>
           <button onclick="showCmsSection('tracking')"  id="cms-tab-tracking"    class="cms-tab px-4 py-2.5 text-sm font-600 text-gray-400 whitespace-nowrap">🕹️ Simulator</button>
           <button onclick="showCmsSection('about')"     id="cms-tab-about"       class="cms-tab px-4 py-2.5 text-sm font-600 text-gray-400 whitespace-nowrap">👥 Über uns</button>
           <button onclick="showCmsSection('contact')"   id="cms-tab-contact"     class="cms-tab px-4 py-2.5 text-sm font-600 text-gray-400 whitespace-nowrap">📞 Kontakt</button>
+          <button onclick="showCmsSection('nav_footer')" id="cms-tab-nav_footer" class="cms-tab px-4 py-2.5 text-sm font-600 text-gray-400 whitespace-nowrap">🧭 Nav & Footer</button>
           <button onclick="showCmsSection('newsletter')" id="cms-tab-newsletter" class="cms-tab px-4 py-2.5 text-sm font-600 text-gray-400 whitespace-nowrap">✉️ Newsletter</button>
           <button onclick="showCmsSection('seo')"       id="cms-tab-seo"         class="cms-tab px-4 py-2.5 text-sm font-600 text-gray-400 whitespace-nowrap">🔍 SEO</button>
+          <button onclick="showCmsSection('imprint')"   id="cms-tab-imprint"     class="cms-tab px-4 py-2.5 text-sm font-600 text-gray-400 whitespace-nowrap">📜 Impressum</button>
+          <button onclick="showCmsSection('privacy')"   id="cms-tab-privacy"     class="cms-tab px-4 py-2.5 text-sm font-600 text-gray-400 whitespace-nowrap">🔒 Datenschutz</button>
+          <button onclick="showCmsSection('terms')"     id="cms-tab-terms"       class="cms-tab px-4 py-2.5 text-sm font-600 text-gray-400 whitespace-nowrap">📋 AGB</button>
         </div>
 
-        <!-- Column Headers -->
-        <div class="grid grid-cols-[1fr_1.5fr_1.5fr_auto] gap-3 px-4 py-2 text-xs text-gray-500 uppercase tracking-widest mb-2">
-          <div>Feld</div>
-          <div>🇩🇪 Deutsch</div>
-          <div>🇬🇧 Englisch</div>
-          <div></div>
+        <!-- Search Bar & Info Bar -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mb-4">
+          <div class="relative flex-1">
+            <input type="text" id="cmsSearchInput" placeholder="🔍 Satz, Begriff, Zahl oder Feldname durchsuchen..." class="form-input w-full px-4 py-2.5 rounded-xl text-sm" oninput="filterCmsFields(this.value)">
+            <button id="cmsSearchClear" onclick="clearCmsSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white text-xs">✕</button>
+          </div>
+        </div>
+
+        <!-- Language Info Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 mb-3 rounded-xl bg-white/3 border border-white/5 text-xs text-gray-400">
+          <div class="flex items-center gap-2">
+            <span class="text-gold-400 font-700 uppercase tracking-wider text-[10px]">Unterstützte Sprachen:</span>
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-white font-600">🇩🇪 DE</span>
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-white font-600">🇬🇧 EN</span>
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-white font-600">🇫🇷 FR</span>
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-white font-600">🇨🇿 CS</span>
+          </div>
+          <div class="text-[11px] text-gray-500">
+            Änderungen werden nach dem Klick auf "Speichern" sofort für alle Sprachen aktiv.
+          </div>
         </div>
 
         <!-- Fields Container -->
-        <div id="cms-fields" class="space-y-2">
+        <div id="cms-fields" class="space-y-3">
           <div class="text-center py-12 text-gray-500">Lade Inhalte...</div>
         </div>
 
@@ -367,7 +385,7 @@
   <!-- Lead Detail Modal -->
   <div id="leadModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
     <div class="modal-bg absolute inset-0" onclick="closeLeadModal()"></div>
-    <div class="glass relative rounded-2xl p-8 max-w-2xl w-full z-10 max-h-[90vh] overflow-y-auto">
+    <div class="glass relative rounded-2xl p-6 sm:p-8 max-w-3xl w-full z-10 max-h-[90vh] overflow-y-auto">
       <button onclick="closeLeadModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
@@ -419,7 +437,7 @@
       err.classList.add('hidden');
 
       try {
-        const res = await fetch('../api/auth/login', {
+        const res = await fetch('/api/auth/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username: user, password: pass })
@@ -480,7 +498,7 @@
       document.getElementById('mainApp').classList.add('flex');
       initApp();
     } else if (token) {
-      fetch('../api/auth/verify', { headers: { 'Authorization': `Bearer ${token}` } })
+      fetch('/api/auth/verify', { headers: { 'Authorization': `Bearer ${token}` } })
         .then(r => r.json())
         .then(data => {
           if (data.valid) {
@@ -511,7 +529,7 @@
 
     // ── Dashboard ───────────────────────────────────
     async function loadDashboard() {
-      const stats = await api('../api/leads.php?action=stats');
+      const stats = await api('/api/leads.php?action=stats');
       if (!stats) return;
 
       document.getElementById('kpi-total').textContent = stats.total;
@@ -657,48 +675,245 @@
       loadLeads();
     }
 
+    let currentModalLead = null;
+
+    function escapeHtml(str) {
+      if (str === null || str === undefined) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function applyReplyTemplate(type) {
+      if (!currentModalLead) return;
+      const lead = currentModalLead;
+      const name = lead.name || '';
+      const greeting = name ? `Sehr geehrte/r Frau/Herr ${name},` : `Sehr geehrte Damen und Herren,`;
+      const product = lead.product ? `für den ${lead.product}` : `für unsere Supertechno Teleskopkrane`;
+
+      const subjectInput = document.getElementById('replySubject');
+      const messageInput = document.getElementById('replyMessage');
+      if (!subjectInput || !messageInput) return;
+
+      if (type === 'standard') {
+        subjectInput.value = `Re: Ihre Anfrage bei Technogrips Vienna`;
+        messageInput.value = `${greeting}\n\nvielen Dank für Ihre Anfrage ${product}.\n\nGerne stehen wir Ihnen für alle produktionstechnischen Fragen, Verfügbarkeiten sowie die Bereitstellung unseres erfahrenen Operator-Teams zur Verfügung.\n\nKönnen Sie uns bereits nähere Details zu den gewünschten Drehtagen und der Location mitteilen?\n\nMit freundlichen Grüßen,\nGerhard Deimel\nTechnogrips Vienna\nTel: +43 664 1234567\noffice@technogrips-vienna.at\nhttps://technogrips-vienna.at`;
+      } else if (type === 'offer') {
+        const dateStr = lead.event_date ? `am ${lead.event_date}` : `für Ihre geplanten Drehtage`;
+        subjectInput.value = `Angebot: Technogrips Vienna – ${lead.product || 'Supertechno 50+'}`;
+        messageInput.value = `${greeting}\n\nvielen Dank für Ihre Angebotsanfrage ${dateStr}.\n\nGerne unterbreiten wir Ihnen ein maßgeschneidertes Angebot für den Einsatz unseres Supertechno Teleskopkrans inklusive professionellem Kranoperator.\n\nWir bereiten die detaillierte Kalkulation für Sie vor und melden uns in Kürze mit dem vollständigen Angebot.\n\nMit freundlichen Grüßen,\nGerhard Deimel\nTechnogrips Vienna\noffice@technogrips-vienna.at\nhttps://technogrips-vienna.at`;
+      } else if (type === 'appointment') {
+        const dateStr = lead.booking_date ? `${lead.booking_date}${lead.booking_time ? ' um ' + lead.booking_time : ''}` : 'Ihrem Wunschtermin';
+        subjectInput.value = `Terminbestätigung: Beratungstermin Technogrips Vienna`;
+        messageInput.value = `${greeting}\n\nvielen Dank für Ihre Terminanfrage.\n\nWir bestätigen Ihren Beratungstermin am ${dateStr} hiermit gerne.\n\nWir freuen uns auf das persönliche Gespräch mit Ihnen zur Besprechung Ihrer technischen Anforderungen.\n\nMit freundlichen Grüßen,\nGerhard Deimel\nTechnogrips Vienna\noffice@technogrips-vienna.at\nhttps://technogrips-vienna.at`;
+      }
+    }
+
+    async function sendLeadReply(id) {
+      const recipient = document.getElementById('replyRecipient')?.value?.trim();
+      const subject = document.getElementById('replySubject')?.value?.trim();
+      const message = document.getElementById('replyMessage')?.value?.trim();
+
+      if (!recipient) {
+        alert('Bitte geben Sie eine gültige Empfänger-E-Mail-Adresse an.');
+        return;
+      }
+      if (!message) {
+        alert('Bitte verfassen Sie eine Antwort-Nachricht.');
+        return;
+      }
+
+      const btn = document.getElementById('btnSendReply');
+      const origHtml = btn ? btn.innerHTML : '';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `<svg class="w-4 h-4 animate-spin inline mr-2" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg> Wird versendet...`;
+      }
+
+      try {
+        const res = await api('/api/leads.php?action=reply', {
+          method: 'POST',
+          body: JSON.stringify({
+            lead_id: id,
+            recipient,
+            subject,
+            message,
+            sent_by: localStorage.getItem('admin_user') || 'Technogrips Admin'
+          })
+        });
+
+        if (res && res.success) {
+          showToastMsg('✅ Antwort versendet & Kopie an office@ gesendet!');
+          await openLead(id);
+          loadLeads();
+        } else {
+          alert(res?.error || 'Fehler beim Versenden der Antwort.');
+        }
+      } catch (err) {
+        console.error('Reply error:', err);
+        alert('Netzwerk- oder Serverfehler beim Versenden der E-Mail.');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = origHtml;
+        }
+      }
+    }
+
     async function openLead(id) {
       const lead = await api(`/api/leads.php?id=${id}`);
       if (!lead) return;
+      currentModalLead = lead;
       const modal = document.getElementById('leadModal');
-      document.getElementById('modalContent').innerHTML = `
-        <div class="flex items-start justify-between mb-6">
-          <div>
-            <div class="text-xs text-gray-500 mb-1">#${lead.id} · <span style="color:${typeColors[lead.type]}">${typeLabel[lead.type] || lead.type}</span></div>
-            <h2 class="text-2xl font-800">${lead.name || lead.email}</h2>
+
+      const defaultSubject = `Re: Ihre Anfrage bei Technogrips Vienna` + (lead.product ? ` (${lead.product})` : '');
+      const defaultGreeting = lead.name ? `Sehr geehrte/r Frau/Herr ${lead.name},` : `Sehr geehrte Damen und Herren,`;
+
+      const repliesHtml = (lead.replies && lead.replies.length > 0)
+        ? lead.replies.map(r => `
+          <div class="bg-black/40 border border-gold-500/25 rounded-xl p-4 space-y-2">
+            <div class="flex flex-wrap items-center justify-between gap-2 text-xs border-b border-white/5 pb-2">
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-gold-400">👤 ${escapeHtml(r.sent_by || 'Admin')}</span>
+                <span class="text-gray-500">→</span>
+                <span class="text-gray-300 font-mono">${escapeHtml(r.recipient)}</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="bg-green-500/20 text-green-400 border border-green-500/30 px-2 py-0.5 rounded-full text-[11px] font-600">✓ Gesendet &amp; Kopie an office@</span>
+                <span class="text-gray-400">${formatDate(r.created_at)}</span>
+              </div>
+            </div>
+            <div class="text-xs text-gray-400"><strong>Betreff:</strong> <span class="text-white">${escapeHtml(r.subject)}</span></div>
+            <div class="text-sm text-gray-200 whitespace-pre-wrap leading-relaxed bg-white/5 p-3 rounded-lg border border-white/5">${escapeHtml(r.message)}</div>
           </div>
-          <span class="status-${lead.status} text-sm px-3 py-1 rounded-full font-600 mt-1">${statusLabel(lead.status)}</span>
-        </div>
-        <div class="grid sm:grid-cols-2 gap-3 mb-6">
-          ${[
-            ['E-Mail', lead.email ? `<a href="mailto:${lead.email}" class="text-gold-400 hover:text-gold-300">${lead.email}</a>` : '–'],
-            ['Telefon', lead.phone ? `<a href="tel:${lead.phone}" class="text-gold-400">${lead.phone}</a>` : '–'],
-            ['Unternehmen', lead.company || '–'],
-            ['Produkt', lead.product || '–'],
-            ['Drehtag', lead.event_date || '–'],
-            ['Dauer', lead.duration || '–'],
-            ['Buchungsdatum', lead.booking_date ? `${lead.booking_date} ${lead.booking_time || ''}` : '–'],
-            ['Sprache', lead.language?.toUpperCase() || '–'],
-            ['Quelle', lead.source || '–'],
-            ['Erstellt am', formatDate(lead.created_at)],
-          ].map(([k,v]) => `<div class="glass-light rounded-xl p-3"><div class="text-xs text-gray-500 mb-1">${k}</div><div class="text-sm font-600">${v}</div></div>`).join('')}
-        </div>
-        ${lead.message ? `<div class="glass-light rounded-xl p-4 mb-5"><div class="text-xs text-gray-500 mb-2">Nachricht</div><p class="text-sm text-gray-300 leading-relaxed">${lead.message}</p></div>` : ''}
-        <div class="grid sm:grid-cols-2 gap-3 mb-4">
+        `).join('')
+        : `<div class="text-xs text-gray-500 italic py-2">Bisher noch keine manuelle E-Mail-Antwort versendet.</div>`;
+
+      document.getElementById('modalContent').innerHTML = `
+        <!-- Lead Header -->
+        <div class="flex items-start justify-between mb-6 pb-4 border-b border-white/10">
           <div>
-            <label class="block text-sm text-gray-400 mb-1.5">Status ändern</label>
-            <select id="modalStatus" class="form-input w-full px-3 py-2 rounded-xl text-sm">
+            <div class="text-xs text-gray-500 mb-1 flex items-center gap-2">
+              <span class="font-mono">#${lead.id}</span>
+              <span>·</span>
+              <span class="font-600" style="color:${typeColors[lead.type] || '#e5c500'}">${typeLabel[lead.type] || lead.type}</span>
+            </div>
+            <h2 class="text-2xl font-800 text-white">${escapeHtml(lead.name || lead.email)}</h2>
+          </div>
+          <span class="status-${lead.status} text-sm px-3.5 py-1 rounded-full font-600">${statusLabel(lead.status)}</span>
+        </div>
+
+        <!-- Meta Grid -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
+          ${[
+            ['E-Mail', lead.email ? `<a href="mailto:${lead.email}" class="text-gold-400 hover:underline">${escapeHtml(lead.email)}</a>` : '–'],
+            ['Telefon', lead.phone ? `<a href="tel:${lead.phone}" class="text-gold-400">${escapeHtml(lead.phone)}</a>` : '–'],
+            ['Unternehmen', escapeHtml(lead.company || '–')],
+            ['Produkt / Kran', escapeHtml(lead.product || '–')],
+            ['Drehtag / Datum', escapeHtml(lead.event_date || '–')],
+            ['Dauer', escapeHtml(lead.duration || '–')],
+            ['Buchungszeitraum', lead.booking_date ? `${escapeHtml(lead.booking_date)} ${escapeHtml(lead.booking_time || '')}` : '–'],
+            ['Sprache', escapeHtml(lead.language?.toUpperCase() || '–')],
+            ['Quelle', escapeHtml(lead.source || '–')],
+            ['Eingegangen am', formatDate(lead.created_at)],
+          ].map(([k,v]) => `<div class="glass-light rounded-xl p-3 border border-white/5"><div class="text-xs text-gray-500 mb-1">${k}</div><div class="text-sm font-600 text-white">${v}</div></div>`).join('')}
+        </div>
+
+        <!-- Original Message -->
+        ${lead.message ? `
+          <div class="glass-light rounded-xl p-4 mb-6 border border-gold-500/25 bg-gold-500/5">
+            <div class="flex items-center gap-2 text-xs text-gold-400 font-bold mb-2">
+              <span>📩</span> <span>Ursprüngliche Kunden-Nachricht</span>
+            </div>
+            <p class="text-sm text-gray-200 leading-relaxed whitespace-pre-wrap">${escapeHtml(lead.message)}</p>
+          </div>
+        ` : ''}
+
+        <!-- Communications / Reply History Section -->
+        <div class="mb-6">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-gray-300 flex items-center gap-2">
+              <span>💬</span> <span>Gesendete Antworten (${lead.replies ? lead.replies.length : 0})</span>
+            </h3>
+          </div>
+          <div id="leadRepliesContainer" class="max-h-60 overflow-y-auto space-y-3 pr-1">
+            ${repliesHtml}
+          </div>
+        </div>
+
+        <!-- Reply Composer Section -->
+        <div class="glass-light rounded-2xl p-5 mb-6 border border-gold-500/30 shadow-2xl bg-[#12141c]">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2 border-b border-white/10">
+            <h3 class="text-base font-bold text-gold-400 flex items-center gap-2">
+              <span>✉️</span> <span>E-Mail-Antwort direkt senden</span>
+            </h3>
+            <span class="text-xs text-gray-400">Kopie geht autom. an <strong class="text-gold-400">office@technogrips-vienna.at</strong></span>
+          </div>
+
+          <!-- Quick Templates -->
+          <div class="flex flex-wrap items-center gap-2 mb-4">
+            <span class="text-xs text-gray-400">Schnellvorlage:</span>
+            <button type="button" onclick="applyReplyTemplate('standard')" class="px-2.5 py-1 bg-white/5 hover:bg-gold-500/20 hover:text-gold-300 text-gray-300 text-xs rounded-lg transition-colors border border-white/10">⚡ Standard</button>
+            <button type="button" onclick="applyReplyTemplate('offer')" class="px-2.5 py-1 bg-white/5 hover:bg-gold-500/20 hover:text-gold-300 text-gray-300 text-xs rounded-lg transition-colors border border-white/10">⚡ Angebot</button>
+            <button type="button" onclick="applyReplyTemplate('appointment')" class="px-2.5 py-1 bg-white/5 hover:bg-gold-500/20 hover:text-gold-300 text-gray-300 text-xs rounded-lg transition-colors border border-white/10">⚡ Terminbestätigung</button>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-3 mb-3">
+            <div>
+              <label class="block text-xs text-gray-400 mb-1 font-semibold">Empfänger (An)</label>
+              <input type="email" id="replyRecipient" value="${escapeHtml(lead.email || '')}" class="form-input w-full px-3 py-2 rounded-xl text-sm" placeholder="kunde@beispiel.at">
+            </div>
+            <div>
+              <label class="block text-xs text-gray-400 mb-1 font-semibold">Betreff</label>
+              <input type="text" id="replySubject" value="${escapeHtml(defaultSubject)}" class="form-input w-full px-3 py-2 rounded-xl text-sm" placeholder="Betreff eingeben">
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-xs text-gray-400 mb-1 font-semibold">Nachrichtentext</label>
+            <textarea id="replyMessage" rows="5" class="form-input w-full px-3 py-2.5 rounded-xl text-sm leading-relaxed" placeholder="Ihre Antwort an den Kunden...">${defaultGreeting}
+
+vielen Dank für Ihre Anfrage bei Technogrips Vienna.
+
+</textarea>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+            <div class="text-xs text-gray-400 flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span>Antwort wird gespeichert &amp; Kopie an office@ gesendet</span>
+            </div>
+            <button id="btnSendReply" onclick="sendLeadReply(${lead.id})" class="btn-gold w-full sm:w-auto px-6 py-2.5 rounded-xl text-sm font-700 flex items-center justify-center gap-2 shadow-lg shadow-gold-500/10">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+              <span>✉️ Antwort absenden &amp; speichern</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Status & Notes -->
+        <div class="grid sm:grid-cols-2 gap-4 mb-4 pt-4 border-t border-white/10">
+          <div>
+            <label class="block text-sm font-semibold text-gray-300 mb-1.5">Lead-Status anpassen</label>
+            <select id="modalStatus" class="form-input w-full px-3 py-2.5 rounded-xl text-sm">
               ${['new','contacted','qualified','closed','spam'].map(s => `<option value="${s}" ${lead.status===s?'selected':''}>${statusLabel(s)}</option>`).join('')}
             </select>
           </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-300 mb-1.5">Interne Notizen</label>
+            <textarea id="modalNotes" rows="2" class="form-input w-full px-3 py-2 rounded-xl text-sm resize-none" placeholder="Nur für das Team sichtbar...">${escapeHtml(lead.notes || '')}</textarea>
+          </div>
         </div>
-        <div class="mb-5">
-          <label class="block text-sm text-gray-400 mb-1.5">Interne Notizen</label>
-          <textarea id="modalNotes" rows="3" class="form-input w-full px-3 py-2 rounded-xl text-sm resize-none">${lead.notes || ''}</textarea>
-        </div>
-        <div class="flex gap-3">
-          <button onclick="saveLeadModal(${lead.id})" class="btn-gold px-6 py-2.5 rounded-xl text-sm font-700">Speichern</button>
-          <button onclick="deleteLead(${lead.id}); closeLeadModal();" class="px-6 py-2.5 rounded-xl text-sm border border-red-500/30 text-red-400 hover:bg-red-500/10 transition-colors">Löschen</button>
+
+        <!-- Footer Actions -->
+        <div class="flex items-center justify-between gap-3 pt-3 border-t border-white/10">
+          <div class="flex gap-2">
+            <button onclick="saveLeadModal(${lead.id})" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-sm font-600 transition-colors">💾 Status / Notizen speichern</button>
+            <button onclick="closeLeadModal()" class="px-4 py-2.5 rounded-xl text-sm text-gray-400 hover:text-white transition-colors">Schließen</button>
+          </div>
+          <button onclick="deleteLead(${lead.id}); closeLeadModal();" class="px-4 py-2.5 rounded-xl text-sm text-red-400 hover:bg-red-500/10 border border-red-500/20 transition-colors">🗑️ Lead löschen</button>
         </div>
       `;
       modal.classList.remove('hidden');
@@ -708,6 +923,7 @@
       const status = document.getElementById('modalStatus').value;
       const notes = document.getElementById('modalNotes').value;
       await api(`/api/leads.php?id=${id}`, { method: 'PATCH', body: JSON.stringify({ status, notes }) });
+      showToastMsg('✅ Notizen & Status gespeichert');
       closeLeadModal();
       loadLeads();
     }
@@ -739,7 +955,7 @@
       
       let list = mediaList;
       if (!list || list.length === 0) {
-        const data = await api('../api/media.php');
+        const data = await api('/api/media.php');
         if (data) {
           mediaList = data;
           list = data;
@@ -764,7 +980,7 @@
       grid.innerHTML = list.map(m => `
         <div onclick="selectImageForField('${m.url}')" class="cursor-pointer glass-light hover:border-gold-500/50 border border-transparent rounded-xl overflow-hidden p-1.5 transition-all flex flex-col justify-between">
           <div class="w-full aspect-square rounded-lg overflow-hidden bg-navy-950/40">
-            <img src="${m.url}" class="w-full h-full object-cover" onerror="this.src="../assets/images/placeholder.svg"">
+            <img src="${m.url}" class="w-full h-full object-cover" onerror="this.src='/assets/images/placeholder.svg'">
           </div>
           <div class="text-[10px] text-gray-400 truncate mt-1 text-center px-1" title="${m.original_name}">${m.original_name}</div>
         </div>
@@ -780,24 +996,29 @@
       
       const deEl = document.getElementById(`field-de-${activeImageFieldId}`);
       const enEl = document.getElementById(`field-en-${activeImageFieldId}`);
+      const frEl = document.getElementById(`field-fr-${activeImageFieldId}`);
+      const csEl = document.getElementById(`field-cs-${activeImageFieldId}`);
       
       if (deEl) deEl.value = url;
       if (enEl) enEl.value = url;
+      if (frEl) frEl.value = url;
+      if (csEl) csEl.value = url;
       
       const [section, key] = activeImageFieldId.split('.');
       markChanged(activeImageFieldId, section, key);
       
-      const previewDe = document.getElementById(`preview-de-${activeImageFieldId}`);
-      const previewEn = document.getElementById(`preview-en-${activeImageFieldId}`);
-      if (previewDe) { previewDe.src = url; previewDe.classList.remove('hidden'); }
-      if (previewEn) { previewEn.src = url; previewEn.classList.remove('hidden'); }
+      const preview = document.getElementById(`preview-${activeImageFieldId}`) || document.getElementById(`preview-de-${activeImageFieldId}`);
+      if (preview) { 
+        preview.src = url; 
+        preview.classList.remove('hidden'); 
+      }
       
       closeMediaSelectModal();
     }
 
     // ── Newsletter ──────────────────────────────────
     async function loadNewsletter() {
-      const data = await api('../api/admin/newsletter');
+      const data = await api('/api/admin/newsletter');
       if (!data) return;
       const tbody = document.getElementById('newsletterBody');
       if (data.length === 0) { tbody.innerHTML = '<tr><td colspan="5" class="text-center py-12 text-gray-500">Keine Abonnenten</td></tr>'; return; }
@@ -819,13 +1040,14 @@
 
     // ── CMS / Seiten bearbeiten ─────────────────────
     let cmsData = {};       // all content from API
-    let cmsChanges = {};    // pending changes { 'section.key': {section, key, value_de, value_en} }
+    let cmsChanges = {};    // pending changes { 'section.key': {section, key, value_de, value_en, value_fr, value_cs} }
     let cmsCurrent = 'home';
 
     async function loadCmsContent() {
-      const rows = await api('../api/content.php?format=array');
+      let rows = await api('/api/content.php?format=array');
+      if (!rows) rows = await api('/api/content?format=array');
       if (!rows) return;
-      // rows is array of { section, key, label, value_de, value_en, type }
+      // rows is array of { section, key, label, value_de, value_en, value_fr, value_cs, type }
       cmsData = {};
       for (const row of rows) {
         if (!cmsData[row.section]) cmsData[row.section] = [];
@@ -835,23 +1057,65 @@
       showCmsSection(cmsCurrent);
     }
 
+    let cmsSearchQuery = '';
+
     function showCmsSection(section) {
       cmsCurrent = section;
       // Update tabs
       document.querySelectorAll('.cms-tab').forEach(t => t.classList.remove('active'));
       document.getElementById(`cms-tab-${section}`)?.classList.add('active');
+      renderCmsFields();
+    }
 
+    function filterCmsFields(query) {
+      cmsSearchQuery = (query || '').trim().toLowerCase();
+      const clearBtn = document.getElementById('cmsSearchClear');
+      if (clearBtn) {
+        if (cmsSearchQuery) clearBtn.classList.remove('hidden');
+        else clearBtn.classList.add('hidden');
+      }
+      renderCmsFields();
+    }
+
+    function clearCmsSearch() {
+      const input = document.getElementById('cmsSearchInput');
+      if (input) input.value = '';
+      filterCmsFields('');
+    }
+
+    function renderCmsFields() {
       let fields = [];
-      if (section === 'home') {
-        fields = [...(cmsData['hero'] || []), ...(cmsData['home'] || [])];
+      if (cmsSearchQuery) {
+        // Search across ALL sections
+        Object.values(cmsData).forEach(secFields => {
+          fields.push(...secFields);
+        });
+        // Filter by query in label, key, section, or any language value
+        fields = fields.filter(f => {
+          const fid = `${f.section}.${f.key}`.toLowerCase();
+          const lbl = (f.label || '').toLowerCase();
+          const de = (cmsChanges[`${f.section}.${f.key}`]?.value_de ?? f.value_de ?? '').toLowerCase();
+          const en = (cmsChanges[`${f.section}.${f.key}`]?.value_en ?? f.value_en ?? '').toLowerCase();
+          const fr = (cmsChanges[`${f.section}.${f.key}`]?.value_fr ?? f.value_fr ?? '').toLowerCase();
+          const cs = (cmsChanges[`${f.section}.${f.key}`]?.value_cs ?? f.value_cs ?? '').toLowerCase();
+          return fid.includes(cmsSearchQuery) || lbl.includes(cmsSearchQuery) || de.includes(cmsSearchQuery) || en.includes(cmsSearchQuery) || fr.includes(cmsSearchQuery) || cs.includes(cmsSearchQuery);
+        });
       } else {
-        fields = cmsData[section] || [];
+        if (cmsCurrent === 'home') {
+          fields = [...(cmsData['hero'] || []), ...(cmsData['home'] || [])];
+        } else if (cmsCurrent === 'nav_footer') {
+          fields = [...(cmsData['nav'] || []), ...(cmsData['footer'] || [])];
+        } else {
+          fields = cmsData[cmsCurrent] || [];
+        }
       }
 
       const container = document.getElementById('cms-fields');
 
       if (fields.length === 0) {
-        container.innerHTML = '<div class="text-center py-12 text-gray-500">Keine Felder in diesem Abschnitt</div>';
+        container.innerHTML = cmsSearchQuery 
+          ? `<div class="text-center py-12 text-gray-500">Keine Ergebnisse für "${cmsSearchQuery}".</div>`
+          : '<div class="text-center py-12 text-gray-500">Keine Felder in diesem Abschnitt</div>';
         return;
       }
 
@@ -860,49 +1124,100 @@
         const hasChange = !!cmsChanges[fieldId];
         const de = hasChange ? cmsChanges[fieldId].value_de : (field.value_de || '');
         const en = hasChange ? cmsChanges[fieldId].value_en : (field.value_en || '');
+        const fr = hasChange ? cmsChanges[fieldId].value_fr : (field.value_fr || '');
+        const cs = hasChange ? cmsChanges[fieldId].value_cs : (field.value_cs || '');
         const isTextarea = field.type === 'textarea';
         const isImage = field.type === 'image';
         const inputClass = `form-input w-full px-3 py-2 rounded-lg text-sm resize-none ${hasChange ? 'field-changed' : ''}`;
 
-        let deHtml, enHtml;
-        if (isTextarea) {
-          deHtml = `<textarea id="field-de-${fieldId}" rows="3" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">${de}</textarea>`;
-          enHtml = `<textarea id="field-en-${fieldId}" rows="3" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">${en}</textarea>`;
-        } else if (isImage) {
-          deHtml = `
-            <div class="flex gap-2 items-center">
-              <input type="text" id="field-de-${fieldId}" value="${de.replace(/"/g, '&quot;')}" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">
-              <button onclick="openMediaSelectModal('${fieldId}')" class="btn-gold px-3 py-2 rounded-lg text-xs font-600 whitespace-nowrap">Wählen 🖼️</button>
-            </div>
-            <div class="mt-2 w-24 h-24 rounded-lg overflow-hidden border border-white/10 bg-navy-950/50 flex items-center justify-center">
-              <img id="preview-de-${fieldId}" src="${de}" class="w-full h-full object-cover ${de ? '' : 'hidden'}" onerror="this.classList.add('hidden')">
-            </div>
-          `;
-          enHtml = `
-            <div class="flex gap-2 items-center">
-              <input type="text" id="field-en-${fieldId}" value="${en.replace(/"/g, '&quot;')}" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">
-              <button onclick="openMediaSelectModal('${fieldId}')" class="btn-gold px-3 py-2 rounded-lg text-xs font-600 whitespace-nowrap">Wählen 🖼️</button>
-            </div>
-            <div class="mt-2 w-24 h-24 rounded-lg overflow-hidden border border-white/10 bg-navy-950/50 flex items-center justify-center">
-              <img id="preview-en-${fieldId}" src="${en}" class="w-full h-full object-cover ${en ? '' : 'hidden'}" onerror="this.classList.add('hidden')">
-            </div>
-          `;
-        } else {
-          deHtml = `<input type="text" id="field-de-${fieldId}" value="${de.replace(/"/g, '&quot;')}" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">`;
-          enHtml = `<input type="text" id="field-en-${fieldId}" value="${en.replace(/"/g, '&quot;')}" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">`;
+        const sectionBadge = cmsSearchQuery ? `<span class="text-[10px] text-gold-400/80 px-2 py-0.5 rounded bg-gold-500/10 border border-gold-500/20 uppercase font-600 mr-2">${field.section}</span>` : '';
+
+        if (isImage) {
+          const imgVal = de || en || fr || cs || '';
+          return `
+            <div class="glass-light rounded-xl p-4">
+              <div class="flex items-center justify-between mb-3">
+                <div class="text-xs text-gold-400 font-700 uppercase tracking-wider">${sectionBadge}${field.label || field.key}</div>
+                <span class="text-[10px] text-gray-500 px-2 py-0.5 rounded bg-white/5 border border-white/10">Bild / Media</span>
+              </div>
+              <div class="flex flex-wrap sm:flex-nowrap gap-3 items-center">
+                <div class="flex-1 flex gap-2">
+                  <input type="text" id="field-de-${fieldId}" value="${imgVal.replace(/"/g, '&quot;')}" class="${inputClass}" placeholder="/assets/images/..." oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">
+                  <input type="hidden" id="field-en-${fieldId}" value="${(en || imgVal).replace(/"/g, '&quot;')}">
+                  <input type="hidden" id="field-fr-${fieldId}" value="${(fr || imgVal).replace(/"/g, '&quot;')}">
+                  <input type="hidden" id="field-cs-${fieldId}" value="${(cs || imgVal).replace(/"/g, '&quot;')}">
+                  <button type="button" onclick="openMediaSelectModal('${fieldId}')" class="btn-gold px-4 py-2 rounded-lg text-xs font-600 whitespace-nowrap flex items-center gap-1.5 shadow-sm">
+                    <span>🖼️</span> Wählen
+                  </button>
+                </div>
+                <div class="w-16 h-16 rounded-lg overflow-hidden border border-white/10 bg-navy-950/50 flex items-center justify-center shrink-0">
+                  <img id="preview-${fieldId}" src="${imgVal}" class="w-full h-full object-cover ${imgVal ? '' : 'hidden'}" onerror="this.classList.add('hidden')">
+                </div>
+              </div>
+            </div>`;
         }
 
+        if (isTextarea) {
+          return `
+            <div class="glass-light rounded-xl p-4">
+              <div class="text-xs text-gold-400 font-700 uppercase tracking-wider mb-3">${sectionBadge}${field.label || field.key}</div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div>
+                  <div class="text-xs text-gray-400 font-600 mb-1.5 flex items-center gap-1.5">
+                    <span>🇩🇪</span> <span>Deutsch (DE)</span>
+                  </div>
+                  <textarea id="field-de-${fieldId}" rows="3" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">${de}</textarea>
+                </div>
+                <div>
+                  <div class="text-xs text-gray-400 font-600 mb-1.5 flex items-center gap-1.5">
+                    <span>🇬🇧</span> <span>Englisch (EN)</span>
+                  </div>
+                  <textarea id="field-en-${fieldId}" rows="3" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">${en}</textarea>
+                </div>
+                <div>
+                  <div class="text-xs text-gray-400 font-600 mb-1.5 flex items-center gap-1.5">
+                    <span>🇫🇷</span> <span>Französisch (FR)</span>
+                  </div>
+                  <textarea id="field-fr-${fieldId}" rows="3" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">${fr}</textarea>
+                </div>
+                <div>
+                  <div class="text-xs text-gray-400 font-600 mb-1.5 flex items-center gap-1.5">
+                    <span>🇨🇿</span> <span>Tschechisch (CS)</span>
+                  </div>
+                  <textarea id="field-cs-${fieldId}" rows="3" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">${cs}</textarea>
+                </div>
+              </div>
+            </div>`;
+        }
+
+        // Default text input (4 columns responsive)
         return `
           <div class="glass-light rounded-xl p-4">
-            <div class="text-xs text-gray-500 font-600 uppercase tracking-wider mb-3">${field.label || field.key}</div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="text-xs text-gold-400 font-700 uppercase tracking-wider mb-3">${sectionBadge}${field.label || field.key}</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
               <div>
-                <div class="text-xs text-gray-600 mb-1">🇩🇪 Deutsch</div>
-                ${deHtml}
+                <div class="text-xs text-gray-400 font-600 mb-1.5 flex items-center gap-1.5">
+                  <span>🇩🇪</span> <span>Deutsch (DE)</span>
+                </div>
+                <input type="text" id="field-de-${fieldId}" value="${de.replace(/"/g, '&quot;')}" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">
               </div>
               <div>
-                <div class="text-xs text-gray-600 mb-1">🇬🇧 Englisch</div>
-                ${enHtml}
+                <div class="text-xs text-gray-400 font-600 mb-1.5 flex items-center gap-1.5">
+                  <span>🇬🇧</span> <span>Englisch (EN)</span>
+                </div>
+                <input type="text" id="field-en-${fieldId}" value="${en.replace(/"/g, '&quot;')}" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">
+              </div>
+              <div>
+                <div class="text-xs text-gray-400 font-600 mb-1.5 flex items-center gap-1.5">
+                  <span>🇫🇷</span> <span>Französisch (FR)</span>
+                </div>
+                <input type="text" id="field-fr-${fieldId}" value="${fr.replace(/"/g, '&quot;')}" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">
+              </div>
+              <div>
+                <div class="text-xs text-gray-400 font-600 mb-1.5 flex items-center gap-1.5">
+                  <span>🇨🇿</span> <span>Tschechisch (CS)</span>
+                </div>
+                <input type="text" id="field-cs-${fieldId}" value="${cs.replace(/"/g, '&quot;')}" class="${inputClass}" oninput="markChanged('${fieldId}', '${field.section}', '${field.key}')">
               </div>
             </div>
           </div>`;
@@ -912,24 +1227,56 @@
     function markChanged(fieldId, section, key) {
       const deEl = document.getElementById(`field-de-${fieldId}`);
       const enEl = document.getElementById(`field-en-${fieldId}`);
-      if (!deEl || !enEl) return;
+      const frEl = document.getElementById(`field-fr-${fieldId}`);
+      const csEl = document.getElementById(`field-cs-${fieldId}`);
+      if (!deEl) return;
 
-      deEl.classList.add('field-changed');
-      enEl.classList.add('field-changed');
+      if (deEl) deEl.classList.add('field-changed');
+      if (enEl) enEl.classList.add('field-changed');
+      if (frEl) frEl.classList.add('field-changed');
+      if (csEl) csEl.classList.add('field-changed');
+
+      const isImage = document.getElementById(`preview-${fieldId}`) !== null;
+      let deVal = deEl.value ?? '';
+      let enVal = enEl ? (enEl.value ?? '') : (isImage ? deVal : '');
+      let frVal = frEl ? (frEl.value ?? '') : (isImage ? deVal : '');
+      let csVal = csEl ? (csEl.value ?? '') : (isImage ? deVal : '');
+
+      if (isImage) {
+        if (enEl) enEl.value = deVal;
+        if (frEl) frEl.value = deVal;
+        if (csEl) csEl.value = deVal;
+        enVal = deVal;
+        frVal = deVal;
+        csVal = deVal;
+        const preview = document.getElementById(`preview-${fieldId}`);
+        if (preview) {
+          preview.src = deVal;
+          if (deVal) preview.classList.remove('hidden');
+          else preview.classList.add('hidden');
+        }
+      }
 
       cmsChanges[fieldId] = {
         section, key,
-        value_de: deEl.value || deEl.textContent,
-        value_en: enEl.value || enEl.textContent
+        value_de: deVal,
+        value_en: enVal,
+        value_fr: frVal,
+        value_cs: csVal
       };
 
       // Enable save button
       const saveBtn = document.getElementById('saveAllBtn');
-      saveBtn.disabled = false;
-      saveBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      if (saveBtn) {
+        saveBtn.disabled = false;
+        saveBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      }
 
       const count = Object.keys(cmsChanges).length;
-      document.getElementById('cms-save-status').textContent = `${count} ungespeicherte Änderung${count !== 1 ? 'en' : ''}`;
+      const statusEl = document.getElementById('cms-save-status');
+      if (statusEl) {
+        statusEl.textContent = `${count} ungespeicherte Änderung${count !== 1 ? 'en' : ''}`;
+      }
     }
 
     async function saveAllChanges() {
@@ -940,10 +1287,22 @@
       saveBtn.textContent = 'Speichern...';
       saveBtn.disabled = true;
 
-      const res = await api('../api/content.php', {
+      let res = await api('/api/content.php', {
         method: 'PUT',
         body: JSON.stringify({ updates })
       });
+      if (!res || !res.success) {
+        res = await api('/api/content', {
+          method: 'PUT',
+          body: JSON.stringify({ updates })
+        });
+      }
+      if (!res || !res.success) {
+        res = await api('/api/admin/content/batch', {
+          method: 'PUT',
+          body: JSON.stringify({ updates })
+        });
+      }
 
       if (res?.success) {
         cmsChanges = {};
@@ -967,7 +1326,7 @@
     let mediaSearch = '';
 
     async function loadMedia() {
-      let url = '../api/media.php';
+      let url = '/api/media.php';
       const params = [];
       if (mediaFilter !== 'all') params.push(`category=${mediaFilter}`);
       if (mediaSearch) params.push(`search=${encodeURIComponent(mediaSearch)}`);
@@ -990,7 +1349,7 @@
           <div class="relative" style="aspect-ratio:1">
             <img src="${m.url}" alt="${m.alt_text||m.original_name}"
                  class="w-full h-full object-cover"
-                 onerror="this.src="../assets/images/placeholder.svg"">
+                 onerror="this.src='/assets/images/placeholder.svg'">
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-2">
               <div class="text-xs text-white font-500 truncate">${m.original_name}</div>
               <div class="text-xs text-gray-400">${formatBytes(m.size_bytes)}</div>
@@ -1058,7 +1417,7 @@
       fd.append('category', cat);
       const btn = document.getElementById('uploadStatus');
       if (btn) btn.textContent = `⏳ Uploading ${files.length} Datei(en)...`;
-      const res = await fetch('../api/media.php', {
+      const res = await fetch('/api/media.php', {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${localStorage.getItem('tg_token')}` },
         body: fd
@@ -1104,7 +1463,7 @@
           <div class="glass-light rounded-2xl p-6 mb-4">
             <h3 class="font-700 text-lg mb-4 flex items-center gap-2">
               ${label}
-              <a href="../${page === "home' ? '' : page}" target="_blank" class="text-xs text-gold-500 hover:text-gold-400 ml-2 font-400">↗ Seite ansehen</a>
+              <a href="/${page === 'home' ? '' : page}" target="_blank" class="text-xs text-gold-500 hover:text-gold-400 ml-2 font-400">↗ Seite ansehen</a>
             </h3>
             <div class="space-y-3">
               ${rows.map(r => `
@@ -1159,7 +1518,7 @@
         sort_order: item.sort_order
       }));
 
-      const res = await api('../api/sections.php', {
+      const res = await api('/api/sections.php', {
         method: 'PUT',
         body: JSON.stringify({ orders })
       });

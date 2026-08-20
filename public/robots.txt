@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /api/
+Disallow: /kran-test/
+
+Sitemap: https://technogrips-vienna.at/sitemap.xml

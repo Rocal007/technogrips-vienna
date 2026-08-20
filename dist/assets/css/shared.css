@@ -2,11 +2,11 @@
    Technogrips Vienna – Shared Stylesheet
    ═══════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('/assets/css/fonts.css');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-* { font-family: 'Inter', system-ui, sans-serif; }
-html { scroll-behavior: smooth; }
+* { font-family: 'Oswald', system-ui, sans-serif; }
+html { scroll-behavior: smooth; scroll-padding-top: 150px; }
 body { background: #020817; color: #fff; overflow-x: hidden; }
 
 /* ── Scrollbar ── */
@@ -61,8 +61,99 @@ body { background: #020817; color: #fff; overflow-x: hidden; }
 /* ── Nav Active ── */
 .nav-active { color: #e5c500 !important; }
 
+/* ── Navbar Header Responsiveness (Strict Mobile/Desktop Visibility) ── */
+.hidden {
+  display: none !important;
+}
+
+.desktop-nav,
+#langToggle,
+.desktop-only-btn,
+#desktopCtaBtn,
+#langDropdownContainer {
+  display: none !important;
+}
+
+@media (min-width: 1024px) {
+  .desktop-nav,
+  .lg\:flex {
+    display: flex !important;
+  }
+  .lg\:block {
+    display: block !important;
+  }
+  .lg\:inline-flex {
+    display: inline-flex !important;
+  }
+  .lg\:hidden {
+    display: none !important;
+  }
+  #langToggle,
+  .desktop-only-btn,
+  #desktopCtaBtn {
+    display: inline-flex !important;
+  }
+  #langDropdownContainer {
+    display: block !important;
+  }
+}
+
+/* ── Navbar Smooth Hide on Mobile Scroll > 300px ── */
+#navbar {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+@media (max-width: 1023px) {
+  #navbar.nav-hidden {
+    transform: translateY(-100%) !important;
+  }
+}
+
+/* ── Footer full-width ── */
+#footer-container { display: block; width: 100% !important; max-width: 100% !important; }
+footer            { display: block; width: 100% !important; max-width: 100% !important; }
+
+/* ── Mobile Floating Contact Bar (Under Footer / Bottom Sticky) ── */
+.mobile-contact-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  background: rgba(2, 8, 23, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(229, 197, 0, 0.25);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.7);
+  padding: 0.625rem 0.75rem;
+  padding-bottom: max(0.625rem, env(safe-area-inset-bottom));
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+  display: block;
+}
+
+.mobile-contact-bar.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 767px) {
+  footer {
+    padding-bottom: 5.5rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-contact-bar {
+    display: none !important;
+  }
+}
+
 /* ── Page Hero (sub-pages) ── */
-.page-hero { padding: 8rem 0 5rem; background: radial-gradient(ellipse at top left, #1e2d47 0%, #0a0f1e 60%, #020817 100%); position:relative; overflow:hidden; }
+.page-hero { padding: 12rem 0 5rem; background: radial-gradient(ellipse at top left, #1e2d47 0%, #0a0f1e 60%, #020817 100%); position:relative; overflow:hidden; }
 .page-hero::before { content:''; position:absolute; inset:0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); }
 
 /* ── Breadcrumb ── */

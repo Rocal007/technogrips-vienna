@@ -3,62 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="P-fPSdEPcQmgsZ7om6Xqiwa-LwMcqNpctpZEyblKeME" />
   <meta name="description" content="Technogrips Vienna – Professionelle Kamerakran-Vermietung mit erfahrenem Operator-Service in Wien. Supertechno 30, 50+, 75+ für Film, TV und Events.">
   <meta name="keywords" content="Kamerakran Wien, Supertechno, Technocrane, Operator, Film Produktion, Kran Vermietung, Vienna, Austria">
   <meta property="og:title" content="Technogrips Vienna – Kamerakran & Operator Service">
   <meta property="og:description" content="Professionelle Supertechno Kamerakrane mit erfahrenem Operator. Für Film, TV & Events in Wien und ganz Österreich.">
   <title>Technogrips Vienna – Professioneller Kamerakran & Operator Service</title>
 
-  <!-- Tailwind CSS v4 CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            navy: {
-              950: '#020817',
-              900: '#0a0f1e',
-              800: '#0f1729',
-              700: '#162035',
-              600: '#1e2d47',
-            },
-            gold: {
-              300: '#f2e44d',
-              400: '#ebd600',
-              500: '#e5c500',
-              600: '#ccb000',
-              700: '#a69000',
-            }
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
-          animation: {
-            'fade-up': 'fadeUp 0.6s ease-out forwards',
-            'fade-in': 'fadeIn 0.8s ease-out forwards',
-            'float': 'float 6s ease-in-out infinite',
-            'pulse-gold': 'pulseGold 2s ease-in-out infinite',
-            'slide-in-left': 'slideInLeft 0.7s ease-out forwards',
-          },
-          keyframes: {
-            fadeUp: { '0%': { opacity: 0, transform: 'translateY(30px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
-            fadeIn: { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
-            float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
-            pulseGold: { '0%,100%': { boxShadow: '0 0 0 0 rgba(229,197,0,0.4)' }, '50%': { boxShadow: '0 0 20px 8px rgba(229,197,0,0.2)' } },
-            slideInLeft: { '0%': { opacity: 0, transform: 'translateX(-40px)' }, '100%': { opacity: 1, transform: 'translateX(0)' } },
-          }
-        }
-      }
-    }
-  </script>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <link rel="stylesheet" href="/assets/css/tailwind.css">
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/assets/css/shared.css">
+
+  <!-- Local Fonts -->
+  <link rel="stylesheet" href="/assets/css/fonts.css">
 
   <style>
-    * { font-family: 'Inter', sans-serif; }
+    * { font-family: 'Oswald', sans-serif; }
     .glass { background: rgba(15, 23, 41, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(229,197,0,0.12); }
     .glass-light { background: rgba(30, 45, 71, 0.5); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); }
     .gold-gradient { background: linear-gradient(135deg, #e5c500, #ccb000); }
@@ -86,7 +49,163 @@
     .modal-backdrop { background: rgba(2,8,23,0.9); backdrop-filter: blur(8px); }
     .success-toast { background: linear-gradient(135deg, #065f46, #047857); border: 1px solid #10b981; }
     .error-toast { background: linear-gradient(135deg, #7f1d1d, #991b1b); border: 1px solid #ef4444; }
+
+    /* ── Mobile Floating Contact Bar (Under Footer / Bottom Sticky) ── */
+    .mobile-contact-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 90;
+      background: rgba(2, 8, 23, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(229, 197, 0, 0.25);
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.7);
+      padding: 0.625rem 0.75rem;
+      padding-bottom: max(0.625rem, env(safe-area-inset-bottom));
+      transform: translateY(100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+      display: block;
+    }
+    .mobile-contact-bar.is-visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    @media (max-width: 767px) {
+      footer {
+        padding-bottom: 5.5rem !important;
+      }
+    }
+    @media (min-width: 768px) {
+      .mobile-contact-bar {
+        display: none !important;
+      }
+    }
+
+    /* ── Navbar Header Responsiveness (Strict Mobile/Desktop Visibility) ── */
+    .hidden {
+      display: none !important;
+    }
+
+    .desktop-nav,
+    #langToggle,
+    .desktop-only-btn,
+    #desktopCtaBtn,
+    #langDropdownContainer {
+      display: none !important;
+    }
+
+    @media (min-width: 1024px) {
+      .desktop-nav,
+      .lg\:flex {
+        display: flex !important;
+      }
+      .lg\:block {
+        display: block !important;
+      }
+      .lg\:inline-flex {
+        display: inline-flex !important;
+      }
+      .lg\:hidden {
+        display: none !important;
+      }
+      #langToggle,
+      .desktop-only-btn,
+      #desktopCtaBtn {
+        display: inline-flex !important;
+      }
+      #langDropdownContainer {
+        display: block !important;
+      }
+    }
+
+    /* ── Navbar Smooth Hide on Mobile Scroll > 300px ── */
+    #navbar {
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease, box-shadow 0.4s ease;
+    }
+    @media (max-width: 1023px) {
+      #navbar.nav-hidden {
+        transform: translateY(-100%) !important;
+      }
+    }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Technogrips Vienna",
+    "description": "Professionelle Kamerakran-Vermietung mit erfahrenem Operator-Service in Wien. Supertechno 30, 50+, 75+ für Film, TV, Events und Werbung.",
+    "url": "https://technogrips-vienna.at",
+    "telephone": "+436504542261",
+    "email": "office@technogrips-vienna.at",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Wien",
+      "addressCountry": "AT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 48.2082,
+      "longitude": 16.3738
+    },
+    "image": "https://technogrips-vienna.at/assets/images/logo_transparent.png",
+    "logo": "https://technogrips-vienna.at/assets/images/logo_transparent.png",
+    "priceRange": "€€€",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "areaServed": [
+      { "@type": "Country", "name": "Austria" },
+      { "@type": "Country", "name": "Germany" },
+      { "@type": "Country", "name": "Czech Republic" },
+      { "@type": "Country", "name": "Hungary" },
+      { "@type": "Country", "name": "Slovakia" }
+    ],
+    "knowsLanguage": ["de", "en", "fr", "cs"],
+    "sameAs": [
+      "https://www.instagram.com/technogripsvienna",
+      "https://vimeo.com/technogripsvienna",
+      "https://www.linkedin.com/company/technogrips-vienna"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Kamerakran-Vermietung & Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Kamerakran-Vermietung mit Operator",
+            "description": "Supertechno Teleskop-Kamerakran inklusive erfahrenem Kranoperator für Film, TV, Events und Werbung."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Camera Tracking & Telemetrie",
+            "description": "Mo-Sys StarTracker, Ncam und Stype Kamera-Tracking-Systeme für Virtual Production und VFX."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Transport & Logistik",
+            "description": "Lieferung und Aufbau des Kamerakrans in ganz Österreich und Europa."
+          }
+        }
+      ]
+    }
+  }
+  </script>
 </head>
 
 <body class="bg-navy-950 text-white overflow-x-hidden">
@@ -94,53 +213,97 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- NAVIGATION                                   -->
   <!-- ═══════════════════════════════════════════ -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-navy-950/80 backdrop-blur-md border-b border-white/5">
+    <div class="w-full px-4 sm:px-6 lg:px-10 py-2 sm:py-2.5 flex items-center justify-between">
       <!-- Logo -->
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 gold-gradient rounded-xl flex items-center justify-center">
-          <svg viewBox="0 0 24 24" class="w-6 h-6 text-black fill-current">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-          </svg>
+      <a href="/" class="flex items-center gap-2 sm:gap-3 no-underline shrink-0 max-w-[calc(100%-55px)]">
+        <img src="/assets/images/logo_transparent.png" alt="Technogrips Logo" class="h-10 sm:h-12 lg:h-[120px] w-auto object-contain shrink-0">
+        <div class="min-w-0">
+          <div class="text-xl sm:text-2xl lg:text-4xl font-800 tracking-tight leading-none text-white">Technogrips</div>
+          <div class="text-[9px] sm:text-[10px] lg:text-xs font-600 tracking-[0.2em] uppercase" style="color:#e5c500">Vienna</div>
         </div>
-        <div>
-          <div class="text-lg font-800 tracking-tight leading-none">Technogrips</div>
-          <div class="text-gold-500 text-xs font-600 tracking-[0.2em] uppercase">Vienna</div>
-        </div>
-      </div>
+      </a>
 
       <!-- Desktop Nav -->
-      <div class="hidden lg:flex items-center gap-8">
-        <a href="/leistungen" class="text-sm text-gray-400 hover:text-gold-400 transition-colors" data-de="Leistungen" data-en="Services">Leistungen</a>
+      <div class="desktop-nav hidden lg:flex items-center gap-8">
+        <a href="/" class="text-sm text-gold-400 nav-active transition-colors" data-de="Startseite" data-en="Home" data-fr="Accueil" data-cs="Domů">Startseite</a>
+        <a href="/leistungen" class="text-sm text-gray-400 hover:text-gold-400 transition-colors" data-de="Leistungen" data-en="Services" data-fr="Services" data-cs="Služby">Leistungen</a>
         <a href="/supertechno-50" class="text-sm text-gray-400 hover:text-gold-400 transition-colors">Supertechno 50+</a>
-        <a href="/ueber-uns" class="text-sm text-gray-400 hover:text-gold-400 transition-colors" data-de="Über uns" data-en="About">Über uns</a>
-        <a href="/kontakt" class="text-sm text-gray-400 hover:text-gold-400 transition-colors" data-de="Kontakt" data-en="Contact">Kontakt</a>
+        <a href="/tracking" class="text-sm text-gray-400 hover:text-gold-400 transition-colors" data-de="Tracking & Telemetrie" data-en="Tracking & Telemetry" data-fr="Tracking & Télémétrie" data-cs="Tracking a telemetrie">Tracking & Telemetrie</a>
+        <a href="/ueber-uns" class="text-sm text-gray-400 hover:text-gold-400 transition-colors" data-de="Über uns" data-en="About" data-fr="À propos" data-cs="O nás">Über uns</a>
+        <a href="/kontakt" class="text-sm text-gray-400 hover:text-gold-400 transition-colors" data-de="Kontakt" data-en="Contact" data-fr="Contact" data-cs="Kontakt">Kontakt</a>
       </div>
 
       <!-- Right side -->
       <div class="flex items-center gap-3">
-        <!-- Language Toggle -->
-        <button id="langToggle" class="flex items-center gap-1 text-sm glass px-3 py-1.5 rounded-full hover:border-gold-500/40 transition-all">
-          <span id="langIcon">🇩🇪</span>
-          <span id="langText" class="font-600 text-gold-400">DE</span>
-          <svg class="w-3 h-3 text-gray-400 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <a href="/kontakt" class="btn-gold px-5 py-2 rounded-xl text-sm font-700 hidden sm:block" data-de="Jetzt anfragen" data-en="Get a Quote">Jetzt anfragen</a>
+        <!-- Language Dropdown (Desktop only) -->
+        <div class="relative hidden lg:block" id="langDropdownContainer">
+          <button id="langToggle" class="lang-toggle-btn items-center gap-1.5 text-sm glass px-3.5 py-1.5 rounded-full hover:border-gold-500/40 transition-all cursor-pointer inline-flex">
+            <span id="langIcon">🇩🇪</span>
+            <span id="langText" class="font-600" style="color:#e5c500">DE</span>
+            <svg class="w-3 h-3 text-gray-400 ml-0.5 transition-transform duration-200" id="langArrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="langDropdown" class="hidden absolute right-0 mt-2 w-36 rounded-xl shadow-2xl py-1.5 z-50 border border-gold-500/20 backdrop-blur-xl bg-navy-950/95">
+            <button type="button" class="lang-option w-full px-3.5 py-2 text-left text-xs font-600 hover:bg-gold-500/15 hover:text-gold-400 flex items-center gap-2 transition-colors cursor-pointer text-gray-300" data-lang-val="de">
+              <span>🇩🇪</span> <span>Deutsch</span>
+            </button>
+            <button type="button" class="lang-option w-full px-3.5 py-2 text-left text-xs font-600 hover:bg-gold-500/15 hover:text-gold-400 flex items-center gap-2 transition-colors cursor-pointer text-gray-300" data-lang-val="en">
+              <span>🇬🇧</span> <span>English</span>
+            </button>
+            <button type="button" class="lang-option w-full px-3.5 py-2 text-left text-xs font-600 hover:bg-gold-500/15 hover:text-gold-400 flex items-center gap-2 transition-colors cursor-pointer text-gray-300" data-lang-val="fr">
+              <span>🇫🇷</span> <span>Français</span>
+            </button>
+            <button type="button" class="lang-option w-full px-3.5 py-2 text-left text-xs font-600 hover:bg-gold-500/15 hover:text-gold-400 flex items-center gap-2 transition-colors cursor-pointer text-gray-300" data-lang-val="cs">
+              <span>🇨🇿</span> <span>Čeština</span>
+            </button>
+          </div>
+        </div>
 
-        <!-- Mobile menu -->
-        <button id="menuBtn" class="lg:hidden p-2 text-gray-400 hover:text-white">
+        <!-- CTA Button (Desktop only) -->
+        <a id="desktopCtaBtn" href="/kontakt" class="btn-gold desktop-only-btn px-5 py-2 rounded-xl text-sm font-700 hidden lg:inline-flex" data-de="Jetzt anfragen" data-en="Get a Quote" data-fr="Demander un devis" data-cs="Poptat nyní" data-fr="Demander un devis" data-cs="Poptat nyní">Jetzt anfragen</a>
+
+        <!-- Mobile menu button -->
+        <button id="menuBtn" class="lg:hidden p-2 text-gray-400 hover:text-white" aria-label="Menü öffnen">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
     </div>
 
-    <!-- Mobile Menu -->
+    <!-- Mobile Menu (Hamburger) -->
     <div id="mobileMenu" class="hidden lg:hidden glass border-t border-gold-500/10">
-      <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-3">
-        <a href="/leistungen" class="text-gray-300 hover:text-gold-400 py-2 border-b border-white/5" data-de="Leistungen" data-en="Services">Leistungen</a>
+      <div class="w-full px-6 lg:px-10 py-4 flex flex-col gap-3">
+        <a href="/" class="text-gold-400 py-2 border-b border-white/5" data-de="Startseite" data-en="Home" data-fr="Accueil" data-cs="Domů" data-fr="Accueil" data-cs="Domů">Startseite</a>
+        <a href="/leistungen" class="text-gray-300 hover:text-gold-400 py-2 border-b border-white/5" data-de="Leistungen" data-en="Services" data-fr="Services" data-cs="Služby" data-fr="Services" data-cs="Služby">Leistungen</a>
         <a href="/supertechno-50" class="text-gray-300 hover:text-gold-400 py-2 border-b border-white/5">Supertechno 50+</a>
-        <a href="/ueber-uns" class="text-gray-300 hover:text-gold-400 py-2 border-b border-white/5" data-de="Über uns" data-en="About">Über uns</a>
-        <a href="/kontakt" class="btn-gold px-5 py-2.5 rounded-xl text-sm font-700 text-center mt-2" data-de="Jetzt anfragen" data-en="Get a Quote">Jetzt anfragen</a>
+        <a href="/tracking" class="text-gray-300 hover:text-gold-400 py-2 border-b border-white/5" data-de="Tracking & Telemetrie" data-en="Tracking & Telemetry" data-fr="Tracking & Télémétrie" data-cs="Tracking a telemetrie" data-fr="Tracking & Télémétrie" data-cs="Tracking a telemetrie">Tracking & Telemetrie</a>
+        <a href="/ueber-uns" class="text-gray-300 hover:text-gold-400 py-2 border-b border-white/5" data-de="Über uns" data-en="About" data-fr="À propos" data-cs="O nás" data-fr="À propos" data-cs="O nás">Über uns</a>
+        <a href="/kontakt" class="text-gray-300 hover:text-gold-400 py-2 border-b border-white/5" data-de="Kontakt" data-en="Contact" data-fr="Contact" data-cs="Kontakt" data-fr="Contact" data-cs="Kontakt">Kontakt</a>
+        
+        <!-- Mobile Language Switcher inside Hamburger (Single-line with national accents) -->
+        <div class="pt-3 border-t border-white/10 flex flex-col gap-2 mt-1">
+          <div class="flex items-center justify-between">
+            <span class="text-xs text-gray-400 font-600 uppercase tracking-wider i18n" data-cms="nav.mobile_lang_label" data-de="Sprache" data-en="Language" data-fr="Langue" data-cs="Jazyk">Sprache</span>
+            <span class="text-[10px] text-gray-500 font-mono tracking-wider uppercase">Region</span>
+          </div>
+          <div class="grid grid-cols-4 gap-1.5 p-1 rounded-xl bg-navy-900/90 border border-white/10 shadow-inner">
+            <button type="button" class="lang-btn-mobile lang-btn-de py-2 px-1.5 rounded-lg text-xs font-700 text-center transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-transparent" data-lang-btn="de">
+              <span class="text-sm shrink-0 leading-none">🇩🇪</span>
+              <span class="text-[11px] font-700 tracking-wide">DE</span>
+            </button>
+            <button type="button" class="lang-btn-mobile lang-btn-en py-2 px-1.5 rounded-lg text-xs font-700 text-center transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-transparent" data-lang-btn="en">
+              <span class="text-sm shrink-0 leading-none">🇬🇧</span>
+              <span class="text-[11px] font-700 tracking-wide">EN</span>
+            </button>
+            <button type="button" class="lang-btn-mobile lang-btn-fr py-2 px-1.5 rounded-lg text-xs font-700 text-center transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-transparent" data-lang-btn="fr">
+              <span class="text-sm shrink-0 leading-none">🇫🇷</span>
+              <span class="text-[11px] font-700 tracking-wide">FR</span>
+            </button>
+            <button type="button" class="lang-btn-mobile lang-btn-cs py-2 px-1.5 rounded-lg text-xs font-700 text-center transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-transparent" data-lang-btn="cs">
+              <span class="text-sm shrink-0 leading-none">🇨🇿</span>
+              <span class="text-[11px] font-700 tracking-wide">CS</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -162,35 +325,35 @@
       <div class="absolute bottom-1/3 left-1/3 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style="animation-delay:2s"></div>
     </div>
 
-    <div class="relative max-w-7xl mx-auto px-6 pt-32 pb-20">
+    <div class="relative max-w-7xl mx-auto px-6 pt-48 sm:pt-52 lg:pt-60 xl:pt-64 pb-20 lg:pb-28 w-full">
       <div class="max-w-3xl">
         <!-- Badge -->
         <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6 animate-fade-in">
           <span class="w-2 h-2 bg-gold-500 rounded-full animate-pulse"></span>
-          <span class="text-gold-400 text-sm font-600 i18n" data-cms="hero.badge" data-de="Wien, Österreich – Professioneller Operator-Service" data-en="Vienna, Austria – Professional Operator Service">Wien, Österreich – Professioneller Operator-Service</span>
+          <span class="text-gold-400 text-sm font-600 i18n" data-cms="hero.badge" data-de="Wien, Österreich – Professioneller Operator-Service" data-en="Vienna, Austria – Professional Operator Service" data-fr="Vienne, Autriche – Service d'opérateur professionnel" data-cs="Vídeň, Rakousko – Profesionální operátorský servis" data-fr="Vienne, Autriche – Service d'opérateur professionnel" data-cs="Vídeň, Rakousko – Profesionální operátorský servis">Wien, Österreich – Professioneller Operator-Service</span>
         </div>
 
         <!-- Headline -->
         <h1 class="text-5xl sm:text-6xl lg:text-7xl font-900 leading-[1.05] mb-6 animate-fade-up">
-          <span class="i18n" data-cms="hero.headline1" data-de="Der Kran." data-en="The Crane.">Der Kran.</span><br>
-          <span class="text-gold-gradient i18n" data-cms="hero.headline2" data-de="Der Operator." data-en="The Operator.">Der Operator.</span><br>
-          <span class="text-gray-300 text-4xl sm:text-5xl lg:text-6xl i18n" data-cms="hero.headline3" data-de="Ihr Shot." data-en="Your Shot.">Ihr Shot.</span>
+          <span class="i18n" data-cms="hero.headline1" data-de="Der Kran." data-en="The Crane." data-fr="La Grue." data-cs="Jeřáb." data-fr="La Grue." data-cs="Jeřáb.">Der Kran.</span><br>
+          <span class="text-gold-gradient i18n" data-cms="hero.headline2" data-de="Der Operator." data-en="The Operator." data-fr="L'Opérateur." data-cs="Operátor." data-fr="L'Opérateur." data-cs="Operátor.">Der Operator.</span><br>
+          <span class="text-gray-300 text-4xl sm:text-5xl lg:text-6xl i18n" data-cms="hero.headline3" data-de="Ihr Shot." data-en="Your Shot." data-fr="Votre Prise de vue." data-cs="Váš záběr." data-fr="Votre Prise de vue." data-cs="Váš záběr.">Ihr Shot.</span>
         </h1>
 
         <!-- Subline -->
         <p class="text-gray-400 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl animate-fade-up" style="animation-delay:0.2s">
-          <span class="i18n" data-cms="hero.subline" data-de="Wir stellen professionelle Supertechno Teleskop-Kamerakrane mit erfahrenen Operators zur Verfügung – für Film-, TV- und Eventproduktionen in Wien und ganz Österreich." data-en="We provide professional Supertechno telescopic camera cranes with experienced operators – for film, TV and event productions in Vienna and all of Austria.">Wir stellen professionelle Supertechno Teleskop-Kamerakrane mit erfahrenen Operators zur Verfügung – für Film-, TV- und Eventproduktionen in Wien und ganz Österreich.</span>
+          <span class="i18n" data-cms="hero.subline" data-de="Wir stellen professionelle Supertechno Teleskop-Kamerakrane mit erfahrenen Operators zur Verfügung – für Film-, TV- und Eventproduktionen in Wien und ganz Österreich." data-en="We provide professional Supertechno telescopic camera cranes with experienced operators – for film, TV and event productions in Vienna and all of Austria." data-fr="Nous fournissons des grues télescopiques professionnelles Supertechno avec opérateurs expérimentés – pour les productions de films, TV et événements à Vienne et dans toute l'Autriche." data-cs="Poskytujeme profesionální teleskopické kamerové jeřáby Supertechno se zkušenými operátory – pro filmovou, televizní a eventovou produkci ve Vídni a celém Rakousku." data-fr="Nous fournissons des grues télescopiques professionnelles Supertechno avec opérateurs expérimentés – pour les productions de films, TV et événements à Vienne et dans toute l'Autriche." data-cs="Poskytujeme profesionální teleskopické kamerové jeřáby Supertechno se zkušenými operátory – pro filmovou, televizní a eventovou produkci ve Vídni a celém Rakousku.">Wir stellen professionelle Supertechno Teleskop-Kamerakrane mit erfahrenen Operators zur Verfügung – für Film-, TV- und Eventproduktionen in Wien und ganz Österreich.</span>
         </p>
 
         <!-- CTA Buttons -->
         <div class="flex flex-wrap gap-4 mb-16 animate-fade-up" style="animation-delay:0.4s">
           <a href="#contact" class="btn-gold px-8 py-4 rounded-xl text-base font-700 flex items-center gap-2 animate-pulse-gold">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-            <span class="i18n" data-cms="hero.cta_primary" data-de="Kostenlos anfragen" data-en="Free Quote">Kostenlos anfragen</span>
+            <span class="i18n" data-cms="hero.cta_primary" data-de="Kostenlos anfragen" data-en="Free Quote" data-fr="Devis gratuit" data-cs="Nezávazná poptávka" data-fr="Devis gratuit" data-cs="Nezávazná poptávka">Kostenlos anfragen</span>
           </a>
           <button onclick="openCatalogModal()" class="btn-outline px-8 py-4 rounded-xl text-base font-600 flex items-center gap-2">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            <span class="i18n" data-cms="hero.cta_secondary" data-de="Katalog herunterladen" data-en="Download Catalog">Katalog herunterladen</span>
+            <span class="i18n" data-cms="hero.cta_secondary" data-de="Katalog herunterladen" data-en="Download Catalog" data-fr="Télécharger le catalogue" data-cs="Stáhnout katalog" data-fr="Télécharger le catalogue" data-cs="Stáhnout katalog">Katalog herunterladen</span>
           </button>
         </div>
 
@@ -198,22 +361,22 @@
         <div class="flex flex-wrap gap-8 animate-fade-up" style="animation-delay:0.6s">
           <div>
             <div class="text-3xl font-800 text-gold-400" data-cms-text="hero.stat1_num">20+</div>
-            <div class="text-sm text-gray-500 i18n" data-cms="hero.stat1_label" data-de="Jahre Erfahrung" data-en="Years Experience">Jahre Erfahrung</div>
+            <div class="text-sm text-gray-500 i18n" data-cms="hero.stat1_label" data-de="Jahre Erfahrung" data-en="Years Experience" data-fr="Ans d'expérience" data-cs="Let zkušeností" data-fr="Ans d'expérience" data-cs="Let zkušeností">Jahre Erfahrung</div>
           </div>
           <div class="w-px bg-white/10 hidden sm:block"></div>
           <div>
             <div class="text-3xl font-800 text-gold-400" data-cms-text="hero.stat2_num">500+</div>
-            <div class="text-sm text-gray-500 i18n" data-cms="hero.stat2_label" data-de="Produktionen" data-en="Productions">Produktionen</div>
+            <div class="text-sm text-gray-500 i18n" data-cms="hero.stat2_label" data-de="Produktionen" data-en="Productions" data-fr="Productions" data-cs="Produkcí" data-fr="Productions" data-cs="Produkcí">Produktionen</div>
           </div>
           <div class="w-px bg-white/10 hidden sm:block"></div>
           <div>
             <div class="text-3xl font-800 text-gold-400" data-cms-text="hero.stat3_num">50+</div>
-            <div class="text-sm text-gray-500 i18n" data-cms="hero.stat3_label" data-de="Supertechno" data-en="Supertechno">Supertechno</div>
+            <div class="text-sm text-gray-500 i18n" data-cms="hero.stat3_label" data-de="Supertechno" data-en="Supertechno" data-fr="Supertechno" data-cs="Supertechno" data-fr="Supertechno" data-cs="Supertechno">Supertechno</div>
           </div>
           <div class="w-px bg-white/10 hidden sm:block"></div>
           <div>
             <div class="text-3xl font-800 text-gold-400" data-cms-text="hero.stat4_num">24/7</div>
-            <div class="text-sm text-gray-500 i18n" data-cms="hero.stat4_label" data-de="Verfügbarkeit" data-en="Availability">Verfügbarkeit</div>
+            <div class="text-sm text-gray-500 i18n" data-cms="hero.stat4_label" data-de="Verfügbarkeit" data-en="Availability" data-fr="Disponibilité" data-cs="Dostupnost" data-fr="Disponibilité" data-cs="Dostupnost">Verfügbarkeit</div>
           </div>
         </div>
       </div>
@@ -236,11 +399,11 @@
       <div class="text-center mb-16 observe">
         <div class="inline-flex items-center gap-2 text-gold-500 text-sm font-600 tracking-widest uppercase mb-4">
           <span class="w-8 h-px bg-gold-500"></span>
-          <span class="i18n" data-cms="services.section_label" data-de="Was wir bieten" data-en="What We Offer">Was wir bieten</span>
+          <span class="i18n" data-cms="services.section_label" data-de="Was wir bieten" data-en="What We Offer" data-fr="Ce que nous offrons" data-cs="Co nabízíme" data-fr="Ce que nous offrons" data-cs="Co nabízíme">Was wir bieten</span>
           <span class="w-8 h-px bg-gold-500"></span>
         </div>
-        <h2 class="text-4xl lg:text-5xl font-800 mb-4 i18n" data-cms="services.headline" data-de="Unser Service" data-en="Our Services">Unser Service</h2>
-        <p class="text-gray-400 max-w-2xl mx-auto i18n" data-cms="services.subline" data-de="Von der Buchung bis zum letzten Shot – wir stellen alles bereit." data-en="From booking to the last shot – we provide everything.">Von der Buchung bis zum letzten Shot – wir stellen alles bereit.</p>
+        <h2 class="text-4xl lg:text-5xl font-800 mb-4 i18n" data-cms="services.headline" data-de="Unser Service" data-en="Our Services" data-fr="Nos services" data-cs="Naše služby" data-fr="Nos services" data-cs="Naše služby">Unser Service</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto i18n" data-cms="services.subline" data-de="Von der Buchung bis zum letzten Shot – wir stellen alles bereit." data-en="From booking to the last shot – we provide everything." data-fr="De la réservation au dernier plan – nous fournissons tout le nécessaire." data-cs="Od rezervace až po poslední záběr – zajistíme vše." data-fr="De la réservation au dernier plan – nous fournissons tout le nécessaire." data-cs="Od rezervace až po poslední záběr – zajistíme vše.">Von der Buchung bis zum letzten Shot – wir stellen alles bereit.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-6">
@@ -249,13 +412,13 @@
           <div class="w-14 h-14 gold-gradient rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
             <svg class="w-7 h-7 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg>
           </div>
-          <h3 class="text-xl font-700 mb-3 i18n" data-cms="services.s1_title" data-de="Kran-Vermietung" data-en="Crane Rental">Kran-Vermietung</h3>
-          <p class="text-gray-400 leading-relaxed i18n" data-cms="services.s1_desc" data-de="Supertechno 30, 50+ und 75+ Teleskop-Kamerakrane für jeden Produktionsumfang. Tages- und Wochenmiete möglich." data-en="Supertechno 30, 50+ and 75+ telescopic camera cranes for every production scale. Daily and weekly rental available.">Supertechno 30, 50+ und 75+ Teleskop-Kamerakrane für jeden Produktionsumfang. Tages- und Wochenmiete möglich.</p>
+          <h3 class="text-xl font-700 mb-3 i18n" data-cms="services.s1_title" data-de="Kran-Vermietung" data-en="Crane Rental" data-fr="Location de grue" data-cs="Pronájem jeřábu" data-fr="Location de grue" data-cs="Pronájem jeřábu">Kran-Vermietung</h3>
+          <p class="text-gray-400 leading-relaxed i18n" data-cms="services.s1_desc" data-de="Supertechno 30, 50+ und 75+ Teleskop-Kamerakrane für jeden Produktionsumfang. Tages- und Wochenmiete möglich." data-en="Supertechno 30, 50+ and 75+ telescopic camera cranes for every production scale. Daily and weekly rental available." data-fr="Grues télescopiques Supertechno 30, 50+ et 75+ pour toute envergure de production. Location à la journée et à la semaine." data-cs="Teleskopické kamerové jeřáby Supertechno 30, 50+ a 75+ pro jakýkoli rozsah produkce. Možnost denního i týdenního pronájmu." data-fr="Grues télescopiques Supertechno 30, 50+ et 75+ pour toute envergure de production. Location à la journée et à la semaine." data-cs="Teleskopické kamerové jeřáby Supertechno 30, 50+ a 75+ pro jakýkoli rozsah produkce. Možnost denního i týdenního pronájmu.">Supertechno 30, 50+ und 75+ Teleskop-Kamerakrane für jeden Produktionsumfang. Tages- und Wochenmiete möglich.</p>
           <div class="mt-6 pt-6 border-t border-white/5">
             <ul class="space-y-2">
-              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Alle Remote-Heads" data-en="All Remote Heads">Alle Remote-Heads</span></li>
-              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Vielseitig einsetzbar" data-en="Versatile Use">Vielseitig einsetzbar</span></li>
-              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Lieferung nach Wien & AT" data-en="Delivery to Vienna & AT">Lieferung nach Wien & AT</span></li>
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Alle Remote-Heads" data-en="All Remote Heads" data-fr="Toutes têtes télécommandées" data-cs="Všechny remote heads" data-fr="Toutes têtes télécommandées" data-cs="Všechny remote heads">Alle Remote-Heads</span></li>
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Vielseitig einsetzbar" data-en="Versatile Use" data-fr="Utilisation polyvalente" data-cs="Všestranné využití" data-fr="Utilisation polyvalente" data-cs="Všestranné využití">Vielseitig einsetzbar</span></li>
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Lieferung nach Wien & AT" data-en="Delivery to Vienna & AT" data-fr="Livraison à Vienne & en Autriche" data-cs="Doprava do Vídně a po celém Rakousku" data-fr="Livraison à Vienne & en Autriche" data-cs="Doprava do Vídně a po celém Rakousku">Lieferung nach Wien & AT</span></li>
             </ul>
           </div>
         </div>
@@ -265,14 +428,14 @@
           <div class="w-14 h-14 gold-gradient rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
             <svg class="w-7 h-7 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
           </div>
-          <div class="inline-flex items-center gap-1 bg-gold-500/20 text-gold-400 text-xs font-700 px-3 py-1 rounded-full mb-4 i18n" data-de="⭐ Unser USP" data-en="⭐ Our USP">⭐ Unser USP</div>
-          <h3 class="text-xl font-700 mb-3 i18n" data-cms="services.s2_title" data-de="Operator-Service" data-en="Operator Service">Operator-Service</h3>
-          <p class="text-gray-400 leading-relaxed i18n" data-cms="services.s2_desc" data-de="Wir sind zu mieten und bedienen den Kran selbst. Mit über 20 Jahren Erfahrung bringen wir den Shot sicher ins Ziel." data-en="We're available for hire and operate the crane ourselves. With over 20 years of experience, we deliver the shot safely.">Wir sind zu mieten und bedienen den Kran selbst. Mit über 20 Jahren Erfahrung bringen wir den Shot sicher ins Ziel.</p>
+          <div class="inline-flex items-center gap-1 bg-gold-500/20 text-gold-400 text-xs font-700 px-3 py-1 rounded-full mb-4 i18n" data-de="⭐ Unser USP" data-en="⭐ Our USP" data-fr="⭐ Notre atout majeur" data-cs="⭐ Naše hlavní přednost" data-fr="⭐ Notre atout majeur" data-cs="⭐ Naše hlavní přednost">⭐ Unser USP</div>
+          <h3 class="text-xl font-700 mb-3 i18n" data-cms="services.s2_title" data-de="Operator-Service" data-en="Operator Service" data-fr="Service opérateur" data-cs="Služba operátora" data-fr="Service opérateur" data-cs="Služba operátora">Operator-Service</h3>
+          <p class="text-gray-400 leading-relaxed i18n" data-cms="services.s2_desc" data-de="Wir sind zu mieten und bedienen den Kran selbst. Mit über 20 Jahren Erfahrung bringen wir den Shot sicher ins Ziel." data-en="We're available for hire and operate the crane ourselves. With over 20 years of experience, we deliver the shot safely." data-fr="Nous venons avec le matériel et opérons la grue nous-mêmes. Avec plus de 20 ans d'expérience, nous réalisons votre plan à la perfection." data-cs="Pronajímáme techniku a jeřáb sami obsluhujeme. S více než 20 lety zkušeností dovedeme každý záběr bezpečně k dokonalosti." data-fr="Nous venons avec le matériel et opérons la grue nous-mêmes. Avec plus de 20 ans d'expérience, nous réalisons votre plan à la perfection." data-cs="Pronajímáme techniku a jeřáb sami obsluhujeme. S více než 20 lety zkušeností dovedeme každý záběr bezpečně k dokonalosti.">Wir sind zu mieten und bedienen den Kran selbst. Mit über 20 Jahren Erfahrung bringen wir den Shot sicher ins Ziel.</p>
           <div class="mt-6 pt-6 border-t border-white/5">
             <ul class="space-y-2">
-              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Zertifizierter Operator" data-en="Certified Operator">Zertifizierter Operator</span></li>
-              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Briefing & Planung" data-en="Briefing & Planning">Briefing & Planung</span></li>
-              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Vor Ort Support" data-en="On-site Support">Vor Ort Support</span></li>
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Zertifizierter Operator" data-en="Certified Operator" data-fr="Opérateur certifié" data-cs="Certifikovaný operátor" data-fr="Opérateur certifié" data-cs="Certifikovaný operátor">Zertifizierter Operator</span></li>
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Briefing & Planung" data-en="Briefing & Planning" data-fr="Briefing & Planification" data-cs="Briefing a plánování" data-fr="Briefing & Planification" data-cs="Briefing a plánování">Briefing & Planung</span></li>
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Vor Ort Support" data-en="On-site Support" data-fr="Support sur le plateau" data-cs="Podpora na place" data-fr="Support sur le plateau" data-cs="Podpora na place">Vor Ort Support</span></li>
             </ul>
           </div>
         </div>
@@ -282,13 +445,13 @@
           <div class="w-14 h-14 gold-gradient rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
             <svg class="w-7 h-7 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
           </div>
-          <h3 class="text-xl font-700 mb-3 i18n" data-cms="services.s3_title" data-de="Technischer Support" data-en="Technical Support">Technischer Support</h3>
-          <p class="text-gray-400 leading-relaxed i18n" data-cms="services.s3_desc" data-de="Technische Beratung und Betreuung für Ihre Produktion. Wir arbeiten mit allen gängigen Remote-Head-Systemen." data-en="Technical consultation and support for your production. We work with all common remote head systems.">Technische Beratung und Betreuung für Ihre Produktion. Wir arbeiten mit allen gängigen Remote-Head-Systemen.</p>
+          <h3 class="text-xl font-700 mb-3 i18n" data-cms="services.s3_title" data-de="Technischer Support" data-en="Technical Support" data-fr="Support technique" data-cs="Technická podpora" data-fr="Support technique" data-cs="Technická podpora">Technischer Support</h3>
+          <p class="text-gray-400 leading-relaxed i18n" data-cms="services.s3_desc" data-de="Technische Beratung und Betreuung für Ihre Produktion. Wir arbeiten mit allen gängigen Remote-Head-Systemen." data-en="Technical consultation and support for your production. We work with all common remote head systems." data-fr="Conseil technique et assistance pour votre production. Nous travaillons avec tous les systèmes de têtes télécommandées courants." data-cs="Technické poradenství a asistence pro vaši produkci. Pracujeme se všemi běžnými systémy remote heads." data-fr="Conseil technique et assistance pour votre production. Nous travaillons avec tous les systèmes de têtes télécommandées courants." data-cs="Technické poradenství a asistence pro vaši produkci. Pracujeme se všemi běžnými systémy remote heads.">Technische Beratung und Betreuung für Ihre Produktion. Wir arbeiten mit allen gängigen Remote-Head-Systemen.</p>
           <div class="mt-6 pt-6 border-t border-white/5">
             <ul class="space-y-2">
-              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Techno S-Head" data-en="Techno S-Head">Techno S-Head</span></li>
-              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Schnelle Reaktionszeit" data-en="Fast Response Time">Schnelle Reaktionszeit</span></li>
-              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Location Scouting" data-en="Location Scouting">Location Scouting</span></li>
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Techno S-Head" data-en="Techno S-Head" data-fr="Techno S-Head" data-cs="Techno S-Head" data-fr="Techno S-Head" data-cs="Techno S-Head">Techno S-Head</span></li>
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Schnelle Reaktionszeit" data-en="Fast Response Time" data-fr="Réactivité rapide" data-cs="Rychlá doba odezvy" data-fr="Réactivité rapide" data-cs="Rychlá doba odezvy">Schnelle Reaktionszeit</span></li>
+              <li class="flex items-center gap-2 text-sm text-gray-400"><span class="w-1.5 h-1.5 bg-gold-500 rounded-full"></span><span class="i18n" data-de="Location Scouting" data-en="Location Scouting" data-fr="Repérage des lieux" data-cs="Obhlídka lokací" data-fr="Repérage des lieux" data-cs="Obhlídka lokací">Location Scouting</span></li>
             </ul>
           </div>
         </div>
@@ -307,11 +470,11 @@
       <div class="text-center mb-16 observe">
         <div class="inline-flex items-center gap-2 text-gold-500 text-sm font-600 tracking-widest uppercase mb-4">
           <span class="w-8 h-px bg-gold-500"></span>
-          <span class="i18n" data-de="Das Produkt" data-en="The Product">Das Produkt</span>
+          <span class="i18n" data-de="Das Produkt" data-en="The Product" data-fr="Le Produit" data-cs="Produkt" data-fr="Le Produit" data-cs="Produkt">Das Produkt</span>
           <span class="w-8 h-px bg-gold-500"></span>
         </div>
         <h2 class="text-4xl lg:text-5xl font-800 mb-4">Supertechno 50+</h2>
-        <p class="text-gray-400 max-w-2xl mx-auto i18n" data-de="Das professionelle Teleskop-Kamerakransystem – mit Operator-Service aus Wien." data-en="The professional telescopic camera crane system – with operator service from Vienna.">Das professionelle Teleskop-Kamerakransystem – mit Operator-Service aus Wien.</p>
+        <p class="text-gray-400 max-w-2xl mx-auto i18n" data-de="Das professionelle Teleskop-Kamerakransystem – mit Operator-Service aus Wien." data-en="The professional telescopic camera crane system – with operator service from Vienna." data-fr="Le système professionnel de grue télescopique – avec service d'opérateur depuis Vienne." data-cs="Profesionální teleskopický kamerový jeřábový systém – s operátorským servisem z Vídně." data-fr="Le système professionnel de grue télescopique – avec service d'opérateur depuis Vienne." data-cs="Profesionální teleskopický kamerový jeřábový systém – s operátorským servisem z Vídně.">Das professionelle Teleskop-Kamerakransystem – mit Operator-Service aus Wien.</p>
       </div>
 
       <!-- Full Feature Product Layout -->
@@ -324,7 +487,7 @@
           <div class="absolute bottom-5 right-5">
             <a href="https://www.supertechno.com/supertechno-50" target="_blank" class="glass px-4 py-2 rounded-xl text-xs text-gold-400 font-600 flex items-center gap-1.5 hover:border-gold-500/40 transition-all">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              <span class="i18n" data-de="Herstellerseite" data-en="Manufacturer">Herstellerseite</span>
+              <span class="i18n" data-de="Herstellerseite" data-en="Manufacturer" data-fr="Site du fabricant" data-cs="Web výrobce" data-fr="Site du fabricant" data-cs="Web výrobce">Herstellerseite</span>
             </a>
           </div>
         </div>
@@ -333,44 +496,44 @@
         <div class="observe-right">
           <div class="inline-flex items-center gap-2 text-gold-500 text-sm font-600 tracking-widest uppercase mb-3">
             <span class="w-8 h-px bg-gold-500"></span>
-            <span class="i18n" data-de="Technische Daten" data-en="Specifications">Technische Daten</span>
+            <span class="i18n" data-de="Technische Daten" data-en="Specifications" data-fr="Caractéristiques techniques" data-cs="Technické specifikace" data-fr="Caractéristiques techniques" data-cs="Technické specifikace">Technische Daten</span>
           </div>
           <h3 class="text-3xl font-800 mb-1">Supertechno 50+</h3>
-          <p class="text-gold-400 font-600 mb-6 i18n" data-de="Das vielseitigste Teleskop-Kamerakransystem." data-en="The most versatile telescopic camera crane system.">Das vielseitigste Teleskop-Kamerakransystem.</p>
+          <p class="text-gold-400 font-600 mb-6 i18n" data-de="Das vielseitigste Teleskop-Kamerakransystem." data-en="The most versatile telescopic camera crane system." data-fr="Le système de grue télescopique le plus polyvalent." data-cs="Nejvšestrannější systém teleskopických kamerových jeřábů." data-fr="Le système de grue télescopique le plus polyvalent." data-cs="Nejvšestrannější systém teleskopických kamerových jeřábů.">Das vielseitigste Teleskop-Kamerakransystem.</p>
 
           <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-7">
             <div class="glass-light rounded-xl p-4">
-              <div class="text-2xl font-800 text-gold-400 i18n" data-de="15,11m" data-en="15.11m">15,11m</div>
-              <div class="text-gray-400 text-xs mt-0.5 i18n" data-de="Max. Reichweite" data-en="Max. Reach">Max. Reichweite</div>
+              <div class="text-2xl font-800 text-gold-400" data-cms-text="product.spec_reach">15,11m</div>
+              <div class="text-gray-400 text-xs mt-0.5 i18n" data-de="Max. Reichweite" data-en="Max. Reach" data-fr="Portée max." data-cs="Max. dosah">Max. Reichweite</div>
             </div>
             <div class="glass-light rounded-xl p-4">
-              <div class="text-2xl font-800 text-gold-400">100kg</div>
-              <div class="text-gray-400 text-xs mt-0.5 i18n" data-de="Max. Nutzlast" data-en="Max. Payload">Max. Nutzlast</div>
+              <div class="text-2xl font-800 text-gold-400" data-cms-text="product.spec_payload">100kg</div>
+              <div class="text-gray-400 text-xs mt-0.5 i18n" data-de="Max. Nutzlast" data-en="Max. Payload" data-fr="Charge utile max." data-cs="Max. nosnost">Max. Nutzlast</div>
             </div>
             <div class="glass-light rounded-xl p-4">
-              <div class="text-2xl font-800 text-gold-400">360°</div>
-              <div class="text-gray-400 text-xs mt-0.5 i18n" data-de="Schwenk (remote)" data-en="Pan (remote)">Schwenk (remote)</div>
+              <div class="text-2xl font-800 text-gold-400" data-cms-text="product.spec_pan">360°</div>
+              <div class="text-gray-400 text-xs mt-0.5 i18n" data-de="Schwenk (remote)" data-en="Pan (remote)" data-fr="Panoramique (remote)" data-cs="Rotace (remote)">Schwenk (remote)</div>
             </div>
             <div class="glass-light rounded-xl p-4">
-              <div class="text-2xl font-800 text-gold-400">In/Out</div>
-              <div class="text-gray-400 text-xs mt-0.5 i18n" data-de="Einsatzbereich" data-en="Use Case">Einsatzbereich</div>
+              <div class="text-2xl font-800 text-gold-400" data-cms-text="product.spec_use">In/Out</div>
+              <div class="text-gray-400 text-xs mt-0.5 i18n" data-de="Einsatzbereich" data-en="Use Case" data-fr="Domaine d'application" data-cs="Oblast použití">Einsatzbereich</div>
             </div>
             <div class="glass-light rounded-xl p-4">
-              <div class="text-2xl font-800 text-gold-400">S-Head</div>
-              <div class="text-gray-400 text-xs mt-0.5 i18n" data-de="Remote-Head" data-en="Remote Head">Remote-Head</div>
+              <div class="text-2xl font-800 text-gold-400" data-cms-text="product.spec_head">S-Head</div>
+              <div class="text-gray-400 text-xs mt-0.5 i18n" data-de="Remote-Head" data-en="Remote Head" data-fr="Tête télécommandée" data-cs="Remote Head">Remote-Head</div>
             </div>
           </div>
 
-          <p class="text-gray-400 leading-relaxed mb-7 i18n" data-de="Der Supertechno 50+ ist das meistverwendete Teleskop-Kamerakransystem weltweit. Er ist Indoor und Outdoor einsetzbar und bietet mit dem Techno S-Head präzise Kamerasteuerung für jeden Shot – von der engen Studio-Aufnahme bis zum großen Outdoor-Event." data-en="The Supertechno 50+ is the world's most widely used telescopic camera crane system. It works indoors and outdoors, and with the Techno S-Head provides precise camera control for every shot – from tight studio work to large outdoor events.">Der Supertechno 50+ ist das meistverwendete Teleskop-Kamerakransystem weltweit. Er ist Indoor und Outdoor einsetzbar und bietet mit dem Techno S-Head präzise Kamerasteuerung für jeden Shot – von der engen Studio-Aufnahme bis zum großen Outdoor-Event.</p>
+          <p class="text-gray-400 leading-relaxed mb-7 i18n" data-cms="product.description" data-de="Der Supertechno 50+ ist das meistverwendete Teleskop-Kamerakransystem weltweit. Er ist Indoor und Outdoor einsetzbar und bietet mit dem Techno S-Head präzise Kamerasteuerung für jeden Shot – von der engen Studio-Aufnahme bis zum großen Outdoor-Event." data-en="The Supertechno 50+ is the world's most widely used telescopic camera crane system. It works indoors and outdoors, and with the Techno S-Head provides precise camera control for every shot – from tight studio work to large outdoor events." data-fr="Le Supertechno 50+ est le système de grue télescopique le plus utilisé au monde. Utilisable en intérieur comme en extérieur, il offre avec la tête Techno S-Head un contrôle ultra-précis pour chaque plan – des studios exigus aux grands événements en plein air." data-cs="Supertechno 50+ je celosvětově nejpoužívanější systém teleskopických kamerových jeřábů. Je vhodný pro interiér i exteriér a s hlavou Techno S-Head nabízí precizní ovládání pro každý záběr – od malých studií po velké venkovní akce.">Der Supertechno 50+ ist das meistverwendete Teleskop-Kamerakransystem weltweit. Er ist Indoor und Outdoor einsetzbar und bietet mit dem Techno S-Head präzise Kamerasteuerung für jeden Shot – von der engen Studio-Aufnahme bis zum großen Outdoor-Event.</p>
 
           <div class="flex flex-wrap gap-3">
             <button onclick="openProductModal('ST50')" class="btn-gold px-7 py-3.5 rounded-xl font-700 flex items-center gap-2">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-              <span class="i18n" data-de="Jetzt anfragen" data-en="Request Quote">Jetzt anfragen</span>
+              <span class="i18n" data-de="Jetzt anfragen" data-en="Request Quote" data-fr="Demander un devis" data-cs="Poptat nyní" data-fr="Demander un devis" data-cs="Poptat nyní">Jetzt anfragen</span>
             </button>
             <button onclick="openCatalogModal()" class="btn-outline px-7 py-3.5 rounded-xl font-600 flex items-center gap-2">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-              <span class="i18n" data-de="Katalog PDF" data-en="Catalog PDF">Katalog PDF</span>
+              <span class="i18n" data-de="Katalog PDF" data-en="Catalog PDF" data-fr="Catalogue PDF" data-cs="Katalog PDF" data-fr="Catalogue PDF" data-cs="Katalog PDF">Katalog PDF</span>
             </button>
           </div>
         </div>
@@ -380,20 +543,22 @@
       <div class="grid sm:grid-cols-3 gap-5 mb-10">
         <div class="glass-light rounded-xl p-5 observe hover:border-gold-500/30 transition-all">
           <div class="text-3xl mb-3">🎬</div>
-          <h4 class="font-700 mb-2 i18n" data-de="Film & Kino" data-en="Film & Cinema">Film & Kino</h4>
-          <p class="text-sm text-gray-400 i18n" data-de="Bewährt in nationalen und internationalen Kinoproduktionen. Ideale Reichweite für Establishing Shots und Crane-Moves." data-en="Proven in national and international cinema productions. Ideal reach for establishing shots and crane moves.">Bewährt in nationalen und internationalen Kinoproduktionen.</p>
+          <h4 class="font-700 mb-2 i18n" data-de="Film & Kino" data-en="Film & Cinema" data-fr="Cinéma & Long-métrage" data-cs="Film a kino" data-fr="Cinéma & Long-métrage" data-cs="Film a kino">Film & Kino</h4>
+          <p class="text-sm text-gray-400 i18n" data-de="Bewährt in nationalen und internationalen Kinoproduktionen. Ideale Reichweite für Establishing Shots und Crane-Moves." data-en="Proven in national and international cinema productions. Ideal reach for establishing shots and crane moves." data-fr="Éprouvé dans les productions cinématographiques nationales et internationales. Portée idéale pour les plans d'ensemble et mouvements de grue." data-cs="Osvědčeno v národních i mezinárodních filmových produkcích. Ideální dosah pro ustavující záběry a jeřábové jízdy." data-fr="Éprouvé dans les productions cinématographiques nationales et internationales. Portée idéale pour les plans d'ensemble et mouvements de grue." data-cs="Osvědčeno v národních i mezinárodních filmových produkcích. Ideální dosah pro ustavující záběry a jeřábové jízdy.">Bewährt in nationalen und internationalen Kinoproduktionen.</p>
         </div>
         <div class="glass-light rounded-xl p-5 observe hover:border-gold-500/30 transition-all border border-gold-500/15">
           <div class="text-3xl mb-3">📺</div>
-          <h4 class="font-700 mb-2 i18n" data-de="TV & Werbung" data-en="TV & Commercials">TV & Werbung</h4>
-          <p class="text-sm text-gray-400 i18n" data-de="Ideal für zeitkritische TV-Produktionen und Werbeaufnahmen. Schneller Auf- und Abbau auf Set." data-en="Ideal for time-critical TV productions and commercial shoots. Fast on-set setup and teardown.">Ideal für zeitkritische TV-Produktionen und Werbeaufnahmen.</p>
+          <h4 class="font-700 mb-2 i18n" data-de="TV & Werbung" data-en="TV & Commercials" data-fr="Télévision & Publicité" data-cs="TV a reklama" data-fr="Télévision & Publicité" data-cs="TV a reklama">TV & Werbung</h4>
+          <p class="text-sm text-gray-400 i18n" data-de="Ideal für zeitkritische TV-Produktionen und Werbeaufnahmen. Schneller Auf- und Abbau auf Set." data-en="Ideal for time-critical TV productions and commercial shoots. Fast on-set setup and teardown." data-fr="Idéal pour les productions TV et tournages publicitaires aux délais serrés. Montage et démontage rapides sur le plateau." data-cs="Ideální pro časově náročné televizní produkce a reklamní natáčení. Rychlá montáž a demontáž na place." data-fr="Idéal pour les productions TV et tournages publicitaires aux délais serrés. Montage et démontage rapides sur le plateau." data-cs="Ideální pro časově náročné televizní produkce a reklamní natáčení. Rychlá montáž a demontáž na place.">Ideal für zeitkritische TV-Produktionen und Werbeaufnahmen.</p>
         </div>
         <div class="glass-light rounded-xl p-5 observe hover:border-gold-500/30 transition-all">
           <div class="text-3xl mb-3">🎪</div>
-          <h4 class="font-700 mb-2 i18n" data-de="Events & Konzerte" data-en="Events & Concerts">Events & Konzerte</h4>
-          <p class="text-sm text-gray-400 i18n" data-de="Spektakuläre Shots bei Konzerten, Sportevents und Messen. Maximale Flexibilität dank Outdoor-Eignung." data-en="Spectacular shots at concerts, sports events and trade fairs. Maximum flexibility thanks to outdoor suitability.">Spektakuläre Shots bei Konzerten, Sportevents und Messen.</p>
+          <h4 class="font-700 mb-2 i18n" data-de="Events & Konzerte" data-en="Events & Concerts" data-fr="Événements & Concerts" data-cs="Akce a koncerty" data-fr="Événements & Concerts" data-cs="Akce a koncerty">Events & Konzerte</h4>
+          <p class="text-sm text-gray-400 i18n" data-de="Spektakuläre Shots bei Konzerten, Sportevents und Messen. Maximale Flexibilität dank Outdoor-Eignung." data-en="Spectacular shots at concerts, sports events and trade fairs. Maximum flexibility thanks to outdoor suitability." data-fr="Prises de vue spectaculaires lors de concerts, événements sportifs et salons. Flexibilité maximale grâce à l'adaptation extérieure." data-cs="Spektakulární záběry na koncertech, sportovních akcích a veletrzích. Maximální flexibilita díky odolnosti v exteriéru." data-fr="Prises de vue spectaculaires lors de concerts, événements sportifs et salons. Flexibilité maximale grâce à l'adaptation extérieure." data-cs="Spektakulární záběry na koncertech, sportovních akcích a veletrzích. Maximální flexibilita díky odolnosti v exteriéru.">Spektakuläre Shots bei Konzerten, Sportevents und Messen.</p>
         </div>
       </div>
+    </div>
+  </section>
 
   <!-- ═══════════════════════════════════════════ -->
   <!-- ABOUT / USP                                  -->
@@ -411,7 +576,7 @@
           <!-- Floating badge -->
           <div class="absolute -bottom-6 -right-6 glass p-5 rounded-2xl">
             <div class="text-4xl font-900 text-gold-400">20+</div>
-            <div class="text-sm text-gray-400 i18n" data-de="Jahre Erfahrung" data-en="Years Experience">Jahre Erfahrung</div>
+            <div class="text-sm text-gray-400 i18n" data-de="Jahre Erfahrung" data-en="Years Experience" data-fr="Ans d'expérience" data-cs="Let zkušeností" data-fr="Ans d'expérience" data-cs="Let zkušeností">Jahre Erfahrung</div>
           </div>
         </div>
 
@@ -419,10 +584,10 @@
         <div class="observe-right">
           <div class="inline-flex items-center gap-2 text-gold-500 text-sm font-600 tracking-widest uppercase mb-4">
             <span class="w-8 h-px bg-gold-500"></span>
-            <span class="i18n" data-de="Warum Technogrips" data-en="Why Technogrips">Warum Technogrips</span>
+            <span class="i18n" data-cms="about.section_label" data-de="Warum Technogrips" data-en="Why Technogrips" data-fr="Pourquoi Technogrips" data-cs="Proč Technogrips">Warum Technogrips</span>
           </div>
-          <h2 class="text-4xl lg:text-5xl font-800 mb-6 i18n" data-de="Wien-basiert. Weltweit erfahren." data-en="Vienna-based. World-class experience.">Wien-basiert. Weltweit erfahren.</h2>
-          <p class="text-gray-400 leading-relaxed mb-8 i18n" data-de="Als Operator-Team mit Sitz in Wien bieten wir nicht nur das Equipment – wir sind das Equipment. Unser Service umfasst die vollständige Betreuung von der Planung bis zum letzten Shot." data-en="As an operator team based in Vienna, we don't just provide the equipment – we are the equipment. Our service covers complete support from planning to the last shot.">Als Operator-Team mit Sitz in Wien bieten wir nicht nur das Equipment – wir sind das Equipment. Unser Service umfasst die vollständige Betreuung von der Planung bis zum letzten Shot.</p>
+          <h2 class="text-4xl lg:text-5xl font-800 mb-6 i18n" data-cms="about.headline" data-de="Wien-basiert. Weltweit erfahren." data-en="Vienna-based. World-class experience." data-fr="Basé à Vienne. Expérience internationale." data-cs="Se sídlem ve Vídni. Světové zkušenosti.">Wien-basiert. Weltweit erfahren.</h2>
+          <p class="text-gray-400 leading-relaxed mb-8 i18n" data-cms="about.intro" data-de="Als Operator-Team mit Sitz in Wien bieten wir nicht nur das Equipment – wir sind das Equipment. Unser Service umfasst die vollständige Betreuung von der Planung bis zum letzten Shot." data-en="As an operator team based in Vienna, we don\'t just provide the equipment – we are the equipment. Our service covers complete support from planning to the last shot." data-fr="En tant qu\'équipe d\'opérateurs basée à Vienne, nous ne fournissons pas seulement le matériel – nous faisons corps avec lui. Notre prestation comprend un accompagnement complet, de la préparation au dernier tour de manivelle." data-cs="Jako tým operátorů se sídlem ve Vídni nenabízíme pouze techniku – my jsme ta technika. Naše služby zahrnují kompletní servis od plánování až po finální klapku.">Als Operator-Team mit Sitz in Wien bieten wir nicht nur das Equipment – wir sind das Equipment. Unser Service umfasst die vollständige Betreuung von der Planung bis zum letzten Shot.</p>
 
           <div class="space-y-4">
             <div class="flex items-start gap-4">
@@ -430,8 +595,8 @@
                 <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
               </div>
               <div>
-                <h4 class="font-700 mb-1 i18n" data-de="Operator inklusive" data-en="Operator Included">Operator inklusive</h4>
-                <p class="text-gray-400 text-sm i18n" data-de="Kein Kran ohne Bedienung. Wir stellen den Operator und bedienen das System professionell." data-en="No crane without operation. We provide the operator and professionally handle the system.">Kein Kran ohne Bedienung. Wir stellen den Operator und bedienen das System professionell.</p>
+                <h4 class="font-700 mb-1 i18n" data-cms="about.usp1_title" data-de="Operator inklusive">Operator inklusive</h4>
+                <p class="text-gray-400 text-sm i18n" data-cms="about.usp1_desc" data-de="Kein Kran ohne Bedienung. Wir stellen den Operator und bedienen das System professionell.">Kein Kran ohne Bedienung. Wir stellen den Operator und bedienen das System professionell.</p>
               </div>
             </div>
             <div class="flex items-start gap-4">
@@ -439,8 +604,8 @@
                 <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </div>
               <div>
-                <h4 class="font-700 mb-1 i18n" data-de="24/7 Verfügbarkeit" data-en="24/7 Availability">24/7 Verfügbarkeit</h4>
-                <p class="text-gray-400 text-sm i18n" data-de="Filmproduktionen kennen keine Bürozeiten. Wir auch nicht – kurzfristige Buchungen möglich." data-en="Film productions don't know office hours. Neither do we – short-notice bookings possible.">Filmproduktionen kennen keine Bürozeiten. Wir auch nicht – kurzfristige Buchungen möglich.</p>
+                <h4 class="font-700 mb-1 i18n" data-cms="about.usp2_title" data-de="24/7 Verfügbarkeit">24/7 Verfügbarkeit</h4>
+                <p class="text-gray-400 text-sm i18n" data-cms="about.usp2_desc" data-de="Filmproduktionen kennen keine Bürozeiten. Wir auch nicht – kurzfristige Buchungen möglich.">Filmproduktionen kennen keine Bürozeiten. Wir auch nicht – kurzfristige Buchungen möglich.</p>
               </div>
             </div>
             <div class="flex items-start gap-4">
@@ -448,8 +613,8 @@
                 <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
               </div>
               <div>
-                <h4 class="font-700 mb-1 i18n" data-de="Wien & ganz Österreich" data-en="Vienna & all of Austria">Wien & ganz Österreich</h4>
-                <p class="text-gray-400 text-sm i18n" data-de="Unser Standort ist Wien – wir sind österreichweit und auf Anfrage auch international tätig." data-en="Based in Vienna – we operate throughout Austria and internationally on request.">Unser Standort ist Wien – wir sind österreichweit und auf Anfrage auch international tätig.</p>
+                <h4 class="font-700 mb-1 i18n" data-cms="about.usp3_title" data-de="Wien & ganz Österreich">Wien & ganz Österreich</h4>
+                <p class="text-gray-400 text-sm i18n" data-cms="about.usp3_desc" data-de="Unser Standort ist Wien – wir sind österreichweit und auf Anfrage auch international tätig.">Unser Standort ist Wien – wir sind österreichweit und auf Anfrage auch international tätig.</p>
               </div>
             </div>
             <div class="flex items-start gap-4">
@@ -457,8 +622,8 @@
                 <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
               </div>
               <div>
-                <h4 class="font-700 mb-1 i18n" data-de="Versichert & zertifiziert" data-en="Insured & Certified">Versichert & zertifiziert</h4>
-                <p class="text-gray-400 text-sm i18n" data-de="Vollständige Betriebshaftpflichtversicherung. Alle Sicherheitsstandards werden eingehalten." data-en="Full liability insurance. All safety standards are maintained.">Vollständige Betriebshaftpflichtversicherung. Alle Sicherheitsstandards werden eingehalten.</p>
+                <h4 class="font-700 mb-1 i18n" data-cms="about.usp4_title" data-de="Versichert & zertifiziert">Versichert & zertifiziert</h4>
+                <p class="text-gray-400 text-sm i18n" data-cms="about.usp4_desc" data-de="Vollständige Betriebshaftpflichtversicherung. Alle Sicherheitsstandards werden eingehalten.">Vollständige Betriebshaftpflichtversicherung. Alle Sicherheitsstandards werden eingehalten.</p>
               </div>
             </div>
           </div>
@@ -466,7 +631,7 @@
           <div class="mt-8">
             <button onclick="openBookingModal()" class="btn-gold px-8 py-3.5 rounded-xl font-700 flex items-center gap-2">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-              <span class="i18n" data-de="Beratungstermin buchen" data-en="Book Consultation">Beratungstermin buchen</span>
+              <span class="i18n" data-de="Beratungstermin buchen" data-en="Book Consultation" data-fr="Prendre rendez-vous" data-cs="Rezervovat konzultaci" data-fr="Prendre rendez-vous" data-cs="Rezervovat konzultaci">Beratungstermin buchen</span>
             </button>
           </div>
         </div>
@@ -483,10 +648,10 @@
       <div class="text-center mb-16 observe">
         <div class="inline-flex items-center gap-2 text-gold-500 text-sm font-600 tracking-widest uppercase mb-4">
           <span class="w-8 h-px bg-gold-500"></span>
-          <span class="i18n" data-de="Unsere Arbeit" data-en="Our Work">Unsere Arbeit</span>
+          <span class="i18n" data-cms="home.portfolio_label" data-de="Unsere Arbeit" data-en="Our Work" data-fr="Nos réalisations" data-cs="Naše práce">Unsere Arbeit</span>
           <span class="w-8 h-px bg-gold-500"></span>
         </div>
-        <h2 class="text-4xl lg:text-5xl font-800 mb-4 i18n" data-de="Einsatzbereiche" data-en="Use Cases">Einsatzbereiche</h2>
+        <h2 class="text-4xl lg:text-5xl font-800 mb-4 i18n" data-de="Einsatzbereiche" data-en="Use Cases" data-fr="Domaines d'intervention" data-cs="Oblasti použití" data-fr="Domaines d'intervention" data-cs="Oblasti použití">Einsatzbereiche</h2>
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -494,36 +659,36 @@
           <img src="/assets/images/st50/st50-12.jpg" alt="Film Production" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
           <div class="absolute bottom-0 left-0 p-6">
-            <div class="text-gold-400 text-xs font-700 uppercase tracking-widest mb-1 i18n" data-de="Spielfilm" data-en="Feature Film">Spielfilm</div>
-            <h3 class="text-xl font-700 i18n" data-de="Kinoproduktionen" data-en="Cinema Productions">Kinoproduktionen</h3>
+            <div class="text-gold-400 text-xs font-700 uppercase tracking-widest mb-1 i18n" data-de="Spielfilm" data-en="Feature Film" data-fr="Long-métrage" data-cs="Celovečerní film" data-fr="Long-métrage" data-cs="Celovečerní film">Spielfilm</div>
+            <h3 class="text-xl font-700 i18n" data-de="Kinoproduktionen" data-en="Cinema Productions" data-fr="Productions cinéma" data-cs="Filmové produkce" data-fr="Productions cinéma" data-cs="Filmové produkce">Kinoproduktionen</h3>
           </div>
         </div>
         <div class="relative rounded-2xl overflow-hidden h-36 observe group cursor-pointer">
           <img src="/assets/images/st50/st50-4.jpg" alt="TV Production" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
           <div class="absolute bottom-0 left-0 p-4">
-            <div class="text-xs font-700 text-gold-400 uppercase i18n" data-de="TV & Serien" data-en="TV & Series">TV & Serien</div>
+            <div class="text-xs font-700 text-gold-400 uppercase i18n" data-de="TV & Serien" data-en="TV & Series" data-fr="TV & Séries" data-cs="TV a seriály" data-fr="TV & Séries" data-cs="TV a seriály">TV & Serien</div>
           </div>
         </div>
         <div class="relative rounded-2xl overflow-hidden h-36 observe group cursor-pointer">
           <img src="/assets/images/st50/st50-5.jpg" alt="Commercial" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
           <div class="absolute bottom-0 left-0 p-4">
-            <div class="text-xs font-700 text-gold-400 uppercase i18n" data-de="Werbung" data-en="Commercials">Werbung</div>
+            <div class="text-xs font-700 text-gold-400 uppercase i18n" data-de="Werbung" data-en="Commercials" data-fr="Publicité" data-cs="Reklama" data-fr="Publicité" data-cs="Reklama">Werbung</div>
           </div>
         </div>
         <div class="relative rounded-2xl overflow-hidden h-36 observe group cursor-pointer">
           <img src="/assets/images/st50/st50-8.jpg" alt="Events" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
           <div class="absolute bottom-0 left-0 p-4">
-            <div class="text-xs font-700 text-gold-400 uppercase i18n" data-de="Events & Konzerte" data-en="Events & Concerts">Events & Konzerte</div>
+            <div class="text-xs font-700 text-gold-400 uppercase i18n" data-de="Events & Konzerte" data-en="Events & Concerts" data-fr="Événements & Concerts" data-cs="Akce a koncerty" data-fr="Événements & Concerts" data-cs="Akce a koncerty">Events & Konzerte</div>
           </div>
         </div>
         <div class="relative rounded-2xl overflow-hidden h-36 observe group cursor-pointer">
           <img src="/assets/images/st50/st50-11.jpg" alt="Sport" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
           <div class="absolute bottom-0 left-0 p-4">
-            <div class="text-xs font-700 text-gold-400 uppercase i18n" data-de="Sport" data-en="Sports">Sport</div>
+            <div class="text-xs font-700 text-gold-400 uppercase i18n" data-de="Sport" data-en="Sports" data-fr="Sport" data-cs="Sport" data-fr="Sport" data-cs="Sport">Sport</div>
           </div>
         </div>
       </div>
@@ -541,23 +706,23 @@
       <div class="text-center mb-12 observe">
         <div class="inline-flex items-center gap-2 text-gold-500 text-sm font-600 tracking-widest uppercase mb-4">
           <span class="w-8 h-px bg-gold-500"></span>
-          <span class="i18n" data-de="Kontakt" data-en="Contact">Kontakt</span>
+          <span class="i18n" data-cms="contact.section_label" data-de="Kontakt" data-en="Contact" data-fr="Contact" data-cs="Kontakt">Kontakt</span>
           <span class="w-8 h-px bg-gold-500"></span>
         </div>
-        <h2 class="text-4xl lg:text-5xl font-800 mb-4 i18n" data-de="Lassen Sie uns sprechen" data-en="Let's Talk">Lassen Sie uns sprechen</h2>
-        <p class="text-gray-400 max-w-xl mx-auto i18n" data-de="Schildern Sie Ihr Projekt – wir melden uns innerhalb von 24 Stunden mit einem Angebot." data-en="Describe your project – we'll get back to you within 24 hours with a quote.">Schildern Sie Ihr Projekt – wir melden uns innerhalb von 24 Stunden mit einem Angebot.</p>
+        <h2 class="text-4xl lg:text-5xl font-800 mb-4 i18n" data-cms="contact.headline" data-de="Lassen Sie uns sprechen" data-en="Let\'s Talk" data-fr="Parlons de votre projet" data-cs="Pojďme si promluvit">Lassen Sie uns sprechen</h2>
+        <p class="text-gray-400 max-w-xl mx-auto i18n" data-cms="contact.subline" data-de="Schildern Sie Ihr Projekt – wir melden uns innerhalb von 24 Stunden mit einem Angebot." data-en="Describe your project – we\'ll get back to you within 24 hours with a quote." data-fr="Décrivez-nous votre projet – nous vous répondrons sous 24 heures avec une offre personnalisée." data-cs="Popište nám svůj projekt – ozveme se vám do 24 hodin s cenovou nabídkou.">Schildern Sie Ihr Projekt – wir melden uns innerhalb von 24 Stunden mit einem Angebot.</p>
       </div>
 
       <!-- Tab Selector -->
       <div class="flex flex-wrap justify-center gap-2 mb-10 observe">
         <button onclick="showTab('contact-form')" id="tab-contact" class="tab-btn tab-active px-5 py-2.5 rounded-xl text-sm font-600 transition-all">
-          <span class="i18n" data-de="📧 Kontakt" data-en="📧 Contact">📧 Kontakt</span>
+          <span class="i18n" data-de="📧 Kontakt" data-en="📧 Contact" data-fr="📧 Contact" data-cs="📧 Kontakt" data-fr="📧 Contact" data-cs="📧 Kontakt">📧 Kontakt</span>
         </button>
         <button onclick="showTab('product-form')" id="tab-product" class="tab-btn glass px-5 py-2.5 rounded-xl text-sm font-600 text-gray-300 transition-all hover:text-white">
-          <span class="i18n" data-de="🎥 Produktanfrage" data-en="🎥 Product Inquiry">🎥 Produktanfrage</span>
+          <span class="i18n" data-de="🎥 Produktanfrage" data-en="🎥 Product Inquiry" data-fr="🎥 Demande de matériel" data-cs="🎥 Poptávka techniky" data-fr="🎥 Demande de matériel" data-cs="🎥 Poptávka techniky">🎥 Produktanfrage</span>
         </button>
         <button onclick="showTab('booking-form')" id="tab-booking" class="tab-btn glass px-5 py-2.5 rounded-xl text-sm font-600 text-gray-300 transition-all hover:text-white">
-          <span class="i18n" data-de="📅 Beratungstermin" data-en="📅 Consultation">📅 Beratungstermin</span>
+          <span class="i18n" data-de="📅 Beratungstermin" data-en="📅 Consultation" data-fr="📅 Rendez-vous conseil" data-cs="📅 Konzultace" data-fr="📅 Rendez-vous conseil" data-cs="📅 Konzultace">📅 Beratungstermin</span>
         </button>
       </div>
 
@@ -565,42 +730,42 @@
       <div class="max-w-2xl mx-auto">
         <!-- Contact Form -->
         <div id="contact-form" class="tab-content glass rounded-2xl p-8 observe">
-          <h3 class="text-xl font-700 mb-6 i18n" data-de="Allgemeine Anfrage" data-en="General Inquiry">Allgemeine Anfrage</h3>
+          <h3 class="text-xl font-700 mb-6 i18n" data-de="Allgemeine Anfrage" data-en="General Inquiry" data-fr="Demande générale" data-cs="Obecný dotaz" data-fr="Demande générale" data-cs="Obecný dotaz">Allgemeine Anfrage</h3>
           <form onsubmit="submitForm(event, 'contact')" id="form-contact">
             <div class="grid sm:grid-cols-2 gap-4 mb-4">
               <div>
-                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Name *" data-en="Name *">Name *</label>
+                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Name *" data-en="Name *" data-fr="Nom *" data-cs="Jméno *" data-fr="Nom *" data-cs="Jméno *">Name *</label>
                 <input type="text" name="name" required class="form-input w-full px-4 py-3 rounded-xl" placeholder="Max Mustermann">
               </div>
               <div>
-                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="E-Mail *" data-en="Email *">E-Mail *</label>
+                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="E-Mail *" data-en="Email *" data-fr="E-mail *" data-cs="E-mail *" data-fr="E-mail *" data-cs="E-mail *">E-Mail *</label>
                 <input type="email" name="email" required class="form-input w-full px-4 py-3 rounded-xl" placeholder="max@produktion.at">
               </div>
             </div>
             <div class="grid sm:grid-cols-2 gap-4 mb-4">
               <div>
-                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Telefon" data-en="Phone">Telefon</label>
-                <input type="tel" name="phone" class="form-input w-full px-4 py-3 rounded-xl" placeholder="+43 1 234 5678">
+                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Telefon" data-en="Phone" data-fr="Téléphone" data-cs="Telefon" data-fr="Téléphone" data-cs="Telefon">Telefon</label>
+                <input type="tel" name="phone" class="form-input w-full px-4 py-3 rounded-xl" placeholder="+43 ...">
               </div>
               <div>
-                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Unternehmen" data-en="Company">Unternehmen</label>
+                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Unternehmen" data-en="Company" data-fr="Société" data-cs="Společnost" data-fr="Société" data-cs="Společnost">Unternehmen</label>
                 <input type="text" name="company" class="form-input w-full px-4 py-3 rounded-xl" placeholder="Ihre Produktionsfirma">
               </div>
             </div>
             <div class="mb-4">
-              <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Nachricht *" data-en="Message *">Nachricht *</label>
+              <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Nachricht *" data-en="Message *" data-fr="Message *" data-cs="Zpráva *" data-fr="Message *" data-cs="Zpráva *">Nachricht *</label>
               <textarea name="message" required rows="5" class="form-input w-full px-4 py-3 rounded-xl resize-none" placeholder="Beschreiben Sie Ihr Projekt..."></textarea>
             </div>
             <div class="flex items-center gap-3">
               <input type="checkbox" required id="privacy-contact" class="w-4 h-4 accent-gold-500">
               <label for="privacy-contact" class="text-xs text-gray-400">
-                <span class="i18n" data-de="Ich stimme der" data-en="I agree to the">Ich stimme der</span>
-                <a href="#" class="text-gold-400 hover:text-gold-300 mx-1 i18n" data-de="Datenschutzerklärung" data-en="Privacy Policy">Datenschutzerklärung</a>
-                <span class="i18n" data-de="zu." data-en="zu.">zu.</span>
+                <span class="i18n" data-de="Ich stimme der" data-en="I agree to the" data-fr="J'accepte la" data-cs="Souhlasím se" data-fr="J'accepte la" data-cs="Souhlasím se">Ich stimme der</span>
+                <a href="#" class="text-gold-400 hover:text-gold-300 mx-1 i18n" data-de="Datenschutzerklärung" data-en="Privacy Policy" data-fr="politique de confidentialité" data-cs="zásadami ochrany osobních údajů" data-fr="politique de confidentialité" data-cs="zásadami ochrany osobních údajů">Datenschutzerklärung</a>
+                <span class="i18n" data-de="zu." data-en="zu." data-fr="." data-cs="." data-fr="." data-cs=".">zu.</span>
               </label>
             </div>
             <button type="submit" class="btn-gold w-full py-4 rounded-xl font-700 mt-5 flex items-center justify-center gap-2">
-              <span class="i18n" data-de="Nachricht senden" data-en="Send Message">Nachricht senden</span>
+              <span class="i18n" data-de="Nachricht senden" data-en="Send Message" data-fr="Envoyer le message" data-cs="Odeslat zprávu" data-fr="Envoyer le message" data-cs="Odeslat zprávu">Nachricht senden</span>
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
             </button>
           </form>
@@ -608,54 +773,54 @@
 
         <!-- Product Inquiry Form -->
         <div id="product-form" class="tab-content glass rounded-2xl p-8 hidden observe">
-          <h3 class="text-xl font-700 mb-6 i18n" data-de="Produktanfrage / Angebot" data-en="Product Inquiry / Quote">Produktanfrage / Angebot</h3>
+          <h3 class="text-xl font-700 mb-6 i18n" data-de="Produktanfrage / Angebot" data-en="Product Inquiry / Quote" data-fr="Demande de matériel / Devis" data-cs="Poptávka techniky / Nabídka" data-fr="Demande de matériel / Devis" data-cs="Poptávka techniky / Nabídka">Produktanfrage / Angebot</h3>
           <form onsubmit="submitForm(event, 'product')" id="form-product">
             <div class="grid sm:grid-cols-2 gap-4 mb-4">
               <div>
-                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Name *" data-en="Name *">Name *</label>
+                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Name *" data-en="Name *" data-fr="Nom *" data-cs="Jméno *" data-fr="Nom *" data-cs="Jméno *">Name *</label>
                 <input type="text" name="name" required class="form-input w-full px-4 py-3 rounded-xl" placeholder="Max Mustermann">
               </div>
               <div>
-                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="E-Mail *" data-en="Email *">E-Mail *</label>
+                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="E-Mail *" data-en="Email *" data-fr="E-mail *" data-cs="E-mail *" data-fr="E-mail *" data-cs="E-mail *">E-Mail *</label>
                 <input type="email" name="email" required class="form-input w-full px-4 py-3 rounded-xl" placeholder="max@produktion.at">
               </div>
             </div>
             <div class="grid sm:grid-cols-2 gap-4 mb-4">
               <div>
-                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Telefon" data-en="Phone">Telefon</label>
-                <input type="tel" name="phone" class="form-input w-full px-4 py-3 rounded-xl" placeholder="+43 1 234 5678">
+                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Telefon" data-en="Phone" data-fr="Téléphone" data-cs="Telefon" data-fr="Téléphone" data-cs="Telefon">Telefon</label>
+                <input type="tel" name="phone" class="form-input w-full px-4 py-3 rounded-xl" placeholder="+43 ...">
               </div>
               <div>
-                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Kran-Modell *" data-en="Crane Model *">Kran-Modell *</label>
+                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Kran-Modell *" data-en="Crane Model *" data-fr="Modèle de grue *" data-cs="Model jeřábu *" data-fr="Modèle de grue *" data-cs="Model jeřábu *">Kran-Modell *</label>
                 <select name="product" required class="form-input w-full px-4 py-3 rounded-xl">
-                  <option value="" disabled selected class="i18n" data-de="Bitte wählen..." data-en="Please select...">Bitte wählen...</option>
+                  <option value="" disabled selected class="i18n" data-de="Bitte wählen..." data-en="Please select..." data-fr="Veuillez choisir..." data-cs="Prosím vyberte..." data-fr="Veuillez choisir..." data-cs="Prosím vyberte...">Bitte wählen...</option>
                   <option value="Supertechno 30">Supertechno 30</option>
                   <option value="Supertechno 50+">Supertechno 50+</option>
                   <option value="Supertechno 75+">Supertechno 75+</option>
-                  <option value="Beratung nötig" class="i18n" data-de="Beratung nötig" data-en="Need Consultation">Beratung nötig</option>
+                  <option value="Beratung nötig" class="i18n" data-de="Beratung nötig" data-en="Need Consultation" data-fr="Conseil requis" data-cs="Potřebuji poradit" data-fr="Conseil requis" data-cs="Potřebuji poradit">Beratung nötig</option>
                 </select>
               </div>
             </div>
             <div class="grid sm:grid-cols-2 gap-4 mb-4">
               <div>
-                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Drehtag / Startdatum" data-en="Shooting Date / Start">Drehtag / Startdatum</label>
+                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Drehtag / Startdatum" data-en="Shooting Date / Start" data-fr="Jour de tournage / Date de début" data-cs="Natáčecí den / Datum začátku" data-fr="Jour de tournage / Date de début" data-cs="Natáčecí den / Datum začátku">Drehtag / Startdatum</label>
                 <input type="date" name="event_date" class="form-input w-full px-4 py-3 rounded-xl">
               </div>
               <div>
-                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Dauer / Zeitraum" data-en="Duration / Period">Dauer / Zeitraum</label>
+                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Dauer / Zeitraum" data-en="Duration / Period" data-fr="Durée / Période" data-cs="Doba trvání / Období" data-fr="Durée / Période" data-cs="Doba trvání / Období">Dauer / Zeitraum</label>
                 <input type="text" name="duration" class="form-input w-full px-4 py-3 rounded-xl" placeholder="z.B. 2 Tage">
               </div>
             </div>
             <div class="mb-4">
-              <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Projektbeschreibung" data-en="Project Description">Projektbeschreibung</label>
+              <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Projektbeschreibung" data-en="Project Description" data-fr="Description du projet" data-cs="Popis projektu" data-fr="Description du projet" data-cs="Popis projektu">Projektbeschreibung</label>
               <textarea name="message" rows="4" class="form-input w-full px-4 py-3 rounded-xl resize-none" placeholder="Art der Produktion, Location, besondere Anforderungen..."></textarea>
             </div>
             <div class="flex items-center gap-3">
               <input type="checkbox" required id="privacy-product" class="w-4 h-4 accent-gold-500">
-              <label for="privacy-product" class="text-xs text-gray-400"><span class="i18n" data-de="Ich stimme der Datenschutzerklärung zu." data-en="I agree to the Privacy Policy.">Ich stimme der Datenschutzerklärung zu.</span></label>
+              <label for="privacy-product" class="text-xs text-gray-400"><span class="i18n" data-de="Ich stimme der Datenschutzerklärung zu." data-en="I agree to the Privacy Policy." data-fr="J'accepte la politique de confidentialité." data-cs="Souhlasím se zásadami ochrany osobních údajů." data-fr="J'accepte la politique de confidentialité." data-cs="Souhlasím se zásadami ochrany osobních údajů.">Ich stimme der Datenschutzerklärung zu.</span></label>
             </div>
             <button type="submit" class="btn-gold w-full py-4 rounded-xl font-700 mt-5 flex items-center justify-center gap-2">
-              <span class="i18n" data-de="Angebot anfragen" data-en="Request Quote">Angebot anfragen</span>
+              <span class="i18n" data-de="Angebot anfragen" data-en="Request Quote" data-fr="Demander un devis" data-cs="Požádat o nabídku" data-fr="Demander un devis" data-cs="Požádat o nabídku">Angebot anfragen</span>
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
             </button>
           </form>
@@ -663,30 +828,30 @@
 
         <!-- Booking Form -->
         <div id="booking-form" class="tab-content glass rounded-2xl p-8 hidden observe">
-          <h3 class="text-xl font-700 mb-6 i18n" data-de="Beratungstermin buchen" data-en="Book Consultation">Beratungstermin buchen</h3>
+          <h3 class="text-xl font-700 mb-6 i18n" data-de="Beratungstermin buchen" data-en="Book Consultation" data-fr="Prendre rendez-vous" data-cs="Rezervovat konzultaci" data-fr="Prendre rendez-vous" data-cs="Rezervovat konzultaci">Beratungstermin buchen</h3>
           <form onsubmit="submitForm(event, 'booking')" id="form-booking">
             <div class="grid sm:grid-cols-2 gap-4 mb-4">
               <div>
-                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Name *" data-en="Name *">Name *</label>
+                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Name *" data-en="Name *" data-fr="Nom *" data-cs="Jméno *" data-fr="Nom *" data-cs="Jméno *">Name *</label>
                 <input type="text" name="name" required class="form-input w-full px-4 py-3 rounded-xl" placeholder="Max Mustermann">
               </div>
               <div>
-                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="E-Mail *" data-en="Email *">E-Mail *</label>
+                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="E-Mail *" data-en="Email *" data-fr="E-mail *" data-cs="E-mail *" data-fr="E-mail *" data-cs="E-mail *">E-Mail *</label>
                 <input type="email" name="email" required class="form-input w-full px-4 py-3 rounded-xl" placeholder="max@produktion.at">
               </div>
             </div>
             <div class="grid sm:grid-cols-2 gap-4 mb-4">
               <div>
-                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Telefon" data-en="Phone">Telefon</label>
-                <input type="tel" name="phone" class="form-input w-full px-4 py-3 rounded-xl" placeholder="+43 1 234 5678">
+                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Telefon" data-en="Phone" data-fr="Téléphone" data-cs="Telefon" data-fr="Téléphone" data-cs="Telefon">Telefon</label>
+                <input type="tel" name="phone" class="form-input w-full px-4 py-3 rounded-xl" placeholder="+43 ...">
               </div>
               <div>
-                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Gewünschtes Datum *" data-en="Preferred Date *">Gewünschtes Datum *</label>
+                <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Gewünschtes Datum *" data-en="Preferred Date *" data-fr="Date souhaitée *" data-cs="Požadované datum *" data-fr="Date souhaitée *" data-cs="Požadované datum *">Gewünschtes Datum *</label>
                 <input type="date" name="booking_date" required class="form-input w-full px-4 py-3 rounded-xl">
               </div>
             </div>
             <div class="mb-4">
-              <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Gewünschte Uhrzeit" data-en="Preferred Time">Gewünschte Uhrzeit</label>
+              <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Gewünschte Uhrzeit" data-en="Preferred Time" data-fr="Heure souhaitée" data-cs="Požadovaný čas" data-fr="Heure souhaitée" data-cs="Požadovaný čas">Gewünschte Uhrzeit</label>
               <select name="booking_time" class="form-input w-full px-4 py-3 rounded-xl">
                 <option value="">Beliebig</option>
                 <option value="09:00">09:00</option>
@@ -698,43 +863,38 @@
               </select>
             </div>
             <div class="mb-4">
-              <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Worum geht es?" data-en="What is it about?">Worum geht es?</label>
+              <label class="block text-sm text-gray-400 mb-1.5 i18n" data-de="Worum geht es?" data-en="What is it about?" data-fr="De quoi s'agit-il ?" data-cs="O co se jedná?" data-fr="De quoi s'agit-il ?" data-cs="O co se jedná?">Worum geht es?</label>
               <textarea name="message" rows="4" class="form-input w-full px-4 py-3 rounded-xl resize-none" placeholder="Kurze Beschreibung Ihres Projekts..."></textarea>
             </div>
             <div class="flex items-center gap-3">
               <input type="checkbox" required id="privacy-booking" class="w-4 h-4 accent-gold-500">
-              <label for="privacy-booking" class="text-xs text-gray-400"><span class="i18n" data-de="Ich stimme der Datenschutzerklärung zu." data-en="I agree to the Privacy Policy.">Ich stimme der Datenschutzerklärung zu.</span></label>
+              <label for="privacy-booking" class="text-xs text-gray-400"><span class="i18n" data-de="Ich stimme der Datenschutzerklärung zu." data-en="I agree to the Privacy Policy." data-fr="J'accepte la politique de confidentialité." data-cs="Souhlasím se zásadami ochrany osobních údajů." data-fr="J'accepte la politique de confidentialité." data-cs="Souhlasím se zásadami ochrany osobních údajů.">Ich stimme der Datenschutzerklärung zu.</span></label>
             </div>
             <button type="submit" class="btn-gold w-full py-4 rounded-xl font-700 mt-5 flex items-center justify-center gap-2">
-              <span class="i18n" data-de="Termin buchen" data-en="Book Appointment">Termin buchen</span>
+              <span class="i18n" data-de="Termin buchen" data-en="Book Appointment" data-fr="Réserver un créneau" data-cs="Rezervovat termín" data-fr="Réserver un créneau" data-cs="Rezervovat termín">Termin buchen</span>
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
             </button>
           </form>
         </div>
       </div>
 
-      <!-- Contact Info -->
-      <div class="mt-12 grid sm:grid-cols-3 gap-6 max-w-2xl mx-auto observe">
-        <div class="text-center">
-          <div class="w-12 h-12 gold-gradient rounded-full flex items-center justify-center mx-auto mb-3">
-            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-          </div>
-          <div class="text-sm text-gray-400 i18n" data-de="Telefon" data-en="Phone">Telefon</div>
-          <a href="tel:+43123456789" class="text-gold-400 hover:text-gold-300 font-600" data-cms-contact="phone">+43 1 234 5678</a>
-        </div>
-        <div class="text-center">
-          <div class="w-12 h-12 gold-gradient rounded-full flex items-center justify-center mx-auto mb-3">
-            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          </div>
-          <div class="text-sm text-gray-400">Email</div>
-          <a href="mailto:info@technogrips.at" class="text-gold-400 hover:text-gold-300 font-600" data-cms-contact="email">info@technogrips.at</a>
-        </div>
-        <div class="text-center">
-          <div class="w-12 h-12 gold-gradient rounded-full flex items-center justify-center mx-auto mb-3">
-            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          </div>
-          <div class="text-sm text-gray-400 i18n" data-de="Standort" data-en="Location">Standort</div>
-          <div class="text-gold-400 font-600" data-cms-contact="location">Wien, Österreich</div>
+      <!-- Direct Contact Cards -->
+      <div class="mt-12 flex flex-wrap justify-center gap-4 observe">
+        <a href="tel:+436504542261" class="glass px-6 py-3.5 rounded-xl flex items-center gap-3 hover:border-gold-500/40 transition-all group" data-cms-contact-href="phone_mobile">
+          <svg class="w-5 h-5 text-gold-400 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          <span class="font-600 text-base text-white group-hover:text-gold-400 transition-colors" data-de="Mobil" data-en="Mobile" data-fr="Mobile" data-cs="Mobil">Mobil</span>
+        </a>
+        <a href="tel:+436765919172" class="glass px-6 py-3.5 rounded-xl flex items-center gap-3 hover:border-gold-500/40 transition-all group" data-cms-contact-href="phone_office">
+          <svg class="w-5 h-5 text-gold-400 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          <span class="font-600 text-base text-white group-hover:text-gold-400 transition-colors" data-de="Office" data-en="Office" data-fr="Bureau" data-cs="Kancelář">Office</span>
+        </a>
+        <a href="mailto:office@technogrips-vienna.at" class="glass px-6 py-3.5 rounded-xl flex items-center gap-3 hover:border-gold-500/40 transition-all group" data-cms-contact-href="email">
+          <svg class="w-5 h-5 text-gold-400 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span class="font-600 text-base text-white group-hover:text-gold-400 transition-colors" data-de="E-Mail" data-en="Email" data-fr="E-mail" data-cs="E-mail">E-Mail</span>
+        </a>
+        <div class="glass px-6 py-3.5 rounded-xl flex items-center gap-3">
+          <svg class="w-5 h-5 text-gold-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+          <span class="font-600 text-base text-white" data-cms-contact="location">Wien, Österreich</span>
         </div>
       </div>
     </div>
@@ -747,57 +907,97 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FOOTER                                       -->
   <!-- ═══════════════════════════════════════════ -->
-  <footer class="bg-navy-950 border-t border-white/5 py-12">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-4 gap-8 mb-10">
-        <!-- Brand -->
-        <div class="md:col-span-2">
+  <footer style="background:#020817;border-top:1px solid rgba(255,255,255,0.05);padding:3rem 0;width:100%;display:block;">
+    <div class="w-full px-6 lg:px-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+        <div>
           <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 gold-gradient rounded-xl flex items-center justify-center">
-              <svg viewBox="0 0 24 24" class="w-6 h-6 text-black fill-current"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            </div>
+            <img src="/assets/images/logo_transparent.png" alt="Technogrips Logo" class="h-12 w-auto object-contain">
             <div>
-              <div class="text-lg font-800">Technogrips Vienna</div>
-              <div class="text-gold-500 text-xs font-600 tracking-widest uppercase">Kamerakran & Operator</div>
+              <div class="text-lg font-800 text-white">Technogrips Vienna</div>
+              <div class="text-xs font-600 tracking-widest uppercase" style="color:#e5c500">Kamerakran &amp; Operator</div>
             </div>
           </div>
-          <p class="text-gray-500 text-sm leading-relaxed max-w-xs i18n" data-de="Professionelle Supertechno Kamerakrane mit erfahrenem Operator-Service. Wien, Österreich." data-en="Professional Supertechno camera cranes with experienced operator service. Vienna, Austria.">Professionelle Supertechno Kamerakrane mit erfahrenem Operator-Service. Wien, Österreich.</p>
+          <p class="text-sm leading-relaxed max-w-xs" style="color:#6b7280" data-de="Professionelle Supertechno Kamerakrane mit erfahrenem Operator-Service. Wien, Österreich." data-en="Professional Supertechno camera cranes with experienced operator service. Vienna, Austria." data-fr="Grues de caméra professionnelles Supertechno avec service d'opérateur expérimenté. Vienne, Autriche." data-cs="Profesionální kamerové jeřáby Supertechno se zkušeným operátorem. Vídeň, Rakousko.">Professionelle Supertechno Kamerakrane mit erfahrenem Operator-Service. Wien, Österreich.</p>
         </div>
-
-        <!-- Quick Links -->
         <div>
-          <h4 class="font-700 text-sm mb-4 i18n" data-de="Schnelllinks" data-en="Quick Links">Schnelllinks</h4>
+          <h4 class="font-700 text-sm mb-4 text-white" data-de="Seiten" data-en="Pages" data-fr="Pages" data-cs="Stránky">Seiten</h4>
           <ul class="space-y-2">
-            <li><a href="/leistungen" class="text-gray-500 hover:text-gold-400 text-sm transition-colors" data-de="Leistungen" data-en="Services">Leistungen</a></li>
-            <li><a href="/supertechno-50" class="text-gray-500 hover:text-gold-400 text-sm transition-colors">Supertechno 50+</a></li>
-            <li><a href="/ueber-uns" class="text-gray-500 hover:text-gold-400 text-sm transition-colors i18n" data-de="Über uns" data-en="About">Über uns</a></li>
-            <li><a href="/kontakt" class="text-gray-500 hover:text-gold-400 text-sm transition-colors i18n" data-de="Kontakt" data-en="Contact">Kontakt</a></li>
-            <li><a href="/admin" class="text-gray-600 hover:text-gray-400 text-xs transition-colors">Admin</a></li>
+            <li><a href="/leistungen" class="text-sm transition-colors block" style="color:#6b7280" onmouseover="this.style.color='#e5c500'" onmouseout="this.style.color='#6b7280'" data-de="Leistungen" data-en="Services" data-fr="Services" data-cs="Služby">Leistungen</a></li>
+            <li><a href="/supertechno-50" class="text-sm transition-colors block" style="color:#6b7280" onmouseover="this.style.color='#e5c500'" onmouseout="this.style.color='#6b7280'">Supertechno 50+</a></li>
+            <li><a href="/tracking" class="text-sm transition-colors block" style="color:#6b7280" onmouseover="this.style.color='#e5c500'" onmouseout="this.style.color='#6b7280'" data-de="Tracking & Telemetrie" data-en="Tracking & Telemetry" data-fr="Tracking & Télémétrie" data-cs="Tracking a telemetrie">Tracking & Telemetrie</a></li>
+            <li><a href="/ueber-uns" class="text-sm transition-colors block" style="color:#6b7280" onmouseover="this.style.color='#e5c500'" onmouseout="this.style.color='#6b7280'" data-de="Über uns" data-en="About" data-fr="À propos" data-cs="O nás">Über uns</a></li>
+            <li><a href="/kontakt" class="text-sm transition-colors block" style="color:#6b7280" onmouseover="this.style.color='#e5c500'" onmouseout="this.style.color='#6b7280'" data-de="Kontakt" data-en="Contact" data-fr="Contact" data-cs="Kontakt">Kontakt</a></li>
           </ul>
         </div>
-
-        <!-- Legal -->
         <div>
-          <h4 class="font-700 text-sm mb-4 i18n" data-de="Rechtliches" data-en="Legal">Rechtliches</h4>
+          <h4 class="font-700 text-sm mb-4 text-white" data-de="Kontakt" data-en="Contact" data-fr="Contact" data-cs="Kontakt">Kontakt</h4>
+          <ul class="space-y-2.5">
+            <li>
+              <a href="tel:+436504542261" class="text-sm transition-colors flex items-center gap-2 group" style="color:#6b7280" onmouseover="this.style.color='#e5c500'" onmouseout="this.style.color='#6b7280'" data-cms-contact-href="phone_mobile">
+                <svg class="w-4 h-4 text-gold-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                <span data-de="Mobil" data-en="Mobile" data-fr="Mobile" data-cs="Mobil">Mobil</span>
+              </a>
+            </li>
+            <li>
+              <a href="tel:+436765919172" class="text-sm transition-colors flex items-center gap-2 group" style="color:#6b7280" onmouseover="this.style.color='#e5c500'" onmouseout="this.style.color='#6b7280'" data-cms-contact-href="phone_office">
+                <svg class="w-4 h-4 text-gold-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                <span data-de="Office" data-en="Office" data-fr="Bureau" data-cs="Kancelář">Office</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:office@technogrips-vienna.at" class="text-sm transition-colors flex items-center gap-2 group" style="color:#6b7280" onmouseover="this.style.color='#e5c500'" onmouseout="this.style.color='#6b7280'" data-cms-contact-href="email">
+                <svg class="w-4 h-4 text-gold-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <span data-de="E-Mail" data-en="Email" data-fr="E-mail" data-cs="E-mail">E-Mail</span>
+              </a>
+            </li>
+            <li class="text-sm flex items-center gap-2" style="color:#6b7280">
+              <svg class="w-4 h-4 text-gold-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+              <span data-cms-contact="location">Wien, Österreich</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-700 text-sm mb-4 text-white" data-de="Rechtliches" data-en="Legal" data-fr="Mentions légales" data-cs="Právní informace">Rechtliches</h4>
           <ul class="space-y-2">
-            <li><a href="#" class="text-gray-500 hover:text-gold-400 text-sm transition-colors i18n" data-de="Impressum" data-en="Imprint">Impressum</a></li>
-            <li><a href="#" class="text-gray-500 hover:text-gold-400 text-sm transition-colors i18n" data-de="Datenschutz" data-en="Privacy Policy">Datenschutz</a></li>
-            <li><a href="#" class="text-gray-500 hover:text-gold-400 text-sm transition-colors i18n" data-de="AGB" data-en="Terms">AGB</a></li>
+            <li><a href="/impressum" class="text-sm transition-colors block" style="color:#6b7280" onmouseover="this.style.color='#e5c500'" onmouseout="this.style.color='#6b7280'" data-de="Impressum" data-en="Imprint" data-fr="Mentions légales" data-cs="Impresum">Impressum</a></li>
+            <li><a href="/datenschutz" class="text-sm transition-colors block" style="color:#6b7280" onmouseover="this.style.color='#e5c500'" onmouseout="this.style.color='#6b7280'" data-de="Datenschutz" data-en="Privacy Policy" data-fr="Protection des données" data-cs="Ochrana údajů">Datenschutz</a></li>
+            <li><a href="/agb" class="text-sm transition-colors block" style="color:#6b7280" onmouseover="this.style.color='#e5c500'" onmouseout="this.style.color='#6b7280'" data-de="AGB" data-en="Terms" data-fr="Conditions générales" data-cs="Obchodní podmínky">AGB</a></li>
           </ul>
         </div>
       </div>
-
-      <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div class="text-gray-600 text-sm">
-          © <span id="currentYear"></span> Technogrips Vienna. <span class="i18n" data-de="Alle Rechte vorbehalten." data-en="All rights reserved.">Alle Rechte vorbehalten.</span>
-        </div>
+      <div style="padding-top:2rem;border-top:1px solid rgba(255,255,255,0.05)" class="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="text-sm" style="color:#6b7280">© <span id="currentYear"></span> Technogrips Vienna. <span data-de="Alle Rechte vorbehalten." data-en="All rights reserved." data-fr="Tous droits réservés." data-cs="Všechna práva vyhrazena.">Alle Rechte vorbehalten.</span></div>
         <div class="flex items-center gap-2">
-          <span class="text-gray-700 text-xs i18n" data-de="Powered by" data-en="Powered by">Powered by</span>
-          <a href="https://www.supertechno.com" target="_blank" class="text-gold-600 hover:text-gold-400 text-xs transition-colors">Supertechno®</a>
+          <span class="text-xs" style="color:#6b7280" data-de="Powered by" data-en="Powered by" data-fr="Propulsé par" data-cs="Běží na">Powered by</span>
+          <a href="https://www.supertechno.com" target="_blank" class="text-xs transition-colors" style="color:#a69000" onmouseover="this.style.color='#e5c500'" onmouseout="this.style.color='#a69000'">Supertechno®</a>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- MOBILE QUICK CONTACT BAR (Fixed Bottom)     -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div id="mobileContactBar" class="mobile-contact-bar md:hidden" aria-label="Mobile Schnellkontakt">
+    <div class="flex items-center justify-between gap-2 max-w-lg mx-auto">
+      <!-- Call -->
+      <a href="tel:+436504542261" class="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl text-xs font-700 bg-navy-900/90 border border-white/10 text-white hover:border-gold-500/40 active:scale-95 transition-all text-center no-underline shadow-sm" data-cms-contact-href="phone_mobile">
+        <svg class="w-4 h-4 text-gold-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        <span class="i18n truncate" data-de="Anrufen" data-en="Call" data-fr="Appeler" data-cs="Zavolat" data-fr="Appeler" data-cs="Zavolat">Anrufen</span>
+      </a>
+      <!-- Email -->
+      <a href="mailto:office@technogrips-vienna.at" class="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl text-xs font-700 bg-navy-900/90 border border-white/10 text-white hover:border-gold-500/40 active:scale-95 transition-all text-center no-underline shadow-sm" data-cms-contact-href="email">
+        <svg class="w-4 h-4 text-gold-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <span class="i18n truncate" data-de="E-Mail" data-en="Email" data-fr="E-mail" data-cs="E-mail" data-fr="E-mail" data-cs="E-mail">E-Mail</span>
+      </a>
+      <!-- Anfragen / Kontakt -->
+      <a href="/kontakt" class="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl text-xs font-700 btn-gold text-black active:scale-95 transition-all text-center no-underline shadow-[0_0_12px_rgba(229,197,0,0.35)]">
+        <svg class="w-4 h-4 text-black shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+        <span class="i18n truncate" data-de="Anfragen" data-en="Inquire" data-fr="Demander" data-cs="Poptat" data-fr="Demander" data-cs="Poptat">Anfragen</span>
+      </a>
+    </div>
+  </div>
 
   <!-- ═══════════════════════════════════════════ -->
   <!-- MODALS                                       -->
@@ -811,14 +1011,14 @@
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
       <div class="text-5xl mb-4">📖</div>
-      <h3 class="text-2xl font-800 mb-2 i18n" data-de="Katalog herunterladen" data-en="Download Catalog">Katalog herunterladen</h3>
-      <p class="text-gray-400 text-sm mb-6 i18n" data-de="Geben Sie Ihre E-Mail-Adresse ein und erhalten Sie sofortigen Zugang zum vollständigen Produktkatalog." data-en="Enter your email address and get instant access to the full product catalog.">Geben Sie Ihre E-Mail-Adresse ein und erhalten Sie sofortigen Zugang zum vollständigen Produktkatalog.</p>
+      <h3 class="text-2xl font-800 mb-2 i18n" data-de="Katalog herunterladen" data-en="Download Catalog" data-fr="Télécharger le catalogue" data-cs="Stáhnout katalog" data-fr="Télécharger le catalogue" data-cs="Stáhnout katalog">Katalog herunterladen</h3>
+      <p class="text-gray-400 text-sm mb-6 i18n" data-de="Geben Sie Ihre E-Mail-Adresse ein und erhalten Sie sofortigen Zugang zum vollständigen Produktkatalog." data-en="Enter your email address and get instant access to the full product catalog." data-fr="Entrez votre adresse e-mail pour accéder immédiatement au catalogue produit complet." data-cs="Zadejte svůj e-mail a získejte okamžitý přístup ke kompletnímu katalogu produktů." data-fr="Entrez votre adresse e-mail pour accéder immédiatement au catalogue produit complet." data-cs="Zadejte svůj e-mail a získejte okamžitý přístup ke kompletnímu katalogu produktů.">Geben Sie Ihre E-Mail-Adresse ein und erhalten Sie sofortigen Zugang zum vollständigen Produktkatalog.</p>
       <form onsubmit="submitCatalog(event)" id="catalog-form">
         <input type="text" name="name" class="form-input w-full px-4 py-3 rounded-xl mb-3" placeholder="Ihr Name">
         <input type="email" name="email" required class="form-input w-full px-4 py-3 rounded-xl mb-5" placeholder="ihre@email.at">
         <button type="submit" class="btn-gold w-full py-3.5 rounded-xl font-700 flex items-center justify-center gap-2">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-          <span class="i18n" data-de="Jetzt herunterladen" data-en="Download Now">Jetzt herunterladen</span>
+          <span class="i18n" data-de="Jetzt herunterladen" data-en="Download Now" data-fr="Télécharger maintenant" data-cs="Stáhnout nyní" data-fr="Télécharger maintenant" data-cs="Stáhnout nyní">Jetzt herunterladen</span>
         </button>
       </form>
     </div>
@@ -832,7 +1032,7 @@
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
       <div class="text-5xl mb-4">🎥</div>
-      <h3 class="text-2xl font-800 mb-2 i18n" data-de="Produktanfrage" data-en="Product Inquiry">Produktanfrage</h3>
+      <h3 class="text-2xl font-800 mb-2 i18n" data-de="Produktanfrage" data-en="Product Inquiry" data-fr="Demande de matériel" data-cs="Poptávka techniky" data-fr="Demande de matériel" data-cs="Poptávka techniky">Produktanfrage</h3>
       <p id="productModalSubtitle" class="text-gold-400 font-600 mb-6">Supertechno</p>
       <form onsubmit="submitProductModal(event)" id="form-product-modal">
         <input type="hidden" name="product" id="productModalInput">
@@ -846,7 +1046,7 @@
         </div>
         <textarea name="message" rows="3" class="form-input w-full px-4 py-3 rounded-xl resize-none mb-5" placeholder="Projektdetails..."></textarea>
         <button type="submit" class="btn-gold w-full py-3.5 rounded-xl font-700 flex items-center justify-center gap-2">
-          <span class="i18n" data-de="Anfrage senden" data-en="Send Inquiry">Anfrage senden</span>
+          <span class="i18n" data-de="Anfrage senden" data-en="Send Inquiry" data-fr="Envoyer la demande" data-cs="Odeslat poptávku" data-fr="Envoyer la demande" data-cs="Odeslat poptávku">Anfrage senden</span>
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
         </button>
       </form>
@@ -861,8 +1061,8 @@
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
       <div class="text-5xl mb-4">📅</div>
-      <h3 class="text-2xl font-800 mb-2 i18n" data-de="Beratungstermin" data-en="Book Consultation">Beratungstermin</h3>
-      <p class="text-gray-400 text-sm mb-6 i18n" data-de="Wählen Sie einen Wunschtermin für Ihr kostenloses Beratungsgespräch." data-en="Choose a preferred date for your free consultation call.">Wählen Sie einen Wunschtermin für Ihr kostenloses Beratungsgespräch.</p>
+      <h3 class="text-2xl font-800 mb-2 i18n" data-de="Beratungstermin" data-en="Book Consultation" data-fr="Rendez-vous conseil" data-cs="Konzultace" data-fr="Rendez-vous conseil" data-cs="Konzultace">Beratungstermin</h3>
+      <p class="text-gray-400 text-sm mb-6 i18n" data-de="Wählen Sie einen Wunschtermin für Ihr kostenloses Beratungsgespräch." data-en="Choose a preferred date for your free consultation call." data-fr="Choisissez une date pour votre entretien conseil gratuit." data-cs="Vyberte si termín pro vaši bezplatnou konzultaci." data-fr="Choisissez une date pour votre entretien conseil gratuit." data-cs="Vyberte si termín pro vaši bezplatnou konzultaci.">Wählen Sie einen Wunschtermin für Ihr kostenloses Beratungsgespräch.</p>
       <form onsubmit="submitBookingModal(event)" id="form-booking-modal">
         <div class="grid grid-cols-2 gap-3 mb-3">
           <input type="text" name="name" required class="form-input px-4 py-3 rounded-xl" placeholder="Name *">
@@ -882,7 +1082,7 @@
         </select>
         <textarea name="message" rows="3" class="form-input w-full px-4 py-3 rounded-xl resize-none mb-5" placeholder="Worum geht es?"></textarea>
         <button type="submit" class="btn-gold w-full py-3.5 rounded-xl font-700 flex items-center justify-center gap-2">
-          <span class="i18n" data-de="Termin bestätigen" data-en="Confirm Appointment">Termin bestätigen</span>
+          <span class="i18n" data-de="Termin bestätigen" data-en="Confirm Appointment" data-fr="Confirmer le rendez-vous" data-cs="Potvrdit termín" data-fr="Confirmer le rendez-vous" data-cs="Potvrdit termín">Termin bestätigen</span>
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
         </button>
       </form>
@@ -934,20 +1134,27 @@
     }
 
     function applyCmsContent() {
-      // 1. Patch data-de / data-en on elements with data-cms="section.key"
+      // 1. Patch data-de / data-en / data-fr / data-cs on elements with data-cms="section.key"
       document.querySelectorAll('[data-cms]').forEach(el => {
         const [section, key] = el.getAttribute('data-cms').split('.');
         const entry = cmsContent[section]?.[key];
         if (!entry) return;
-        if (entry.de) el.setAttribute('data-de', entry.de);
-        if (entry.en) el.setAttribute('data-en', entry.en);
+        if (entry.de !== undefined) el.setAttribute('data-de', entry.de);
+        if (entry.en !== undefined) el.setAttribute('data-en', entry.en);
+        if (entry.fr !== undefined) el.setAttribute('data-fr', entry.fr);
+        if (entry.cs !== undefined) el.setAttribute('data-cs', entry.cs);
       });
 
-      // 2. Plain text elements with data-cms-text="section.key" (language-neutral, e.g. numbers)
+      // 2. Plain text elements with data-cms-text="section.key" (language-neutral or multi-language specs/numbers)
       document.querySelectorAll('[data-cms-text]').forEach(el => {
         const [section, key] = el.getAttribute('data-cms-text').split('.');
-        const entry = cmsContent[section]?.[key];
-        if (entry?.de) el.textContent = entry.de; // numbers are same in both langs
+        let entry = cmsContent[section]?.[key];
+        if (!entry && section === 'about' && cmsContent.hero?.[key]) {
+          entry = cmsContent.hero[key];
+        }
+        if (!entry) return;
+        const val = (typeof entry === 'object') ? (entry[currentLang] || entry.de || entry.en || entry.fr || entry.cs || '') : entry;
+        if (val !== undefined && val !== '') el.textContent = val;
       });
 
       // 3. Update <title> and <meta description> from SEO section
@@ -962,61 +1169,188 @@
       }
 
       // 4. Update contact info placeholders
+      const phoneMobile = cmsContent.contact?.phone_mobile?.de;
+      const phoneOffice = cmsContent.contact?.phone_office?.de;
       const phone = cmsContent.contact?.phone?.de;
       const email = cmsContent.contact?.email?.de;
       const location = cmsContent.contact?.location?.de;
-      if (phone)    document.querySelectorAll('[data-cms-contact="phone"]').forEach(el => el.textContent = phone);
-      if (email)    document.querySelectorAll('[data-cms-contact="email"]').forEach(el => el.textContent = email);
+      const activePhone = phoneMobile || phone || phoneOffice;
+
+      if (phoneMobile) document.querySelectorAll('[data-cms-contact="phone_mobile"]').forEach(el => el.textContent = phoneMobile);
+      if (phoneOffice) document.querySelectorAll('[data-cms-contact="phone_office"]').forEach(el => el.textContent = phoneOffice);
+      if (phone) document.querySelectorAll('[data-cms-contact="phone"]').forEach(el => el.textContent = phone);
+      else if (activePhone) document.querySelectorAll('[data-cms-contact="phone"]').forEach(el => el.textContent = activePhone);
+      if (email) document.querySelectorAll('[data-cms-contact="email"]').forEach(el => el.textContent = email);
       if (location) document.querySelectorAll('[data-cms-contact="location"]').forEach(el => el.textContent = location);
+
+      if (activePhone) {
+        document.querySelectorAll('[data-cms-contact-href="phone"]').forEach(el => el.href = 'tel:' + activePhone.replace(/\s+/g, ''));
+        document.querySelectorAll('a[data-cms-contact="phone"]').forEach(el => el.href = 'tel:' + activePhone.replace(/\s+/g, ''));
+      }
+      if (phoneMobile) {
+        document.querySelectorAll('[data-cms-contact-href="phone_mobile"]').forEach(el => el.href = 'tel:' + phoneMobile.replace(/\s+/g, ''));
+        document.querySelectorAll('a[data-cms-contact="phone_mobile"]').forEach(el => el.href = 'tel:' + phoneMobile.replace(/\s+/g, ''));
+      }
+      if (phoneOffice) {
+        document.querySelectorAll('[data-cms-contact-href="phone_office"]').forEach(el => el.href = 'tel:' + phoneOffice.replace(/\s+/g, ''));
+        document.querySelectorAll('a[data-cms-contact="phone_office"]').forEach(el => el.href = 'tel:' + phoneOffice.replace(/\s+/g, ''));
+      }
+      if (email) {
+        document.querySelectorAll('[data-cms-contact-href="email"]').forEach(el => el.href = 'mailto:' + email.trim());
+        document.querySelectorAll('a[data-cms-contact="email"]').forEach(el => el.href = 'mailto:' + email.trim());
+      }
 
       // 5. Re-apply current language with updated attributes
       applyLanguage(currentLang);
     }
 
     // ── i18n ──────────────────────────────────────
+    const LANG_CONFIG = {
+      de: { icon: '🇩🇪', label: 'DE', name: 'Deutsch' },
+      en: { icon: '🇬🇧', label: 'EN', name: 'English' },
+      fr: { icon: '🇫🇷', label: 'FR', name: 'Français' },
+      cs: { icon: '🇨🇿', label: 'CS', name: 'Čeština' }
+    };
     let currentLang = localStorage.getItem('lang') || 'de';
 
     function applyLanguage(lang) {
+      if (!LANG_CONFIG[lang]) lang = 'de';
       currentLang = lang;
       localStorage.setItem('lang', lang);
-      document.querySelectorAll('.i18n, [data-de], [data-en]').forEach(el => {
-        const text = el.getAttribute(`data-${lang}`);
-        if (text && el.tagName !== 'INPUT' && el.tagName !== 'SELECT') el.textContent = text;
+
+      document.querySelectorAll('.i18n, [data-de], [data-en], [data-fr], [data-cs]').forEach(el => {
+        const text = el.getAttribute(`data-${lang}`) || el.getAttribute('data-en') || el.getAttribute('data-de');
+        if (text && el.tagName !== 'INPUT' && el.tagName !== 'SELECT' && el.tagName !== 'TEXTAREA') {
+          el.textContent = text;
+        }
       });
-      // Update title & meta when language switches
-      const seoTitle = cmsContent.seo?.title;
-      const seoDesc  = cmsContent.seo?.description;
-      if (seoTitle) document.title = lang === 'en' ? (seoTitle.en || seoTitle.de) : seoTitle.de;
+
+      // Placeholders
+      document.querySelectorAll('[data-placeholder-de], [data-placeholder-en], [data-placeholder-fr], [data-placeholder-cs]').forEach(el => {
+        const pl = el.getAttribute(`data-placeholder-${lang}`) || el.getAttribute('data-placeholder-en') || el.getAttribute('data-placeholder-de');
+        if (pl) el.setAttribute('placeholder', pl);
+      });
+
+      // Update Desktop Header Dropdown current button
+      const cfg = LANG_CONFIG[lang] || LANG_CONFIG.de;
+      const langIcon = document.getElementById('langIcon');
+      const langText = document.getElementById('langText');
+      if (langIcon) langIcon.textContent = cfg.icon;
+      if (langText) langText.textContent = cfg.label;
+
+      // Update Mobile buttons active state
+      document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+        const btnLang = btn.getAttribute('data-lang-btn');
+        if (btnLang === lang) {
+          btn.classList.add('bg-gold-500', 'text-black', 'shadow-md');
+          btn.classList.remove('text-gray-400', 'hover:bg-white/10', 'hover:text-white');
+        } else {
+          btn.classList.remove('bg-gold-500', 'text-black', 'shadow-md');
+          btn.classList.add('text-gray-400', 'hover:bg-white/10', 'hover:text-white');
+        }
+      });
+
+      // Update Desktop dropdown active item
+      document.querySelectorAll('[data-lang-val]').forEach(item => {
+        const itemLang = item.getAttribute('data-lang-val');
+        if (itemLang === lang) {
+          item.classList.add('text-gold-400', 'bg-gold-500/10');
+        } else {
+          item.classList.remove('text-gold-400', 'bg-gold-500/10');
+        }
+      });
+
+      document.documentElement.lang = lang;
+
+      // Update title & meta
+      const seoTitle = cmsContent?.seo?.title;
+      const seoDesc  = cmsContent?.seo?.description;
+      if (seoTitle) document.title = seoTitle[lang] || seoTitle.en || seoTitle.de;
       if (seoDesc) {
         const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc && seoDesc) metaDesc.content = lang === 'en' ? (seoDesc.en || seoDesc.de) : seoDesc.de;
+        if (metaDesc) metaDesc.content = seoDesc[lang] || seoDesc.en || seoDesc.de;
       }
-      document.getElementById('langText').textContent = lang.toUpperCase();
-      document.getElementById('langIcon').textContent = lang === 'de' ? '🇩🇪' : '🇬🇧';
-      document.documentElement.lang = lang;
     }
 
-    document.getElementById('langToggle').addEventListener('click', () => {
-      applyLanguage(currentLang === 'de' ? 'en' : 'de');
+    document.addEventListener('click', (e) => {
+      const toggle = e.target.closest('#langToggle');
+      const dropdown = document.getElementById('langDropdown');
+      const arrow = document.getElementById('langArrow');
+      const opt = e.target.closest('[data-lang-val]');
+      const mobileBtn = e.target.closest('[data-lang-btn]');
+
+      if (toggle) {
+        e.stopPropagation();
+        if (dropdown) {
+          dropdown.classList.toggle('hidden');
+          if (arrow) arrow.classList.toggle('rotate-180');
+        }
+      } else if (opt) {
+        const l = opt.getAttribute('data-lang-val');
+        applyLanguage(l);
+        if (dropdown) dropdown.classList.add('hidden');
+        if (arrow) arrow.classList.remove('rotate-180');
+      } else if (mobileBtn) {
+        const l = mobileBtn.getAttribute('data-lang-btn');
+        applyLanguage(l);
+      } else {
+        if (dropdown && !dropdown.contains(e.target)) {
+          dropdown.classList.add('hidden');
+          if (arrow) arrow.classList.remove('rotate-180');
+        }
+      }
     });
 
     // Load CMS first, then apply language (CMS patches data-de/en before i18n runs)
     loadCmsContent().then(() => applyLanguage(currentLang));
 
-    // ── Navbar Scroll Effect ──────────────────────
+    // ── Navbar Scroll Effect & Mobile Hide (>300px) ──
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        navbar.classList.add('glass', 'shadow-2xl');
-      } else {
-        navbar.classList.remove('glass', 'shadow-2xl');
-      }
-    });
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (navbar) {
+      const handleNavbarScroll = () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add('glass', 'shadow-2xl');
+        } else {
+          navbar.classList.remove('glass', 'shadow-2xl');
+        }
+
+        // Hide on mobile when scrolled > 300px (unless menu is open)
+        const isMobile = window.innerWidth < 1024;
+        const menuOpen = mobileMenu && !mobileMenu.classList.contains('hidden');
+        if (isMobile && window.scrollY > 300 && !menuOpen) {
+          navbar.classList.add('nav-hidden');
+        } else {
+          navbar.classList.remove('nav-hidden');
+        }
+      };
+
+      window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+      window.addEventListener('resize', handleNavbarScroll, { passive: true });
+      handleNavbarScroll();
+    }
+
+    // ── Mobile Quick Contact Bar Scroll Listener ──
+    const mobileContactBar = document.getElementById('mobileContactBar');
+    if (mobileContactBar) {
+      const updateMobileBarVisibility = () => {
+        if (window.scrollY > 300) {
+          mobileContactBar.classList.add('is-visible');
+        } else {
+          mobileContactBar.classList.remove('is-visible');
+        }
+      };
+      window.addEventListener('scroll', updateMobileBarVisibility, { passive: true });
+      updateMobileBarVisibility();
+    }
 
     // ── Mobile Menu ───────────────────────────────
     document.getElementById('menuBtn').addEventListener('click', () => {
       const menu = document.getElementById('mobileMenu');
       menu.classList.toggle('hidden');
+      if (navbar && !menu.classList.contains('hidden')) {
+        navbar.classList.remove('nav-hidden');
+      }
     });
 
     // Close mobile menu on link click
@@ -1065,7 +1399,8 @@
     // ── API Submit Helper ─────────────────────────
     async function submitToApi(endpoint, data) {
       data.language = currentLang;
-      const res = await fetch(`/api/leads/${endpoint}`, {
+      data.type = data.type || endpoint;
+      const res = await fetch('/api/booking', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -1085,13 +1420,16 @@
       e.preventDefault();
       const form = e.target;
       const btn = form.querySelector('button[type=submit]');
-      btn.disabled = true;
-      btn.textContent = currentLang === 'de' ? 'Wird gesendet...' : 'Sending...';
+      const origHTML = btn ? btn.innerHTML : '';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<svg class="w-5 h-5 animate-spin mx-auto" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>';
+      }
       try {
         const data = getFormData(form);
         const res = await submitToApi(type, data);
         if (res.success) {
-          showToast('success', currentLang === 'de' ? 'Erfolgreich gesendet!' : 'Successfully sent!', res.message);
+          showToast('success', currentLang === 'de' ? 'Erfolgreich gesendet!' : 'Successfully sent!', res.message || (currentLang === 'de' ? 'Wir melden uns innerhalb von 24 Stunden.' : 'We will get back to you soon.'));
           form.reset();
         } else {
           showToast('error', 'Fehler', res.error || 'Bitte erneut versuchen.');
@@ -1099,8 +1437,10 @@
       } catch(err) {
         showToast('error', 'Fehler', 'Netzwerkfehler. Bitte erneut versuchen.');
       } finally {
-        btn.disabled = false;
-        btn.textContent = currentLang === 'de' ? type === 'booking' ? 'Termin buchen' : 'Absenden' : 'Submit';
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = origHTML;
+        }
       }
     }
 
@@ -1111,10 +1451,10 @@
       try {
         const res = await submitToApi('newsletter', data);
         if (res.success) {
-          showToast('success', currentLang === 'de' ? 'Angemeldet!' : 'Subscribed!', res.message);
+          showToast('success', currentLang === 'de' ? 'Angemeldet!' : 'Subscribed!', res.message || 'Vielen Dank für Ihre Anmeldung!');
           form.reset();
         } else {
-          showToast('error', 'Fehler', res.error);
+          showToast('error', 'Fehler', res.error || 'Fehler bei der Anmeldung.');
         }
       } catch(err) {
         showToast('error', 'Fehler', 'Netzwerkfehler.');
@@ -1131,27 +1471,38 @@
     async function submitCatalog(e) {
       e.preventDefault();
       const form = e.target;
+      const btn = form.querySelector('button[type=submit]');
+      const origHTML = btn ? btn.innerHTML : '';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<svg class="w-5 h-5 animate-spin mx-auto" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>';
+      }
       const data = getFormData(form);
       try {
         const res = await submitToApi('catalog', data);
         if (res.success) {
           closeCatalogModal();
           showToast('success', currentLang === 'de' ? 'Katalog wird geöffnet!' : 'Catalog opening!', currentLang === 'de' ? 'Vielen Dank!' : 'Thank you!');
-          setTimeout(() => window.open(res.downloadUrl, '_blank'), 500);
+          setTimeout(() => window.open(res.downloadUrl || '/assets/docs/supertechno_50_plus_manual.pdf', '_blank'), 500);
           form.reset();
         } else {
-          showToast('error', 'Fehler', res.error);
+          showToast('error', 'Fehler', res.error || 'Fehler beim Download.');
         }
       } catch(err) {
         showToast('error', 'Fehler', 'Netzwerkfehler.');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = origHTML;
+        }
       }
     }
 
     // ── Product Modal ─────────────────────────────
     function openProductModal(model) {
       const labels = { 'ST30': 'Supertechno 30', 'ST50': 'Supertechno 50+', 'ST75': 'Supertechno 75+' };
-      document.getElementById('productModalSubtitle').textContent = labels[model];
-      document.getElementById('productModalInput').value = labels[model];
+      document.getElementById('productModalSubtitle').textContent = labels[model] || model;
+      document.getElementById('productModalInput').value = labels[model] || model;
       document.getElementById('productModal').classList.remove('hidden');
     }
     function closeProductModal() {
@@ -1160,18 +1511,29 @@
     async function submitProductModal(e) {
       e.preventDefault();
       const form = e.target;
+      const btn = form.querySelector('button[type=submit]');
+      const origHTML = btn ? btn.innerHTML : '';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<svg class="w-5 h-5 animate-spin mx-auto" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>';
+      }
       const data = getFormData(form);
       try {
         const res = await submitToApi('product', data);
         if (res.success) {
           closeProductModal();
-          showToast('success', currentLang === 'de' ? 'Anfrage gesendet!' : 'Inquiry sent!', res.message);
+          showToast('success', currentLang === 'de' ? 'Anfrage gesendet!' : 'Inquiry sent!', res.message || (currentLang === 'de' ? 'Wir melden uns innerhalb von 24 Stunden.' : 'We will get back to you soon.'));
           form.reset();
         } else {
-          showToast('error', 'Fehler', res.error);
+          showToast('error', 'Fehler', res.error || 'Fehler beim Senden.');
         }
       } catch(err) {
         showToast('error', 'Fehler', 'Netzwerkfehler.');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = origHTML;
+        }
       }
     }
 
@@ -1185,18 +1547,29 @@
     async function submitBookingModal(e) {
       e.preventDefault();
       const form = e.target;
+      const btn = form.querySelector('button[type=submit]');
+      const origHTML = btn ? btn.innerHTML : '';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<svg class="w-5 h-5 animate-spin mx-auto" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>';
+      }
       const data = getFormData(form);
       try {
         const res = await submitToApi('booking', data);
         if (res.success) {
           closeBookingModal();
-          showToast('success', currentLang === 'de' ? 'Termin gebucht!' : 'Appointment booked!', res.message);
+          showToast('success', currentLang === 'de' ? 'Termin gebucht!' : 'Appointment booked!', res.message || (currentLang === 'de' ? 'Wir melden uns zur Bestätigung.' : 'We will confirm shortly.'));
           form.reset();
         } else {
-          showToast('error', 'Fehler', res.error);
+          showToast('error', 'Fehler', res.error || 'Fehler bei der Buchung.');
         }
       } catch(err) {
         showToast('error', 'Fehler', 'Netzwerkfehler.');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = origHTML;
+        }
       }
     }
 
